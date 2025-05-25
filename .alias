@@ -1,0 +1,55 @@
+#!/bin/fish
+
+if status is-interactive
+	# Aliases
+	function vim
+		nvim $argv
+	end
+
+	function clr
+		clear $argv
+	end
+
+	function ls
+		lsd -l $argv
+	end
+
+	function l
+		lsd -l $argv
+	end
+
+	function ll
+		lsd -l $argv
+	end
+
+	function la
+		lsd -la $argv
+	end
+
+	function lsld
+		command ls -ld $argv
+	end
+
+	function lsd
+		command lsd -l $argv
+	end
+
+	function searxng
+		docker start searxng
+	end
+
+	function nano
+		nvim $argv
+	end
+
+	function dir
+		ls $argv
+	end
+
+	set -gx PATH $PATH ~/.local/bin
+
+	starship init fish | source
+
+	clear
+end
+
