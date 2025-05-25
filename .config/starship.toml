@@ -1,0 +1,20 @@
+add_newline = true
+
+format = "$username$hostname $directory$character"
+
+[username]
+show_always = true
+disabled = false
+format = "[$user@](bold red)"
+
+[hostname]
+ssh_only = false
+disabled = false
+format = "[$hostname](bold red)[:](white)"
+
+[character]
+success_symbol = "[>](white)"
+error_symbol = "[>](white)"
+
+[package]
+disabled = true
