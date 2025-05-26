@@ -48,7 +48,7 @@ if status is-interactive
 
 	set -gx PATH $PATH ~/.local/bin
 
-	starship init fish | source
+	oh-my-posh init fish | source
 
 	clear
 end
