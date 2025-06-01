@@ -42,4 +42,11 @@ if [ $? -eq 0 ]; then
 else 
     echo "Failure"
 fi
+echo "Copying ./.inputrc to ~/.inputrc"
+cp ./.inputrc ~/.inputrc > /dev/null 2>&1
+if [ $? -eq 0 ]; then
+    echo "Success"
+else 
+    echo "Failure"
+fi
 echo "Setup complete"
