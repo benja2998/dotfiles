@@ -27,6 +27,7 @@ alias dir='dir'
 alias l='ls'
 alias clr='clear'
 alias sudo='doas'
+alias apt='nala'
 alias :q='exit 1'
 alias :wq='exit 0'
 
