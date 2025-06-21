@@ -16,7 +16,7 @@ check_on_branch() {
 
 ## SHELL PROMPT ##
 
-#PS1='\[\e[1;31m\]\u@\h\[\e[0m\] in \[\e[1;34m\]\w\[\e[0m\] $(check_on_branch)\[\e[1;32m\]$(git_branch)\[\e[0m\]\[\e[1;37m\]>_\[\e[0m\] '
+PS1='\[\e[1;31m\]\u@\h\[\e[0m\] in \[\e[1;34m\]\w\[\e[0m\] $(check_on_branch)\[\e[1;32m\]$(git_branch)\[\e[0m\]\[\e[1;37m\]>_\[\e[0m\] '
 
 ## ALIASES ##
 
@@ -33,5 +33,4 @@ alias :wq='exit 0'
 
 ## STARTUP ##
 
-eval "$(starship init bash)"
 clear
