@@ -1,0 +1,55 @@
+add_newline = false
+
+
+format = "$username$hostname $git_branch $git_commit $git_status \n$directory$character"
+
+
+
+
+
+[username]
+
+
+show_always = true
+
+
+disabled = false
+
+
+format = "[$user@](bold red)"
+
+
+
+
+
+[hostname]
+
+
+ssh_only = false
+
+
+disabled = false
+
+
+format = "[$hostname](bold red)[:](white)"
+
+
+
+
+
+[character]
+
+
+success_symbol = "[>](white)"
+
+
+error_symbol = "[>](white)"
+
+
+
+
+
+[package]
+
+
+disabled = true
