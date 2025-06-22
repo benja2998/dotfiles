@@ -33,4 +33,5 @@ alias :wq='exit 0'
 
 ## STARTUP ##
 
+eval "$(starship init bash)"
 clear

@@ -1,7 +1,7 @@
 add_newline = false
 
 
-format = "$username$hostname $git_branch $git_commit $git_status \n$directory$character"
+format = "$username$hostname $git_branch$git_commit$git_status\n$directory$character"
 
 
 
@@ -31,7 +31,7 @@ ssh_only = false
 disabled = false
 
 
-format = "[$hostname](bold red)[:](white)"
+format = "[$hostname](bold red)"
 
 
 
