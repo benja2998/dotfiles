@@ -48,8 +48,5 @@ if status is-interactive
 
 	set -gx PATH $PATH ~/.local/bin
 
-	oh-my-posh init fish | source
-
 	clear
 end
-
