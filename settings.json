@@ -9,28 +9,20 @@
     "keybindings": 
     [
         {
-            "id": "Terminal.CopyToClipboard",
-            "keys": "ctrl+c"
-        },
-        {
-            "id": "Terminal.PasteFromClipboard",
-            "keys": "ctrl+v"
-        },
-        {
             "id": null,
             "keys": "alt+right"
         },
         {
-            "id": "Terminal.DuplicatePaneAuto",
-            "keys": "alt+shift+d"
+            "id": "Terminal.MoveFocusUp",
+            "keys": "alt+k"
         },
         {
             "id": "Terminal.MoveFocusRight",
             "keys": "alt+l"
         },
         {
-            "id": "Terminal.MoveFocusUp",
-            "keys": "alt+k"
+            "id": "Terminal.DuplicatePaneAuto",
+            "keys": "alt+shift+d"
         },
         {
             "id": "Terminal.MoveFocusLeft",
