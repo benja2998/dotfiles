@@ -12,10 +12,6 @@ if errorlevel 1 (
 echo Press any key to continue with dotfiles setup...
 pause >nul
 
-reg add "HKCU\Software\Microsoft\Command Processor" /v AutoRun /d "\"%target%\"" /f
-
-echo AutoRun for Command Prompt set to: %target%
-
 rem Ensure Neovim config directory exists
 if not exist "%LOCALAPPDATA%\nvim" (
     echo Creating Neovim config directory...
