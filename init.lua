@@ -32,8 +32,8 @@ vim.keymap.set({'n','v'}, '<Space>', '<Nop>', { silent = true })
 
 require("lazy").setup({
     {
-        "nyoom-engineering/oxocarbon.nvim",
-        name = "oxocarbon",
+        "p00f/alabaster.nvim",
+        name = "alabaster",
         priority = 1000,
     },
     {
@@ -284,4 +284,4 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep)
 vim.keymap.set('n', '<leader>fb', builtin.buffers)
 vim.keymap.set('n', '<leader>fh', builtin.help_tags)
 
-vim.cmd.colorscheme("oxocarbon")
+vim.cmd.colorscheme("alabaster")
