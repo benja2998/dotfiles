@@ -10,19 +10,23 @@
     [
         {
             "id": null,
+            "keys": "alt+up"
+        },
+        {
+            "id": null,
             "keys": "alt+right"
         },
         {
-            "id": "Terminal.MoveFocusUp",
-            "keys": "alt+k"
+            "id": "Terminal.DuplicatePaneAuto",
+            "keys": "alt+shift+d"
         },
         {
             "id": "Terminal.MoveFocusRight",
             "keys": "alt+l"
         },
         {
-            "id": "Terminal.DuplicatePaneAuto",
-            "keys": "alt+shift+d"
+            "id": "Terminal.MoveFocusUp",
+            "keys": "alt+k"
         },
         {
             "id": "Terminal.MoveFocusLeft",
@@ -31,10 +35,6 @@
         {
             "id": null,
             "keys": "alt+left"
-        },
-        {
-            "id": null,
-            "keys": "alt+up"
         },
         {
             "id": "Terminal.MoveFocusDown",
@@ -96,7 +96,7 @@
         "defaults": 
         {
             "adjustIndistinguishableColors": "always",
-            "colorScheme": "coolnight",
+            "colorScheme": "Campbell",
             "cursorShape": "filledBox",
             "experimental.retroTerminalEffect": false,
             "font": 
