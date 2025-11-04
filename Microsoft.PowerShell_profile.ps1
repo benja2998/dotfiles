@@ -1,5 +1,5 @@
 if ($PSVersionTable.PSEdition -eq 'Desktop') {
-    throw "This profile is blocked in Windows PowerShell."
+    exit
 }
 
 Set-Alias -Name vim -Value nvim
