@@ -1,3 +1,7 @@
+if ($PSVersionTable.PSEdition -eq 'Desktop') {
+    throw "This profile is blocked in Windows PowerShell."
+}
+
 Set-Alias -Name vim -Value nvim
 Set-Alias -Name sudo -Value gsudo
 
