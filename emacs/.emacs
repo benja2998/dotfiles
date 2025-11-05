@@ -81,4 +81,20 @@
 (setq ido-enable-flex-matching t)
 (ido-everywhere t)
 
+;; C mode
+(setq-default c-basic-offset 4
+              c-default-style '((java-mode . "java")
+                                (awk-mode . "awk")
+                                (other . "bsd")))
+
+(add-hook 'c-mode-hook (lambda ()
+                         (interactive)
+                         (c-toggle-comment-style -1)))
+
+;; Powershell
+(use-package powershell
+  :ensure t
+  :mode (("\\.ps1\\'"  . powershell-mode)
+         ("\\.psm1\\'" . powershell-mode)))
+
 (load-file custom-file)
