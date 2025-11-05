@@ -12,12 +12,12 @@ if [ ! -d "$NVIM_CONFIG" ]; then
 fi
 
 # Create symlink for init.lua
-ln -sf "$DOTFILES_DIR/init.lua" "$NVIM_CONFIG/init.lua"
+ln -sf "$DOTFILES_DIR/neovim/init.lua" "$NVIM_CONFIG/init.lua"
 echo "Symlink for init.lua created."
 
 echo "Neovim setup complete."
 # Create symlink for .emacs
-ln -sf "$DOTFILES_DIR/.emacs" "$HOME/.emacs"
+ln -sf "$DOTFILES_DIR/emacs/.emacs" "$HOME/.emacs"
 echo "Symlink for .emacs created."
 
-ln -sf "$DOTFILES_DIR/.bashrc" "$HOME/.bashrc"
+ln -sf "$DOTFILES_DIR/bash/.bashrc" "$HOME/.bashrc"

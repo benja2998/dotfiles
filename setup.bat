@@ -21,12 +21,12 @@ if not exist "%LOCALAPPDATA%\nvim" (
 rem Create symlinks for dotfiles
 move /y "%LOCALAPPDATA%\nvim\init.lua" "%LOCALAPPDATA%\nvim\init.lua.backup"
 del /f /q "%LOCALAPPDATA%\nvim\init.lua"
-mklink "%LOCALAPPDATA%\nvim\init.lua" "%~dp0init.lua"
+mklink "%LOCALAPPDATA%\nvim\init.lua" "%~dp0neovim\init.lua"
 
 echo Symlink for Neovim init.lua created.
 
-set WT_SETTINGS=%LOCALAPPDATA%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
-set DOTFILES_SETTINGS=%~dp0settings.json
+set "WT_SETTINGS=%LOCALAPPDATA%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+set "DOTFILES_SETTINGS=%~dp0windows_terminal\settings.json"
 
 rem Backup existing settings.json if it exists and is not a symlink
 if exist "%WT_SETTINGS%" (
@@ -57,8 +57,10 @@ powershell -executionpolicy Bypass -noprofile -nologo -command "%~dp0install.ps1
 
 echo Symlink for PowerShell profile created.
 
-mklink "%USERPROFILE%\.emacs" "%~dp0.emacs"
-mklink "%APPDATA%\.emacs" "%~dp0.emacs"
+if exist "%USERPROFILE%\.emacs" del "%USERPROFILE%\.emacs" 2>nul
+if exist "%APPDATA%\.emacs" del "%APPDATA%\.emacs" 2>nul
+mklink "%USERPROFILE%\.emacs" "%~dp0emacs\.emacs"
+mklink "%APPDATA%\.emacs" "%~dp0emacs\.emacs"
 
 echo Symlink for Emacs created.
 

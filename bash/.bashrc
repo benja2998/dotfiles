@@ -48,3 +48,11 @@ prompt_command() {
 }
 
 PROMPT_COMMAND=prompt_command
+
+## Zoxide setup
+
+zoxide --version >/dev/null 2>&1
+
+if [ $? -eq 0 ]; then
+    eval "$(zoxide init bash)"
+fi

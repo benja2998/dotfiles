@@ -1,8 +1,3 @@
-# Warn the user
-Write-Host "This will override your current PowerShell profile with a symlink."
-Write-Host "Press Ctrl + C within 5 seconds if you do not want this to happen."
-Start-Sleep -Seconds 5
-
 # Get the PowerShell profile path dynamically
 $PSProfilePath = $PROFILE
 
@@ -18,7 +13,7 @@ if (Test-Path $PSProfilePath) {
 }
 
 # Get the full path of the source profile script
-$ScriptPath = $PSScriptRoot + "\Microsoft.PowerShell_profile.ps1"
+$ScriptPath = $PSScriptRoot + "\powershell\Microsoft.PowerShell_profile.ps1"
 
 # Function to check if running as administrator
 function Test-IsAdmin {
