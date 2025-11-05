@@ -56,3 +56,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; Disable tool bar
+(when (display-graphic-p)
+  (tool-bar-mode -1))
+
+;; Always use spaces instead of tabs
+(setq-default indent-tabs-mode nil)
+
+;; Set tab width to 4 spaces
+(setq-default tab-width 4)
