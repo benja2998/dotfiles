@@ -1,3 +1,6 @@
+;; Set custom file
+(setq custom-file "~/.emacs.custom.el")
+
 ;; Disable startup message and splash screen
 (setq inhibit-startup-message t)
 (setq inhibit-startup-screen t)
@@ -49,19 +52,6 @@
   :config
   (load-theme 'monokai t))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
 ;; Disable tool bar and scroll bar
 (when (display-graphic-p)
   (tool-bar-mode -1)
@@ -85,3 +75,10 @@
 
 ;; Set font size
 (set-face-attribute 'default nil :font "Monospace-14")
+
+;; Ido mode
+(ido-mode t)
+(setq ido-enable-flex-matching t)
+(ido-everywhere t)
+
+
