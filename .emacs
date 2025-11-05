@@ -76,3 +76,6 @@
         company-selection-wrap-around t))
 
 (use-package eglot)
+
+;; Set font size
+(set-face-attribute 'default nil :font "Monospace-14")
