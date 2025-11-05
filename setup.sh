@@ -19,3 +19,5 @@ echo "Neovim setup complete."
 # Create symlink for .emacs
 ln -sf "$DOTFILES_DIR/.emacs" "$HOME/.emacs"
 echo "Symlink for .emacs created."
+
+ln -sf "$DOTFILES_DIR/.bashrc" "$HOME/.bashrc"
