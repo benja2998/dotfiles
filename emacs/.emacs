@@ -1,9 +1,6 @@
 ;; Set custom file
 (setq custom-file "~/.emacs.custom.el")
 
-(when (file-exists-p custom-file)
-  (load custom-file))
-
 ;; Disable startup message and splash screen
 (setq inhibit-startup-message t)
 (setq inhibit-startup-screen t)
@@ -84,4 +81,4 @@
 (setq ido-enable-flex-matching t)
 (ido-everywhere t)
 
-
+(load-file custom-file)
