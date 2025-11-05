@@ -16,3 +16,6 @@ ln -sf "$DOTFILES_DIR/init.lua" "$NVIM_CONFIG/init.lua"
 echo "Symlink for init.lua created."
 
 echo "Neovim setup complete."
+# Create symlink for .emacs
+ln -sf "$DOTFILES_DIR/.emacs" "$HOME/.emacs"
+echo "Symlink for .emacs created."
