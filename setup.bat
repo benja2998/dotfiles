@@ -57,5 +57,9 @@ powershell -executionpolicy Bypass -noprofile -nologo -command "%~dp0install.ps1
 
 echo Symlink for PowerShell profile created.
 
+mklink "%USERPROFILE%\.emacs" "%~dp0\.emacs"
+
+echo Symlink for Emacs created.
+
 echo Dotfiles setup complete.
 pause >nul
