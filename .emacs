@@ -66,3 +66,13 @@
 
 ;; Set tab width to 4 spaces
 (setq-default tab-width 4)
+
+;; Autocomplete
+(use-package company
+  :hook (after-init . global-company-mode)
+  :config
+  (setq company-idle-delay 0.1
+        company-minimum-prefix-length 1
+        company-selection-wrap-around t))
+
+(use-package eglot)
