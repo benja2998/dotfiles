@@ -16,6 +16,11 @@
 ;; Set windmove keybinds
 (windmove-default-keybindings)
 
+(global-set-key (kbd "M-<left>")  'windmove-left)
+(global-set-key (kbd "M-<right>") 'windmove-right)
+(global-set-key (kbd "M-<up>")    'windmove-up)
+(global-set-key (kbd "M-<down>")  'windmove-down)
+
 (require 'package)
 
 ;; Add MELPA
@@ -57,9 +62,10 @@
  ;; If there is more than one, they won't work right.
  )
 
-;; Disable tool bar
+;; Disable tool bar and scroll bar
 (when (display-graphic-p)
-  (tool-bar-mode -1))
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1))
 
 ;; Always use spaces instead of tabs
 (setq-default indent-tabs-mode nil)
