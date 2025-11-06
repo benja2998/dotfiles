@@ -8,12 +8,15 @@ $IsAdmin = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIde
 
 function prompt {
     # ANSI escape sequences
-    $green = "`e[32m"
-    $blue  = "`e[34m"
-    $red   = "`e[31m"
-    $yellow = "`e[33m"
-    $reset = "`e[0m"
+    if ($PSVersionTable.PSEdition -eq 'Core') {
+        $green = "`e[32m"
+        $blue  = "`e[34m"
+        $red   = "`e[31m"
+        $yellow = "`e[33m"
+        $reset = "`e[0m"
+    }
 
+    
     # User and host
     $user = $env:USERNAME
     $hostName = $env:COMPUTERNAME
