@@ -54,7 +54,7 @@
 ;; Install doom-dracula theme
 (use-package doom-themes
   :config
-  (load-theme 'doom-dracula t))
+  (load-theme 'doom-solarized-dark-high-contrast t))
 
 ;; Disable tool bar and scroll bar
 (when (display-graphic-p)
