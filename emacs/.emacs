@@ -1,13 +1,18 @@
 ;; Set custom file
 (setq custom-file "~/.emacs.custom.el")
 
+;; Highlight current line
+(global-hl-line-mode 1)
+
 ;; Disable startup message and splash screen
 (setq inhibit-startup-message t)
 (setq inhibit-startup-screen t)
 (setq inhibit-startup-echo-area-message t)
 
-;; Remove swpa files
+;; Disable autosave and backup files
 (setq auto-save-default nil)
+(setq make-backup-files nil)
+(setq create-lockfiles nil)
 
 ;; Remove menu bar
 (menu-bar-mode -1)
@@ -44,13 +49,12 @@
 
 ;; Install Magit
 (use-package magit
-  :bind (("C-x g" . magit-status)))
+  :bind (("C-c g" . magit-status)))
 
-;; Install a theme
-(use-package monokai-theme
-  :ensure t
+;; Install doom-dracula theme
+(use-package doom-themes
   :config
-  (load-theme 'monokai t))
+  (load-theme 'doom-dracula t))
 
 ;; Disable tool bar and scroll bar
 (when (display-graphic-p)
@@ -93,7 +97,6 @@
 
 ;; Powershell
 (use-package powershell
-  :ensure t
   :mode (("\\.ps1\\'"  . powershell-mode)
          ("\\.psm1\\'" . powershell-mode)))
 
