@@ -1,50 +1,5 @@
-if ($PSVersionTable.PSEdition -eq 'Desktop') {
-    exit
-}
-
 Set-Alias -Name vim -Value nvim
 Set-Alias -Name sudo -Value gsudo
-
-Remove-Alias -Name ls
-
-Set-Alias -Name ls -Value eza
-
-function sudo.ti {
-    sudo --ti
-}
-
-function sudo.system {
-    sudo -s
-}
-
-function df {
-    Get-PSDrive -PSProvider FileSystem | ForEach-Object {
-        $used = $_.Used
-        $free = $_.Free
-        $total = $used + $free
-        [PSCustomObject]@{
-            Filesystem   = $_.Name
-            SizeGB       = [math]::Round($total / 1GB, 2)
-            UsedGB       = [math]::Round($used / 1GB, 2)
-            AvailableGB  = [math]::Round($free / 1GB, 2)
-            'Use%'       = [math]::Round(($used / $total) * 100, 0)
-            MountedOn    = $_.Root
-        }
-    }
-}
-
-function free {
-    $os = Get-CimInstance Win32_OperatingSystem
-    $total = $os.TotalVisibleMemorySize / 1MB
-    $free = $os.FreePhysicalMemory / 1MB
-    $used = $total - $free
-
-    [PSCustomObject]@{
-        Total = "{0:N2} GB" -f $total
-        Used  = "{0:N2} GB" -f $used
-        Free  = "{0:N2} GB" -f $free
-    }
-}
 
 Import-Module "gsudoModule"
 
