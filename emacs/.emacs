@@ -51,10 +51,12 @@
 (use-package magit
   :bind (("C-c g" . magit-status)))
 
-;; Install doom-dracula theme
-(use-package doom-themes
-  :config
-  (load-theme 'doom-solarized-dark-high-contrast t))
+;; Catppuccin theme
+(use-package catppuccin-theme)
+(load-theme 'catppuccin :no-confirm)
+
+(setq catppuccin-flavor 'mocha) ;; or 'latte, 'macchiato, or 'mocha
+(catppuccin-reload)
 
 ;; Disable tool bar and scroll bar
 (when (display-graphic-p)
