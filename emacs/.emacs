@@ -79,8 +79,8 @@
 
 (use-package eglot)
 
-;; Set font size
-(set-face-attribute 'default nil :font "Monospace-14")
+;; Set the font
+(set-face-attribute 'default nil :font "JetBrainsMonoNL NFP-16")
 
 ;; Ido mode
 (ido-mode t)
