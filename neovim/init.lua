@@ -6,6 +6,8 @@ vim.o.expandtab = true
 vim.g.mapleader = ","
 vim.o.cursorline = true
 
+vim.api.nvim_set_keymap('t', '<Esc>', [[<C-\><C-n>]], { noremap = true, silent = true })
+
 vim.keymap.set("n", "<leader>h", ":noh<CR>", { desc = "Clear highlight" })
 vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save" })
 vim.keymap.set("n", "<leader>q", ":q<CR>", { desc = "Quit" })
