@@ -21,3 +21,4 @@ ln -sf "$DOTFILES_DIR/emacs/.emacs" "$HOME/.emacs"
 echo "Symlink for .emacs created."
 
 ln -sf "$DOTFILES_DIR/bash/.bashrc" "$HOME/.bashrc"
+ln -sf "$DOTFILES_DIR/bash/.inputrc" "$HOME/.inputrc"
