@@ -2,7 +2,7 @@ set completion-ignore-case on
 set show-all-if-ambiguous on
 set visible-stats on
 set bell-style none
-set editing-mode vi
+set editing-mode emacs
 "\e[A": history-search-backward
 "\e[B": history-search-forward
 TAB: menu-complete
