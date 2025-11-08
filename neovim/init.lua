@@ -20,7 +20,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    { "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {} },
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
     { "nvim-lualine/lualine.nvim" },
     { 'nvim-telescope/telescope.nvim' },
@@ -61,5 +60,3 @@ require("lualine").setup({
         component_separators = ""
     },
 })
-
-vim.cmd.colorscheme("tokyonight")
