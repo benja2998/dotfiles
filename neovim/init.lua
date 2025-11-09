@@ -25,8 +25,8 @@ require("lazy").setup({
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
     { "nvim-lualine/lualine.nvim" },
     { 'nvim-telescope/telescope.nvim' },
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000 }
 })
-
 require("nvim-treesitter.configs").setup({
     ensure_installed = { "lua", "python", "javascript" },
     highlight = { enable = true },
@@ -62,3 +62,9 @@ require("lualine").setup({
         component_separators = ""
     },
 })
+
+require("catppuccin").setup({
+    flavour = "mocha", -- latte, frappe, macchiato, mocha
+})
+
+vim.cmd.colorscheme("catppuccin-mocha")
