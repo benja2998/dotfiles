@@ -13,6 +13,7 @@ vim.keymap.set("n", "<leader>h", ":noh<CR>")
 vim.keymap.set("n", "<leader>w", ":w<CR>")
 vim.keymap.set("n", "<leader>q", ":q<CR>")
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
+vim.keymap.set("n", "<leader>g", ":Neogit<CR>")
 vim.keymap.set("n", "L", ":BufferLineCycleNext<CR>", { silent = true })
 vim.keymap.set("n", "H", ":BufferLineCyclePrev<CR>", { silent = true })
 vim.keymap.set("n", "<leader>c", ":bdelete<CR>", { silent = true })
@@ -39,6 +40,13 @@ require("lazy").setup({
     { "nvim-telescope/telescope.nvim" },
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
     { "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
+    {
+        "NeogitOrg/neogit",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "sindrets/diffview.nvim"
+        },
+    }
 })
 
 vim.lsp.config("lua_ls", {
