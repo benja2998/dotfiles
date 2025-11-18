@@ -134,7 +134,7 @@ cmp.setup.cmdline(':', {
 })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-for _, server in ipairs({ "lua_ls", "pyright", "ts_ls", "clangd" }) do
+for _, server in ipairs({ "lua_ls", "ts_ls", "clangd" }) do
     vim.lsp.config(server, { capabilities = capabilities })
 end
 
@@ -154,7 +154,7 @@ require("nvim-tree").setup({
 })
 
 require("nvim-treesitter.configs").setup({
-    ensure_installed = { "lua", "python", "javascript" },
+    ensure_installed = { "lua", "javascript" },
     highlight = { enable = true },
 })
 
