@@ -32,24 +32,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    { "neovim/nvim-lspconfig" },
-    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
     { "nvim-lualine/lualine.nvim" },
     { "nvim-tree/nvim-tree.lua" },
     { "nvim-telescope/telescope.nvim" },
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
     { "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
-    {
-        "hrsh7th/nvim-cmp",
-        dependencies = {
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-path",
-            "hrsh7th/cmp-cmdline",
-            "L3MON4D3/LuaSnip",
-            "saadparwaiz1/cmp_luasnip"
-        },
-    },
 })
 
 vim.lsp.config("lua_ls", {
@@ -82,62 +69,6 @@ vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 
-local cmp = require('cmp')
-local luasnip = require('luasnip')
-
-cmp.setup({
-    snippet = {
-        expand = function(args)
-            luasnip.lsp_expand(args.body)
-        end,
-    },
-    mapping = cmp.mapping.preset.insert({
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
-        ['<Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
-                luasnip.expand_or_jump()
-            else
-                fallback()
-            end
-        end, { 'i', 's' }),
-        ['<S-Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-                luasnip.jump(-1)
-            else
-                fallback()
-            end
-        end, { 'i', 's' }),
-    }),
-    sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
-    }, {
-        { name = 'buffer' },
-        { name = 'path' },
-    })
-})
-
-cmp.setup.cmdline(':', {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = {
-        { name = 'path' },
-        { name = 'cmdline' }
-    }
-})
-
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-for _, server in ipairs({ "lua_ls", "ts_ls", "clangd" }) do
-    vim.lsp.config(server, { capabilities = capabilities })
-end
-
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
@@ -151,11 +82,6 @@ require("nvim-tree").setup({
     filters = {
         dotfiles = false,
     },
-})
-
-require("nvim-treesitter.configs").setup({
-    ensure_installed = { "lua", "javascript" },
-    highlight = { enable = true },
 })
 
 require('telescope').setup {
