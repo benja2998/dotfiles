@@ -61,12 +61,10 @@ vim.lsp.config("lua_ls", {
         }
     }
 })
-vim.lsp.config("pyright", {})
 vim.lsp.config("ts_ls", {})
 vim.lsp.config("clangd", {})
 vim.lsp.enable("clangd")
 vim.lsp.enable("lua_ls")
-vim.lsp.enable("pyright")
 vim.lsp.enable("ts_ls")
 
 vim.diagnostic.config({
