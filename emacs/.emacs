@@ -59,9 +59,8 @@
 (catppuccin-reload)
 
 ;; Disable tool bar and scroll bar
-(when (display-graphic-p)
-  (tool-bar-mode -1)
-  (scroll-bar-mode -1))
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
 
 ;; Always use spaces instead of tabs
 (setq-default indent-tabs-mode nil)
