@@ -102,4 +102,18 @@
   :mode (("\\.ps1\\'"  . powershell-mode)
          ("\\.psm1\\'" . powershell-mode)))
 
+(use-package yaml-mode
+  :ensure t
+  :mode ("\\.yml\\'" . yaml-mode)
+  ("\\.yaml\\'" . yaml-mode))
+
+(add-hook 'yaml-mode-hook
+          (lambda ()
+            (setq yaml-indent-offset 2)))
+
+;; Automatically use markdown-mode for .md files
+(use-package markdown-mode
+  :ensure t
+  :mode ("\\.md\\'" . markdown-mode))
+
 (load-file custom-file)
