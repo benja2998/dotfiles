@@ -40,6 +40,13 @@ mklink "%APPDATA%\.emacs" "%~dp0emacs\.emacs"
 
 echo Symlink for Emacs created.
 
+if exist "%USERPROFILE%\.bashrc" del "%USERPROFILE%\.bashrc" 2>nul
+mklink "%USERPROFILE%\.bashrc" "%~dp0bash\.bashrc"
+if exist "%USERPROFILE%\.inputrc" del "%USERPROFILE%\.inputrc" 2>nul
+mklink "%USERPROFILE%\.inputrc" "%~dp0bash\.inputrc"
+
+echo Symlinks for Bash created.
+
 echo Adding autorun for Command Prompt...
 reg add "HKCU\Software\Microsoft\Command Processor" /v AutoRun /t REG_SZ /d "%~dp0cmd\autorun.bat" /f
 echo CMD autorun set to: %~dp0cmd\autorun.bat
