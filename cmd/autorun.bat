@@ -14,3 +14,4 @@ if errorlevel 1 (
 )
 
 doskey sudo=gsudo $*
+doskey cat=bat -pP $*
