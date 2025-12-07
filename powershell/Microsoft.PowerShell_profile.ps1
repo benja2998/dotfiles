@@ -34,18 +34,15 @@ function prompt {
         $pwd = "~" + $pwd.Substring($home.Length)
     }
 
-    # Exit code coloring
-    if ($LASTEXITCODE -eq 0) {
-        $exit = "$yellow[$LASTEXITCODE]$reset"
-    } else {
-        $exit = "$red[$LASTEXITCODE]$reset"
-    }
+    $date = (Get-Date).ToString("HH:mm:ss,ff")
+
+    $date = "$yellow[$date]$reset"
 
     # Compose prompt
     if ($IsAdmin) {
-        return "$exit $red$user$reset@$hostName $pwd # "
+        return "$date $red$user$reset@$hostName $pwd # "
     } else {
-        return "$exit $green$user@$hostName$reset $blue$pwd$reset $ "
+        return "$date $green$user@$hostName$reset $blue$pwd$reset $ "
     }
 }
 

@@ -40,5 +40,9 @@ mklink "%APPDATA%\.emacs" "%~dp0emacs\.emacs"
 
 echo Symlink for Emacs created.
 
+echo Adding autorun for Command Prompt...
+reg add "HKCU\Software\Microsoft\Command Processor" /v AutoRun /t REG_SZ /d "%~dp0cmd\autorun.bat" /f
+echo CMD autorun set to: %~dp0cmd\autorun.bat
+
 echo Dotfiles setup complete.
 pause >nul

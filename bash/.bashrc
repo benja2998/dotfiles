@@ -21,7 +21,6 @@ fi
 ## Shell prompt
 
 prompt_command() {
-    local exit_code=$?
     local green="\[\e[32m\]"
     local blue="\[\e[34m\]"
     local red="\[\e[31m\]"
@@ -32,18 +31,15 @@ prompt_command() {
     local host="\h"
     local pwd="\w"
 
-    # Exit code color
-    if [[ $exit_code -eq 0 ]]; then
-        exit_part="${yellow}[${exit_code}]${reset}"
-    else
-        exit_part="${red}[${exit_code}]${reset}"
-    fi
+    local now="$(date '+%H:%M:%S,%N')"
+    local time="${now:0:8},${now:9:2}"
 
-    # Detect root
+    local time_part="${yellow}[${time}]${reset}"
+
     if [[ $EUID -eq 0 ]]; then
-        PS1="${exit_part} ${red}${user}${reset}@${host} ${pwd} # "
+        PS1="${time_part} ${red}${user}${reset}@${host} ${pwd} # "
     else
-        PS1="${exit_part} ${green}${user}@${host}${reset} ${blue}${pwd}${reset} \$ "
+        PS1="${time_part} ${green}${user}@${host}${reset} ${blue}${pwd}${reset} \$ "
     fi
 }
 
