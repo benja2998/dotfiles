@@ -1,5 +1,8 @@
 @echo off
 
+rem autorun.bat
+rem Runs on Command Processor AutoRun
+
 chcp 65001 >nul
 
 net session >nul 2>&1
