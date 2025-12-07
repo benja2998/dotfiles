@@ -1,6 +1,8 @@
 Set-Alias -Name vim -Value nvim
 Set-Alias -Name sudo -Value gsudo
 
+$env:TERM = "xterm-256color"
+
 if ($PSVersionTable.PSEdition -eq 'Core') {
     Remove-Alias -Name cat
 

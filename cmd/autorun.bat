@@ -5,6 +5,8 @@ rem Runs on Command Processor AutoRun
 
 chcp 65001 >nul
 
+set "TERM=xterm-256color"
+
 net session >nul 2>&1
 
 if errorlevel 1 (
