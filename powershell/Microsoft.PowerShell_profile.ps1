@@ -1,6 +1,14 @@
 Set-Alias -Name vim -Value nvim
 Set-Alias -Name sudo -Value gsudo
 
+if ($PSVersionTable.PSEdition -eq 'Core') {
+    Remove-Alias -Name cat
+
+    function cat {
+        bat -pP @args
+    }
+}
+
 Import-Module "gsudoModule"
 
 # Check if the session is running as admin
