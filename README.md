@@ -4,28 +4,57 @@ Configuration files for **benja2998**.
 
 ## Overview
 
-This repository contains configuration files (dotfiles) to set up a consistent development environment on **Windows**. It includes settings for your shell, terminal, and custom utilities.
+This repository provides configuration for multiple programs.
 
-## Features
+### Shells
 
-* Pre-configured shell environment  
-* Custom scripts and utilities  
+* Cmd
+* PowerShell
+* Bash
 
-## Setup
+### Terminal Emulators
 
-1. **Clone the repository**  
-   ```bat
-   git clone https://github.com/benja2998/dotfiles.git
-   cd dotfiles
-   ```
+* Windows Console
 
-2. **Run the setup script**  
-   Windows:
-   ```bat
-   setup.bat
-   ```
-   POSIX:
-   ```
-   chmod +x setup.sh
-   ./setup.sh
-   ```
+### Text Editors
+
+* Neovim
+* Emacs
+
+## Why Use These
+
+This repository provides a consistent configuration across these three shells. Each has the same prompt and similar aliases.
+
+## Unique Features
+
+* This repository has [configuration for the Windows Console](conhost/console.reg)
+* This repository implements [Zoxide for Cmd](cmd/scripts/z.bat)
+
+## Installation
+
+### MS-Windows
+
+```batch
+gh repo clone benja2998/dotfiles
+cd dotfiles
+.\setup.bat
+```
+
+### POSIX
+
+```bash
+gh repo clone benja2998/dotfiles
+cd dotfiles
+dos2unix setup.sh
+chmod +x setup.sh
+./setup.sh
+```
+
+## Notes
+
+The configuration files for POSIX systems require:
+
+* bat
+* zoxide
+
+These are not installed automatically by `setup.sh`, they are only installed automatically by `setup.bat`.
