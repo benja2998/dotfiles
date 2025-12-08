@@ -29,6 +29,7 @@ rem Install programs
 winget install -e --id sharkdp.bat
 winget install -e --id gerardog.gsudo
 winget install -e --id ajeetdsouza.zoxide
+winget install -e --id Microsoft.PowerShell
 
 echo Programs installed.
 
@@ -46,13 +47,15 @@ mklink "%USERPROFILE%\.inputrc" "%~dp0bash\.inputrc"
 
 echo Symlinks for Bash created.
 
-echo Adding autorun for Command Prompt...
 reg add "HKCU\Software\Microsoft\Command Processor" /v AutoRun /t REG_SZ /d "%~dp0cmd\autorun.bat" /f
 echo CMD autorun set to: %~dp0cmd\autorun.bat
 
-echo Importing %~dp0conhost\console.reg...
 reg import "%~dp0conhost\console.reg"
 echo Imported %~dp0conhost\console.reg
+
+pwsh -ExecutionPolicy Bypass -NoProfile -NoLogo -File "%~dp0profile.ps1"
+
+echo Symlink for PowerShell created.
 
 echo Dotfiles setup complete.
 pause >nul
