@@ -1,4 +1,6 @@
 # Dotfiles
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fbenja2998%2Fdotfiles.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fbenja2998%2Fdotfiles?ref=badge_shield)
+
 
 Configuration files for **benja2998**.
 
@@ -58,3 +60,7 @@ The configuration files for POSIX systems require:
 * zoxide
 
 These are not installed automatically by `setup.sh`, they are only installed automatically by `setup.bat`.
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fbenja2998%2Fdotfiles.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fbenja2998%2Fdotfiles?ref=badge_large)
