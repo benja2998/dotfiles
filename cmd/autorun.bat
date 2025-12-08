@@ -18,3 +18,6 @@ if errorlevel 1 (
 doskey sudo=gsudo $*
 doskey cat=bat -pP $*
 set "PATH=%~dp0scripts;%PATH%"
+
+rem Automatically run chocolatey elevated
+doskey choco=gsudo choco $*

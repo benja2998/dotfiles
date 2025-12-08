@@ -11,6 +11,10 @@ if ($PSVersionTable.PSEdition -eq 'Core') {
     }
 }
 
+function choco {
+    gsudo { choco @args }
+}
+
 Import-Module "gsudoModule"
 
 # Check if the session is running as admin
