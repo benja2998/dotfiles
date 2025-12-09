@@ -1,3 +1,3 @@
 # Contributing
 
-These dotfiles do not accept pull requests or feature requests, but I do accept bug reports.
+The only issues and pull requests that I will accept here are bug reports and bug fixes.
