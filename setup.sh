@@ -22,3 +22,6 @@ echo "Symlink for .emacs created."
 
 ln -sf "$DOTFILES_DIR/bash/.bashrc" "$HOME/.bashrc"
 ln -sf "$DOTFILES_DIR/bash/.inputrc" "$HOME/.inputrc"
+
+# I don't like this shell at all but here it is for the zsh people
+ln -sf "$DOTFILES_DIR/zsh/.zshrc" "$HOME/.zshrc"
