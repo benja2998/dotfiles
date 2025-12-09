@@ -37,7 +37,7 @@ prompt_command() {
     if [[ $EUID -eq 0 ]]; then
         PS1="${time_part} ${red}${user}${reset}@${host} ${pwd} # "
     else
-        PS1="${time_part} ${green}${user}${reset}@${host} ${blue}${pwd}${reset} \$ "
+        PS1="${time_part} ${green}${user}@${host}${reset} ${blue}${pwd}${reset} \$ "
     fi
 }
 

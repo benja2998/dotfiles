@@ -11,6 +11,7 @@ This repository provides configuration for multiple programs.
 * Cmd
 * PowerShell
 * Bash
+* Zsh
 
 ### Terminal Emulators
 
