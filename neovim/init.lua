@@ -7,7 +7,7 @@ vim.o.cursorline = true
 vim.g.mapleader = ','
 vim.o.clipboard = 'unnamedplus'
 
-vim.api.nvim_set_keymap('t', '<Esc>', [[<C-\><C-n>]], { noremap = true, silent = true })
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { silent = true })
 
 vim.keymap.set("n", "<leader>h", ":noh<CR>", { silent = true })
 vim.keymap.set("n", "<leader>w", ":w<CR>", { silent = true })
