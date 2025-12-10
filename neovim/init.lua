@@ -9,9 +9,9 @@ vim.o.clipboard = 'unnamedplus'
 
 vim.api.nvim_set_keymap('t', '<Esc>', [[<C-\><C-n>]], { noremap = true, silent = true })
 
-vim.keymap.set("n", "<leader>h", ":noh<CR>")
-vim.keymap.set("n", "<leader>w", ":w<CR>")
-vim.keymap.set("n", "<leader>q", ":q<CR>")
+vim.keymap.set("n", "<leader>h", ":noh<CR>", { silent = true })
+vim.keymap.set("n", "<leader>w", ":w<CR>", { silent = true })
+vim.keymap.set("n", "<leader>q", ":q<CR>", { silent = true })
 vim.keymap.set("n", "<leader>c", ":tabclose<CR>", { silent = true })
 vim.keymap.set("n", "<leader>n", ":tabnew<CR>", { silent = true })
 vim.keymap.set("n", "H", ":tabprevious<CR>", { silent = true })
