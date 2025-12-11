@@ -26,6 +26,7 @@ vim.keymap.set('n', '<C-k>', '<C-w>k', { silent = true })
 vim.keymap.set('n', '<C-l>', '<C-w>l', { silent = true })
 vim.keymap.set('n', '<leader>e', ':Ex<CR>', { silent = true})
 vim.keymap.set('n', '<leader>m', ':Mason<CR>', { silent = true})
+vim.keymap.set('n', '<leader>l', ':Lazy<CR>', { silent = true})
 vim.keymap.set("n", "<leader>t", function()
     local dir = vim.fn.expand("%:p:h")
     vim.cmd("lcd " .. dir)
@@ -51,12 +52,37 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
     { "neovim/nvim-lspconfig", name = "nvim-lspconfig" },
-    {
-        "mason-org/mason.nvim",
-        opts = {}
-    }
+    { "mason-org/mason.nvim", name = "mason", opts = {} },
+    { "mason-org/mason-lspconfig.nvim", name = "mason-lspconfig" },
 })
 
 -- Catppuccin setup
 require("catppuccin").setup({ flavour = "mocha" })
 vim.cmd.colorscheme("catppuccin-mocha")
+
+-- LSP setup
+require("mason").setup()
+require("mason-lspconfig").setup({
+    handlers = {
+        function(server)
+            vim.lsp.config(server)
+            vim.lsp.setup(server)
+        end,
+    },
+})
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(event)
+        local opts = { buffer = event.buf, silent = true }
+        -- Go to
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+        vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+        vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+        -- Hover / info
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+        -- Code actions / rename
+        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+        vim.keymap.set("v", "<leader>ca", vim.lsp.buf.code_action, opts)
+        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+    end,
+})
