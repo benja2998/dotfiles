@@ -23,6 +23,7 @@ vim.keymap.set('n', '<C-l>', '<C-w>l', { silent = true })
 vim.keymap.set('n', '<leader>e', ':Ex<CR>', { silent = true})
 
 vim.g.netrw_banner = 0
+vim.g.netrw_liststyle = 1
 vim.g.netrw_keepdir = 0
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
