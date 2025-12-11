@@ -25,6 +25,7 @@ vim.keymap.set('n', '<C-j>', '<C-w>j', { silent = true })
 vim.keymap.set('n', '<C-k>', '<C-w>k', { silent = true })
 vim.keymap.set('n', '<C-l>', '<C-w>l', { silent = true })
 vim.keymap.set('n', '<leader>e', ':Ex<CR>', { silent = true})
+vim.keymap.set('n', '<leader>m', ':Mason<CR>', { silent = true})
 vim.keymap.set("n", "<leader>t", function()
     local dir = vim.fn.expand("%:p:h")
     vim.cmd("lcd " .. dir)
@@ -49,6 +50,11 @@ vim.opt.rtp:prepend(lazypath)
 -- Packages
 require("lazy").setup({
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+    { "neovim/nvim-lspconfig", name = "nvim-lspconfig" },
+    {
+        "mason-org/mason.nvim",
+        opts = {}
+    }
 })
 
 -- Catppuccin setup
