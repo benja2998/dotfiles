@@ -11,28 +11,6 @@ vim.o.smartindent = true
 -- Leader key
 vim.g.mapleader = ','
 
--- Keymaps
-vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { silent = true })
-vim.keymap.set("n", "<leader>h", ":noh<CR>", { silent = true })
-vim.keymap.set("n", "<leader>w", ":w<CR>", { silent = true })
-vim.keymap.set("n", "<leader>q", ":q<CR>", { silent = true })
-vim.keymap.set("n", "<leader>c", ":tabclose<CR>", { silent = true })
-vim.keymap.set("n", "<leader>n", ":tabnew<CR>", { silent = true })
-vim.keymap.set("n", "H", ":tabprevious<CR>", { silent = true })
-vim.keymap.set("n", "L", ":tabnext<CR>", { silent = true })
-vim.keymap.set('n', '<C-h>', '<C-w>h', { silent = true })
-vim.keymap.set('n', '<C-j>', '<C-w>j', { silent = true })
-vim.keymap.set('n', '<C-k>', '<C-w>k', { silent = true })
-vim.keymap.set('n', '<C-l>', '<C-w>l', { silent = true })
-vim.keymap.set('n', '<leader>e', ':Ex<CR>', { silent = true})
-vim.keymap.set('n', '<leader>m', ':Mason<CR>', { silent = true})
-vim.keymap.set('n', '<leader>l', ':Lazy<CR>', { silent = true})
-vim.keymap.set("n", "<leader>t", function()
-    local dir = vim.fn.expand("%:p:h")
-    vim.cmd("lcd " .. dir)
-    vim.cmd("terminal")
-end)
-
 -- Netrw
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 1
@@ -126,3 +104,25 @@ cmp.setup({
         { name = "path" },
     }),
 })
+
+-- Keymaps
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { silent = true })
+vim.keymap.set("n", "<leader>h", ":noh<CR>", { silent = true })
+vim.keymap.set("n", "<leader>w", ":w<CR>", { silent = true })
+vim.keymap.set("n", "<leader>q", ":q<CR>", { silent = true })
+vim.keymap.set("n", "<leader>c", ":tabclose<CR>", { silent = true })
+vim.keymap.set("n", "<leader>n", ":tabnew<CR>", { silent = true })
+vim.keymap.set("n", "H", ":tabprevious<CR>", { silent = true })
+vim.keymap.set("n", "L", ":tabnext<CR>", { silent = true })
+vim.keymap.set('n', '<C-h>', '<C-w>h', { silent = true })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { silent = true })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { silent = true })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { silent = true })
+vim.keymap.set('n', '<leader>e', ':Ex<CR>', { silent = true})
+vim.keymap.set('n', '<leader>m', ':Mason<CR>', { silent = true})
+vim.keymap.set('n', '<leader>l', ':Lazy<CR>', { silent = true})
+vim.keymap.set("n", "<leader>t", function()
+    local dir = vim.fn.expand("%:p:h")
+    vim.cmd("lcd " .. dir)
+    vim.cmd("terminal")
+end)
