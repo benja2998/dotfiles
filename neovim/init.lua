@@ -1,3 +1,4 @@
+-- Options
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.termguicolors = true
@@ -5,10 +6,12 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.o.cursorline = true
+
+-- Leader key
 vim.g.mapleader = ','
 
+-- Keymaps
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { silent = true })
-
 vim.keymap.set("n", "<leader>h", ":noh<CR>", { silent = true })
 vim.keymap.set("n", "<leader>w", ":w<CR>", { silent = true })
 vim.keymap.set("n", "<leader>q", ":q<CR>", { silent = true })
@@ -21,11 +24,18 @@ vim.keymap.set('n', '<C-j>', '<C-w>j', { silent = true })
 vim.keymap.set('n', '<C-k>', '<C-w>k', { silent = true })
 vim.keymap.set('n', '<C-l>', '<C-w>l', { silent = true })
 vim.keymap.set('n', '<leader>e', ':Ex<CR>', { silent = true})
+vim.keymap.set("n", "<leader>t", function()
+    local dir = vim.fn.expand("%:p:h")
+    vim.cmd("lcd " .. dir)
+    vim.cmd("terminal")
+end)
 
+-- Netrw
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 1
 vim.g.netrw_keepdir = 0
 
+-- Lazy.nvim bootstrap
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -33,18 +43,13 @@ if not vim.loop.fs_stat(lazypath) then
         "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath
     })
 end
-
 vim.opt.rtp:prepend(lazypath)
 
+-- Packages
 require("lazy").setup({
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 })
 
+-- Catppuccin setup
 require("catppuccin").setup({ flavour = "mocha" })
 vim.cmd.colorscheme("catppuccin-mocha")
-
-vim.keymap.set("n", "<leader>t", function()
-    local dir = vim.fn.expand("%:p:h")
-    vim.cmd("lcd " .. dir)
-    vim.cmd("terminal")
-end)
