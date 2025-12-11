@@ -5,7 +5,6 @@ vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.o.cursorline = true
 vim.g.mapleader = ','
-vim.o.clipboard = 'unnamedplus'
 
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { silent = true })
 
