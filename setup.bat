@@ -25,11 +25,18 @@ mklink "%LOCALAPPDATA%\nvim\init.lua" "%~dp0neovim\init.lua"
 
 echo Symlink for Neovim init.lua created.
 
+powershell -NoProfile -ExecutionPolicy Bypass -NoLogo -Command "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser && Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression"
+
+echo Scoop installed.
+
 rem Install programs
 winget install -e --id sharkdp.bat
 winget install -e --id gerardog.gsudo
 winget install -e --id ajeetdsouza.zoxide
 winget install -e --id Microsoft.PowerShell
+scoop bucket add extras
+scoop install komorebi whkd
+scoop install lazygit lazydocker
 
 echo Programs installed.
 
@@ -61,6 +68,11 @@ if exist "%USERPROFILE%\komorebi.json" del "%USERPROFILE%\komorebi.json" 2>nul
 mklink "%USERPROFILE%\komorebi.json" "%~dp0komorebi\komorebi.json"
 
 echo Symlink for Komorebi created.
+
+if exist "%USERPROFILE%\.config\whkdrc" del "%USERPROFILE%\.config\whkdrc" 2>nul
+mklink "%USERPROFILE%\.config\whkdrc" "%~dp0whkd\whkdrc"
+
+echo Symlink for WHKD created.
 
 echo Dotfiles setup complete.
 pause >nul
