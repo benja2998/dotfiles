@@ -121,6 +121,7 @@ vim.keymap.set('n', '<C-l>', '<C-w>l', { silent = true })
 vim.keymap.set('n', '<leader>e', ':Ex<CR>', { silent = true})
 vim.keymap.set('n', '<leader>m', ':Mason<CR>', { silent = true})
 vim.keymap.set('n', '<leader>l', ':Lazy<CR>', { silent = true})
+vim.keymap.set('n', '<leader>o', ':copen<CR>', { silent = true})
 -- Mimic the terminal function of IDEs like VS Code
 vim.keymap.set("n", "<leader>t", function()
     local dir = vim.fn.expand("%:p:h")
