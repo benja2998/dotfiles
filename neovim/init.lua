@@ -1,5 +1,6 @@
 -- [[ Options ]] --
 vim.o.number = true -- Show line numbers
+vim.o.guifont = "CaskaydiaCove Nerd Font Mono:h14"
 vim.o.relativenumber = true -- Relative line numbers
 vim.o.termguicolors = true -- Enable 24-bit color
 vim.o.tabstop = 4 -- 4 space tabs
