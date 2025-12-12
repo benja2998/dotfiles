@@ -1,6 +1,10 @@
 @echo off
 set "target=%~dp0.autorun.bat"
 
+powershell -NoProfile -ExecutionPolicy Bypass -NoLogo -Command "Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression"
+
+echo Scoop installed.
+
 net session >nul 2>&1
 
 if errorlevel 1 (
@@ -25,18 +29,16 @@ mklink "%LOCALAPPDATA%\nvim\init.lua" "%~dp0neovim\init.lua"
 
 echo Symlink for Neovim init.lua created.
 
-powershell -NoProfile -ExecutionPolicy Bypass -NoLogo -Command "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser; Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression"
-
-echo Scoop installed.
-
 rem Install programs
 winget install -e --id sharkdp.bat
 winget install -e --id gerardog.gsudo
 winget install -e --id ajeetdsouza.zoxide
 winget install -e --id Microsoft.PowerShell
-scoop bucket add extras
-scoop install komorebi whkd
-scoop install lazygit lazydocker
+pwsh -c "scoop bucket add extras"
+pwsh -c "scoop install komorebi"
+pwsh -c "scoop install whkd"
+pwsh -c "scoop install lazydocker"
+pwsh -c "scoop install lazygit"
 
 echo Programs installed.
 
