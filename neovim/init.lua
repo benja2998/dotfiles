@@ -1,4 +1,4 @@
--- Options
+-- [[ Options ]] --
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.termguicolors = true
@@ -8,15 +8,15 @@ vim.o.expandtab = true
 vim.o.cursorline = true
 vim.o.smartindent = true
 
--- Leader key
-vim.g.mapleader = ','
+-- [[ Leader key ]] --
+vim.g.mapleader = ' '
 
--- Netrw
+-- [[ Netrw ]] --
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 1
 vim.g.netrw_keepdir = 0
 
--- Lazy.nvim bootstrap
+-- [[ Lazy.nvim bootstrap ]] --
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -26,7 +26,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Packages
+-- [[ Packages ]] --
 require("lazy").setup({
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
     { "neovim/nvim-lspconfig", name = "nvim-lspconfig" },
@@ -45,11 +45,11 @@ require("lazy").setup({
     },
 })
 
--- Catppuccin setup
+-- [[ Catppuccin setup ]] --
 require("catppuccin").setup({ flavour = "mocha" })
 vim.cmd.colorscheme("catppuccin-mocha")
 
--- LSP setup
+-- [[ LSP setup ]] --
 require("mason").setup()
 require("mason-lspconfig").setup({
     handlers = {
@@ -81,7 +81,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
--- nvim-cmp setup
+-- [[ nvim-cmp setup ]] --
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 cmp.setup({
@@ -105,7 +105,7 @@ cmp.setup({
     }),
 })
 
--- Keymaps
+-- [[ Keymaps ]] --
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { silent = true })
 vim.keymap.set("n", "<leader>h", ":noh<CR>", { silent = true })
 vim.keymap.set("n", "<leader>w", ":w<CR>", { silent = true })
@@ -121,8 +121,9 @@ vim.keymap.set('n', '<C-l>', '<C-w>l', { silent = true })
 vim.keymap.set('n', '<leader>e', ':Ex<CR>', { silent = true})
 vim.keymap.set('n', '<leader>m', ':Mason<CR>', { silent = true})
 vim.keymap.set('n', '<leader>l', ':Lazy<CR>', { silent = true})
+-- Mimic the terminal function of IDEs like VS Code
 vim.keymap.set("n", "<leader>t", function()
     local dir = vim.fn.expand("%:p:h")
     vim.cmd("lcd " .. dir)
-    vim.cmd("terminal")
+    vim.cmd("bot10split | terminal")
 end)
