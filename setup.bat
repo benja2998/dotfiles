@@ -57,5 +57,10 @@ pwsh -ExecutionPolicy Bypass -NoProfile -NoLogo -File "%~dp0profile.ps1"
 
 echo Symlink for PowerShell created.
 
+if exist "%USERPROFILE%\komorebi.json" del "%USERPROFILE%\komorebi.json" 2>nul
+mklink "%USERPROFILE%\komorebi.json" "%~dp0komorebi\komorebi.json"
+
+echo Symlink for Komorebi created.
+
 echo Dotfiles setup complete.
 pause >nul
