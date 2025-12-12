@@ -41,6 +41,12 @@ cd dotfiles
 .\setup.bat
 ```
 
+And then if you care about your time:
+
+```batch
+tools\debloater.bat
+```
+
 ### POSIX
 
 ```bash
