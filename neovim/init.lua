@@ -1,20 +1,20 @@
 -- [[ Options ]] --
-vim.o.number = true
-vim.o.relativenumber = true
-vim.o.termguicolors = true
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
-vim.o.expandtab = true
-vim.o.cursorline = true
-vim.o.smartindent = true
+vim.o.number = true -- Show line numbers
+vim.o.relativenumber = true -- Relative line numbers
+vim.o.termguicolors = true -- Enable 24-bit color
+vim.o.tabstop = 4 -- 4 space tabs
+vim.o.shiftwidth = -- 4 space tabs
+vim.o.expandtab = true -- Use spaces instead of tabs
+vim.o.cursorline = true -- Highlight current line
+vim.o.smartindent = true -- Smart indentation
 
 -- [[ Leader key ]] --
-vim.g.mapleader = ' '
+vim.g.mapleader = ' ' -- Space
 
 -- [[ Netrw ]] --
-vim.g.netrw_banner = 0
-vim.g.netrw_liststyle = 1
-vim.g.netrw_keepdir = 0
+vim.g.netrw_banner = 0 -- No banner
+vim.g.netrw_liststyle = 1 -- Long listing style
+vim.g.netrw_keepdir = 0 -- Change Neovim directory when entering a directory
 
 -- [[ Lazy.nvim bootstrap ]] --
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
