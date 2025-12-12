@@ -25,7 +25,7 @@ mklink "%LOCALAPPDATA%\nvim\init.lua" "%~dp0neovim\init.lua"
 
 echo Symlink for Neovim init.lua created.
 
-powershell -NoProfile -ExecutionPolicy Bypass -NoLogo -Command "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser && Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression"
+powershell -NoProfile -ExecutionPolicy Bypass -NoLogo -Command "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser; Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression"
 
 echo Scoop installed.
 
