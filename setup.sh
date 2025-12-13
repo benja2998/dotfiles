@@ -23,5 +23,10 @@ echo "Symlink for .emacs created."
 ln -sf "$DOTFILES_DIR/bash/.bashrc" "$HOME/.bashrc"
 ln -sf "$DOTFILES_DIR/bash/.inputrc" "$HOME/.inputrc"
 
+ln -sf "$DOTFILES_DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+
 # I don't like this shell at all but here it is for the zsh people
 ln -sf "$DOTFILES_DIR/zsh/.zshrc" "$HOME/.zshrc"
