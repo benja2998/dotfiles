@@ -3,6 +3,7 @@
 ## Aliases
 
 alias ls='ls --color=auto'
+alias vim='nvim'
 alias grep='grep --color=auto'
 alias dir='dir --color=auto'
 
