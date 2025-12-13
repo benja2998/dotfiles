@@ -17,6 +17,9 @@ if errorlevel 1 (
 
 doskey sudo=gsudo $*
 doskey cat=bat -pP $*
+doskey clear=cls $*
+doskey vim=nvim $*
+doskey ls=dir $*
 set "PATH=%~dp0scripts;%PATH%"
 
 rem Automatically run chocolatey elevated
