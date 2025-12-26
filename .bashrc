@@ -129,7 +129,7 @@ aptsr() {
 
 # Fuzzy find directories
 cdf() {
-    cd "$(fd -H -I . "${1:-$HOME}" | fzf)"
+    cd "$(fd -H -I -t d . "${1:-$HOME}" | fzf)"
 }
 
 ## Rbenv
