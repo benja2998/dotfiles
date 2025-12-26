@@ -13,30 +13,30 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+    -- Utils
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope.nvim",
+
+    -- File manager
     "stevearc/oil.nvim",
-    "neovim/nvim-lspconfig",
-    {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
+
+    -- UI
     {
-        'nvim-lualine/lualine.nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons' }
+        "akinsho/bufferline.nvim",
+        version = "*",
+        dependencies = "nvim-tree/nvim-web-devicons",
+    },
+    {
+        "nvim-lualine/lualine.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
     },
     {
         "catppuccin/nvim",
         lazy = false,
         priority = 1000,
     },
-    {
-        "mason-org/mason.nvim",
-        opts = {}
-    },
-    {
-        "mason-org/mason-lspconfig.nvim",
-        opts = {
-        },
-    },
 
+    -- Treesitter
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
@@ -45,26 +45,109 @@ require("lazy").setup({
             require("nvim-treesitter.configs").setup({
                 ensure_installed = { "lua", "vim", "vimdoc" },
                 auto_install = true,
-                highlight = {
-                    enable = true,
-                },
-                indent = {
-                    enable = true,
-                },
+                highlight = { enable = true },
+                indent = { enable = true },
             })
         end,
     },
+
+    -- LSP + Mason + Autocomplete
+    {
+        "williamboman/mason.nvim",
+        opts = {},
+    },
+    {
+        "williamboman/mason-lspconfig.nvim",
+        opts = {
+            automatic_installation = true,
+        },
+    },
+    {
+        "neovim/nvim-lspconfig",
+        config = function()
+            local mason_lspconfig = require("mason-lspconfig")
+
+            -- Capabilities for nvim-cmp
+            local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+            -- Ensure Mason installs these servers
+            local servers = {
+                "pyright",
+                "ts_ls",
+                "lua_ls",
+                "bashls",
+                "jsonls",
+                "yamlls",
+                "clangd",
+            }
+
+            require("mason").setup()
+            mason_lspconfig.setup({
+                ensure_installed = servers,
+                automatic_enable = true, -- automatically enables installed servers using native API
+            })
+
+            -- Setup LSP servers using modern native API
+            local server_configs = {
+                lua_ls = {
+                    settings = {
+                        Lua = { diagnostics = { globals = { "vim" } } },
+                    },
+                },
+            }
+
+            for _, server in ipairs(servers) do
+                local cfg = server_configs[server] or {}
+                cfg.capabilities = capabilities
+                vim.lsp.config(server, cfg)
+            end
+
+            vim.lsp.enable(servers)
+
+            -- LSP keymaps via LspAttach
+            vim.api.nvim_create_autocmd("LspAttach", {
+                callback = function(args)
+                    local bufnr = args.buf
+                    local opts = { buffer = bufnr, remap = false }
+
+                    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+                    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+                    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+                    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+                    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+                    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+                    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+
+                    -- Diagnostic navigation
+                    vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+                    vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+                    vim.keymap.set("n", "<leader>de", vim.diagnostic.open_float, opts)
+                    vim.keymap.set("n", "<leader>dq", vim.diagnostic.setloclist, opts)
+                end,
+            })
+        end,
+    },
+    {
+        "hrsh7th/nvim-cmp",
+        dependencies = {
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            "saadparwaiz1/cmp_luasnip",
+            "L3MON4D3/LuaSnip",
+            "rafamadriz/friendly-snippets",
+        },
+    },
 })
 
+-- Colorscheme
 vim.cmd("colorscheme catppuccin-mocha")
 
+-- Basic options
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 vim.opt.expandtab = true
-
-vim.opt.background = "dark" -- default to dark or light style
-
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.termguicolors = true
@@ -76,35 +159,76 @@ vim.opt.smartcase = true
 vim.opt.cursorline = true
 vim.opt.shortmess:append("I")
 vim.opt.laststatus = 3
+vim.opt.background = "dark"
+vim.opt.completeopt = { "menuone", "noselect", "noinsert" }
 
+-- Oil setup
 require("oil").setup({
     view_options = {
-        show_hidden = true,   -- show dotfiles by default
-        is_hidden_file = function(name, _)
-            return name:match("^%..*") ~= nil
-        end,
-        is_always_hidden = function(name, _)
-            return false
-        end,
+        show_hidden = true,
+        is_hidden_file = function(name, _) return name:match("^%..*") ~= nil end,
+        is_always_hidden = function(name, _) return false end,
     },
 })
 
--- Set space as the leader key
+-- Leader key
 vim.g.mapleader = " "
 
-vim.keymap.set('t', '<C-q>', [[<C-\><C-n>]], { silent = true })
-vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>', { silent = true })
-vim.keymap.set('n', '<leader>c', ':bdelete!<CR>', { silent = true })
-vim.keymap.set('n', '<leader>n', ':enew<CR>', { silent = true })
-vim.keymap.set('n', '<leader>e', ':Oil<CR>', { silent = true })
-vim.keymap.set('n', 'H', ':bprev<CR>', { silent = true })
-vim.keymap.set('n', 'L', ':bnext<CR>', { silent = true })
-vim.keymap.set('n', 'q:', '<nop>', { silent = true })
-vim.keymap.set('n', '<leader>ff', ':Telescope find_files<CR>', { silent = true })
-vim.keymap.set('n', '<leader>gf', ':Telescope git_files<CR>', { silent = true })
-vim.keymap.set('n', '<leader>gl', ':Telescope live_grep<CR>', { silent = true })
-vim.keymap.set('n', '<leader>l', ':Lazy<CR>', { silent = true })
-vim.keymap.set('n', '<leader>m', ':Mason<CR>', { silent = true })
+-- Keymaps
+vim.keymap.set("t", "<C-q>", [[<C-\><C-n>]], { silent = true })
+vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>", { silent = true })
+vim.keymap.set("n", "<leader>c", ":bdelete!<CR>", { silent = true })
+vim.keymap.set("n", "<leader>n", ":enew<CR>", { silent = true })
+vim.keymap.set("n", "<leader>e", ":Oil<CR>", { silent = true })
+vim.keymap.set("n", "H", ":bprev<CR>", { silent = true })
+vim.keymap.set("n", "L", ":bnext<CR>", { silent = true })
+vim.keymap.set("n", "q:", "<nop>", { silent = true })
+vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>", { silent = true })
+vim.keymap.set("n", "<leader>gf", ":Telescope git_files<CR>", { silent = true })
+vim.keymap.set("n", "<leader>gl", ":Telescope live_grep<CR>", { silent = true })
+vim.keymap.set("n", "<leader>l", ":Lazy<CR>", { silent = true })
+vim.keymap.set("n", "<leader>m", ":Mason<CR>", { silent = true })
 
-require('lualine').setup()
-require('bufferline').setup()
+-- UI plugin setups
+require("lualine").setup()
+require("bufferline").setup()
+
+-- LuaSnip + friendly snippets
+require("luasnip.loaders.from_vscode").lazy_load()
+
+-- nvim-cmp completion
+local cmp = require("cmp")
+local luasnip = require("luasnip")
+cmp.setup({
+    snippet = {
+        expand = function(args) luasnip.lsp_expand(args.body) end,
+    },
+    mapping = cmp.mapping.preset.insert({
+        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<CR>"] = cmp.mapping.confirm({ select = true }),
+        ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            elseif luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+            else
+                fallback()
+            end
+        end, { "i", "s" }),
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+            else
+                fallback()
+            end
+        end, { "i", "s" }),
+    }),
+    sources = {
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+        { name = "buffer" },
+        { name = "path" },
+    },
+})
