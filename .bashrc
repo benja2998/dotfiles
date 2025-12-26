@@ -11,6 +11,7 @@ shopt -s checkwinsize
 ## Aliases
 
 alias ls='ls --color=auto'
+alias q='exit'
 alias grep='grep --color=auto'
 alias dir='dir --color=auto'
 alias vim='nvim'
