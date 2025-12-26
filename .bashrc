@@ -70,10 +70,6 @@ eval "$(starship init bash)"
 
 ## Functions
 
-cdf() {
-    cd "$(fd -H -I -t d . "${1:-$HOME}" | fzf)" || return
-}
-
 # Check if 'pkg' exists, otherwise use 'sudo apt'
 APT_CMD() {
     if command -v pkg >/dev/null 2>&1; then
