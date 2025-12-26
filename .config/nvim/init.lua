@@ -24,6 +24,9 @@ require("lazy").setup({
     -- File manager
     "stevearc/oil.nvim",
 
+    -- Git
+    "lewis6991/gitsigns.nvim",
+
     -- UI
     {
         "akinsho/bufferline.nvim",
@@ -234,8 +237,8 @@ vim.g.mapleader = " "
 -- Keymaps
 vim.keymap.set("t", "<C-q>", [[<C-\><C-n>]], { silent = true })
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>", { silent = true })
-vim.keymap.set("n", "<leader>c", ":bdelete!<CR>", { silent = true })
-vim.keymap.set("n", "<leader>n", ":enew<CR>", { silent = true })
+vim.keymap.set("n", "<leader>cb", ":bdelete!<CR>", { silent = true })
+vim.keymap.set("n", "<leader>nb", ":enew<CR>", { silent = true })
 vim.keymap.set("n", "<leader>e", ":Oil<CR>", { silent = true })
 vim.keymap.set("n", "H", ":bprev<CR>", { silent = true })
 vim.keymap.set("n", "L", ":bnext<CR>", { silent = true })
@@ -245,6 +248,8 @@ vim.keymap.set("n", "<leader>gf", ":Telescope git_files<CR>", { silent = true })
 vim.keymap.set("n", "<leader>gl", ":Telescope live_grep<CR>", { silent = true })
 vim.keymap.set("n", "<leader>l", ":Lazy<CR>", { silent = true })
 vim.keymap.set("n", "<leader>m", ":Mason<CR>", { silent = true })
+vim.keymap.set("n", "<leader>q", ":q<CR>", { silent = true })
+vim.keymap.set("n", "<leader>w", ":w<CR>", { silent = true })
 
 -- UI plugin setups
 require("lualine").setup()
@@ -252,6 +257,73 @@ require("bufferline").setup()
 
 -- LuaSnip + friendly snippets
 require("luasnip.loaders.from_vscode").lazy_load()
+
+-- Git signs keybinds
+require('gitsigns').setup{
+    on_attach = function(bufnr)
+        local gitsigns = require('gitsigns')
+
+        local function map(mode, l, r, opts)
+            opts = opts or {}
+            opts.buffer = bufnr
+            vim.keymap.set(mode, l, r, opts)
+        end
+
+        -- Navigation
+        map('n', ']c', function()
+            if vim.wo.diff then
+                vim.cmd.normal({']c', bang = true})
+            else
+                gitsigns.nav_hunk('next')
+            end
+        end)
+
+        map('n', '[c', function()
+            if vim.wo.diff then
+                vim.cmd.normal({'[c', bang = true})
+            else
+                gitsigns.nav_hunk('prev')
+            end
+        end)
+
+        -- Actions
+        map('n', '<leader>hs', gitsigns.stage_hunk)
+        map('n', '<leader>hr', gitsigns.reset_hunk)
+
+        map('v', '<leader>hs', function()
+            gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+        end)
+
+        map('v', '<leader>hr', function()
+            gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+        end)
+
+        map('n', '<leader>hS', gitsigns.stage_buffer)
+        map('n', '<leader>hR', gitsigns.reset_buffer)
+        map('n', '<leader>hp', gitsigns.preview_hunk)
+        map('n', '<leader>hi', gitsigns.preview_hunk_inline)
+
+        map('n', '<leader>hb', function()
+            gitsigns.blame_line({ full = true })
+        end)
+
+        map('n', '<leader>hd', gitsigns.diffthis)
+
+        map('n', '<leader>hD', function()
+            gitsigns.diffthis('~')
+        end)
+
+        map('n', '<leader>hQ', function() gitsigns.setqflist('all') end)
+        map('n', '<leader>hq', gitsigns.setqflist)
+
+        -- Toggles
+        map('n', '<leader>tb', gitsigns.toggle_current_line_blame)
+        map('n', '<leader>tw', gitsigns.toggle_word_diff)
+
+        -- Text object
+        map({'o', 'x'}, 'ih', gitsigns.select_hunk)
+    end
+}
 
 -- nvim-cmp completion
 local cmp = require("cmp")
