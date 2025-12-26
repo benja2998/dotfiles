@@ -9,17 +9,17 @@ shopt -s cdspell
 
 ## Aliases
 
-alias ls='eza'
+alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias dir='dir --color=auto'
 alias vim='nvim'
 alias v='nvim'
 alias t='tmux'
-alias ll='ls -lah'
+alias ll='ls -FAlth'
 alias c='clear'
 alias s='source ~/.bashrc'
-alias l='ls -lh'
-alias la='ls -a'
+alias l='ls -Flth'
+alias la='ls -A'
 alias ga='git add -A'
 alias gl='git log --decorate --graph'
 alias gc='git commit -a'
