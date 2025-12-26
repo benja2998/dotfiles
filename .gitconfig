@@ -1,0 +1,7 @@
+[user]
+	email = benja2998@duck.com
+	name = benja2998
+[core]
+	editor = vim
+[init]
+	defaultBranch = main
