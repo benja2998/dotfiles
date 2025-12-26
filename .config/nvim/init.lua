@@ -250,6 +250,11 @@ vim.keymap.set("n", "<leader>l", ":Lazy<CR>", { silent = true })
 vim.keymap.set("n", "<leader>m", ":Mason<CR>", { silent = true })
 vim.keymap.set("n", "<leader>q", ":q<CR>", { silent = true })
 vim.keymap.set("n", "<leader>w", ":w<CR>", { silent = true })
+vim.keymap.set("v", "<leader>y", "\"+y", { silent = true })
+vim.keymap.set("n", "<leader>y", "\"+yy", { silent = true })
+vim.keymap.set("n", "<leader>p", "\"+p", { silent = true })
+vim.o.timeoutlen = 300
+vim.api.nvim_set_keymap("i", "jj", "<Esc>", { noremap = true })
 
 -- UI plugin setups
 require("lualine").setup()
