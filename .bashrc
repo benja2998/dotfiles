@@ -42,7 +42,7 @@ eval "$(starship init bash)"
 ## Functions
 
 cdf() {
-    cd "$(fd -H -I -t d . ${1:-$HOME} | fzf)"
+    cd "$(fd -H -I -t d . "${1:-$HOME}" | fzf)" || return
 }
 
 # Check if 'pkg' exists, otherwise use 'sudo apt'
