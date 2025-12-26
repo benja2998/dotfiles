@@ -225,8 +225,6 @@ vim.opt.completeopt = { "menuone", "noselect", "noinsert" }
 require("oil").setup({
     view_options = {
         show_hidden = true,
-        is_hidden_file = function(name, _) return name:match("^%..*") ~= nil end,
-        is_always_hidden = function(name, _) return false end,
     },
 })
 
