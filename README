@@ -5,4 +5,4 @@ Simply, use GNU Stow to symlink this directory. Make sure you cloned the dotfile
 
 If you hit command not found errors, install the commands. Here are most of the commands you'll need:
 
-xclip rofi feh dunst bash zsh tmux fzf picom
+fzf xclip rofi feh dunst bash zsh tmux fzf picom

@@ -127,6 +127,11 @@ aptsr() {
     $CMD search "$@"
 }
 
+# Fuzzy find directories
+cdf() {
+    cd "$(fd -H -I . "${1:-$HOME}" | fzf)"
+}
+
 ## Rbenv
 
 if command -v rbenv >/dev/null 2>&1; then
