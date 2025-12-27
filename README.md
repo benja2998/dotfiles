@@ -1,7 +1,13 @@
 dotfiles
 ========
 
-Simply, use GNU Stow to symlink this directory. Make sure you cloned the dotfiles to a subdirectory of ~.
+Simply, use GNU Stow to symlink */. Make sure you cloned the dotfiles to a subdirectory of ~.
+
+This is the command you should run:
+
+```bash
+stow */
+```
 
 If you hit command not found errors, install the commands. Here are most of the commands you'll need:
 
