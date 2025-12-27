@@ -142,4 +142,4 @@ fi
 
 ## Linuxbrew
 
-[ -d /home/linuxbrew ] && true && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+[ -d /home/linuxbrew ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" || true
