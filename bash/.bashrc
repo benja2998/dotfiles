@@ -129,7 +129,7 @@ aptsr() {
 
 # Fuzzy find directories
 cdf() {
-    cd "$(fd -H -I -t d . "${1:-$HOME}" | fzf)"
+    cd "$(fd -H -I -t d . "${1:-$HOME}" | fzf)" || return
 }
 
 ## Rbenv
@@ -142,4 +142,4 @@ fi
 
 ## Linuxbrew
 
-[ -d /home/linuxbrew ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+[ -d /home/linuxbrew ] && true && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
