@@ -28,10 +28,10 @@ set $crust #11111ba
 exec --no-startup-id xsettingsd
 
 # inner gaps = space between windows
-gaps inner 5
+# gaps inner 5
 
 # outer gaps = space to screen edges
-gaps outer 5
+# gaps outer 5
 
 set $mod Mod4
 
