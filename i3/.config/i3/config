@@ -30,6 +30,9 @@ exec --no-startup-id xsettingsd
 # Turn i3 into a dynamic tiler
 exec_always --no-startup-id ~/.config/i3/autotiling
 
+# Save my eyes
+exec --no-startup-id redshift -O 4500
+
 # What the hell? Why does this have to be double the outer to actually match the outer?
 gaps inner 10
 
@@ -208,7 +211,9 @@ bar {
         }
 }
 
+# Make it look pretty
 exec --no-startup-id picom
+# Notification stuff
 exec --no-startup-id dunst
 bindsym $mod+n exec dunstctl close
 bindsym $mod+Shift+n exec dunstctl close-all
