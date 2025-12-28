@@ -208,7 +208,7 @@ bar {
         }
 }
 
-exec --no-startup-id picom --vsync --backend=glx
+exec --no-startup-id picom
 exec --no-startup-id dunst
 bindsym $mod+n exec dunstctl close
 bindsym $mod+Shift+n exec dunstctl close-all
