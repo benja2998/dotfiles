@@ -26,6 +26,7 @@ set $mantle #181825
 set $crust #11111ba
 
 exec --no-startup-id xsettingsd
+exec_always --no-startup-id ~/.config/i3/autotiling
 
 # inner gaps = space between windows
 gaps inner 10
