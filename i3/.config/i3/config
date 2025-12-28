@@ -25,13 +25,14 @@ set $base #1e1e2e
 set $mantle #181825
 set $crust #11111ba
 
+# Stupid daemon
 exec --no-startup-id xsettingsd
+# Turn i3 into a dynamic tiler
 exec_always --no-startup-id ~/.config/i3/autotiling
 
-# inner gaps = space between windows
+# What the hell? Why does this have to be double the outer to actually match the outer?
 gaps inner 10
 
-# outer gaps = space to screen edges
 gaps outer 5
 
 set $mod Mod4
@@ -46,23 +47,10 @@ bindsym Shift+Print exec --no-startup-id sh -c 'maim -s | tee ~/Pictures/screens
 # is used in the bar {} block below.
 font pango:Hack Nerd Font Mono 12
 
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# Start XDG autostart .desktop files using dex. See also
-# https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
-
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy --nofork
 
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
