@@ -28,7 +28,7 @@ set $crust #11111ba
 exec --no-startup-id xsettingsd
 
 # inner gaps = space between windows
-gaps inner 5
+gaps inner 10
 
 # outer gaps = space to screen edges
 gaps outer 5
