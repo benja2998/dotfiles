@@ -11,7 +11,7 @@ setopt AUTO_CD
 setopt CORRECT
 
 TRAPWINCH() {
-  zle reset-prompt
+    zle reset-prompt
 }
 
 autoload -Uz compinit
@@ -110,7 +110,7 @@ alias glg='git log --stat'
 alias gclean='git reset --hard && git clean -fd'
 
 if command -v fdfind >/dev/null 2>&1; then
-  alias fd='fdfind'
+    alias fd='fdfind'
 fi
 
 ## Shell prompt
@@ -121,69 +121,69 @@ eval "$(starship init zsh)"
 
 # Check if 'pkg' exists, otherwise use 'sudo apt'
 APT_CMD() {
-  if command -v pkg >/dev/null 2>&1; then
-    echo pkg
-  else
-    echo "sudo apt"
-  fi
+    if command -v pkg >/dev/null 2>&1; then
+        echo pkg
+    else
+        echo "sudo apt"
+    fi
 }
 
 # Update & Upgrade
 aptup() {
-  local CMD
-  CMD=$(APT_CMD)
-  if [[ "$CMD" == "pkg" ]]; then
-    $CMD up
-  else
-    $CMD update && $CMD upgrade
-  fi
+    local CMD
+    CMD=$(APT_CMD)
+    if [[ "$CMD" == "pkg" ]]; then
+        $CMD up
+    else
+        $CMD update && $CMD upgrade
+    fi
 }
 
 # Upgrade only
 aptupg() {
-  local CMD
-  CMD=$(APT_CMD)
-  $CMD upgrade
+    local CMD
+    CMD=$(APT_CMD)
+    $CMD upgrade
 }
 
 # Update only
 aptupd() {
-  local CMD
-  CMD=$(APT_CMD)
-  $CMD update
+    local CMD
+    CMD=$(APT_CMD)
+    $CMD update
 }
 
 # Install package(s)
 aptin() {
-  local CMD
-  CMD=$(APT_CMD)
-  $CMD install "$@"
+    local CMD
+    CMD=$(APT_CMD)
+    $CMD install "$@"
 }
 
 # Remove package(s)
 aptrm() {
-  local CMD
-  CMD=$(APT_CMD)
-  $CMD remove "$@"
+    local CMD
+    CMD=$(APT_CMD)
+    $CMD remove "$@"
 }
 
 # Search packages
 aptsr() {
-  local CMD
-  CMD=$(APT_CMD)
-  $CMD search "$@"
+    local CMD
+    CMD=$(APT_CMD)
+    $CMD search "$@"
 }
 
 # Fuzzy find directories
 cdf() {
-  cd "$(fd -H -I -t d . "${1:-$HOME}" | fzf)" || return
+    cd "$(fd -H -I -t d . "${1:-$HOME}" | fzf)" || return
 }
 
 ## Rbenv
 
 if command -v rbenv >/dev/null 2>&1; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init - zsh)"
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init - zsh)"
 fi
 
 ## Linuxbrew
