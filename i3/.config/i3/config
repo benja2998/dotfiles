@@ -25,6 +25,7 @@ set $base #1e1e2e
 set $mantle #181825
 set $crust #11111b
 
+exec --no-startup-id xsettingsd
 # Turn i3 into a dynamic tiler
 exec_always --no-startup-id ~/.config/i3/autotiling
 
