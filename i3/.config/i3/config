@@ -222,7 +222,7 @@ bindsym $mod+Shift+n exec dunstctl close-all
 bindsym $mod+Ctrl+n exec dunstctl history-pop
 
 # target                 title     bg    text   indicator  border
-client.focused           $lavender $base $text  $rosewater $lavender
+client.focused           $mauve $base $text  $rosewater $mauve
 client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
 client.unfocused         $overlay0 $base $text  $rosewater $overlay0
 client.urgent            $peach    $base $peach $overlay0  $peach
