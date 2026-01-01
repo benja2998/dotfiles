@@ -26,15 +26,10 @@ set $mantle #181825
 set $crust #11111b
 
 exec --no-startup-id xsettingsd
-# Turn i3 into a dynamic tiler
 exec_always --no-startup-id ~/.config/i3/autotiling
 
-# Save my eyes
 exec --no-startup-id redshift -O 4500
 
-# i3 now has native gaps
-
-# What the hell? Why does this have to be double the outer to actually match the outer?
 gaps inner 10
 
 gaps outer 5
