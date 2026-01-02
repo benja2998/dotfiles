@@ -14,18 +14,20 @@ TRAPWINCH() {
     zle reset-prompt
 }
 
+zmodload zsh/complist
 autoload -Uz compinit
 compinit
 
 zstyle ':completion:*' menu select
-
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-
 zstyle ':completion:*' verbose yes
-
 zstyle ':completion:*' group-name ''
-
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
+bindkey -M menuselect 'j' down-line-or-history
+bindkey -M menuselect 'k' up-line-or-history
+bindkey -M menuselect 'h' backward-char
+bindkey -M menuselect 'l' forward-char
 
 autoload -Uz up-line-or-beginning-search
 autoload -Uz down-line-or-beginning-search
