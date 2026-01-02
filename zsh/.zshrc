@@ -2,13 +2,37 @@
 
 ## Shell options
 
+# Globbing
 setopt EXTENDED_GLOB
-
 setopt GLOBSTAR_SHORT
 
-setopt AUTO_CD
-
+# Command correction
 setopt CORRECT
+setopt CORRECT_ALL
+
+# Directory navigation
+setopt AUTO_CD
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+
+# History
+HISTSIZE=50000
+SAVEHIST=50000
+HISTFILE=~/.zsh_history
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
+setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY
+
+# ZLE highlight and word characters
+zle_highlight=('paste:none')
+WORDCHARS=${WORDCHARS//\/}
+
+# Timeout
+KEYTIMEOUT=25
+
+## Keybindings
 
 TRAPWINCH() {
     zle reset-prompt
@@ -31,34 +55,14 @@ bindkey -M menuselect 'l' forward-char
 
 autoload -Uz up-line-or-beginning-search
 autoload -Uz down-line-or-beginning-search
-
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-
 bindkey -M emacs "${terminfo[kcuu1]}" up-line-or-beginning-search
 bindkey -M emacs "${terminfo[kcud1]}" down-line-or-beginning-search
 
 bindkey -v
 
-HISTSIZE=50000
-SAVEHIST=50000
-HISTFILE=~/.zsh_history
-
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_SPACE
-setopt HIST_REDUCE_BLANKS
-setopt SHARE_HISTORY
-setopt INC_APPEND_HISTORY
-
-setopt CORRECT
-setopt CORRECT_ALL
-
-setopt AUTO_CD
-setopt AUTO_PUSHD
-setopt PUSHD_IGNORE_DUPS
-
-zle_highlight=('paste:none')
-WORDCHARS=${WORDCHARS//\/}
+bindkey -M viins 'jj' vi-cmd-mode
 
 ## Aliases
 
@@ -76,6 +80,8 @@ alias c='clear'
 alias s='source ~/.zshrc'
 alias l='ls -Flth'
 alias la='ls -A'
+
+# Git shortcuts
 alias ga='git add -A'
 alias g='git'
 alias gl='git log --decorate --graph'
@@ -113,11 +119,12 @@ alias gdf='git diff --name-only'
 alias glg='git log --stat'
 alias gclean='git reset --hard && git clean -fd'
 
+# fd/fdfind alias
 if command -v fdfind >/dev/null 2>&1; then
     alias fd='fdfind'
 fi
 
-## Shell prompt
+## Prompt
 
 eval "$(starship init zsh)"
 

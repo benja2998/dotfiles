@@ -273,7 +273,8 @@ vim.keymap.set("n", "<leader>w", ":w<CR>", { silent = true })
 vim.keymap.set("v", "<leader>y", "\"+y", { silent = true })
 vim.keymap.set("n", "<leader>y", "\"+yy", { silent = true })
 vim.keymap.set("n", "<leader>p", "\"+p", { silent = true })
-vim.o.timeoutlen = 300
+vim.keymap.set("i", "jj", "<Esc>", { silent = true })
+vim.o.timeoutlen = 250
 
 -- UI plugin setups
 require("lualine").setup()
