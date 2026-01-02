@@ -38,6 +38,8 @@ zle -N down-line-or-beginning-search
 bindkey -M emacs "${terminfo[kcuu1]}" up-line-or-beginning-search
 bindkey -M emacs "${terminfo[kcud1]}" down-line-or-beginning-search
 
+bindkey -v
+
 HISTSIZE=50000
 SAVEHIST=50000
 HISTFILE=~/.zsh_history
