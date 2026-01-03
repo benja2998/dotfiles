@@ -199,6 +199,12 @@ if command -v rbenv >/dev/null 2>&1; then
 	eval "$(rbenv init - zsh)"
 fi
 
-## Linuxbrew
+## Homebrew
 
-[[ -d /home/linuxbrew ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" || true
+if [[ -d /opt/homebrew ]]; then
+	eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -d /usr/local/Homebrew ]]; then
+	eval "$(/usr/local/bin/brew shellenv)"
+elif [[ -d /home/linuxbrew ]]; then
+	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
