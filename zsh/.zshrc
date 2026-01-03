@@ -35,7 +35,7 @@ KEYTIMEOUT=25
 ## Keybindings
 
 TRAPWINCH() {
-    zle reset-prompt
+	zle reset-prompt
 }
 
 zmodload zsh/complist
@@ -122,7 +122,7 @@ alias gclean='git reset --hard && git clean -fd'
 
 # fd/fdfind alias
 if command -v fdfind >/dev/null 2>&1; then
-    alias fd='fdfind'
+	alias fd='fdfind'
 fi
 
 ## Prompt
@@ -133,14 +133,14 @@ eval "$(starship init zsh)"
 
 # Fuzzy find directories
 cdf() {
-    cd "$(fd -H -I -t d . "${1:-$HOME}" | fzf)" || return
+	cd "$(fd -H -I -t d . "${1:-$HOME}" | fzf)" || return
 }
 
 ## Rbenv
 
 if command -v rbenv >/dev/null 2>&1; then
-    export PATH="$HOME/.rbenv/bin:$PATH"
-    eval "$(rbenv init - zsh)"
+	export PATH="$HOME/.rbenv/bin:$PATH"
+	eval "$(rbenv init - zsh)"
 fi
 
 ## Linuxbrew
