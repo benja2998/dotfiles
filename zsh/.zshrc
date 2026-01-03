@@ -127,6 +127,24 @@ fi
 
 ## Prompt
 
+function zle-keymap-select {
+	case $KEYMAP in
+		vicmd) VIMODE="-- NORMAL --" ;;
+		viins|main) VIMODE="-- INSERT --" ;;
+		*) VIMODE="-- ??? --" ;;
+	esac
+	zle reset-prompt
+}
+
+function zle-line-init {
+	zle-keymap-select
+}
+
+zle -N zle-keymap-select
+zle -N zle-line-init
+
+RPS1='${VIMODE}'
+
 autoload -Uz vcs_info
 setopt prompt_subst
 
@@ -137,7 +155,7 @@ zstyle ':vcs_info:*' enable git
 
 zstyle ':vcs_info:git:*' formats '(%b)'
 
-PROMPT=$'%F{#181825}%f%K{#181825}%F{#cba6f7}%~%f %F{#f5c2e7}${vcs_info_msg_0_}%f%k%F{#181825}%f\n%F{#cdd6f4}%#%f '
+PROMPT=$'%F{#181825}%f%K{#181825}%F{#cba6f7}%~%f %F{#f5c2e7}${vcs_info_msg_0_}%f%k%F{#181825}%f\n%# '
 
 ## Functions
 
