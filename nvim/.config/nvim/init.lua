@@ -1,3 +1,8 @@
+--[[
+Modern Neovim configuration for Neovim 0.12+
+Uses modern APIs and stays lightweight
+--]]
+
 if vim.fn.has("nvim-0.12") == 0 then
 	error("Neovim is too old! Stopping Neovim config.")
 end
@@ -14,12 +19,6 @@ vim.opt.smartindent = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
-vim.api.nvim_create_autocmd("BufEnter", {
-	callback = function(args)
-		pcall(vim.treesitter.start, args.buf, nil)
-	end,
-})
-
 vim.pack.add({
 	{ src = "https://github.com/catppuccin/nvim" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
@@ -27,7 +26,35 @@ vim.pack.add({
 	{ src = 'https://github.com/nvim-lua/plenary.nvim' },
 	{ src = 'https://github.com/nvim-tree/nvim-web-devicons' },
 	{ src = 'https://github.com/nvim-telescope/telescope.nvim' },
+	{ src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
 	{ src = 'https://github.com/benja2998/vim-tmux-navigator' }, -- Lua fork of vim-tmux-navigator
+})
+
+require'nvim-treesitter'.setup {
+	install_dir = vim.fn.stdpath('data') .. '/site'
+}
+
+require'nvim-treesitter'.install {
+	'rust',
+	'javascript',
+	'typescript',
+	'zig',
+	'lua',
+	'markdown',
+	'bash',
+	'zsh',
+	'gitcommit',
+	'gitignore',
+	'readline',
+	'tmux',
+	'vim',
+	'vimdoc',
+}
+
+vim.api.nvim_create_autocmd("BufEnter", {
+	callback = function(args)
+		pcall(vim.treesitter.start, args.buf, nil)
+	end,
 })
 
 vim.cmd("colorscheme catppuccin")
