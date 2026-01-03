@@ -1,3 +1,7 @@
+--[[
+	* REQUIRES NEOVIM 0.11+
+]]--
+
 -- [[ Checks ]] --
 
 if vim.fn.executable("fd") == 0 then
