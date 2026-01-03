@@ -41,6 +41,7 @@ require'nvim-treesitter'.install {
 	'asm', -- The greatest programming language
 	'make',
 	'cmake',
+	'python',
 	'javascript',
 	'typescript',
 	'zig',
