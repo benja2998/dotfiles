@@ -2,11 +2,14 @@
 
 Simply, use GNU Stow to symlink */. Make sure you cloned the dotfiles to a subdirectory of ~.
 
-This is the command you should run:
+These are the commands you should run:
 
 ```bash
+stow */ --adopt
+git reset --hard
 stow */
 ```
+
 If you hit command not found errors, install the commands.
 
 ## Windows
