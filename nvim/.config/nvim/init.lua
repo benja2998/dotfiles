@@ -54,6 +54,18 @@ require'nvim-treesitter'.install {
 	'tmux',
 	'vim',
 	'vimdoc',
+	'rasi',
+	'nix',
+	'perl',
+	'objc',
+	'json',
+	'yaml',
+	'toml',
+	'xml',
+	'hcl',
+	'dockerfile',
+	'nginx',
+	'git_config'
 }
 
 vim.api.nvim_create_autocmd("BufEnter", {
