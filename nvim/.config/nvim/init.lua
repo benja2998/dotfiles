@@ -9,10 +9,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.swapfile = false
 vim.opt.wrap = false
-vim.opt.laststatus = 3
 vim.opt.statusline = " %f %m %r %=  %P"
-vim.opt.timeout = true
-vim.opt.timeoutlen = 250
 vim.opt.smartindent = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
