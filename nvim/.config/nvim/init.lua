@@ -119,10 +119,25 @@ vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 
 -- [[ Treesitter ]] --
 
-vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
-	callback = function(args)
-		pcall(vim.treesitter.start, args.buf)
-	end,
+local ts_path = vim.fn.stdpath("data") .. "/site/pack/treesitter/start/nvim-treesitter"
+if vim.fn.empty(vim.fn.glob(ts_path)) > 0 then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--depth=1",
+		"--branch=master",
+		"https://github.com/nvim-treesitter/nvim-treesitter.git",
+		ts_path,
+	})
+end
+
+vim.opt.runtimepath:prepend(ts_path)
+
+require('nvim-treesitter.configs').setup({
+	auto_install = true,
+	highlight = {
+		enable = true,
+	},
 })
 
 -- [[ Packages ]] --
