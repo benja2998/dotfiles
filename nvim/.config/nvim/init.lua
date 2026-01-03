@@ -1,5 +1,5 @@
 --[[
-* REQUIRES NEOVIM 0.11+
+	* REQUIRES NEOVIM 0.11+
 ]]--
 
 -- [[ Checks ]] --
