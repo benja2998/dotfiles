@@ -54,8 +54,8 @@ autoload -Uz up-line-or-beginning-search
 autoload -Uz down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-bindkey -M viins "${terminfo[kcuu1]}" up-line-or-beginning-search
-bindkey -M viins "${terminfo[kcud1]}" down-line-or-beginning-search
+bindkey -M viins '^[[A' up-line-or-beginning-search
+bindkey -M viins '^[[B' down-line-or-beginning-search
 
 bindkey -v
 
