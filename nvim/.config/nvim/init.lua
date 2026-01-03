@@ -155,6 +155,14 @@ end
 
 vim.cmd("colorscheme catppuccin-mocha")
 
+-- [[ Status Line Colors ]] --
+
+local colors = require("catppuccin.palettes").get_palette "mocha"
+vim.api.nvim_set_hl(0, "StatusLine", {
+	fg = colors.mauve,
+	bg = colors.mantle
+})
+
 -- [[ Tmux Integration ]] --
 
 if vim.g.loaded_tmux_navigator or vim.fn.has("nvim-0.5") == 0 then
