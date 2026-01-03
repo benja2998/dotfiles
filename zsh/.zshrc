@@ -29,9 +29,6 @@ setopt INC_APPEND_HISTORY
 zle_highlight=('paste:none')
 WORDCHARS=${WORDCHARS//\/}
 
-# Timeout
-KEYTIMEOUT=25
-
 ## Keybindings
 
 TRAPWINCH() {
@@ -61,8 +58,6 @@ bindkey -M viins "${terminfo[kcuu1]}" up-line-or-beginning-search
 bindkey -M viins "${terminfo[kcud1]}" down-line-or-beginning-search
 
 bindkey -v
-
-bindkey -M viins 'jj' vi-cmd-mode
 
 ## Aliases
 
@@ -174,7 +169,7 @@ _highlight_cmd() {
 		return
 	fi
 
-	if whence -w -- "$cmd" >/dev/null 2>&1; then
+	if whence -w -- "$cmd" >/dev/null 2>&1 || [[ -d "$cmd" ]]; then
 		region_highlight=("0 ${#cmd} fg=#a6e3a1")
 		else
 			region_highlight=("0 ${#cmd} fg=#f38ba8")

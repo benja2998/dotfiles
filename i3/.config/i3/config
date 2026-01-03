@@ -26,7 +26,8 @@ set $mantle #181825
 set $crust #11111b
 
 exec --no-startup-id xsettingsd
-exec_always --no-startup-id ~/.config/i3/autotiling
+exec --no-startup-id setxkbmap -option caps:escape
+exec --no-startup-id ~/.config/i3/autotiling
 
 exec --no-startup-id redshift -O 4500
 
