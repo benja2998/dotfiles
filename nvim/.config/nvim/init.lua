@@ -119,7 +119,7 @@ vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 
 -- [[ Treesitter ]] --
 
-local ts_path = vim.fn.stdpath("data") .. "/site/pack/treesitter/start/nvim-treesitter"
+local ts_path = vim.fn.stdpath("config") .. "pack/treesitter/start/nvim-treesitter"
 if vim.fn.empty(vim.fn.glob(ts_path)) > 0 then
 	vim.fn.system({
 		"git",
@@ -134,6 +134,14 @@ end
 vim.opt.runtimepath:prepend(ts_path)
 
 require('nvim-treesitter.configs').setup({
+	ensure_installed = {
+		"c",
+		"lua",
+		"python",
+		"markdown",
+		"bash",
+		"rust"
+	},
 	auto_install = true,
 	highlight = {
 		enable = true,
