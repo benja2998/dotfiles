@@ -36,6 +36,11 @@ require'nvim-treesitter'.setup {
 
 require'nvim-treesitter'.install {
 	'rust',
+	'c',
+	'cpp',
+	'asm', -- The greatest programming language
+	'make',
+	'cmake',
 	'javascript',
 	'typescript',
 	'zig',
