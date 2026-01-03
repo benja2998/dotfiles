@@ -156,7 +156,15 @@ RPS1='%F{#181825}%f%K{#181825}%F{#cba6f7} ${VIMODE} %f%k%F{#181825}%f'
 	zstyle ':vcs_info:*' enable git
 	zstyle ':vcs_info:git:*' formats '(%b)'
 
-	PROMPT=$'\n''%F{#181825}%f%K{#181825} %F{#cba6f7}%~%f %F{#f5c2e7}${vcs_info_msg_0_}%f %k%F{#181825}%f %# '
+	function zsh_prompt_error {
+		if [[ $? -ne 0 ]]; then
+			echo "%F{#f38ba8}✗%f"
+			else
+				echo "%F{#a6e3a1}➜%f"
+		fi
+	}
+
+	PROMPT=$'\n''%F{#181825}%f%K{#181825} %F{#cba6f7}%~%f %F{#f5c2e7}${vcs_info_msg_0_}%f %k%F{#181825}%f $(zsh_prompt_error) '
 
 ## Functions
 
