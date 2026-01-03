@@ -160,7 +160,7 @@ RPS1='%F{#181825}%f%K{#181825}%F{#cba6f7} ${VIMODE} %f%k%F{#181825}%f'
 		if [[ $? -ne 0 ]]; then
 			echo "%F{#f38ba8}✗%f"
 			else
-				echo "%F{#a6e3a1}➜%f"
+				echo "%F{#f9e2af}➜%f"
 		fi
 	}
 
