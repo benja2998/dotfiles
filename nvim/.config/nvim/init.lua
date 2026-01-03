@@ -65,7 +65,8 @@ require'nvim-treesitter'.install {
 	'hcl',
 	'dockerfile',
 	'nginx',
-	'git_config'
+	'git_config',
+	'kitty'
 }
 
 vim.api.nvim_create_autocmd("BufEnter", {
