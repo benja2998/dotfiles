@@ -157,7 +157,6 @@ vim.cmd("colorscheme catppuccin-mocha")
 
 -- [[ Tmux Integration ]] --
 
-
 if vim.g.loaded_tmux_navigator or vim.fn.has("nvim-0.5") == 0 then
 	return
 end
