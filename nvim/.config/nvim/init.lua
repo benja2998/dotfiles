@@ -133,7 +133,7 @@ end
 
 vim.opt.runtimepath:prepend(ts_path)
 
-require('nvim-treesitter.configs').setup({
+require'nvim-treesitter.configs'.setup {
 	ensure_installed = {
 		"c",
 		"lua",
@@ -146,7 +146,7 @@ require('nvim-treesitter.configs').setup({
 	highlight = {
 		enable = true,
 	},
-})
+}
 
 -- [[ Packages ]] --
 
