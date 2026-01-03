@@ -127,13 +127,13 @@ fi
 
 ## Prompt
 
-VIMODE="-- INSERT --"
+VIMODE="(i)"
 
 function zle-keymap-select {
 	case $KEYMAP in
-		vicmd) VIMODE="-- NORMAL --" ;;
-		viins|main) VIMODE="-- INSERT --" ;;
-		*) VIMODE="-- ??? --" ;;
+		vicmd) VIMODE="(n)" ;;
+		viins|main) VIMODE="(i)" ;;
+		*) VIMODE="(?)" ;;
 	esac
 	zle reset-prompt
 }
@@ -145,28 +145,47 @@ function zle-line-init {
 zle -N zle-keymap-select
 zle -N zle-line-init
 
-RPS1='%F{#181825}%f%K{#181825}%F{#cba6f7} ${VIMODE} %f%k%F{#181825}%f'
+autoload -Uz vcs_info
+setopt prompt_subst
 
-	autoload -Uz vcs_info
-	setopt prompt_subst
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
 
-	precmd_vcs_info() { vcs_info }
-	precmd_functions+=( precmd_vcs_info )
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git:*' formats '(%b)'
 
-	zstyle ':vcs_info:*' enable git
-	zstyle ':vcs_info:git:*' formats '(%b)'
+function zsh_prompt_error {
+	if [[ $? -ne 0 ]]; then
+		echo "%F{#f38ba8}✗%f"
+		else
+			echo "%F{#f9e2af}➜%f"
+	fi
+}
 
-	function zsh_prompt_error {
-		if [[ $? -ne 0 ]]; then
-			echo "%F{#f38ba8}✗%f"
-			else
-				echo "%F{#f9e2af}➜%f"
-		fi
-	}
-
-	PROMPT=$'\n''%F{#181825}%f%K{#181825} %F{#cba6f7}%~%f %F{#f5c2e7}${vcs_info_msg_0_}%f %k%F{#181825}%f $(zsh_prompt_error) '
+PROMPT=$'\n''%F{#181825}%f%K{#181825} %F{#b4befe}${VIMODE}%f %F{#cba6f7}%~%f %F{#f5c2e7}${vcs_info_msg_0_}%f %k%F{#181825}%f'$'\n''$(zsh_prompt_error) '
 
 ## Functions
+
+_highlight_cmd() {
+	local cmd=${BUFFER%% *}
+
+	if [[ -z $cmd ]]; then
+		region_highlight=()
+		return
+	fi
+
+	if whence -w -- "$cmd" >/dev/null 2>&1; then
+		region_highlight=("0 ${#cmd} fg=#a6e3a1")
+		else
+			region_highlight=("0 ${#cmd} fg=#f38ba8")
+	fi
+}
+
+if autoload -Uz +X add-zle-hook-widget 2>/dev/null; then
+	add-zle-hook-widget zle-line-pre-redraw _highlight_cmd
+else
+	zle -N zle-line-pre-redraw _highlight_cmd
+fi
 
 # Fuzzy find directories
 cdf() {
