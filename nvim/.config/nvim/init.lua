@@ -52,27 +52,21 @@ require("oil").setup({
 })
 
 vim.g.mapleader = ' '
-vim.keymap.set('n', '<leader>t', function() vim.fn.system('tmux split-window -v') end, { silent = true })
+vim.keymap.set('n', '<leader>t', function() vim.fn.system('tmux split-window -v') end)
 vim.keymap.set('v', '<leader>y', '\"+y', { silent = true })
-vim.keymap.set('v', '<leader>d', '\"+d', { silent = true })
+vim.keymap.set('n', '<leader>d', function() vim.diagnostic.setqflist({ open = false }) end)
 vim.keymap.set('n', '<leader>p', '\"+p', { silent = true })
-vim.keymap.set('n', '<leader>w', ':w<CR>', { silent = true })
-vim.keymap.set('n', '<leader>q', ':q<CR>', { silent = true })
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>', { silent = true })
 vim.keymap.set('n', '<leader>c', ':tabnew<CR>', { silent = true })
 vim.keymap.set('n', 'H', ':tabprev<CR>', { silent = true })
 vim.keymap.set('n', 'L', ':tabnext<CR>', { silent = true })
-vim.keymap.set('n', '<leader>e', function() require("oil").toggle_float() end, { silent = true })
+vim.keymap.set('n', '<leader>e', function() require("oil").toggle_float() end)
 vim.keymap.set('n', '<leader>gf', ':FzfLua git_files<CR>', { silent = true })
 vim.keymap.set('n', '<leader>bf', ':FzfLua buffers<CR>', { silent = true })
 vim.keymap.set('n', '<leader>ff', ':FzfLua files<CR>', { silent = true })
 vim.keymap.set('n', '<leader>of', ':FzfLua oldfiles<CR>', { silent = true })
 vim.keymap.set('n', '<leader>qf', ':FzfLua quickfix<CR>', { silent = true })
 vim.keymap.set('n', '<leader>lf', ':FzfLua live_grep<CR>', { silent = true })
-
-vim.diagnostic.config({
-	virtual_lines = true
-})
 
 vim.lsp.config['lua_ls'] = {
 	settings = {
