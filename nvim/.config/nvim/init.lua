@@ -1,5 +1,7 @@
 -- Modern Neovim config for Neovim 0.12 (nightly)
 
+vim.loader.enable()
+
 if vim.fn.has("nvim-0.12") == 0 then
 	error("Neovim is too old! Stopping Neovim config.")
 end
