@@ -6,16 +6,16 @@ if vim.fn.has("nvim-0.12") == 0 then
 	error("Neovim is too old! Stopping Neovim config.")
 end
 
-vim.opt.termguicolors = true
-vim.opt.timeoutlen = 250
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.swapfile = false
-vim.opt.laststatus = 3
-vim.opt.smartindent = true
-vim.opt.showtabline = 2
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+vim.o.termguicolors = true
+vim.o.timeoutlen = 250
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.swapfile = false
+vim.o.laststatus = 3
+vim.o.smartindent = true
+vim.o.showtabline = 2
+vim.o.ignorecase = true
+vim.o.smartcase = true
 
 vim.pack.add({
 	{ src = "https://github.com/catppuccin/nvim" },
