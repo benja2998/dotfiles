@@ -165,27 +165,6 @@ PROMPT=$'\n''%F{#181825}%f%K{#181825} %F{#b4befe}${VIMODE}%f %F{#cba6f7}%~%f 
 
 ## Functions
 
-_highlight_cmd() {
-	local cmd=${BUFFER%% *}
-
-	if [[ -z $cmd ]]; then
-		region_highlight=()
-		return
-	fi
-
-	if whence -w -- "$cmd" >/dev/null 2>&1 || [[ -d "$cmd" ]]; then
-		region_highlight=("0 ${#cmd} fg=#a6e3a1")
-		else
-			region_highlight=("0 ${#cmd} fg=#f38ba8")
-	fi
-}
-
-if autoload -Uz +X add-zle-hook-widget 2>/dev/null; then
-	add-zle-hook-widget zle-line-pre-redraw _highlight_cmd
-else
-	zle -N zle-line-pre-redraw _highlight_cmd
-fi
-
 # Fuzzy find directories
 cdf() {
 	cd "$(fd -H -I -t d . "${1:-$HOME}" | fzf)" || return
@@ -207,3 +186,11 @@ elif [[ -d /usr/local/Homebrew ]]; then
 elif [[ -d /home/linuxbrew ]]; then
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
+
+## Plugins
+
+if [[ ! -d "$HOME/.zsh-syntax-highlighting" ]]; then
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.zsh-syntax-highlighting"
+fi
+
+source "$HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
