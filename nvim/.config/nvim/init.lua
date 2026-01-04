@@ -22,13 +22,10 @@ vim.pack.add({
 	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = 'https://github.com/neovim/nvim-lspconfig' },
 	{ src = 'https://github.com/nvim-mini/mini.icons' },
-	{ src = 'https://github.com/nvim-mini/mini.starter' },
 	{ src = 'https://github.com/ibhagwan/fzf-lua' },
 	{ src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
 	{ src = 'https://github.com/benja2998/vim-tmux-navigator' }, -- Lua fork of vim-tmux-navigator
 })
-
-require'mini.starter'.setup()
 
 require'mini.icons'.setup()
 
