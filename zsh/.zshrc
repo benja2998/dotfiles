@@ -1,5 +1,9 @@
 #!/usr/bin/env zsh
 
+## Environment variables
+
+export PATH="$HOME/.cargo/bin:$HOME/.local/share/bob/nvim-bin:$PATH"
+
 ## Shell options
 
 # Globbing
