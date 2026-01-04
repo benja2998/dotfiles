@@ -1,21 +1,15 @@
---[[
-Modern Neovim configuration for Neovim 0.12+
-Uses modern APIs and stays lightweight
---]]
+-- Modern Neovim config for Neovim 0.12 (nightly)
 
 if vim.fn.has("nvim-0.12") == 0 then
 	error("Neovim is too old! Stopping Neovim config.")
 end
 
 vim.opt.termguicolors = true
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
+vim.opt.timeoutlen = 250
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.swapfile = false
-vim.opt.wrap = false
-vim.opt.laststatus = 2
-vim.opt.statusline = " %f %m %r %=  %P"
+vim.opt.laststatus = 3
 vim.opt.smartindent = true
 vim.opt.showtabline = 2
 vim.opt.ignorecase = true
@@ -25,103 +19,23 @@ vim.pack.add({
 	{ src = "https://github.com/catppuccin/nvim" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = 'https://github.com/neovim/nvim-lspconfig' },
-	{ src = 'https://github.com/nvim-lua/plenary.nvim' },
-	{ src = 'https://github.com/nvim-tree/nvim-web-devicons' },
-	{ src = 'https://github.com/nvim-telescope/telescope.nvim' },
+	{ src = 'https://github.com/nvim-mini/mini.icons' },
+	{ src = 'https://github.com/nvim-mini/mini.starter' },
+	{ src = 'https://github.com/ibhagwan/fzf-lua' },
 	{ src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
 	{ src = 'https://github.com/benja2998/vim-tmux-navigator' }, -- Lua fork of vim-tmux-navigator
-	{ src = 'https://github.com/hrsh7th/nvim-cmp' },
-	{ src = 'https://github.com/hrsh7th/cmp-nvim-lsp' },
-	{ src = 'https://github.com/hrsh7th/cmp-buffer' },
-	{ src = 'https://github.com/hrsh7th/cmp-path' },
 })
+
+require'mini.starter'.setup()
+
+require'mini.icons'.setup()
 
 require'nvim-treesitter'.setup {
 	install_dir = vim.fn.stdpath('data') .. '/site'
 }
 
 require'nvim-treesitter'.install {
-	'rust',
-	'c',
-	'cpp',
-	'asm', -- The greatest programming language
-	'make',
-	'cmake',
-	'python',
-	'javascript',
-	'typescript',
-	'zig',
-	'lua',
-	'markdown',
-	'bash',
-	'zsh',
-	'gitcommit',
-	'gitignore',
-	'readline',
-	'tmux',
-	'vim',
-	'vimdoc',
-	'rasi',
-	'nix',
-	'perl',
-	'objc',
-	'json',
-	'yaml',
-	'toml',
-	'xml',
-	'hcl',
-	'dockerfile',
-	'nginx',
-	'git_config',
-	'kitty',
-	'go',
-	'ruby',
-	'r',
-	'java',
-	'kotlin',
-	'scala',
-	'sql',
-	'php',
-	'graphql',
-	'vue',
-	'css',
-	'scss',
-	'svelte',
-	'html',
-	'http',
-	'clojure',
-	'c_sharp',
-	'elixir',
-	'erlang',
-	'fish',
-	'fortran',
-	'julia',
-	'matlab',
-	'd',
-	'dart',
-	'fsharp',
-	'ledger',
-	'nim',
-	'pascal',
-	'prisma',
-	'racket',
-	'tsx',
-	'vala',
-	'wgsl',
-	'beancount',
-	'bibtex',
-	'dhall',
-	'dot',
-	'fennel',
-	'godot_resource',
-	'hjson',
-	'jq',
-	'kdl',
-	'llvm',
-	'meson',
-	'proto',
-	'twig',
-	'yang',
+	'rust', 'c', 'cpp', 'asm', 'make', 'cmake', 'python', 'javascript', 'typescript', 'zig', 'lua', 'markdown', 'bash', 'zsh', 'gitcommit', 'gitignore', 'readline', 'tmux', 'vim', 'vimdoc', 'rasi', 'nix', 'perl', 'objc', 'json', 'yaml', 'toml', 'xml', 'hcl', 'dockerfile', 'nginx', 'git_config', 'kitty', 'go', 'ruby', 'r', 'java', 'kotlin', 'scala', 'sql', 'php', 'graphql', 'vue', 'css', 'scss', 'svelte', 'html', 'http', 'clojure', 'c_sharp', 'elixir', 'erlang', 'fish', 'fortran', 'julia', 'matlab', 'd', 'dart', 'fsharp', 'ledger', 'nim', 'pascal', 'prisma', 'racket', 'tsx', 'vala', 'wgsl', 'beancount', 'bibtex', 'dhall', 'dot', 'fennel', 'godot_resource', 'hjson', 'jq', 'kdl', 'llvm', 'meson', 'proto', 'twig', 'yang'
 }
 
 vim.api.nvim_create_autocmd("BufEnter", {
@@ -138,30 +52,6 @@ require("oil").setup({
 	}
 })
 
-local cmp = require('cmp')
-
-cmp.setup({
-	completion = {
-		autocomplete = { 
-			cmp.TriggerEvent.TextChanged,
-		},
-	},
-	mapping = cmp.mapping.preset.insert({
-		['<Tab>'] = cmp.mapping.select_next_item(),
-		['<S-Tab>'] = cmp.mapping.select_prev_item(),
-		['<CR>'] = cmp.mapping.confirm({ select = true }),
-		['<C-e>'] = cmp.mapping.abort(),
-		['<C-n>'] = cmp.mapping.select_next_item(),
-		['<C-p>'] = cmp.mapping.select_prev_item(),
-	}),
-	sources = cmp.config.sources({
-		{ name = 'nvim_lsp' },
-		{ name = 'buffer' },
-		{ name = 'path' },
-	})
-})
-
-local builtin = require('telescope.builtin')
 vim.g.mapleader = ' '
 vim.keymap.set('n', '<leader>t', function() vim.fn.system('tmux split-window -v') end, { silent = true })
 vim.keymap.set('v', '<leader>y', '\"+y', { silent = true })
@@ -174,20 +64,18 @@ vim.keymap.set('n', '<leader>c', ':tabnew<CR>', { silent = true })
 vim.keymap.set('n', 'H', ':tabprev<CR>', { silent = true })
 vim.keymap.set('n', 'L', ':tabnext<CR>', { silent = true })
 vim.keymap.set('n', '<leader>e', function() require("oil").toggle_float() end, { silent = true })
-vim.keymap.set('n', '<leader>ff', builtin.find_files, { silent = true })
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, { silent = true })
-vim.keymap.set('n', '<leader>gf', builtin.git_files, { silent = true })
-vim.keymap.set('n', '<leader>fb', builtin.buffers, { silent = true })
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, { silent = true })
+vim.keymap.set('n', '<leader>gf', ':FzfLua git_files<CR>', { silent = true })
+vim.keymap.set('n', '<leader>bf', ':FzfLua buffers<CR>', { silent = true })
+vim.keymap.set('n', '<leader>ff', ':FzfLua files<CR>', { silent = true })
+vim.keymap.set('n', '<leader>of', ':FzfLua oldfiles<CR>', { silent = true })
+vim.keymap.set('n', '<leader>qf', ':FzfLua quickfix<CR>', { silent = true })
+vim.keymap.set('n', '<leader>lf', ':FzfLua live_grep<CR>', { silent = true })
 
 vim.diagnostic.config({
 	virtual_lines = true
 })
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
 vim.lsp.config['lua_ls'] = {
-	capabilities = capabilities,
 	settings = {
 		Lua = {
 			workspace = {
@@ -196,11 +84,6 @@ vim.lsp.config['lua_ls'] = {
 		}
 	}
 }
-
-vim.lsp.config['clangd'] = { capabilities = capabilities }
-vim.lsp.config['pyright'] = { capabilities = capabilities }
-vim.lsp.config['ts_ls'] = { capabilities = capabilities }
-vim.lsp.config['rust_analyzer'] = { capabilities = capabilities }
 
 pcall(vim.lsp.enable, 'lua_ls')
 pcall(vim.lsp.enable, 'clangd')
@@ -213,3 +96,6 @@ vim.api.nvim_set_hl(0, "StatusLine", {
 	fg = colors.mauve,
 	bg = colors.mantle
 })
+vim.api.nvim_set_hl(0, "TabLine", { fg = colors.mauve, bg = colors.mantle })
+vim.api.nvim_set_hl(0, "TabLineSel", { fg = colors.mauve, bg = colors.base, underline = true })
+vim.api.nvim_set_hl(0, "TabLineFill", { fg = colors.mauve, bg = colors.mantle })
