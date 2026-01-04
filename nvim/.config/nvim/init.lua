@@ -14,8 +14,10 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.swapfile = false
 vim.opt.wrap = false
+vim.opt.laststatus = 2
 vim.opt.statusline = " %f %m %r %=  %P"
 vim.opt.smartindent = true
+vim.opt.showtabline = 2
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
@@ -28,6 +30,10 @@ vim.pack.add({
 	{ src = 'https://github.com/nvim-telescope/telescope.nvim' },
 	{ src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
 	{ src = 'https://github.com/benja2998/vim-tmux-navigator' }, -- Lua fork of vim-tmux-navigator
+	{ src = 'https://github.com/hrsh7th/nvim-cmp' },
+	{ src = 'https://github.com/hrsh7th/cmp-nvim-lsp' },
+	{ src = 'https://github.com/hrsh7th/cmp-buffer' },
+	{ src = 'https://github.com/hrsh7th/cmp-path' },
 })
 
 require'nvim-treesitter'.setup {
@@ -84,6 +90,29 @@ require("oil").setup({
 	}
 })
 
+local cmp = require('cmp')
+
+cmp.setup({
+	completion = {
+		autocomplete = { 
+			cmp.TriggerEvent.TextChanged,
+		},
+	},
+	mapping = cmp.mapping.preset.insert({
+		['<Tab>'] = cmp.mapping.select_next_item(),
+		['<S-Tab>'] = cmp.mapping.select_prev_item(),
+		['<CR>'] = cmp.mapping.confirm({ select = true }),
+		['<C-e>'] = cmp.mapping.abort(),
+		['<C-n>'] = cmp.mapping.select_next_item(),
+		['<C-p>'] = cmp.mapping.select_prev_item(),
+	}),
+	sources = cmp.config.sources({
+		{ name = 'nvim_lsp' },
+		{ name = 'buffer' },
+		{ name = 'path' },
+	})
+})
+
 local builtin = require('telescope.builtin')
 vim.g.mapleader = ' '
 vim.keymap.set('n', '<leader>t', function() vim.fn.system('tmux split-window -v') end, { silent = true })
@@ -107,7 +136,10 @@ vim.diagnostic.config({
 	virtual_lines = true
 })
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 vim.lsp.config['lua_ls'] = {
+	capabilities = capabilities,
 	settings = {
 		Lua = {
 			workspace = {
@@ -116,6 +148,11 @@ vim.lsp.config['lua_ls'] = {
 		}
 	}
 }
+
+vim.lsp.config['clangd'] = { capabilities = capabilities }
+vim.lsp.config['pyright'] = { capabilities = capabilities }
+vim.lsp.config['ts_ls'] = { capabilities = capabilities }
+vim.lsp.config['rust_analyzer'] = { capabilities = capabilities }
 
 pcall(vim.lsp.enable, 'lua_ls')
 pcall(vim.lsp.enable, 'clangd')
