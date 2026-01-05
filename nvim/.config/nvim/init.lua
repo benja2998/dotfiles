@@ -1,99 +1,168 @@
 vim.loader.enable()
 
+-- [[ Checks ]] --
 if vim.fn.has("nvim-0.12") == 0 then
 	error("Version is too old!")
 end
 
-vim.o.termguicolors = true
-vim.o.timeoutlen = 250
-vim.o.number = true
-vim.o.relativenumber = true
-vim.o.swapfile = false
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
-vim.o.expandtab = false
-vim.o.laststatus = 3
-vim.o.showtabline = 2
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.o.smartindent = true
+-- [[ Options ]] --
+vim.o.shiftwidth       = 4       -- 4 space indenting
+vim.o.tabstop          = 4       -- 4 space tabs
+vim.o.termguicolors    = true    -- 24-bit color
+vim.o.smartindent      = true    -- smart indentation
+vim.o.lazyredraw       = true    -- lazily redraw
+vim.o.ttyfast          = true    -- assume fast terminal
+vim.o.number           = true    -- enable line numbers
+vim.o.ignorecase       = true    -- ignore case
+vim.o.smartcase        = true    -- smart case
+vim.o.relativenumber   = true    -- use relative line numbers
+vim.o.showtabline      = 2       -- always show tab line
+vim.o.laststatus       = 3       -- only use one status line
+vim.o.swapfile         = false   -- no swap file
 
-vim.pack.add({
-	{ src = "https://github.com/catppuccin/nvim" },
-	{ src = "https://github.com/stevearc/oil.nvim" },
-	{ src = 'https://github.com/neovim/nvim-lspconfig' },
-	{ src = 'https://github.com/nvim-mini/mini.icons' },
-	{ src = 'https://github.com/ibhagwan/fzf-lua' },
-	{ src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
-	{ src = 'https://github.com/benja2998/vim-tmux-navigator' }, -- Lua fork of vim-tmux-navigator
-})
+-- [[ Theme ]] --
+vim.pack.add({"https://github.com/catppuccin/nvim"})
+vim.cmd("colorscheme catppuccin-mocha")
+vim.cmd([[
+hi StatusLine guifg=#cba6f7 guibg=#181825
+hi StatusLineNC guifg=#cba6f7 guibg=#181825
+highlight TabLine guifg=#cba6f7 guibg=#181825
+highlight TabLineFill guifg=#cba6f7 guibg=#181825
+highlight TabLineSel guifg=#cba6f7 guibg=#181825 gui=underline cterm=underline
+]])
 
-require'mini.icons'.setup()
+-- [[ Fzf Integration ]] --
+function FzfCallback(tmpfile, job_id, exit_code, event_type)
+	local f = io.open(tmpfile, 'r')
+	if f then
+		local lines = {}
+		for line in f:lines() do
+			table.insert(lines, line)
+		end
+		f:close()
 
-require'nvim-treesitter'.setup {
-	install_dir = vim.fn.stdpath('data') .. '/site'
-}
+		if #lines > 0 then
+			local selected = vim.trim(lines[1])
+			vim.cmd('bdelete!')
+			vim.cmd('edit ' .. vim.fn.fnameescape(selected))
+		end
 
-require'nvim-treesitter'.install {
-	'rust', 'c', 'cpp', 'asm', 'make', 'cmake', 'python', 'javascript', 'typescript', 'zig', 'lua', 'markdown', 'bash', 'zsh', 'gitcommit', 'gitignore', 'readline', 'tmux', 'vim', 'vimdoc', 'rasi', 'nix', 'perl', 'objc', 'json', 'yaml', 'toml', 'xml', 'hcl', 'dockerfile', 'nginx', 'git_config', 'kitty', 'go', 'ruby', 'r', 'java', 'kotlin', 'scala', 'sql', 'php', 'graphql', 'vue', 'css', 'scss', 'svelte', 'html', 'http', 'clojure', 'c_sharp', 'elixir', 'erlang', 'fish', 'fortran', 'julia', 'matlab', 'd', 'dart', 'fsharp', 'ledger', 'nim', 'pascal', 'prisma', 'racket', 'tsx', 'vala', 'wgsl', 'beancount', 'bibtex', 'dhall', 'dot', 'fennel', 'godot_resource', 'hjson', 'jq', 'kdl', 'llvm', 'meson', 'proto', 'twig', 'yang'
-}
+		os.remove(tmpfile)
+	end
+end
 
-vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+function FzfFiles()
+	local tmpfile = vim.fn.tempname()
+	vim.cmd('enew')
+	vim.fn.termopen('fd -H -I -t f . . | fzf > ' .. tmpfile, {
+		on_exit = function(job_id, exit_code, event_type)
+			FzfCallback(tmpfile, job_id, exit_code, event_type)
+		end
+	})
+	vim.cmd('startinsert')
+end
 
-vim.api.nvim_create_autocmd("BufEnter", {
-	callback = function(args)
-		pcall(vim.treesitter.start, args.buf, nil)
-	end,
-})
+function FzfGitFiles()
+	local tmpfile = vim.fn.tempname()
+	vim.cmd('enew')
+	vim.fn.termopen('git ls-files ":/" | fzf > ' .. tmpfile, {
+		on_exit = function(job_id, exit_code, event_type)
+			FzfCallback(tmpfile, job_id, exit_code, event_type)
+		end
+	})
+	vim.cmd('startinsert')
+end
 
-vim.cmd("colorscheme catppuccin")
+function FzfBufferCallback(tmpfile, job_id, exit_code, event_type)
+	local f = io.open(tmpfile, 'r')
+	if f then
+		local lines = {}
+		for line in f:lines() do
+			table.insert(lines, line)
+		end
+		f:close()
 
-require("oil").setup({
-	view_options = {
-		show_hidden = true,
-	}
-})
+		if #lines > 0 then
+			local selected = vim.trim(lines[1])
+			local bufnr = tonumber(selected:match('^(%d+)'))
+			if bufnr and bufnr > 0 then
+				vim.cmd('bdelete!')
+				vim.cmd('buffer ' .. bufnr)
+			end
+		end
 
-vim.g.mapleader = ' '
-vim.keymap.set('n', '<leader>t', function() vim.fn.system('tmux split-window -v') end)
-vim.keymap.set('v', '<leader>y', '\"+y', { silent = true })
-vim.keymap.set('n', '<leader>d', function() vim.diagnostic.setqflist({ open = false }) end)
-vim.keymap.set('n', '<leader>p', '\"+p', { silent = true })
-vim.keymap.set('n', '<leader>w', ':write<CR>', { silent = true })
-vim.keymap.set('n', '<leader>q', ':quit<CR>', { silent = true })
-vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>', { silent = true })
-vim.keymap.set('n', '<leader>c', ':tabnew<CR>', { silent = true })
+		os.remove(tmpfile)
+	end
+end
+
+function FzfBuffers()
+	local tmpfile = vim.fn.tempname()
+	local buflist = vim.fn.getbufinfo({buflisted = 1})
+	local buflines = {}
+
+	for _, buf in ipairs(buflist) do
+		local name = buf.name == '' and '[No Name]' or buf.name
+		table.insert(buflines, buf.bufnr .. ': ' .. name)
+	end
+
+	local bufstr = table.concat(buflines, "\n")
+	vim.cmd('enew')
+	vim.fn.termopen('echo ' .. vim.fn.shellescape(bufstr) .. ' | fzf > ' .. tmpfile, {
+		on_exit = function(job_id, exit_code, event_type)
+			FzfBufferCallback(tmpfile, job_id, exit_code, event_type)
+		end
+	})
+	vim.cmd('startinsert')
+end
+
+-- [[ Keymaps ]] --
+vim.g.mapleader = " "
 vim.keymap.set('n', 'H', ':tabprev<CR>', { silent = true })
 vim.keymap.set('n', 'L', ':tabnext<CR>', { silent = true })
-vim.keymap.set('n', '<leader>e', function() require("oil").toggle_float() end)
-vim.keymap.set('n', '<leader>gf', ':FzfLua git_files<CR>', { silent = true })
-vim.keymap.set('n', '<leader>bf', ':FzfLua buffers<CR>', { silent = true })
-vim.keymap.set('n', '<leader>ff', ':FzfLua files<CR>', { silent = true })
-vim.keymap.set('n', '<leader>of', ':FzfLua oldfiles<CR>', { silent = true })
-vim.keymap.set('n', '<leader>qf', ':FzfLua quickfix<CR>', { silent = true })
-vim.keymap.set('n', '<leader>lf', ':FzfLua live_grep<CR>', { silent = true })
+vim.keymap.set('n', '<leader>c', ':tabnew<CR>', { silent = true })
+vim.keymap.set('n', '<leader>q', ':quit<CR>', { silent = true })
+vim.keymap.set('n', '<leader>w', ':write<CR>', { silent = true })
+vim.keymap.set('n', '<leader>t', function() vim.fn.system('tmux split-window -v') end, { silent = true })
+vim.keymap.set('v', '<leader>y', '"+y', { silent = true })
+vim.keymap.set('v', '<leader>d', '"+d', { silent = true })
+vim.keymap.set('n', '<leader>p', '"+p', { silent = true })
+vim.keymap.set('n', '<leader>ff', FzfFiles, { silent = true })
+vim.keymap.set('n', '<leader>gf', FzfGitFiles, { silent = true })
+vim.keymap.set('n', '<leader>bf', FzfBuffers, { silent = true })
 
-vim.lsp.config['lua_ls'] = {
-	settings = {
-		Lua = {
-			workspace = {
-				library = vim.api.nvim_get_runtime_file("", true)
-			}
-		}
-	}
-}
+-- [[ Tmux Integration ]] --
+function VimNavigate(direction)
+	vim.cmd('wincmd ' .. direction)
+end
 
-pcall(vim.lsp.enable, 'lua_ls')
-pcall(vim.lsp.enable, 'clangd')
-pcall(vim.lsp.enable, 'pyright')
-pcall(vim.lsp.enable, 'ts_ls')
-pcall(vim.lsp.enable, 'rust_analyzer')
+function TmuxNavigate(direction)
+	local previous_winnr = vim.fn.winnr()
+	VimNavigate(direction)
+	local current_winnr = vim.fn.winnr()
 
-local colors = require("catppuccin.palettes").get_palette "mocha"
-vim.api.nvim_set_hl(0, "StatusLine", {
-	fg = colors.mauve,
-	bg = colors.mantle
-})
-vim.api.nvim_set_hl(0, "TabLine", { fg = colors.mauve, bg = colors.mantle })
-vim.api.nvim_set_hl(0, "TabLineSel", { fg = colors.mauve, bg = colors.mantle, underline = true })
-vim.api.nvim_set_hl(0, "TabLineFill", { fg = colors.mauve, bg = colors.mantle })
+	if previous_winnr == current_winnr then
+		local tmux_direction = direction
+		if direction == 'h' then
+			tmux_direction = 'L'
+		elseif direction == 'j' then
+			tmux_direction = 'D'
+		elseif direction == 'k' then
+			tmux_direction = 'U'
+		elseif direction == 'l' then
+			tmux_direction = 'R'
+		end
+		vim.fn.system('tmux select-pane -' .. tmux_direction)
+	end
+end
+
+if vim.env.TMUX then
+	vim.keymap.set('n', '<C-h>', function() TmuxNavigate('h') end, { silent = true })
+	vim.keymap.set('n', '<C-j>', function() TmuxNavigate('j') end, { silent = true })
+	vim.keymap.set('n', '<C-k>', function() TmuxNavigate('k') end, { silent = true })
+	vim.keymap.set('n', '<C-l>', function() TmuxNavigate('l') end, { silent = true })
+else
+	vim.keymap.set('n', '<C-h>', function() VimNavigate('h') end, { silent = true })
+	vim.keymap.set('n', '<C-j>', function() VimNavigate('j') end, { silent = true })
+	vim.keymap.set('n', '<C-k>', function() VimNavigate('k') end, { silent = true })
+	vim.keymap.set('n', '<C-l>', function() VimNavigate('l') end, { silent = true })
+end
