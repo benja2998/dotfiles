@@ -59,6 +59,8 @@ vim.keymap.set('n', '<leader>t', function() vim.fn.system('tmux split-window -v'
 vim.keymap.set('v', '<leader>y', '\"+y', { silent = true })
 vim.keymap.set('n', '<leader>d', function() vim.diagnostic.setqflist({ open = false }) end)
 vim.keymap.set('n', '<leader>p', '\"+p', { silent = true })
+vim.keymap.set('n', '<leader>w', ':write<CR>', { silent = true })
+vim.keymap.set('n', '<leader>q', ':quit<CR>', { silent = true })
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>', { silent = true })
 vim.keymap.set('n', '<leader>c', ':tabnew<CR>', { silent = true })
 vim.keymap.set('n', 'H', ':tabprev<CR>', { silent = true })
