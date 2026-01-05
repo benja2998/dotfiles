@@ -184,11 +184,3 @@ elif [[ -d /usr/local/Homebrew ]]; then
 elif [[ -d /home/linuxbrew ]]; then
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
-
-## Plugins
-
-if [[ ! -d "$HOME/.zsh-syntax-highlighting" ]]; then
-	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.zsh-syntax-highlighting"
-fi
-
-source "$HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
