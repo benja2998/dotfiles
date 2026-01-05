@@ -10,10 +10,10 @@ vim.o.number = true
 vim.o.relativenumber = true
 vim.o.swapfile = false
 vim.o.laststatus = 3
-vim.o.smartindent = true
 vim.o.showtabline = 2
 vim.o.ignorecase = true
 vim.o.smartcase = true
+vim.o.smartindent = true
 
 vim.pack.add({
 	{ src = "https://github.com/catppuccin/nvim" },
@@ -34,6 +34,8 @@ require'nvim-treesitter'.setup {
 require'nvim-treesitter'.install {
 	'rust', 'c', 'cpp', 'asm', 'make', 'cmake', 'python', 'javascript', 'typescript', 'zig', 'lua', 'markdown', 'bash', 'zsh', 'gitcommit', 'gitignore', 'readline', 'tmux', 'vim', 'vimdoc', 'rasi', 'nix', 'perl', 'objc', 'json', 'yaml', 'toml', 'xml', 'hcl', 'dockerfile', 'nginx', 'git_config', 'kitty', 'go', 'ruby', 'r', 'java', 'kotlin', 'scala', 'sql', 'php', 'graphql', 'vue', 'css', 'scss', 'svelte', 'html', 'http', 'clojure', 'c_sharp', 'elixir', 'erlang', 'fish', 'fortran', 'julia', 'matlab', 'd', 'dart', 'fsharp', 'ledger', 'nim', 'pascal', 'prisma', 'racket', 'tsx', 'vala', 'wgsl', 'beancount', 'bibtex', 'dhall', 'dot', 'fennel', 'godot_resource', 'hjson', 'jq', 'kdl', 'llvm', 'meson', 'proto', 'twig', 'yang'
 }
+
+vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 
 vim.api.nvim_create_autocmd("BufEnter", {
 	callback = function(args)
