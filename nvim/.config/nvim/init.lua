@@ -1,9 +1,7 @@
--- Modern Neovim config for Neovim 0.12 (nightly)
-
 vim.loader.enable()
 
 if vim.fn.has("nvim-0.12") == 0 then
-	error("Neovim is too old! Stopping Neovim config.")
+	error("Version is too old!")
 end
 
 vim.o.termguicolors = true
