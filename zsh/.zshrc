@@ -2,7 +2,7 @@
 
 ## Environment variables
 
-export PATH="$HOME/neovim/bin:$HOME/.cargo/bin:$HOME/.local/share/bob/nvim-bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/neovim/bin:$HOME/.cargo/bin:$HOME/.local/share/bob/nvim-bin:$PATH"
 
 ## Shell options
 
