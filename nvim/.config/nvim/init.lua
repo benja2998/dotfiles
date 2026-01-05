@@ -43,7 +43,6 @@ function FzfCallback(tmpfile, job_id, exit_code, event_type)
 
 		if #lines > 0 then
 			local selected = vim.trim(lines[1])
-			vim.cmd('bdelete!')
 			vim.cmd('edit ' .. vim.fn.fnameescape(selected))
 		end
 
@@ -86,7 +85,6 @@ function FzfBufferCallback(tmpfile, job_id, exit_code, event_type)
 			local selected = vim.trim(lines[1])
 			local bufnr = tonumber(selected:match('^(%d+)'))
 			if bufnr and bufnr > 0 then
-				vim.cmd('bdelete!')
 				vim.cmd('buffer ' .. bufnr)
 			end
 		end
