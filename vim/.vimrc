@@ -14,6 +14,7 @@ set re=1                # disable the stupid new regex engine
 set relativenumber      # use relative line numbers
 set nocompatible        # disable vi compatibility
 set showtabline=2       # always show tabline
+set laststatus=2        # always show status line
 set noswapfile          # don't use a swap file
 
 ###############
@@ -102,6 +103,9 @@ enddef
 nnoremap <silent> <leader>ff <Cmd>call g:FzfFiles()<CR>
 nnoremap <silent> <leader>gf <Cmd>call g:FzfGitFiles()<CR>
 nnoremap <silent> <leader>bf <Cmd>call g:FzfBuffers()<CR>
+vnoremap <silent> <leader>y "+y
+vnoremap <silent> <leader>d "+d
+nnoremap <silent> <leader>p "+p
 
 ###############
 # TMUX INTEG- #
