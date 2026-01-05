@@ -88,5 +88,5 @@ vim.api.nvim_set_hl(0, "StatusLine", {
 	bg = colors.mantle
 })
 vim.api.nvim_set_hl(0, "TabLine", { fg = colors.mauve, bg = colors.mantle })
-vim.api.nvim_set_hl(0, "TabLineSel", { fg = colors.mauve, bg = colors.base, underline = true })
+vim.api.nvim_set_hl(0, "TabLineSel", { fg = colors.mauve, bg = colors.mantle, underline = true })
 vim.api.nvim_set_hl(0, "TabLineFill", { fg = colors.mauve, bg = colors.mantle })
