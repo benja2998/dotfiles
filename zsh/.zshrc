@@ -71,7 +71,7 @@ alias gtree='git ls-files | tree -a --fromfile'
 alias q='exit'
 alias grep='grep --color=auto'
 alias dir='dir --color=auto'
-alias vim='ivim'
+alias vim='ivim' # IceVim is a fork of Neovim focused on stability
 alias v='ivim'
 alias t='tmux'
 alias ll='ls -FAlth'
