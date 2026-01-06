@@ -19,10 +19,6 @@ vim.o.showtabline      = 2       -- always show tab line
 vim.o.laststatus       = 3       -- only use one status line
 vim.o.swapfile         = false   -- no swap file
 
--- [[ Theme ]] --
-vim.pack.add({"https://github.com/catppuccin/nvim"})
-vim.cmd("colorscheme catppuccin-mocha")
-
 -- [[ Fzf Integration ]] --
 function FzfCallback(tmpfile, job_id, exit_code, event_type)
 	local f = io.open(tmpfile, 'r')

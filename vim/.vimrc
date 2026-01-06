@@ -19,19 +19,6 @@ set laststatus=2        # always show status line
 set noswapfile          # don't use a swap file
 
 ###############
-#    THEME    #
-###############
-if exists('+termguicolors') && ($COLORTERM =~# 'truecolor\|24bit')
-set termguicolors
-if !isdirectory($HOME .. '/.vim/pack/vendor/start/catppuccin')
-system("git clone https://github.com/catppuccin/vim.git $HOME/.vim/pack/vendor/start/catppuccin")
-endif
-colorscheme catppuccin_mocha
-else
-set notermguicolors
-endif
-
-###############
 #   KEYMAPS   #
 ###############
 g:mapleader = " "
