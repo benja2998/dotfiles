@@ -30,10 +30,6 @@ exec --no-startup-id ~/.config/i3/autotiling
 
 exec --no-startup-id redshift -O 4500
 
-gaps inner 10
-
-gaps outer 5
-
 set $mod Mod4
 
 exec_always --no-startup-id feh --bg-scale ~/wall.png
@@ -190,7 +186,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bar {
-    position top
+#    position top
         status_command i3status
         tray_output primary
         colors {
