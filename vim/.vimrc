@@ -3,20 +3,23 @@ vim9script
 ###############
 #   OPTIONS   #
 ###############
-set shiftwidth=4        # 4 space shifting
-set tabstop=4           # 4 space tabs
-set lazyredraw          # lazily redraw
-set cursorline          # highlight current line (most useful when in a tty)
-set ttyfast             # assume fast terminal
-set number              # show line numbers
-set re=1                # disable the stupid new regex engine
-set relativenumber      # use relative line numbers
-set nocompatible        # disable vi compatibility
-set ignorecase          # ignore case
-set smartcase           # smart case
-set showtabline=2       # always show tabline
-set laststatus=2        # always show status line
-set noswapfile          # don't use a swap file
+set shiftwidth=4               # 4 space shifting
+set tabstop=4                  # 4 space tabs
+set lazyredraw                 # lazily redraw
+set cursorline                 # highlight current line (most useful when in a tty)
+set ttyfast                    # assume fast terminal
+set number                     # show line numbers
+set re=1                       # disable the stupid new regex engine
+set relativenumber             # use relative line numbers
+set nocompatible               # disable vi compatibility
+set ignorecase                 # ignore case
+set smartcase                  # smart case
+set showtabline=2              # always show tabline
+set laststatus=2               # always show status line
+set noswapfile                 # don't use a swap file
+set smartindent                # better indentation
+filetype plugin indent on      # enable filetype-specific indentation
+set cindent                    # enable indentation for C and similar languages
 
 ###############
 #   THEME     #
@@ -48,59 +51,59 @@ nnoremap <silent> <leader>p "+p
 # FZF INTEGR- #
 # ATION       #
 ###############
-	def g:FzfCallback(tmpfile: string, job: job, status: number) 
+def g:FzfCallback(tmpfile: string, job: job, status: number) 
 	var lines = readfile(tmpfile)
 	if !empty(lines)
-var selected = trim(lines[0])
-	bdelete!
-	execute 'edit ' .. selected
+		var selected = trim(lines[0])
+		bdelete!
+		execute 'edit ' .. selected
 	endif
-delete(tmpfile)
-	enddef
+	delete(tmpfile)
+enddef
 
-	def g:FzfFiles()
-var tmpfile = tempname()
+def g:FzfFiles()
+	var tmpfile = tempname()
 	var buf = term_start('sh -c "fzf > ' .. tmpfile .. '"', {
-			'term_finish': 'close',
-			'exit_cb': function('g:FzfCallback', [tmpfile])
-			})
+		'term_finish': 'close',
+		'exit_cb': function('g:FzfCallback', [tmpfile])
+	})
 enddef
 
-	def g:FzfGitFiles()
-var tmpfile = tempname()
+def g:FzfGitFiles()
+	var tmpfile = tempname()
 	var buf = term_start('sh -c "git ls-files ":/" | fzf > ' .. tmpfile .. '"', {
-			'term_finish': 'close',
-			'exit_cb': function('g:FzfCallback', [tmpfile])
-			})
+		'term_finish': 'close',
+		'exit_cb': function('g:FzfCallback', [tmpfile])
+	})
 enddef
 
-	def g:FzfBufferCallback(tmpfile: string, job: job, status: number)
+def g:FzfBufferCallback(tmpfile: string, job: job, status: number)
 	var lines = readfile(tmpfile)
 	if !empty(lines)
-var selected = trim(lines[0])
-	var bufnr = str2nr(matchstr(selected, '^\d\+'))
-	if bufnr > 0
-	bdelete!
-	execute 'buffer ' .. bufnr
+		var selected = trim(lines[0])
+		var bufnr = str2nr(matchstr(selected, '^\d\+'))
+		if bufnr > 0
+			bdelete!
+			execute 'buffer ' .. bufnr
+		endif
 	endif
-	endif
-delete(tmpfile)
-	enddef
+	delete(tmpfile)
+enddef
 
-	def g:FzfBuffers()
-var tmpfile = tempname()
+def g:FzfBuffers()
+	var tmpfile = tempname()
 	var buflist = getbufinfo({'buflisted': 1})
 	var buflines = []
 	for buf in buflist
-	var name = empty(buf.name) ? '[No Name]' : buf.name
-	add(buflines, buf.bufnr .. ': ' .. name)
+		var name = empty(buf.name) ? '[No Name]' : buf.name
+		add(buflines, buf.bufnr .. ': ' .. name)
 	endfor
 
 	var bufstr = join(buflines, "\n")
 	var buf = term_start('sh -c "echo ' .. shellescape(bufstr) .. ' | fzf > ' .. tmpfile .. '"', {
-			'term_finish': 'close',
-			'exit_cb': function('g:FzfBufferCallback', [tmpfile])
-			})
+		'term_finish': 'close',
+		'exit_cb': function('g:FzfBufferCallback', [tmpfile])
+	})
 enddef
 
 nnoremap <silent> <leader>ff <Cmd>call g:FzfFiles()<CR>
@@ -112,36 +115,36 @@ nnoremap <silent> <leader>bf <Cmd>call g:FzfBuffers()<CR>
 # RATION      #
 ###############
 def g:VimNavigate(direction: string)
-execute "wincmd " .. direction
+	execute "wincmd " .. direction
 enddef
 
-	def g:TmuxNavigate(direction: string)
-var previous_winnr = winnr()
+def g:TmuxNavigate(direction: string)
+	var previous_winnr = winnr()
 	g:VimNavigate(direction)
-var current_winnr = winnr()
+	var current_winnr = winnr()
 	if previous_winnr == current_winnr
-	var tmux_direction = direction
-	if direction == 'h'
-	tmux_direction = 'L'
-	elseif direction == 'j'
-	tmux_direction = 'D'
-	elseif direction == 'k'
-	tmux_direction = 'U'
-	elseif direction == 'l'
-	tmux_direction = 'R'
+		var tmux_direction = direction
+		if direction == 'h'
+			tmux_direction = 'L'
+		elseif direction == 'j'
+			tmux_direction = 'D'
+		elseif direction == 'k'
+			tmux_direction = 'U'
+		elseif direction == 'l'
+			tmux_direction = 'R'
+		endif
+		system('tmux select-pane -' .. tmux_direction)
 	endif
-	system('tmux select-pane -' .. tmux_direction)
-	endif
-	enddef
+enddef
 
-	if exists("$TMUX")
+if exists("$TMUX")
 	nnoremap <silent> <C-h> <Cmd>call g:TmuxNavigate('h')<CR>
 	nnoremap <silent> <C-j> <Cmd>call g:TmuxNavigate('j')<CR>
 	nnoremap <silent> <C-k> <Cmd>call g:TmuxNavigate('k')<CR>
 	nnoremap <silent> <C-l> <Cmd>call g:TmuxNavigate('l')<CR>
-	else
+else
 	nnoremap <silent> <C-h> <Cmd>call g:VimNavigate('h')<CR>
 	nnoremap <silent> <C-j> <Cmd>call g:VimNavigate('j')<CR>
 	nnoremap <silent> <C-k> <Cmd>call g:VimNavigate('k')<CR>
 	nnoremap <silent> <C-l> <Cmd>call g:VimNavigate('l')<CR>
-	endif
+endif
