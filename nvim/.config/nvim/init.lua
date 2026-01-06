@@ -14,6 +14,7 @@ vim.o.ttyfast          = true    -- assume fast terminal
 vim.o.number           = true    -- enable line numbers
 vim.o.ignorecase       = true    -- ignore case
 vim.o.smartcase        = true    -- smart case
+vim.o.cursorline       = true    -- highlight current line (most useful when in a tty)
 vim.o.relativenumber   = true    -- use relative line numbers
 vim.o.showtabline      = 2       -- always show tab line
 vim.o.laststatus       = 3       -- only use one status line

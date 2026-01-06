@@ -7,6 +7,7 @@ set shiftwidth=4        # 4 space shifting
 set tabstop=4           # 4 space tabs
 set smartindent         # smart indentation
 set lazyredraw          # lazily redraw
+set cursorline          # highlight current line (most useful when in a tty)
 set ttyfast             # assume fast terminal
 set number              # show line numbers
 set re=1                # disable the stupid new regex engine
