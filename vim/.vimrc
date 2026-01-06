@@ -26,7 +26,7 @@ if exists('$COLORTERM') && ($COLORTERM == 'truecolor')
 	set termguicolors
 	colorscheme catppuccin_mocha
 else
-	colorscheme slate
+	colorscheme default
 endif
 
 ###############
