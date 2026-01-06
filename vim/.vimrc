@@ -22,7 +22,7 @@ set noswapfile          # don't use a swap file
 #   THEME     #
 ###############
 if exists('$COLORTERM') && ($COLORTERM == 'truecolor')
-	system('git clone https://github.com/catppuccin/vim.git')
+	system('git clone https://github.com/catppuccin/vim.git ~/.vim/pack/vendor/start/catppuccin')
 	set termguicolors
 	colorscheme catppuccin_mocha
 else
