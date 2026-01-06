@@ -16,7 +16,6 @@ set ignorecase          # ignore case
 set smartcase           # smart case
 set showtabline=2       # always show tabline
 set laststatus=2        # always show status line
-set autoindent          # auto indent
 set noswapfile          # don't use a swap file
 
 ###############
