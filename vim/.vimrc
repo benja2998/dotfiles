@@ -5,7 +5,6 @@ vim9script
 ###############
 set shiftwidth=4        # 4 space shifting
 set tabstop=4           # 4 space tabs
-set smartindent         # smart indentation
 set lazyredraw          # lazily redraw
 set cursorline          # highlight current line (most useful when in a tty)
 set ttyfast             # assume fast terminal
@@ -17,7 +16,19 @@ set ignorecase          # ignore case
 set smartcase           # smart case
 set showtabline=2       # always show tabline
 set laststatus=2        # always show status line
+set autoindent          # auto indent
 set noswapfile          # don't use a swap file
+
+###############
+#   THEME     #
+###############
+if exists('$COLORTERM') && ($COLORTERM == 'truecolor')
+	system('git clone https://github.com/catppuccin/vim.git')
+	set termguicolors
+	colorscheme catppuccin_mocha
+else
+	colorscheme slate
+endif
 
 ###############
 #   KEYMAPS   #
