@@ -5,7 +5,6 @@ vim9script
 ###############
 set shiftwidth=4        # 4 space shifting
 set tabstop=4           # 4 space tabs
-set termguicolors       # 24-bit color
 set smartindent         # smart indentation
 set lazyredraw          # lazily redraw
 set ttyfast             # assume fast terminal
@@ -18,6 +17,11 @@ set smartcase           # smart case
 set showtabline=2       # always show tabline
 set laststatus=2        # always show status line
 set noswapfile          # don't use a swap file
+if exists('+termguicolors') && ($COLORTERM =~# 'truecolor\|24bit')
+set termguicolors
+else
+set notermguicolors
+endif
 
 ###############
 #    THEME    #
@@ -26,11 +30,6 @@ if !isdirectory($HOME .. '/.vim/pack/vendor/start/catppuccin')
 	system("git clone https://github.com/catppuccin/vim.git $HOME/.vim/pack/vendor/start/catppuccin")
 endif
 colorscheme catppuccin_mocha
-hi StatusLine guifg=#cba6f7 guibg=#181825
-hi StatusLineNC guifg=#cba6f7 guibg=#181825
-highlight TabLine guifg=#cba6f7 guibg=#181825
-highlight TabLineFill guifg=#cba6f7 guibg=#181825
-highlight TabLineSel guifg=#cba6f7 guibg=#181825 gui=underline cterm=underline
 
 ###############
 #   KEYMAPS   #

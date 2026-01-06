@@ -8,7 +8,6 @@ end
 -- [[ Options ]] --
 vim.o.shiftwidth       = 4       -- 4 space indenting
 vim.o.tabstop          = 4       -- 4 space tabs
-vim.o.termguicolors    = true    -- 24-bit color
 vim.o.smartindent      = true    -- smart indentation
 vim.o.lazyredraw       = true    -- lazily redraw
 vim.o.ttyfast          = true    -- assume fast terminal
@@ -23,13 +22,6 @@ vim.o.swapfile         = false   -- no swap file
 -- [[ Theme ]] --
 vim.pack.add({"https://github.com/catppuccin/nvim"})
 vim.cmd("colorscheme catppuccin-mocha")
-vim.cmd([[
-hi StatusLine guifg=#cba6f7 guibg=#181825
-hi StatusLineNC guifg=#cba6f7 guibg=#181825
-highlight TabLine guifg=#cba6f7 guibg=#181825
-highlight TabLineFill guifg=#cba6f7 guibg=#181825
-highlight TabLineSel guifg=#cba6f7 guibg=#181825 gui=underline cterm=underline
-]])
 
 -- [[ Fzf Integration ]] --
 function FzfCallback(tmpfile, job_id, exit_code, event_type)

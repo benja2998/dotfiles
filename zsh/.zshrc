@@ -153,13 +153,13 @@ zstyle ':vcs_info:git:*' formats '(%b)'
 
 function zsh_prompt_error {
 	if [[ $? -ne 0 ]]; then
-		echo "%F{#f38ba8}✗%f"
+		echo "%F{red}x%f"
 		else
-			echo "%F{#f9e2af}➜%f"
+			echo "%F{yellow}->%f"
 	fi
 }
 
-PROMPT=$'\n''%F{#181825}%f%K{#181825} %F{#b4befe}${VIMODE}%f %F{#cba6f7}%~%f %F{#f5c2e7}${vcs_info_msg_0_}%f %k%F{#181825}%f'$'\n''$(zsh_prompt_error) '
+PROMPT=$'\n''%F{cyan}${VIMODE}%f %F{blue}%~%f %F{magenta}${vcs_info_msg_0_}%f'$'\n''$(zsh_prompt_error) '
 
 ## Functions
 
