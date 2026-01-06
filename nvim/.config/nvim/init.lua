@@ -25,6 +25,8 @@ if vim.env.COLORTERM then
 	vim.pack.add({"https://github.com/catppuccin/nvim"})
 	vim.o.termguicolors = true
 	vim.cmd("colorscheme catppuccin-mocha")
+else
+	vim.o.termguicolors = false
 end
 
 -- [[ Fzf Integration ]] --
