@@ -17,9 +17,10 @@ set smartcase                  # smart case
 set showtabline=2              # always show tabline
 set laststatus=2               # always show status line
 set noswapfile                 # don't use a swap file
+set guioptions=                # make gvim look like a serious editor and not a notepad
 set smartindent                # better indentation
-filetype plugin indent on      # enable filetype-specific indentation
 set cindent                    # enable indentation for C and similar languages
+filetype plugin indent on      # enable filetype-specific indentation
 
 ###############
 #   THEME     #
