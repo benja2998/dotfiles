@@ -2,17 +2,13 @@
 
 ## Environment variables
 
-export PATH="$HOME/.local/bin:$HOME/neovim/bin:$HOME/.cargo/bin:$HOME/.local/share/bob/nvim-bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 
 ## Shell options
 
 # Globbing
 setopt EXTENDED_GLOB
 setopt GLOBSTAR_SHORT
-
-# Command correction
-setopt CORRECT
-setopt CORRECT_ALL
 
 # Directory navigation
 setopt AUTO_CD
@@ -34,10 +30,6 @@ zle_highlight=('paste:none')
 WORDCHARS=${WORDCHARS//\/}
 
 ## Keybindings
-
-TRAPWINCH() {
-	zle reset-prompt
-}
 
 zmodload zsh/complist
 autoload -Uz compinit
@@ -77,45 +69,6 @@ alias c='clear'
 alias s='source ~/.zshrc'
 alias l='ls -Flth'
 alias la='ls -A'
-
-# Git shortcuts
-alias ga='git add -A'
-alias g='git'
-alias gl='git log --decorate --graph'
-alias gc='git commit -a'
-alias gp='git push'
-alias gP='git pull'
-alias gf='git fetch'
-alias gs='git status'
-alias gst='git stash'
-alias gb='git branch'
-alias gbl='git blame'
-alias gba='git branch -a'
-alias gfm='git ls-files -m'
-alias gco='git checkout'
-alias gcb='git checkout -b'
-alias gls='git log --oneline --graph --decorate --all'
-alias gd='git diff --staged'
-alias gds='git diff'
-alias gcu='git reset --soft HEAD~1'
-alias gcln='git clean -fd'
-alias gsta='git stash apply'
-alias gstp='git stash pop'
-alias gstl='git stash list'
-alias grb='git rebase master'
-alias grbi='git rebase -i'
-alias gmg='git merge'
-alias gmgf='git merge --ff-only'
-alias gshow='git show'
-alias gtag='git tag'
-alias gtags='git tag -l'
-alias gundo='git reset --hard HEAD'
-alias gpl='git pull --rebase'
-alias gcount='git shortlog -sn'
-alias gwho='git log --pretty=format:"%an" | sort | uniq -c | sort -nr'
-alias gdf='git diff --name-only'
-alias glg='git log --stat'
-alias gclean='git reset --hard && git clean -fd'
 
 # fd/fdfind alias
 if command -v fdfind >/dev/null 2>&1; then
@@ -167,13 +120,6 @@ PROMPT=$'\n''%F{cyan}${VIMODE}%f %F{blue}%~%f %F{magenta}${vcs_info_msg_0_}%f'$'
 cdf() {
 	cd "$(fd -H -I -t d . "${1:-$HOME}" | fzf)" || return
 }
-
-## Rbenv
-
-if command -v rbenv >/dev/null 2>&1; then
-	export PATH="$HOME/.rbenv/bin:$PATH"
-	eval "$(rbenv init - zsh)"
-fi
 
 ## Homebrew
 
