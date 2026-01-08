@@ -25,7 +25,9 @@ set cindent                    # enable indentation for C and similar languages
 #   THEME     #
 ###############
 if exists('$COLORTERM') && ($COLORTERM == 'truecolor')
-	system('git clone https://github.com/catppuccin/vim.git ~/.vim/pack/vendor/start/catppuccin')
+	if !isdirectory(expand('~/.vim/pack/vendor/start/catppuccin'))
+		system('git clone https://github.com/catppuccin/vim.git ~/.vim/pack/vendor/start/catppuccin')
+	endif
 	set termguicolors
 	colorscheme catppuccin_mocha
 else
@@ -40,75 +42,10 @@ g:mapleader = " "
 nnoremap <silent> H :tabprev<CR>
 nnoremap <silent> L :tabnext<CR>
 nnoremap <silent> <leader>c :tabnew<CR>
-nnoremap <silent> <leader>q :quit<CR>
-nnoremap <silent> <leader>w :write<CR>
 nnoremap <silent> <leader>t <Cmd>call system('tmux split-window -v')<CR>
 vnoremap <silent> <leader>y "+y
 vnoremap <silent> <leader>d "+d
 nnoremap <silent> <leader>p "+p
-
-###############
-# FZF INTEGR- #
-# ATION       #
-###############
-def g:FzfCallback(tmpfile: string, job: job, status: number) 
-	var lines = readfile(tmpfile)
-	if !empty(lines)
-		var selected = trim(lines[0])
-		bdelete!
-		execute 'edit ' .. selected
-	endif
-	delete(tmpfile)
-enddef
-
-def g:FzfFiles()
-	var tmpfile = tempname()
-	var buf = term_start('sh -c "fzf > ' .. tmpfile .. '"', {
-		'term_finish': 'close',
-		'exit_cb': function('g:FzfCallback', [tmpfile])
-	})
-enddef
-
-def g:FzfGitFiles()
-	var tmpfile = tempname()
-	var buf = term_start('sh -c "git ls-files ":/" | fzf > ' .. tmpfile .. '"', {
-		'term_finish': 'close',
-		'exit_cb': function('g:FzfCallback', [tmpfile])
-	})
-enddef
-
-def g:FzfBufferCallback(tmpfile: string, job: job, status: number)
-	var lines = readfile(tmpfile)
-	if !empty(lines)
-		var selected = trim(lines[0])
-		var bufnr = str2nr(matchstr(selected, '^\d\+'))
-		if bufnr > 0
-			bdelete!
-			execute 'buffer ' .. bufnr
-		endif
-	endif
-	delete(tmpfile)
-enddef
-
-def g:FzfBuffers()
-	var tmpfile = tempname()
-	var buflist = getbufinfo({'buflisted': 1})
-	var buflines = []
-	for buf in buflist
-		var name = empty(buf.name) ? '[No Name]' : buf.name
-		add(buflines, buf.bufnr .. ': ' .. name)
-	endfor
-
-	var bufstr = join(buflines, "\n")
-	var buf = term_start('sh -c "echo ' .. shellescape(bufstr) .. ' | fzf > ' .. tmpfile .. '"', {
-		'term_finish': 'close',
-		'exit_cb': function('g:FzfBufferCallback', [tmpfile])
-	})
-enddef
-
-nnoremap <silent> <leader>ff <Cmd>call g:FzfFiles()<CR>
-nnoremap <silent> <leader>gf <Cmd>call g:FzfGitFiles()<CR>
-nnoremap <silent> <leader>bf <Cmd>call g:FzfBuffers()<CR>
 
 ###############
 # TMUX INTEG- #
