@@ -21,6 +21,12 @@ vim.o.relativenumber   = true    -- use relative line numbers
 vim.o.showtabline      = 2       -- always show tab line
 vim.o.laststatus       = 3       -- only use one status line
 vim.o.swapfile         = false   -- no swap file
+vim.o.hlsearch         = false   -- don't highlight on searches
+
+-- [[ Netrw ]] --
+vim.g.netrw_banner     = false   -- no banner
+vim.g.netrw_liststyle  = 3       -- tree list style
+vim.g.netrw_winsize    = 25      -- window size 25
 
 -- [[ Theme ]] --
 if vim.env.COLORTERM then
@@ -29,6 +35,7 @@ if vim.env.COLORTERM then
 	vim.cmd("colorscheme catppuccin-mocha")
 else
 	vim.o.termguicolors = false
+	vim.cmd("colorscheme default")
 end
 
 -- [[ Keymaps ]] --
@@ -36,10 +43,21 @@ vim.g.mapleader = " "
 vim.keymap.set('n', 'H', ':tabprev<CR>', { silent = true })
 vim.keymap.set('n', 'L', ':tabnext<CR>', { silent = true })
 vim.keymap.set('n', '<leader>c', ':tabnew<CR>', { silent = true })
-vim.keymap.set('n', '<leader>t', function() vim.fn.system('tmux split-window -v') end, { silent = true })
+vim.keymap.set('n', '<leader>t', function() vim.fn.system('tmux split-window -v -p 33') end, { silent = true })
 vim.keymap.set('v', '<leader>y', '"+y', { silent = true })
 vim.keymap.set('v', '<leader>d', '"+d', { silent = true })
 vim.keymap.set('n', '<leader>p', '"+p', { silent = true })
+vim.keymap.set('n', '<leader>e', ':Lexplore<CR>', { silent = true })
+vim.keymap.set('n', '<leader>w', ':write<CR>', { silent = true })
+vim.keymap.set('n', '<leader>x', ':quit<CR>', { silent = true })
+vim.keymap.set('n', '<leader>r', ':restart<CR>', { silent = true })
+vim.keymap.set('n', '<leader>qf', ':FzfLua quickfix<CR>', { silent = true })
+vim.keymap.set('n', '<leader>gf', ':FzfLua git_files<CR>', { silent = true })
+vim.keymap.set('n', '<leader>ff', ':FzfLua files<CR>', { silent = true })
+vim.keymap.set('n', '<leader>lf', ':FzfLua live_grep<CR>', { silent = true })
+
+-- [[ Fuzzy finding ]] --
+vim.pack.add({"https://github.com/ibhagwan/fzf-lua"})
 
 -- [[ Tmux Integration ]] --
 function VimNavigate(direction)
