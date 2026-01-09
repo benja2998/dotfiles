@@ -59,6 +59,7 @@ bindkey -v
 
 alias ls='ls --color=auto'
 alias tree='tree -C'
+alias vim='ivim'
 alias gtree='git ls-files | tree -a --fromfile'
 alias q='exit'
 alias grep='grep --color=auto'
