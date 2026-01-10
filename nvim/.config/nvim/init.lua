@@ -51,7 +51,6 @@ vim.g.mapleader = " "
 vim.keymap.set('n', 'H', ':tabprev<CR>', { silent = true })
 vim.keymap.set('n', 'L', ':tabnext<CR>', { silent = true })
 vim.keymap.set('n', '<leader>c', ':tabnew<CR>', { silent = true })
-vim.keymap.set('n', '<leader>t', function() vim.fn.system('tmux split-window -v -p 33') end, { silent = true })
 vim.keymap.set('v', '<leader>y', '"+y', { silent = true })
 vim.keymap.set('v', '<leader>d', '"+d', { silent = true })
 vim.keymap.set('n', '<leader>p', '"+p', { silent = true })
