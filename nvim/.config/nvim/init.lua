@@ -24,9 +24,17 @@ vim.o.swapfile         = false   -- no swap file
 vim.o.hlsearch         = false   -- don't highlight on searches
 
 -- [[ Netrw ]] --
-vim.g.netrw_banner     = false   -- no banner
-vim.g.netrw_liststyle  = 3       -- tree list style
-vim.g.netrw_winsize    = 25      -- window size 25
+vim.g.loaded_netrw     = false   -- don't load netrw
+vim.g.loaded_netrwPlugin = false -- don't load netrw
+
+-- [[ Nvim Tree ]] --
+vim.pack.add({"https://github.com/nvim-tree/nvim-web-devicons"})
+vim.pack.add({"https://github.com/nvim-tree/nvim-tree.lua"})
+require'nvim-tree'.setup {
+	filters = {
+		dotfiles = false
+	}
+}
 
 -- [[ Theme ]] --
 if vim.env.COLORTERM then
@@ -47,12 +55,13 @@ vim.keymap.set('n', '<leader>t', function() vim.fn.system('tmux split-window -v 
 vim.keymap.set('v', '<leader>y', '"+y', { silent = true })
 vim.keymap.set('v', '<leader>d', '"+d', { silent = true })
 vim.keymap.set('n', '<leader>p', '"+p', { silent = true })
-vim.keymap.set('n', '<leader>e', ':Lexplore<CR>', { silent = true })
+vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { silent = true })
 vim.keymap.set('n', '<leader>w', ':write<CR>', { silent = true })
 vim.keymap.set('n', '<leader>x', ':quit<CR>', { silent = true })
 vim.keymap.set('n', '<leader>r', ':restart<CR>', { silent = true })
 vim.keymap.set('n', '<leader>qf', ':FzfLua quickfix<CR>', { silent = true })
 vim.keymap.set('n', '<leader>gf', ':FzfLua git_files<CR>', { silent = true })
+vim.keymap.set('n', '<leader>bf', ':FzfLua buffers<CR>', { silent = true })
 vim.keymap.set('n', '<leader>ff', ':FzfLua files<CR>', { silent = true })
 vim.keymap.set('n', '<leader>lf', ':FzfLua live_grep<CR>', { silent = true })
 
