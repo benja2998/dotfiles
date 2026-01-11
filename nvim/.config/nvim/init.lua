@@ -27,12 +27,11 @@ vim.o.hlsearch         = false   -- don't highlight on searches
 vim.g.loaded_netrw     = false   -- don't load netrw
 vim.g.loaded_netrwPlugin = false -- don't load netrw
 
--- [[ Nvim Tree ]] --
-vim.pack.add({"https://github.com/nvim-tree/nvim-web-devicons"})
-vim.pack.add({"https://github.com/nvim-tree/nvim-tree.lua"})
-require'nvim-tree'.setup {
-	filters = {
-		dotfiles = false
+-- [[ Oil.nvim ]] --
+vim.pack.add({"https://github.com/stevearc/oil.nvim"})
+require'oil'.setup {
+	view_options = { 
+		show_hidden = true
 	}
 }
 
@@ -54,7 +53,7 @@ vim.keymap.set('n', '<leader>c', ':tabnew<CR>', { silent = true })
 vim.keymap.set('v', '<leader>y', '"+y', { silent = true })
 vim.keymap.set('v', '<leader>d', '"+d', { silent = true })
 vim.keymap.set('n', '<leader>p', '"+p', { silent = true })
-vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { silent = true })
+vim.keymap.set('n', '<leader>e', function() require'oil'.toggle_float() end, { silent = true })
 vim.keymap.set('n', '<leader>w', ':write<CR>', { silent = true })
 vim.keymap.set('n', '<leader>x', ':quit<CR>', { silent = true })
 vim.keymap.set('n', '<leader>r', ':restart<CR>', { silent = true })
