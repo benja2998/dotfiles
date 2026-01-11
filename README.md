@@ -1,3 +1,5 @@
+# Dotfiles
+
 ## Linux & macOS
 
 Simply, use GNU Stow to symlink */. Make sure you cloned the dotfiles to a subdirectory of ~.
