@@ -10,11 +10,6 @@ export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 setopt EXTENDED_GLOB
 setopt GLOBSTAR_SHORT
 
-# Directory navigation
-setopt AUTO_CD
-setopt AUTO_PUSHD
-setopt PUSHD_IGNORE_DUPS
-
 # History
 HISTSIZE=50000
 SAVEHIST=50000
@@ -50,10 +45,12 @@ autoload -Uz up-line-or-beginning-search
 autoload -Uz down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-bindkey -M viins '^[[A' up-line-or-beginning-search
-bindkey -M viins '^[[B' down-line-or-beginning-search
-
-bindkey -v
+bindkey '^[[A' up-line-or-beginning-search
+bindkey '^[[B' down-line-or-beginning-search
+bindkey '^[OA' up-line-or-beginning-search
+bindkey '^[OB' down-line-or-beginning-search
+bindkey "$terminfo[kcuu1]" up-line-or-beginning-search
+bindkey "$terminfo[kcud1]" down-line-or-beginning-search
 
 ## Aliases
 
@@ -69,42 +66,7 @@ fi
 
 ## Prompt
 
-VIMODE="(i)"
-
-function zle-keymap-select {
-	case $KEYMAP in
-		vicmd) VIMODE="(n)" ;;
-		viins|main) VIMODE="(i)" ;;
-		*) VIMODE="(?)" ;;
-	esac
-	zle reset-prompt
-}
-
-function zle-line-init {
-	zle-keymap-select
-}
-
-zle -N zle-keymap-select
-zle -N zle-line-init
-
-autoload -Uz vcs_info
-setopt prompt_subst
-
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
-
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git:*' formats '(%b)'
-
-function zsh_prompt_error {
-	if [[ $? -ne 0 ]]; then
-		echo "%F{red}x%f"
-		else
-			echo "%F{yellow}->%f"
-	fi
-}
-
-PROMPT=$'\n''%F{cyan}${VIMODE}%f %F{blue}%~%f %F{magenta}${vcs_info_msg_0_}%f'$'\n''$(zsh_prompt_error) '
+PROMPT='%F{green}%n@%m%f:%F{blue}%~%f%# '
 
 ## Homebrew
 
