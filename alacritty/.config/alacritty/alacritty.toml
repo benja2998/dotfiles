@@ -1,5 +1,10 @@
 [font]
 size = 14
+builtin_box_drawing = true
+
+[cursor]
+style = { shape = "Block", blinking = "Always" }
+blink_interval = 200
 
 [mouse]
 hide_when_typing = true
