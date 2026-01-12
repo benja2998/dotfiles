@@ -3,6 +3,7 @@
 ## Environment variables
 
 export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+export EDITOR="vim"
 
 ## Shell options
 
