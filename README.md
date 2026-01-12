@@ -1,6 +1,6 @@
 # Dotfiles
 
-## Linux & macOS
+## macOS
 
 These are the commands you should run:
 
@@ -9,6 +9,10 @@ stow .
 ```
 
 If you hit command not found errors, install the commands.
+
+## Linux
+
+Assuming you use Ubuntu,run `setup-ubuntu.sh`. It will install everything needed, set up Linuxbrew, change the default shell, and run the stow command.
 
 ## Windows
 
