@@ -59,7 +59,6 @@ bindkey -v
 
 alias ls='ls --color=auto'
 alias tree='tree -C'
-alias vim='ivim'
 alias grep='grep --color=auto'
 alias dir='dir --color=auto'
 
