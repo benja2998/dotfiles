@@ -60,16 +60,8 @@ bindkey -v
 alias ls='ls --color=auto'
 alias tree='tree -C'
 alias vim='ivim'
-alias gtree='git ls-files | tree -a --fromfile'
-alias q='exit'
 alias grep='grep --color=auto'
 alias dir='dir --color=auto'
-alias t='tmux'
-alias ll='ls -FAlth'
-alias c='clear'
-alias s='source ~/.zshrc'
-alias l='ls -Flth'
-alias la='ls -A'
 
 # fd/fdfind alias
 if command -v fdfind >/dev/null 2>&1; then
@@ -114,13 +106,6 @@ function zsh_prompt_error {
 }
 
 PROMPT=$'\n''%F{cyan}${VIMODE}%f %F{blue}%~%f %F{magenta}${vcs_info_msg_0_}%f'$'\n''$(zsh_prompt_error) '
-
-## Functions
-
-# Fuzzy find directories
-cdf() {
-	cd "$(fd -H -I -t d . "${1:-$HOME}" | fzf)" || return
-}
 
 ## Homebrew
 
