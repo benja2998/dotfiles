@@ -3,8 +3,7 @@ size = 14
 builtin_box_drawing = true
 
 [cursor]
-style = { shape = "Block", blinking = "Always" }
-blink_interval = 200
+style = { shape = "Block" }
 
 [mouse]
 hide_when_typing = true
