@@ -30,5 +30,5 @@ stow .
 
 echo "Now setting up Homebrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" # Absolutely secure!
-echo "Changing default shell"
-chsh -s /bin/zsh
+echo "Changing default shell to bash"
+chsh -s /bin/bash
