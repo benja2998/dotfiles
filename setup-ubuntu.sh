@@ -11,7 +11,8 @@ fi
 
 sudo apt-get update -y
 sudo apt-get upgrade -y
-sudo apt-get install -y vim tmux zsh alacritty stow git gh build-essential make tree
+sudo apt-get install -y vim tmux alacritty stow git gh build-essential tree
+sudo apt-get remove -y nano
 ALACRITTY_BIN=$(which alacritty)
 
 if [ -z "$ALACRITTY_BIN" ]; then
