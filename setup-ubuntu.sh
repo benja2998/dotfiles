@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-source /etc/os-release # Fuck modern security practices, YOLO
+source /etc/os-release # Fuck modern security practices, YOLO! Who cares if this file has arbitrary code?
 if [[ "$NAME" = *Ubuntu* ]]; then
 	echo "Ubuntu detected, continuing"
 else
