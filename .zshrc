@@ -27,6 +27,8 @@ WORDCHARS=${WORDCHARS//\/}
 
 ## Keybindings
 
+bindkey -e
+
 zmodload zsh/complist
 autoload -Uz compinit
 compinit
