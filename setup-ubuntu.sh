@@ -11,21 +11,11 @@ fi
 
 sudo apt-get update -y
 sudo apt-get upgrade -y
-sudo apt-get install -y vim tmux alacritty stow git gh build-essential tree
+sudo apt-get install -y vim tmux stow git gh build-essential tree
 sudo apt-get remove -y nano
-ALACRITTY_BIN=$(which alacritty)
 
-if [ -z "$ALACRITTY_BIN" ]; then
-    exit 1
-fi
-
-sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator "$ALACRITTY_BIN" 70
-
-echo "Choose Alacritty as default terminal"
+echo "Choose Gnome Terminal as default terminal"
 sudo update-alternatives --config x-terminal-emulator
-
-gsettings set org.gnome.desktop.default-applications.terminal exec "$ALACRITTY_BIN"
-gsettings set org.gnome.desktop.default-applications.terminal exec-arg ""
 
 stow .
 
