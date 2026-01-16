@@ -1,4 +1,3 @@
-export PS1='\[\e[32m\]\u@\h\[\e[0m\]:\[\e[34m\]\w\[\e[0m\]\$ '
 export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 alias ls='ls --color=auto'
 alias dir='dir --color=auto'
@@ -11,3 +10,4 @@ elif [ -x "/usr/local/bin/brew" ]; then
 elif [ -x "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
+eval "$(starship init bash)"
