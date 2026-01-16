@@ -1,6 +1,6 @@
-filetype plugin indent on
-let g:netrw_banner = 0
-let g:netrw_liststyle = 1
-set cursorline number relativenumber smartindent cindent laststatus=2
+filetype plugin indent on " Filetype-specific indentation
+let g:netrw_banner = 0 " No banner
+let g:netrw_liststyle = 1 " Long listing style
+set cursorline number relativenumber smartindent cindent laststatus=2 " Options
 syntax on " Some versions don't enable it by default
-colorscheme habamax
+colorscheme habamax " Nice color scheme
