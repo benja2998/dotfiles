@@ -26,13 +26,6 @@ symbol = "aws "
 [azure]
 symbol = "az "
 
-[battery]
-full_symbol = "full "
-charging_symbol = "charging "
-discharging_symbol = "discharging "
-unknown_symbol = "unknown "
-empty_symbol = "empty "
-
 [buf]
 symbol = "buf "
 
