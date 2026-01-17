@@ -1,3 +1,3 @@
 filetype plugin indent on
-set smartindent cindent
+set smartindent cindent laststatus=2
 syntax on
