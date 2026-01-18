@@ -22,5 +22,6 @@ _darcs
 ^/LICENSE.*
 ^/COPYING
 setup-ubuntu.sh
+specific.sh
 \.termux
 .*properties
