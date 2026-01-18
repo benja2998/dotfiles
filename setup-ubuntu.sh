@@ -13,7 +13,12 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get install -y vim tmux stow git gh build-essential tree
 
-echo "Choose Gnome Terminal as default terminal"
+gsettings set org.gnome.desktop.default-applications.terminal exec 'alacritty'
+gsettings set org.gnome.desktop.default-applications.terminal exec-arg ''
+
+sudo update-alternatives --set x-terminal-emulator /usr/bin/alacritty
+
+echo "Choose Alacritty as default terminal"
 sudo update-alternatives --config x-terminal-emulator
 
 stow .
