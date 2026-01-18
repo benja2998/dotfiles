@@ -1,4 +1,4 @@
 filetype plugin indent on
-set smartindent termguicolors cindent laststatus=2
+set number relativenumber smartindent termguicolors cindent laststatus=2
 syntax on
 colorscheme nice_colorscheme
