@@ -5,8 +5,7 @@ TERM = "xterm-256color"
 hide_when_typing = true
 
 [window]
-decorations = "none"
-startup_mode = "Maximized"
+startup_mode = "Fullscreen"
 
 [font]
 size = 14
