@@ -14,12 +14,11 @@ endif
 let g:colors_name = 'nice_colorscheme'
 
 highlight Cursor		guifg=#221a1b guibg=#ffd6d9
-highlight CursorLine		guibg=#2b2223
+highlight CursorLine		guibg=#2b2223 gui=NONE guisp=NONE guifg=NONE cterm=NONE term=NONE
 highlight CursorColumn		guibg=#2b2223
 highlight Visual		guifg=#e1d1d2 guibg=#593c3f
 highlight LineNr		guifg=#6d6162 guibg=NONE
-highlight CursorLineNr		guifg=#faeaeb guibg=NONE gui=bold
-
+highlight CursorLineNr		guifg=#faeaeb guibg=NONE gui=bold gui=NONE guisp=NONE cterm=NONE term=NONE
 highlight Comment		guifg=#baabac gui=italic
 highlight Constant		guifg=#73dce6
 highlight String		guifg=#c7d174
@@ -79,5 +78,3 @@ highlight SpellRare		guisp=#d7b9ff gui=undercurl
 highlight SpellLocal		guisp=#73dce6 gui=undercurl
 
 highlight SignColumn		guifg=#e1d1d2 guibg=NONE
-
-set background=dark
