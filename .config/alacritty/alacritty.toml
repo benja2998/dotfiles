@@ -1,6 +1,9 @@
 [env]
 TERM = "xterm-256color"
 
+[mouse]
+hide_when_typing = true
+
 [window]
 startup_mode = "Fullscreen"
 opacity = 0.95
