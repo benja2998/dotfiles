@@ -23,7 +23,10 @@ vim.pack.add({
 	"https://github.com/RRethy/base16-nvim",
 	"https://github.com/benja2998/vim-tmux-navigator",
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
+	"https://github.com/lewis6991/gitsigns.nvim",
+	"https://github.com/tpope/vim-fugitive",
 })
+require("gitsigns").setup()
 pcall(vim.lsp.enable, "pyright")
 pcall(vim.lsp.enable, "lua_ls")
 pcall(vim.lsp.enable, "clangd")
