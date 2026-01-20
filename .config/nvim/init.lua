@@ -35,7 +35,7 @@ pcall(vim.lsp.enable, "rust-analyzer")
 require"nvim-treesitter".setup {
 	install_dir = vim.fn.stdpath("data") .. "/site"
 }
-require"nvim-treesitter".install { "perl", "ruby", "gitignore", "gitcommit", "python", "rust", "javascript", "zig", "lua", "c", "cpp", "bash", "zsh", "toml", "yaml", "fish", "tmux", "vim", "vimdoc", "make", "json", "typescript" }
+require"nvim-treesitter".install { "markdown", "perl", "ruby", "gitignore", "gitcommit", "python", "rust", "javascript", "zig", "lua", "c", "cpp", "bash", "zsh", "toml", "yaml", "fish", "tmux", "vim", "vimdoc", "make", "json", "typescript" }
 vim.api.nvim_create_autocmd("BufEnter", {
 	pattern = "*",
 	callback = function(args)
