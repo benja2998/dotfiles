@@ -11,7 +11,7 @@ fi
 
 sudo apt-get update -y
 sudo apt-get upgrade -y
-sudo apt-get install -y vim tmux stow git gh build-essential tree
+sudo apt-get install -y vim tmux stow git gh build-essential tree fzf
 
 gsettings set org.gnome.desktop.default-applications.terminal exec 'alacritty'
 gsettings set org.gnome.desktop.default-applications.terminal exec-arg ''
