@@ -3,6 +3,14 @@
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 
+;; Eglot
+(require 'eglot)
+
+(add-hook 'typescript-mode-hook #'eglot-ensure)
+(add-hook 'js-mode-hook #'eglot-ensure)
+(add-hook 'c-mode-hook #'eglot-ensure)
+(add-hook 'c++-mode-hook #'eglot-ensure)
+
 ;; Enable line numbers
 (setq-default display-line-numbers-type 'relative)
 (global-display-line-numbers-mode +1)
