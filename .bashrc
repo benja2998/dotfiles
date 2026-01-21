@@ -1,4 +1,5 @@
 export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
+export EDITOR="emacs"
 alias ls='ls --color=auto'
 alias dir='dir --color=auto'
 alias tree='tree -C'
