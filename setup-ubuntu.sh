@@ -3,10 +3,10 @@ set -e
 
 source /etc/os-release
 if [[ "$NAME" = *Ubuntu* ]]; then
-	echo "Ubuntu detected, continuing"
+    echo "Ubuntu detected, continuing"
 else
-	echo "Please run in Ubuntu"
-	exit 1
+    echo "Please run in Ubuntu"
+    exit 1
 fi
 
 sudo apt-get update -y

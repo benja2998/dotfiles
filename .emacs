@@ -31,23 +31,6 @@
 (setq auto-save-default nil)
 (setq create-lockfiles nil)
 
-;; Use tabs
-(setq-default indent-tabs-mode t)
-(setq-default tab-width 4)
-
-;; Enforce tabs everywhere
-(add-hook 'prog-mode-hook
-          (lambda ()
-            (setq indent-tabs-mode t)
-            (setq tab-width 4)))
-
-(add-hook 'text-mode-hook
-          (lambda ()
-            (setq indent-tabs-mode t)
-			(setq tab-width 4)))
-
-(setq c-basic-offset 4)
-
 ;; Packages
 (require 'package)
 
@@ -75,16 +58,10 @@
   (setq markdown-command "pandoc"))
 
 (use-package typescript-mode
-  :mode "\\.ts\\'"
-  :hook (typescript-mode . (lambda ()
-                              (setq indent-tabs-mode t)
-                              (setq tab-width 4))))
+  :mode "\\.ts\\'")
 
 (use-package lua-mode
-  :mode "\\.lua\\'"
-  :hook (lua-mode . (lambda ()
-                              (setq indent-tabs-mode t)
-                              (setq tab-width 4))))
+  :mode "\\.lua\\'")
 
 ;; Custom
 (setq custom-file "~/.emacs.custom.el")
