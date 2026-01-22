@@ -5,32 +5,8 @@ TERM = "xterm-256color"
 hide_when_typing = true
 
 [window]
-startup_mode = "Maximized"
+startup_mode = "Windowed"
 
 [font]
-size = 14
+size = 12
 normal = { family = "Hack Nerd Font Mono" }
-
-[colors.bright]
-black = "0x2f0923"
-blue = "0x81a2be"
-cyan = "0x8abeb7"
-green = "0xb5bd68"
-magenta = "0xb294bb"
-red = "0xcc6666"
-white = "0xffd5f2"
-yellow = "0xf0c674"
-
-[colors.normal]
-black = "0x23071a"
-blue = "0x5f819d"
-cyan = "0x5e8d87"
-green = "0x8c9440"
-magenta = "0x85678f"
-red = "0xa54242"
-white = "0xc2a2b8"
-yellow = "0xde935f"
-
-[colors.primary]
-background = "0x380c2a"
-foreground = "0xffd5f2"
