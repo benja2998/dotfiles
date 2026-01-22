@@ -4,7 +4,7 @@
 (setq ido-everywhere t)
 
 ;; Eglot
-(require 'eglot) ;; Eglot is now built into emacs
+(require 'eglot) ; Eglot is now built into emacs
 
 (add-hook 'typescript-mode-hook #'eglot-ensure)
 (add-hook 'js-mode-hook #'eglot-ensure)
