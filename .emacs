@@ -80,6 +80,12 @@
                               (setq indent-tabs-mode t)
                               (setq tab-width 4))))
 
+(use-package lua-mode
+  :mode "\\.lua\\'"
+  :hook (lua-mode . (lambda ()
+                              (setq indent-tabs-mode t)
+                              (setq tab-width 4))))
+
 ;; Custom
 (setq custom-file "~/.emacs.custom.el")
 (load custom-file)
