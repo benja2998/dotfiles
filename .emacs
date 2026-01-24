@@ -30,6 +30,7 @@
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 (setq create-lockfiles nil)
+(setq tramp-auto-save-directory "/tmp")
 
 ;; Packages
 (require 'package)
@@ -62,6 +63,13 @@
 
 (use-package lua-mode
   :mode "\\.lua\\'")
+
+;; Keys
+(global-unset-key (kbd "C-x C-b")) ;; C-x b is a lot more useful
+(global-unset-key (kbd "C-x C-d")) ;; C-x d is a lot more useful
+
+;; Font
+(set-face-attribute 'default nil :height 140)
 
 ;; Custom
 (setq custom-file "~/.emacs.custom.el")
