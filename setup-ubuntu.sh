@@ -11,7 +11,7 @@ fi
 
 sudo apt-get update -y
 sudo apt-get upgrade -y
-sudo apt-get install -y emacs nano tmux stow git gh build-essential tree fzf zoxide
+sudo apt-get install -y nano tmux stow git gh build-essential tree fzf zoxide
 sudo snap install kdenlive
 sudo snap install kate --classic
 
