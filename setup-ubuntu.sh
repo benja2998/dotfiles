@@ -11,7 +11,7 @@ fi
 
 sudo apt-get update -y
 sudo apt-get upgrade -y
-sudo apt-get install -y emacs nano tmux stow git gh build-essential tree fzf
+sudo apt-get install -y emacs nano tmux stow git gh build-essential tree fzf zoxide
 
 gsettings set org.gnome.desktop.default-applications.terminal exec 'alacritty'
 gsettings set org.gnome.desktop.default-applications.terminal exec-arg ''
