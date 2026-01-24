@@ -6,6 +6,7 @@ hide_when_typing = true
 
 [window]
 startup_mode = "Windowed"
+opacity = 0.9
 
 [font]
 size = 12
