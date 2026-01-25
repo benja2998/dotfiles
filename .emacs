@@ -12,7 +12,6 @@
 (add-hook 'c++-mode-hook #'eglot-ensure)
 
 ;; Enable line numbers
-(setq-default display-line-numbers-type 'relative)
 (global-display-line-numbers-mode +1)
 
 ;; Clean up the UI
