@@ -14,12 +14,10 @@ sudo apt-get upgrade -y
 sudo apt-get install -y emacs nano tmux stow git gh build-essential tree fzf zoxide
 sudo snap install kdenlive
 
-gsettings set org.gnome.desktop.default-applications.terminal exec 'alacritty'
+gsettings set org.gnome.desktop.default-applications.terminal exec 'gnome-terminal'
 gsettings set org.gnome.desktop.default-applications.terminal exec-arg ''
 
-sudo update-alternatives --set x-terminal-emulator /usr/bin/alacritty
-
-echo "Choose Alacritty as default terminal"
+echo "Choose Gnome term as default terminal"
 sudo update-alternatives --config x-terminal-emulator
 
 stow .
