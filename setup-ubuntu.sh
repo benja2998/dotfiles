@@ -11,13 +11,13 @@ fi
 
 sudo apt-get update -y
 sudo apt-get upgrade -y
-sudo apt-get install -y emacs nano tmux stow git gh build-essential tree fzf zoxide
+sudo apt-get install -y kitty emacs nano tmux stow git gh build-essential tree fzf zoxide
 sudo snap install kdenlive
 
-gsettings set org.gnome.desktop.default-applications.terminal exec 'gnome-terminal'
+gsettings set org.gnome.desktop.default-applications.terminal exec 'kitty'
 gsettings set org.gnome.desktop.default-applications.terminal exec-arg ''
 
-echo "Choose Gnome term as default terminal"
+echo "Choose kitty as default terminal"
 sudo update-alternatives --config x-terminal-emulator
 
 stow .
