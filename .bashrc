@@ -1,6 +1,8 @@
 export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 export PS1='\W \$ '
 export EDITOR="nano"
+HISTSIZE=50000
+HISTFILESIZE=50000
 alias ls='ls --color=auto'
 alias dir='dir --color=auto'
 alias tree='tree -C'
