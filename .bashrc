@@ -1,5 +1,7 @@
 export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 export PS1='\W \$ '
+export TERM="xterm-256color"
+export COLORTERM="truecolor"
 export EDITOR="nano"
 HISTSIZE=50000
 HISTFILESIZE=50000

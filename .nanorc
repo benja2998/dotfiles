@@ -3,3 +3,4 @@ set softwrap
 set autoindent
 set mouse
 set smarthome
+set multibuffer
