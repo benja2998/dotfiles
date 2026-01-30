@@ -11,8 +11,8 @@ fi
 
 sudo apt-get update -y
 sudo apt-get upgrade -y
-sudo apt-get install -y kitty emacs nano tmux stow git gh build-essential tree fzf zoxide
-sudo snap install kdenlive
+sudo apt-get install -y kitty nano tmux stow git gh build-essential tree fzf zoxide
+sudo snap install kdenlive emacs
 
 gsettings set org.gnome.desktop.default-applications.terminal exec 'kitty'
 gsettings set org.gnome.desktop.default-applications.terminal exec-arg ''

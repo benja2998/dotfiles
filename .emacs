@@ -10,6 +10,7 @@
 (add-hook 'js-mode-hook #'eglot-ensure)
 (add-hook 'c-mode-hook #'eglot-ensure)
 (add-hook 'c++-mode-hook #'eglot-ensure)
+(add-hook 'rust-mode-hook #'eglot-ensure)
 
 ;; Enable line numbers
 (global-display-line-numbers-mode +1)
@@ -58,6 +59,9 @@
 
 (use-package lua-mode
   :mode "\\.lua\\'")
+
+(use-package rust-mode
+  :mode "\\.rs\\'")
 
 (use-package tokyonight-themes
   :vc (:url "https://github.com/xuchengpeng/tokyonight-themes"))
