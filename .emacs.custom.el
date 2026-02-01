@@ -8,9 +8,7 @@
    '("0ca4a8417a19ecbbf4538550b90424bf11d5e8caff99c605165cf0a058b52fef"
      "a7d492b6d2d0940ef70f376e82e94144c2493a5a687c514f607a45587920f803"
      default))
- '(package-selected-packages
-   '(lua-mode magit markdown-mode rust-mode tokyonight-themes
-	      typescript-mode))
+ '(package-selected-packages nil)
  '(package-vc-selected-packages
    '((tokyonight-themes :url
 			"https://github.com/xuchengpeng/tokyonight-themes"))))
