@@ -1,3 +1,6 @@
+;; Set the custom file
+(setq custom-file "~/.emacs.custom.el")
+
 ;; Enable ido mode
 (ido-mode t)
 (setq ido-enable-flex-matching t)
@@ -79,6 +82,5 @@
 ;; Font
 (set-face-attribute 'default nil :height 140)
 
-;; Custom
-(setq custom-file "~/.emacs.custom.el")
+;; Load the custom file
 (load custom-file)
