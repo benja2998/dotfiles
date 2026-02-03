@@ -85,10 +85,8 @@
 (use-package vterm
   :ensure t)
 
-;; Vterm
-(global-set-key (kbd "C-c t") 'vterm)
-
 ;; Keys
+(global-set-key (kbd "C-c t") 'vterm)
 (global-unset-key (kbd "C-x C-b")) ;; C-x b is a lot more useful
 (global-unset-key (kbd "C-x C-d")) ;; C-x d is a lot more useful
 
