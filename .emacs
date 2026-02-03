@@ -1,6 +1,10 @@
 ;; Set the custom file
 (setq custom-file "~/.emacs.custom.el")
 
+;; Mac stuff
+(setq mac-option-modifier 'meta)
+(setq mac-right-option-modifier 'none)
+
 ;; Enable ido mode
 (ido-mode t)
 (setq ido-enable-flex-matching t)
