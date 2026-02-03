@@ -21,7 +21,10 @@
 (tool-bar-mode 0)
 
 ;; Windmove
-(windmove-default-keybindings 'meta)
+(global-set-key (kbd "M-h") #'windmove-left)
+(global-set-key (kbd "M-l") #'windmove-right)
+(global-set-key (kbd "M-k") #'windmove-up)
+(global-set-key (kbd "M-j") #'windmove-down)
 
 ;; Disable splash screen
 (setq inhibit-splash-screen t)
@@ -65,6 +68,9 @@
 
 (use-package tokyonight-themes
   :vc (:url "https://github.com/xuchengpeng/tokyonight-themes"))
+
+(use-package org-superstar
+  :hook (org-mode . org-superstar-mode))
 
 ;; Keys
 (global-unset-key (kbd "C-x C-b")) ;; C-x b is a lot more useful
