@@ -5,6 +5,9 @@
 (setq mac-option-modifier 'meta)
 (setq mac-right-option-modifier 'none)
 
+;; Use y/n instead of yes/no
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 ;; Enable ido mode
 (ido-mode t)
 (setq ido-enable-flex-matching t)
