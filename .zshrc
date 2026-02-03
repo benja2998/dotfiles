@@ -16,4 +16,4 @@ elif [ -x "/usr/local/bin/brew" ]; then
 elif [ -x "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
-eval "$(zoxide init --cmd cd bash)"
+eval "$(zoxide init --cmd cd zsh)"
