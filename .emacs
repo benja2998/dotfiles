@@ -24,6 +24,7 @@
 
 ;; Enable line numbers
 (global-display-line-numbers-mode +1)
+(menu-bar--display-line-numbers-mode-relative)
 
 ;; Clean up the UI
 (menu-bar-mode 0)
