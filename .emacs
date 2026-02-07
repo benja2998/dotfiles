@@ -26,9 +26,6 @@
 (global-display-line-numbers-mode +1)
 (menu-bar--display-line-numbers-mode-relative)
 
-;; Highlight current line
-(global-hl-line-mode +1)
-
 ;; Clean up the UI
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
