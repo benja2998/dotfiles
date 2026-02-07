@@ -1,5 +1,5 @@
 export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
-export PS1='\W \$ '
+export PS1='\w \$ '
 export TERM="xterm-256color"
 export COLORTERM="truecolor"
 export EDITOR="nano"
