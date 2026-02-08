@@ -77,14 +77,18 @@
 (use-package rust-mode
   :mode "\\.rs\\'")
 
-(use-package tokyonight-themes
-  :vc (:url "https://github.com/xuchengpeng/tokyonight-themes"))
+(use-package catppuccin-theme)
 
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode))
 
 (use-package vterm
   :ensure t)
+
+;; Theme
+(load-theme 'catppuccin :no-confirm)
+(setq catppuccin-flavor 'latte)
+(catppuccin-reload)
 
 ;; Keys
 (global-set-key (kbd "C-c t") 'vterm)
@@ -94,5 +98,5 @@
 ;; Font
 (set-face-attribute 'default nil :height 140)
 
-;; Load the custom file
-(load custom-file)
+;; Don't load the custom file
+;;(load custom-file nil t)
