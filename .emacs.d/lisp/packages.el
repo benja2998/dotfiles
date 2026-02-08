@@ -35,4 +35,9 @@
 
 (use-package vterm
   :ensure t)
+
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1))
+
 (provide 'packages)
