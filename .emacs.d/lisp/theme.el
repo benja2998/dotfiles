@@ -1,4 +1,2 @@
-(load-theme 'catppuccin :no-confirm)
-(setq catppuccin-flavor 'mocha)
-(catppuccin-reload)
+(load-theme 'modus-vivendi)
 (provide 'theme)

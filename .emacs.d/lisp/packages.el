@@ -28,8 +28,6 @@
 (use-package rust-mode
   :mode "\\.rs\\'")
 
-(use-package catppuccin-theme)
-
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode))
 
