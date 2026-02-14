@@ -1,2 +1,2 @@
-(load-theme 'modus-vivendi-tinted)
+(load-theme 'modus-vivendi)
 (provide 'theme)
