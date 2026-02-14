@@ -34,4 +34,7 @@
 (use-package vterm
   :ensure t)
 
+(use-package spaceline
+  :ensure t)
+
 (provide 'packages)

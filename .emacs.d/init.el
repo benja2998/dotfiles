@@ -9,6 +9,7 @@
 (require 'navigation)
 (require 'lsp)
 (require 'packages)
+(require 'modeline)
 (require 'keys)
 (require 'theme)
 (require 'font)
