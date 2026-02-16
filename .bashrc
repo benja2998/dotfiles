@@ -6,6 +6,9 @@ export EDITOR="nano"
 HISTSIZE=50000
 HISTFILESIZE=50000
 alias ls='ls --color=auto'
+alias vim='emacs'
+alias nvim='emacs'
+alias lvim='emacs'
 alias dir='dir --color=auto'
 alias tree='tree -C'
 alias grep='grep --color=auto'
