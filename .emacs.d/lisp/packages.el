@@ -25,6 +25,9 @@
 (use-package lua-mode
   :mode "\\.lua\\'")
 
+(use-package fish-mode
+  :mode "\\.fish\\'")
+
 (use-package rust-mode
   :mode "\\.rs\\'")
 
