@@ -2,12 +2,14 @@ export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 export PS1='%~ %# '
 export TERM="xterm-256color"
 export COLORTERM="truecolor"
-export EDITOR="nano"
+export EDITOR='emacsclient -t -a ""'
+export VISUAL='emacsclient -c -a ""'
 HISTSIZE=50000
 HISTFILESIZE=50000
 alias ls='ls --color=auto'
 alias dir='dir --color=auto'
 alias tree='tree -C'
+alias emacs='emacsclient -c -a ""'
 alias grep='grep --color=auto'
 if [ -x "/opt/homebrew/bin/brew" ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
