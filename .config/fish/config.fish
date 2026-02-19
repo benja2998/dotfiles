@@ -9,6 +9,9 @@ if status is-interactive
     alias dir 'dir --color=auto'
     alias tree 'tree -C'
     alias emacs 'emacsclient -c -a ""'
+    alias rm 'rm -i'
+    alias mv 'mv -i'
+    alias cp 'cp -i'
     alias grep 'grep --color=auto'
 
     if test -x /opt/homebrew/bin/brew
