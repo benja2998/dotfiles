@@ -11,7 +11,6 @@
 (setq use-package-always-ensure t)
 
 (use-package magit
-  :defer t
   :bind ("C-c g" . magit-status))
 
 (use-package markdown-mode
@@ -33,11 +32,9 @@
   :hook (org-mode . org-superstar-mode))
 
 (use-package vterm
-  :defer t
   :ensure t)
 
 (use-package spaceline
-  :defer t
   :ensure t)
 
 (provide 'packages)
