@@ -12,7 +12,7 @@ fi
 echo "Installing packages"
 sudo apt-get update -y
 sudo apt-get upgrade -y
-sudo apt-get install -y stow git gh build-essential tree zoxide emacs
+sudo apt-get install -y stow git gh build-essential tree zoxide emacs fish
 sudo snap install kdenlive
 
 echo "Symlinking files"
@@ -20,6 +20,9 @@ stow .
 
 echo "Setting up systemd service"
 systemctl --user enable --now emacs
+
+echo "Setting shell to fish"
+chsh -s /bin/fish
 
 echo "Now setting up Homebrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
