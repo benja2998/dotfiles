@@ -1,8 +1,6 @@
 (setq mac-option-modifier 'meta)
 (setq mac-right-option-modifier 'none)
 
-(add-to-list 'auto-mode-alist '("COMMIT_EDITMSG\\'" . git-commit-mode))
-
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (global-display-line-numbers-mode +1)
