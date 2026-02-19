@@ -4,7 +4,6 @@ if status is-interactive
     set -gx COLORTERM "truecolor"
     set -gx EDITOR 'emacsclient -t -a ""'
     set -gx VISUAL 'emacsclient -c -a ""'
-    set -gx HISTSIZE 50000
 
     alias ls 'ls --color=auto'
     alias dir 'dir --color=auto'
