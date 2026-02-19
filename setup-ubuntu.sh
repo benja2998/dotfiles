@@ -9,18 +9,17 @@ else
     exit 1
 fi
 
+echo "Installing packages"
 sudo apt-get update -y
 sudo apt-get upgrade -y
-sudo apt-get install -y kitty nano tmux stow git gh build-essential tree fzf zoxide
-sudo snap install kdenlive emacs
+sudo apt-get install -y stow git gh build-essential tree zoxide emacs
+sudo snap install kdenlive
 
-gsettings set org.gnome.desktop.default-applications.terminal exec 'kitty'
-gsettings set org.gnome.desktop.default-applications.terminal exec-arg ''
-
-echo "Choose kitty as default terminal"
-sudo update-alternatives --config x-terminal-emulator
-
+echo "Symlinking files"
 stow .
+
+echo "Setting up systemd service"
+systemctl --user enable --now emacs
 
 echo "Now setting up Homebrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
