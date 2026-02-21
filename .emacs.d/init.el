@@ -4,6 +4,10 @@
 ;; Add the lisp directory to load path
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
+;; Load magit on start
+(add-hook 'emacs-startup-hook 'magit-status)
+(add-hook 'emacs-startup-hook 'magit-mode-bury-buffer t)
+
 ;; Require the files
 (require 'options)
 (require 'navigation)
