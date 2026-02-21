@@ -23,6 +23,3 @@ systemctl --user enable --now emacs
 
 echo "Setting shell to fish"
 chsh -s /bin/fish
-
-echo "Now setting up Homebrew"
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
