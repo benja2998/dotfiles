@@ -15,4 +15,7 @@
 (setq auto-save-default nil)
 (setq create-lockfiles nil)
 (setq tramp-auto-save-directory "/tmp")
+
+(add-to-list 'exec-path "/opt/local/bin")
+(setenv "PATH" (concat "/opt/local/bin:" (getenv "PATH")))
 (provide 'options)
