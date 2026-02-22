@@ -1,19 +1,3 @@
-;; Set the custom file
-(setq custom-file (make-temp-file "emacs-custom"))
-
-;; Add the lisp directory to load path
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-
-;; Load magit on start
-(add-hook 'emacs-startup-hook 'magit-status)
-(add-hook 'emacs-startup-hook 'magit-mode-bury-buffer t)
-
-;; Require the files
-(require 'options)
-(require 'navigation)
-(require 'lsp)
-(require 'packages)
-(require 'modeline)
-(require 'keys)
-(require 'theme)
-(require 'font)
+;; Use Org-Babel to load the configuration from config.org
+(org-babel-load-file
+ (expand-file-name "config.org" user-emacs-directory))

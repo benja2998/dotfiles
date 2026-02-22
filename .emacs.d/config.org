@@ -1,0 +1,195 @@
+* Emacs Config
+
+** Options
+
+The custom file should not exist. The closest thing to making it never be created is this.
+
+#+BEGIN_SRC elisp
+(setq custom-file (make-temp-file "emacs-custom"))
+#+END_SRC
+
+On macOS, both option keys are meta. On my keyboard layout, you need right option to type special characters, so I fix this like this.
+
+#+BEGIN_SRC elisp
+(setq mac-option-modifier 'meta)
+(setq mac-right-option-modifier 'none)
+#+END_SRC
+
+Typing 'yes' every time is annoying. Luckily, the fix is easy.
+
+#+BEGIN_SRC elisp
+(setq use-short-answers t)
+#+END_SRC
+
+Relative line numbers allow faster navigation, so i am enabling them.
+
+#+BEGIN_SRC elisp
+(global-display-line-numbers-mode +1)
+(menu-bar--display-line-numbers-mode-relative)
+#+END_SRC
+
+I want a clean UI.
+
+#+BEGIN_SRC elisp
+(menu-bar-mode 0)
+(scroll-bar-mode 0)
+(tool-bar-mode 0)
+#+END_SRC
+
+Now I need to make emacs less annoying.
+
+#+BEGIN_SRC elisp
+(setq inhibit-splash-screen t)
+(setq make-backup-files nil)
+(setq auto-save-default nil)
+(setq create-lockfiles nil)
+(setq tramp-auto-save-directory "/tmp")
+#+END_SRC
+
+** IDO mode
+
+IDO mode is so universally useful. I do not get why this isn't enabled by defautl.
+
+#+BEGIN_SRC elisp
+(ido-mode t)
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+#+END_SRC
+
+** Colors
+
+modus-vivendi is a nice readable theme.
+
+#+BEGIN_SRC elisp
+(load-theme 'modus-vivendi t)
+#+END_SRC
+
+** Packages
+
+I need to set up the package manager.
+
+#+BEGIN_SRC elisp
+(require 'package)
+
+(setq package-archives
+      '(("gnu"   . "https://elpa.gnu.org/packages/")
+        ("melpa" . "https://melpa.org/packages/")
+        ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
+
+(package-initialize)
+
+(require 'use-package)
+(setq use-package-always-ensure t)
+#+END_SRC
+
+To get the best Emacs experience, I use the packages Magit, some language modes, Vterm, Spaceline and Org superstar.
+
+#+BEGIN_SRC elisp
+(use-package magit
+  :bind ("C-c g" . magit-status))
+
+(use-package markdown-mode
+  :mode (("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init
+  (setq markdown-command "pandoc"))
+
+(use-package typescript-mode
+  :mode "\\.ts\\'")
+
+(use-package lua-mode
+  :mode "\\.lua\\'")
+
+(use-package fish-mode
+  :mode "\\.fish\\'")
+
+(use-package rust-mode
+  :mode "\\.rs\\'")
+
+(use-package org-superstar
+  :hook (org-mode . org-superstar-mode))
+
+(use-package vterm
+  :ensure t)
+
+(use-package spaceline
+  :ensure t)
+#+END_SRC
+
+** Keys
+
+Keys for faster and more precise window navigation with Windmove.
+
+#+BEGIN_SRC elisp
+(global-set-key (kbd "M-j") #'windmove-left)
+(global-set-key (kbd "M-l") #'windmove-right)
+(global-set-key (kbd "M-i") #'windmove-up)
+(global-set-key (kbd "M-k") #'windmove-down)
+#+END_SRC
+
+I want to open Vterm quickly.
+
+#+BEGIN_SRC elisp
+(global-set-key (kbd "C-c t") 'vterm)
+#+END_SRC
+
+Unset some keys I often accidentally hit.
+
+#+BEGIN_SRC elisp
+(global-unset-key (kbd "C-x C-b"))
+(global-unset-key (kbd "C-x C-d"))
+#+END_SRC
+
+** Font
+
+I need to be able to read my code.
+
+#+BEGIN_SRC elisp
+(set-face-attribute 'default nil :height 140)
+#+END_SRC
+
+** LSP
+
+I want my editor to be smart.
+
+I need to require Eglot, which is the client built into emacs and is extremely easy to set up.
+
+#+BEGIN_SRC elisp
+(require 'eglot)
+#+END_SRC
+
+Now I need to configure each LSP I need.
+
+#+BEGIN_SRC elisp
+(add-hook 'typescript-mode-hook #'eglot-ensure)
+(add-hook 'js-mode-hook #'eglot-ensure)
+(add-hook 'c-mode-hook #'eglot-ensure)
+(add-hook 'c++-mode-hook #'eglot-ensure)
+(add-hook 'rust-mode-hook #'eglot-ensure)
+#+END_SRC
+
+** Modeline
+
+Make the modeline look pretty using Spaceline.
+
+#+BEGIN_SRC elisp
+(require 'spaceline-config)
+(spaceline-spacemacs-theme)
+#+END_SRC
+
+** Word wrap
+
+Some Neovim web dev is probably going to find me and kill me for this.
+
+#+BEGIN_SRC elisp
+(global-visual-line-mode t)
+#+END_SRC
+
+** Hooks
+
+I set emacsclient as my default Git editor. I wanted to get Magit commit UI in the buffer, and the method I found was to load it on start like this.
+
+#+BEGIN_SRC elisp
+(add-hook 'emacs-startup-hook 'magit-status)
+(add-hook 'emacs-startup-hook 'magit-mode-bury-buffer t)
+#+END_SRC
