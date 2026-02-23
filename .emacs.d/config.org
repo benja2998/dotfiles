@@ -179,7 +179,7 @@ Make the modeline look pretty using Spaceline.
 
 ** Word wrap
 
-Some Neovim web dev is probably going to find me and kill me for this.
+Most people disable word wrap in other editors. But I am enabling it.
 
 #+BEGIN_SRC elisp
 (global-visual-line-mode t)
