@@ -24,8 +24,7 @@ Typing 'yes' every time is annoying. Luckily, the fix is easy.
 Relative line numbers allow faster navigation, so i am enabling them.
 
 #+BEGIN_SRC elisp
-  (global-display-line-numbers-mode +1)
-  (menu-bar--display-line-numbers-mode-relative)
+  (setq display-line-numbers-type 'relative)
 #+END_SRC
 
 I want a clean UI.
@@ -56,14 +55,6 @@ IDO mode is so universally useful. I do not get why this isn't enabled by defaut
   (setq ido-everywhere t)
 #+END_SRC
 
-** Colors
-
-modus-vivendi is a nice readable theme.
-
-#+BEGIN_SRC elisp
-  (load-theme 'modus-vivendi t)
-#+END_SRC
-
 ** Packages
 
 I need to set up the package manager.
@@ -82,38 +73,58 @@ I need to set up the package manager.
   (setq use-package-always-ensure t)
 #+END_SRC
 
-To get the best Emacs experience, I use the packages Magit, some language modes, Vterm, Spaceline and Org superstar.
+Now install the packages.
 
 #+BEGIN_SRC elisp
-  (use-package magit
-    :bind ("C-c g" . magit-status))
-
-  (use-package markdown-mode
-    :mode (("\\.md\\'" . markdown-mode)
-           ("\\.markdown\\'" . markdown-mode))
+  (use-package eat
+    :vc (:url "https://codeberg.org/akib/emacs-eat"
+  	    :rev :newest)
     :init
-    (setq markdown-command "pandoc"))
 
-  (use-package typescript-mode
-    :mode "\\.ts\\'")
+    (use-package magit
+      :bind ("C-c g" . magit-status))
 
-  (use-package lua-mode
-    :mode "\\.lua\\'")
+    (use-package markdown-mode
+      :mode (("\\.md\\'" . markdown-mode)
+             ("\\.markdown\\'" . markdown-mode))
+      :init
+      (setq markdown-command "pandoc"))
 
-  (use-package fish-mode
-    :mode "\\.fish\\'")
+    (use-package typescript-mode
+      :mode "\\.ts\\'")
 
-  (use-package rust-mode
-    :mode "\\.rs\\'")
+    (use-package lua-mode
+      :mode "\\.lua\\'")
 
-  (use-package org-superstar
-    :hook (org-mode . org-superstar-mode))
+    (use-package fish-mode
+      :mode "\\.fish\\'")
 
-  (use-package vterm
-    :ensure t)
+    (use-package rust-mode
+      :mode "\\.rs\\'")
 
-  (use-package spaceline
-    :ensure t)  
+    (use-package org-superstar
+      :hook (org-mode . org-superstar-mode))
+
+    (use-package vterm
+      :ensure t)
+
+    (use-package doom-modeline
+      :ensure t
+      :init (doom-modeline-mode 1))
+
+    (use-package nerd-icons)
+
+    (use-package catppuccin-theme)
+#+END_SRC
+
+** Colors
+
+I use the Catppuccin theme.
+
+#+BEGIN_SRC elisp
+  (load-theme 'catppuccin :no-confirm)
+  (setq catppuccin-theme 'mocha)
+  (catppuccin-reload)
 #+END_SRC
 
 ** Keys
@@ -127,10 +138,10 @@ Keys for faster and more precise window navigation with Windmove.
   (global-set-key (kbd "M-k") #'windmove-down)
 #+END_SRC
 
-I want to open Vterm quickly.
+I want to open Eat quickly.
 
 #+BEGIN_SRC elisp
-  (global-set-key (kbd "C-c t") 'vterm)
+  (global-set-key (kbd "C-c t") 'eat)
 #+END_SRC
 
 Unset some keys I often accidentally hit.
@@ -140,12 +151,19 @@ Unset some keys I often accidentally hit.
   (global-unset-key (kbd "C-x C-d"))
 #+END_SRC
 
+I want C-x ps to open Eat instead.
+
+#+BEGIN_SRC elisp
+  (with-eval-after-load 'project
+    (define-key project-prefix-map (kbd "s") #'eat-project))
+#+END_SRC
+
 ** Font
 
 I need to be able to read my code.
 
 #+BEGIN_SRC elisp
-  (set-face-attribute 'default nil :height 140)
+  (set-face-attribute 'default nil :font "JetBrainsMono Nerd Font" :height 140)
 #+END_SRC
 
 ** LSP
@@ -168,15 +186,6 @@ Now I need to configure each LSP I need.
   (add-hook 'rust-mode-hook #'eglot-ensure)
 #+END_SRC
 
-** Modeline
-
-Make the modeline look pretty using Spaceline.
-
-#+BEGIN_SRC elisp
-  (require 'spaceline-config)
-  (spaceline-spacemacs-theme)
-#+END_SRC
-
 ** Word wrap
 
 Most people disable word wrap in other editors. But I am enabling it.
@@ -192,4 +201,17 @@ I set emacsclient as my default Git editor. I wanted to get Magit commit UI in t
 #+BEGIN_SRC elisp
   (add-hook 'emacs-startup-hook 'magit-status)
   (add-hook 'emacs-startup-hook 'magit-mode-bury-buffer t)
+#+END_SRC
+
+I want to only display line numbers when it makes sense to.
+
+#+BEGIN_SRC elisp
+  (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+  (add-hook 'text-mode-hook 'display-line-numbers-mode)
+#+END_SRC
+
+I want eshell to be captured by eat.
+
+#+BEGIN_SRC elisp
+  (add-hook 'eshell-load-hook #'eat-eshell-mode))
 #+END_SRC
