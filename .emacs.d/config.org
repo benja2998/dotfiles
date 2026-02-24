@@ -137,6 +137,10 @@ Now install the packages.
   (use-package nerd-icons)
 
   (use-package catppuccin-theme)
+
+  (use-package nerd-icons-dired
+    :hook
+    (dired-mode . nerd-icons-dired-mode))
 #+END_SRC
 
 ** Colors
