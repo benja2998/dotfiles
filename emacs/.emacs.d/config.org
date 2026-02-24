@@ -47,6 +47,12 @@ Now I need to make emacs less annoying.
   (setq tramp-auto-save-directory "/tmp")
 #+END_SRC
 
+Make use-package compute stats.
+
+#+BEGIN_SRC elisp
+(setq use-package-compute-statistics t)
+#+END_SRC
+
 ** Packages
 
 I need to set up the package manager.
@@ -59,7 +65,7 @@ I need to set up the package manager.
           ("melpa" . "https://melpa.org/packages/")
           ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
 
-  (package-initialize)
+  (setq package-enable-at-startup nil)
 
   (require 'use-package)
   (setq use-package-always-ensure t)
@@ -69,6 +75,7 @@ Now install the packages.
 
 #+BEGIN_SRC elisp
   (use-package vertico
+    :defer t
     :custom
     (vertico-scroll-margin 0) ;; Different scroll margin
     (vertico-count 20) ;; Show more candidates
@@ -79,11 +86,13 @@ Now install the packages.
 
   ;; Persist history over Emacs restarts. Vertico sorts by history position.
   (use-package savehist
+    :defer t
     :init
     (savehist-mode))
 
   ;; Emacs minibuffer configurations.
   (use-package emacs
+    :defer t
     :custom
     ;; Enable context menu. `vertico-multiform-mode' adds a menu in the minibuffer
     ;; to switch display modes.
@@ -100,6 +109,7 @@ Now install the packages.
 
   (use-package orderless
     :ensure t
+    :defer t
     :custom
     (orderless-matching-styles '(orderless-literal orderless-regexp orderless-flex))
     (completion-styles '(orderless basic))
@@ -107,6 +117,7 @@ Now install the packages.
     (completion-pcm-leading-wildcard t)) ;; Emacs 31: partial-completion behaves like substring
 
   (use-package magit
+    :defer t
     :bind ("C-c g" . magit-status))
 
   (use-package markdown-mode
@@ -128,15 +139,17 @@ Now install the packages.
     :mode "\\.rs\\'")
 
   (use-package org-superstar
+    :defer t
     :hook (org-mode . org-superstar-mode))
 
   (use-package doom-modeline
+    :defer t
     :ensure t
-    :init (doom-modeline-mode 1))
+    :hook (after-init . doom-modeline-mode))
 
-  (use-package nerd-icons)
+  (use-package nerd-icons :defer t)
 
-  (use-package catppuccin-theme)
+  (use-package catppuccin-theme :defer t)
 
   (use-package nerd-icons-dired
     :hook
@@ -149,7 +162,6 @@ I use the Catppuccin theme.
 
 #+BEGIN_SRC elisp
   (setq catppuccin-flavor 'mocha)
-  (load-theme 'catppuccin :no-confirm)
 #+END_SRC
 
 ** Keys
@@ -183,25 +195,9 @@ I want C-x ps to open Eat instead.
     (define-key project-prefix-map (kbd "s") #'eat-project))
 #+END_SRC
 
-** Font
-
-I need to be able to read my code.
-
-#+BEGIN_SRC elisp
-  (set-face-attribute 'default nil :font "JetBrainsMono Nerd Font" :height 140)
-#+END_SRC
-
 ** LSP
 
-I want my editor to be smart.
-
-I need to require Eglot, which is the client built into emacs and is extremely easy to set up.
-
-#+BEGIN_SRC elisp
-  (require 'eglot)
-#+END_SRC
-
-Now I need to configure each LSP I need.
+I want my editor to be smart. I use Eglot as it is built into Emacs.
 
 #+BEGIN_SRC elisp
   (add-hook 'typescript-mode-hook #'eglot-ensure)
@@ -211,21 +207,18 @@ Now I need to configure each LSP I need.
   (add-hook 'rust-mode-hook #'eglot-ensure)
 #+END_SRC
 
-** Word wrap
+** Hooks
 
 Most people disable word wrap in other editors. But I am enabling it.
 
 #+BEGIN_SRC elisp
-  (global-visual-line-mode t)
+  (add-hook 'after-init-hook (lambda () (global-visual-line-mode t)))
 #+END_SRC
 
-** Hooks
-
-I want to pre-load magit.
+I need to be able to read my code.
 
 #+BEGIN_SRC elisp
-  (add-hook 'emacs-startup-hook 'magit-status)
-  (add-hook 'emacs-startup-hook 'magit-mode-bury-buffer t)
+  (add-hook 'after-init-hook (lambda () (set-face-attribute 'default nil :font "JetBrainsMono Nerd Font" :height 140)))
 #+END_SRC
 
 I want to only display line numbers when it makes sense to.
@@ -240,4 +233,10 @@ I want eshell to be captured by eat.
 
 #+BEGIN_SRC elisp
   (add-hook 'eshell-load-hook #'eat-eshell-mode)
+#+END_SRC
+
+I want to only load catppuccin on startup.
+
+#+BEGIN_SRC elisp
+  (add-hook 'after-init-hook (lambda () (load-theme 'catppuccin :no-confirm)))
 #+END_SRC
