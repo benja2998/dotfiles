@@ -4,6 +4,14 @@
 
 ** Options
 
+I want a clean UI.
+
+#+BEGIN_SRC elisp
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
+#+END_SRC
+
 The custom file should not exist. The closest thing to making it never be created is this.
 
 #+BEGIN_SRC elisp
@@ -29,14 +37,6 @@ Relative line numbers allow faster navigation, so i am enabling them.
   (setq display-line-numbers-type 'relative)
 #+END_SRC
 
-I want a clean UI.
-
-#+BEGIN_SRC elisp
-  (menu-bar-mode 0)
-  (scroll-bar-mode 0)
-  (tool-bar-mode 0)
-#+END_SRC
-
 Now I need to make emacs less annoying.
 
 #+BEGIN_SRC elisp
@@ -45,12 +45,6 @@ Now I need to make emacs less annoying.
   (setq auto-save-default nil)
   (setq create-lockfiles nil)
   (setq tramp-auto-save-directory "/tmp")
-#+END_SRC
-
-Make use-package compute stats.
-
-#+BEGIN_SRC elisp
-(setq use-package-compute-statistics t)
 #+END_SRC
 
 ** Packages
@@ -154,6 +148,8 @@ Now install the packages.
   (use-package nerd-icons-dired
     :hook
     (dired-mode . nerd-icons-dired-mode))
+
+  (use-package eat :defer t)
 #+END_SRC
 
 ** Colors
