@@ -69,7 +69,6 @@ Now install the packages.
 
 #+BEGIN_SRC elisp
   (use-package vertico
-    :defer t
     :custom
     (vertico-scroll-margin 0) ;; Different scroll margin
     (vertico-count 20) ;; Show more candidates
@@ -80,13 +79,11 @@ Now install the packages.
 
   ;; Persist history over Emacs restarts. Vertico sorts by history position.
   (use-package savehist
-    :defer t
     :init
     (savehist-mode))
 
   ;; Emacs minibuffer configurations.
   (use-package emacs
-    :defer t
     :custom
     ;; Enable context menu. `vertico-multiform-mode' adds a menu in the minibuffer
     ;; to switch display modes.
@@ -103,7 +100,6 @@ Now install the packages.
 
   (use-package orderless
     :ensure t
-    :defer t
     :custom
     (orderless-matching-styles '(orderless-literal orderless-regexp orderless-flex))
     (completion-styles '(orderless basic))
