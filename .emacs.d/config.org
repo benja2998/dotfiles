@@ -137,6 +137,17 @@ Now install the packages.
   (use-package nerd-icons)
 
   (use-package catppuccin-theme)
+
+  (use-package god-mode)
+#+END_SRC
+
+** God Mode
+
+Modal editing to avoid pinky strain.
+
+#+BEGIN_SRC elisp
+  (require 'god-mode)
+  (god-mode-all)
 #+END_SRC
 
 ** Colors
@@ -177,6 +188,12 @@ I want C-x ps to open Eat instead.
 #+BEGIN_SRC elisp
   (with-eval-after-load 'project
     (define-key project-prefix-map (kbd "s") #'eat-project))
+#+END_SRC
+
+I want to toggle God Mode using Escape.
+
+#+BEGIN_SRC elisp
+  (global-set-key (kbd "C-c C-g") #'god-mode-all)
 #+END_SRC
 
 ** Font
