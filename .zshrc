@@ -48,6 +48,7 @@ alias emacs='emacsclient -c -a ""'
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
+alias t='tmux new -A -s main'
 
 # Keybinds
 bindkey -e
