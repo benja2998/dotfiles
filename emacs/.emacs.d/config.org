@@ -195,9 +195,9 @@ I want C-x ps to open Eat instead.
     (define-key project-prefix-map (kbd "s") #'eat-project))
 #+END_SRC
 
-** LSP
+** Hooks
 
-I want my editor to be smart. I use Eglot as it is built into Emacs.
+I want LSP using Eglot.
 
 #+BEGIN_SRC elisp
   (add-hook 'typescript-mode-hook #'eglot-ensure)
@@ -206,8 +206,6 @@ I want my editor to be smart. I use Eglot as it is built into Emacs.
   (add-hook 'c++-mode-hook #'eglot-ensure)
   (add-hook 'rust-mode-hook #'eglot-ensure)
 #+END_SRC
-
-** Hooks
 
 Most people disable word wrap in other editors. But I am enabling it.
 
