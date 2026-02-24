@@ -43,6 +43,11 @@ else
     exit 1
 fi
 
+# On macOS, get homebrew first
+if [ "$(uname)" = "Darwin" ]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
 # Perform the installation
 printf "Running: $pkg_cmd $pkgs\n"
 $pkg_cmd $pkgs
