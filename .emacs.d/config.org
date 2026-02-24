@@ -139,6 +139,8 @@ Now install the packages.
   (use-package catppuccin-theme)
 
   (use-package god-mode)
+
+  (use-package key-chord)
 #+END_SRC
 
 ** God Mode
@@ -148,6 +150,15 @@ Modal editing to avoid pinky strain.
 #+BEGIN_SRC elisp
   (require 'god-mode)
   (god-mode-all)
+#+END_SRC
+
+** Key Chord
+
+Allow mapping simultaneous presses of keys.
+
+#+BEGIN_SRC elisp
+  (require 'key-chord)
+  (key-chord-mode 1)
 #+END_SRC
 
 ** Colors
@@ -190,10 +201,10 @@ I want C-x ps to open Eat instead.
     (define-key project-prefix-map (kbd "s") #'eat-project))
 #+END_SRC
 
-I want to toggle God Mode using Escape.
+I want to toggle God Mode using a key.
 
 #+BEGIN_SRC elisp
-  (global-set-key (kbd "C-c C-g") #'god-mode-all)
+  (key-chord-define-global "jk" 'god-local-mode)
 #+END_SRC
 
 ** Font
