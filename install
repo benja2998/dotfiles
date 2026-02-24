@@ -18,29 +18,22 @@ else
     exit 1
 fi
 
-if [ -x "$(command -v stow)" ]; then
-    printf "Continuing to main logic\n"
-else
-    printf "Stow is not installed!!\n"
-    exit 1
-fi
-
 printf "Installing programs...\n"
 
 pkg_cmd="sudo apt-get install -y" # Default
 
 if [ -n "$TERMUX_VERSION" ]; then
     pkg_cmd="pkg i -y"
-    pkgs="build-essential x11-repo emacs-x ripgrep fzf"
+    pkgs="build-essential x11-repo stow emacs-x ripgrep fzf"
 elif [ "$(uname)" = "Darwin" ]; then
     pkg_cmd="brew install"
-    pkgs="gcc make fzf ripgrep"
+    pkgs="gcc make fzf ripgrep stow"
     casks="google-chrome emacs-app"
 elif [ "$(uname)" = "Linux" ]; then
     . /etc/os-release
     if [ "$ID_LIKE" = "debian" ]; then
 	pkg_cmd="sudo apt-get install -y"
-	pkgs="build-essential emacs fzf ripgrep"
+	pkgs="build-essential emacs fzf stow ripgrep"
     else
 	printf "Unsupported distro!!\n"
 	exit 1
@@ -58,6 +51,13 @@ $pkg_cmd $pkgs
 if [ "$(uname)" = "Darwin" ] && [ -n "$casks" ]; then
     printf "Installing casks: $casks\n"
     brew install --cask $casks
+fi
+
+if [ -x "$(command -v stow)" ]; then
+    printf "Continuing to main logic\n"
+else
+    printf "Stow is not installed!!\n"
+    exit 1
 fi
 
 printf "Do you want to install every package, or only some? (answer every or some): "
