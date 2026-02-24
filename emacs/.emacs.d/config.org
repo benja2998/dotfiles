@@ -221,7 +221,7 @@ Most people disable word wrap in other editors. But I am enabling it.
 
 ** Hooks
 
-I set emacsclient as my default Git editor. I wanted to get Magit commit UI in the buffer, and the method I found was to load it on start like this.
+I want to pre-load magit.
 
 #+BEGIN_SRC elisp
   (add-hook 'emacs-startup-hook 'magit-status)

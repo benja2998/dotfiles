@@ -90,3 +90,14 @@ else
     printf "Bad answer!!\n"
     exit 1
 fi
+
+set -e
+
+printf "Git email: "
+read -r email
+printf "Git username: "
+read -r name
+git config --global user.email $email
+git config --global user.name $name
+git config --global core.editor nano
+git config --global init.defaultBranch main
