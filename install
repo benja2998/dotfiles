@@ -36,6 +36,7 @@ if [ "$answer" = "every" ]; then
     rm ~/.zshrc -f
     rm ~/.tmux.conf -f
     rm ~/.nanorc -f
+    rm -rf ~/.emacs.d/lisp
     stow */
 elif [ "$answer" = "some" ]; then
     printf "Package to install?: "
