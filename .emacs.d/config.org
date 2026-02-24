@@ -144,9 +144,8 @@ Now install the packages.
 I use the Catppuccin theme.
 
 #+BEGIN_SRC elisp
+  (setq catppuccin-flavor 'mocha)
   (load-theme 'catppuccin :no-confirm)
-  (setq catppuccin-theme 'mocha)
-  (catppuccin-reload)
 #+END_SRC
 
 ** Keys
@@ -230,6 +229,7 @@ I want to only display line numbers when it makes sense to.
 #+BEGIN_SRC elisp
   (add-hook 'prog-mode-hook 'display-line-numbers-mode)
   (add-hook 'text-mode-hook 'display-line-numbers-mode)
+  (add-hook 'conf-mode-hook 'display-line-numbers-mode)
 #+END_SRC
 
 I want eshell to be captured by eat.
