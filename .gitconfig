@@ -1,7 +1,0 @@
-[user]
-	email = benja2998@duck.com
-	name = benja2998
-[core]
-	editor = emacsclient -t -a "" -w
-[init]
-	defaultBranch = main

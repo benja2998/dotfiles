@@ -1,0 +1,3 @@
+* dotfiles
+
+These are my dotfiles. Do not use them, they are just for me. But you can grab the Emacs config if you like it.
