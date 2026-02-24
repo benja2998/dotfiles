@@ -52,6 +52,12 @@ alias cp='cp -i'
 # Keybinds
 bindkey -e
 
+# Automatically use Tmux
+if [[ $- == *i* ]] && [[ -z "$TMUX" ]] && command -v tmux >/dev/null 2>&1; then
+    tmux new-session -A -s main
+    exit
+fi
+
 # Starship and zoxide
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh --cmd cd)"
