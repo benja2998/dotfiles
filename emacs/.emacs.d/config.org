@@ -188,14 +188,13 @@ Unset some keys I often accidentally hit.
   (global-unset-key (kbd "C-x C-d"))
 #+END_SRC
 
+** Hooks
+
 I want C-x ps to open Eat instead.
 
 #+BEGIN_SRC elisp
-  (with-eval-after-load 'project
-    (define-key project-prefix-map (kbd "s") #'eat-project))
+  (add-hook 'after-init-hook (lambda () (global-set-key (kbd "C-x p s") #'eat-project)))
 #+END_SRC
-
-** Hooks
 
 I want LSP using Eglot.
 

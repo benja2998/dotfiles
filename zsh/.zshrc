@@ -42,8 +42,9 @@ setopt HIST_REDUCE_BLANKS
 
 # Aliases
 export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
-export EDITOR='nano'
-export VISUAL='emacs'
+export EDITOR='emacsclient -t -a ""'
+export VISUAL='emacsclient -c -a ""'
+alias emacs='emacsclient -c -a ""'
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
