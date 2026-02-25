@@ -26,3 +26,4 @@ setup-macos.sh
 specific.sh
 \.termux
 .*properties
+emacs-android-setup
