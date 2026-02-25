@@ -72,13 +72,11 @@ printf "Do you want to install every package, or only some? (answer every or som
 read -r answer
 
 if [ "$answer" = "every" ]; then
-    rm ~/.config/starship.toml -f
-    rm ~/.emacs.d/init.el -f 
-    rm ~/.emacs.d/config.org -f
-    rm ~/.zshrc -f
-    rm ~/.tmux.conf -f
+    rm ~/.emacs.d/init.el -f
+    rm ~/.bashrc -f
     rm ~/.nanorc -f
-    rm -rf ~/.emacs.d/lisp
+    rm ~/.config/kanata.kbd -f
+    rm -rf ~/.emacs.d/local
     stow */
 elif [ "$answer" = "some" ]; then
     printf "Package to install?: "

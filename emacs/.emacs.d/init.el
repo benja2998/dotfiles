@@ -4,6 +4,9 @@
 ;;; Follow git symlinks
 (setq vc-follow-symlinks t)
 
+;;; Persist history
+(savehist-mode t)
+
 ;;; Disable UI clutter
 (menu-bar-mode 0)
 (tool-bar-mode 0)
@@ -19,19 +22,12 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
-(require 'use-package)
 
-;;; Packages
-(use-package "magit"
-  :ensure t
-  :config
-  (global-set-key (kbd "C-c g") 'magit-status))
-
-(use-package "catppuccin-theme"
-  :ensure t)
-
-;;; Launch ansi-term with a keybinding
+;;; Launch ansi-term with a keybind
 (global-set-key (kbd "C-c t") 'ansi-term)
+
+;;; Launch magit with a keybind
+(global-set-key (kbd "C-c g") 'magit-status)
 
 ;;; Font
 (set-face-attribute 'default nil :family "Iosevka" :height 140)
@@ -54,3 +50,8 @@
 
 ;;; Load the custom-file
 (load custom-file)
+
+;;; Simple C mode
+(add-to-list 'load-path "~/.emacs.d/local")
+(require 'simpc-mode)
+(add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))

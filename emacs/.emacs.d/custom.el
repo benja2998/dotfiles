@@ -4,9 +4,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("e900ae738225380abd1edc0c76535a12b8a6669c7a3180431ba0157a47bbf75e"
-     default)))
+ '(package-selected-packages '(catppuccin-theme magit)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
