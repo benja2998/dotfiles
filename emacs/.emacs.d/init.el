@@ -44,6 +44,10 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq c-basic-offset 4)
+(add-hook 'makefile-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode t)
+            (setq tab-width 8)))
 
 ;;; Use short answers
 (setq use-short-answers t)
