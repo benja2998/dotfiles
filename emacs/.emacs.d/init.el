@@ -26,11 +26,8 @@
 ;;; Launch ansi-term with a keybind
 (global-set-key (kbd "C-c t") 'ansi-term)
 
-;;; Launch magit with a keybind
-(global-set-key (kbd "C-c g") 'magit-status)
-
 ;;; Font
-(set-face-attribute 'default nil :family "Iosevka" :height 140)
+(cond ((eq system-type 'android) (set-face-attribute 'default nil :font "Droid Sans Mono-16")) ((eq system-type 'gnu/linux) (set-face-attribute 'default nil :font "Iosevka-20")) ((eq system-type 'darwin) (set-face-attribute 'default nil :font "Iosevka-20")) (t (set-face-attribute 'default nil :font "Monospace-12")))
 
 ;;; Catppuccin theme
 (setq catppuccin-flavor 'macchiato)
