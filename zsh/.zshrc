@@ -47,6 +47,13 @@ export VISUAL='emacs'
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias diff='diff --color=auto'
+alias ip='ip -color=auto'
+alias tree='tree -C'
 alias t='tmux new -A -s main'
 
 # Keybinds
