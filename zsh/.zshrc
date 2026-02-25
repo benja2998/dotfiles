@@ -43,7 +43,7 @@ setopt HIST_REDUCE_BLANKS
 # Aliases
 export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 export EDITOR='nano'
-export VISUAL='emacs'
+export VISUAL='emacsclient -c -a ""'
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
@@ -55,6 +55,8 @@ alias diff='diff --color=auto'
 alias ip='ip -color=auto'
 alias tree='tree -C'
 alias t='tmux new -A -s main'
+alias emacs='emacsclient -c -a ""'
+alias e='emacs ~'
 
 # Keybinds
 bindkey -e
