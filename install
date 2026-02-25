@@ -29,7 +29,7 @@ if [ -n "$TERMUX_VERSION" ]; then
 elif [ "$(uname)" = "Darwin" ]; then
     pkg_cmd="brew install"
     pkgs="gcc make fzf ripgrep stow"
-    casks="google-chrome emacs-app"
+    casks="google-chrome emacs-app font-iosevka"
 elif [ "$(uname)" = "Linux" ]; then
     . /etc/os-release
     if [ "$ID_LIKE" = "debian" ]; then
@@ -46,6 +46,7 @@ fi
 
 # On macOS, get homebrew first
 if [ "$(uname)" = "Darwin" ]; then
+    xcode-select --install
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 

@@ -40,13 +40,16 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_REDUCE_BLANKS
 
-# Aliases
+# Enviroment
 export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 export EDITOR='nano'
 export VISUAL='emacsclient -c -a ""'
-alias rm='rm -i'
-alias mv='mv -i'
-alias cp='cp -i'
+
+# Prompt
+autoload -U colors && colors
+PROMPT="%{$fg[green]%}%n@%m%{$reset_color%}:%{$fg[blue]%}%~%{$reset_color%}%# "
+
+# Aliases
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -61,6 +64,5 @@ alias e='emacs ~'
 # Keybinds
 bindkey -e
 
-# Starship and zoxide
-eval "$(starship init zsh)"
+# Zoxide
 eval "$(zoxide init zsh --cmd cd)"
