@@ -1,0 +1,31 @@
+#!/system/bin/sh
+
+set -xe
+
+## INSTRUCTIONS
+#
+#  1. Download and open the Android port of Emacs
+#  2. Give it storage permissions
+#  3. Open M-x term or M-x ansi-term and go to where you downloaded this file (probably /storage/emulated/0/Download/emacs-android-setup)
+#  4. Copy it to ~/emacs-android-setup
+#  5. Make it executable
+#  6. Run it
+
+if [ "$(pwd)" = "$HOME" ]; then
+	echo "Ok"
+else
+	echo "Not ok. This file must be at ~."
+	exit 1
+fi
+
+rm -rf ~/.emacs
+cd ~
+mkdir -p tmp
+cd tmp
+curl -fsSL https://github.com/benja2998/dotfiles/archive/refs/heads/main.zip -o main.zip
+unzip main.zip
+mv ~/tmp/dotfiles-main/emacs/.emacs.d/init.el ~/.emacs.d/init.el
+mv ~/tmp/dotfiles-main/emacs/.emacs.d/custom.el ~/.emacs.d/custom.el
+mv ~/tmp/dotfiles-main/emacs/.emacs.d/local ~/.emacs.d/local
+cd ~
+rm -rf tmp
