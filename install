@@ -1,6 +1,7 @@
 #!/bin/sh
 
 mkdir -p ~/.config
+mkdir -p ~/.emacs.d
 
 printf "Checking if HOME is parent of current dir...\n"
 
