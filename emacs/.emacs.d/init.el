@@ -18,11 +18,6 @@
 (setq auto-save-default nil)
 (setq create-lockfiles nil)
 
-;;; Package setup
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(package-initialize)
-
 ;;; Launch ansi-term with a keybind
 (global-set-key (kbd "C-c t") 'ansi-term)
 
@@ -33,9 +28,8 @@
 (cond ((eq system-type 'android) (tool-bar-mode 1)))
 (cond ((eq system-type 'android) (modifier-bar-mode 1)))
 
-;;; Catppuccin theme
-(setq catppuccin-flavor 'macchiato)
-(load-theme 'catppuccin :no-confirm)
+;;; Theme
+(load-theme 'modus-vivendi t)
 
 ;;; Line numbers
 (setq display-line-numbers-type 'relative)
