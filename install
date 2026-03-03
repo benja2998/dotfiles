@@ -25,7 +25,8 @@ pkg_cmd="sudo apt-get install -y" # Default
 
 if [ -n "$TERMUX_VERSION" ]; then
     pkg_cmd="pkg i -y"
-    pkgs="build-essential x11-repo stow emacs-x ripgrep fzf"
+    pkgs="build-essential x11-repo stow ripgrep fzf"
+    pkgs_2="emacs-x"
 elif [ "$(uname)" = "Darwin" ]; then
     pkg_cmd="brew install"
     pkgs="gcc make fzf ripgrep stow"
@@ -53,6 +54,7 @@ fi
 # Perform the installation
 printf "Running: $pkg_cmd $pkgs\n"
 $pkg_cmd $pkgs
+$pkg_cmd $pkgs_2
 
 # Special case for macOS (Homebrew casks)
 if [ "$(uname)" = "Darwin" ] && [ -n "$casks" ]; then
