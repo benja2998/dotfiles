@@ -7,6 +7,12 @@
 ;;; Persist history
 (savehist-mode t)
 
+;;; Fix macOS modifiers
+(setq ns-alternate-modifier 'meta)
+(setq ns-right-alternate-modifier 'none)
+(setq mac-option-modifier 'meta)
+(setq mac-right-option-modifier 'none)
+
 ;;; Disable UI clutter
 (menu-bar-mode 0)
 (tool-bar-mode 0)
