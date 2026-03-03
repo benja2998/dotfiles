@@ -54,7 +54,7 @@ fi
 # Perform the installation
 printf "Running: $pkg_cmd $pkgs\n"
 $pkg_cmd $pkgs
-$pkg_cmd $pkgs_2
+[ -n "$pkgs_2" ] && $pkg_cmd $pkgs_2 || true
 
 # Special case for macOS (Homebrew casks)
 if [ "$(uname)" = "Darwin" ] && [ -n "$casks" ]; then
