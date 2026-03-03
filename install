@@ -26,7 +26,7 @@ pkg_cmd="sudo apt-get install -y" # Default
 if [ -n "$TERMUX_VERSION" ]; then
     pkg_cmd="pkg i -y"
     pkgs="build-essential x11-repo stow ripgrep fzf"
-    pkgs_2="emacs-x"
+    pkgs_2="emacs-x termux-services"
 elif [ "$(uname)" = "Darwin" ]; then
     pkg_cmd="brew install"
     pkgs="gcc make fzf ripgrep stow"
@@ -74,12 +74,13 @@ printf "Do you want to install every package, or only some? (answer every or som
 read -r answer
 
 if [ "$answer" = "every" ]; then
-    rm ~/.emacs.d/init.el -f
-    rm ~/.bashrc -f
-    rm ~/.nanorc -f
-    rm ~/.config/kanata.kbd -f
+    rm ~/.emacs.d/init.el -v
+    rm ~/.emacs.d/custom.el -v
+    rm ~/.bashrc -v
+    rm ~/.nanorc -v
+    rm ~/.config/kanata.kbd -v
     rm -rf ~/.emacs.d/local
-    stow */
+    stow */ -v
 elif [ "$answer" = "some" ]; then
     printf "Package to install?: "
     read -r package
@@ -87,7 +88,7 @@ elif [ "$answer" = "some" ]; then
 	printf "No package!!\n"
 	exit 1
     fi
-    stow $package
+    stow $package -v
 else
     printf "Bad answer!!\n"
     exit 1
