@@ -4,6 +4,9 @@
 ;;; Follow git symlinks
 (setq vc-follow-symlinks t)
 
+;;; Which-key mode (built in as of 30.1)
+(which-key-mode t)
+
 ;;; Persist history
 (savehist-mode t)
 
