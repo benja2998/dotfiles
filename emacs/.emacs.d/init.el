@@ -1,3 +1,8 @@
+;;; Ensure Emacs is not too old
+(let ((min-version "30.1"))
+  (when (version< emacs-version min-version)
+    (error "Emacs version %s or higher is required (you are running %s)" min-version emacs-version)))
+
 ;;; Set the custom-file
 (setq custom-file "~/.emacs.d/custom.el")
 
