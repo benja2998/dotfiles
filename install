@@ -33,7 +33,7 @@ elif [ "$(uname)" = "Darwin" ]; then
     casks="google-chrome emacs-app font-iosevka"
 elif [ "$(uname)" = "Linux" ]; then
     . /etc/os-release
-    if [ "$ID_LIKE" = "debian" ]; then
+    if [ "$ID_LIKE" = "debian"] || ["$ID" = "debian" ]; then
 	pkg_cmd="sudo apt-get install -y"
 	pkgs="build-essential emacs fzf stow ripgrep"
     else
@@ -77,6 +77,7 @@ if [ "$answer" = "every" ]; then
     rm ~/.emacs.d/init.el -v
     rm ~/.emacs.d/custom.el -v
     rm ~/.bashrc -v
+    rm ~/.zshrc -v
     rm ~/.nanorc -v
     rm ~/.config/kanata.kbd -v
     rm -rf ~/.emacs.d/local
