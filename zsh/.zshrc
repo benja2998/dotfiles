@@ -1,5 +1,5 @@
 source ~/.bashrc
-PROMPT=$'%F{blue}%B%~%b%f\n%F{green}%B->%b%f '
+PROMPT=$'%F{blue}%B%~%b%f\n%F{green}%B❯%b%f '
 HISTFILE=~/.zsh_history
 HISTSIZE=50000
 SAVEHIST=50000
