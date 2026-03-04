@@ -39,8 +39,14 @@
 (setq auto-save-default nil)
 (setq create-lockfiles nil)
 
-;;; Launch ansi-term with a keybind
-(global-set-key (kbd "C-c t") 'ansi-term)
+;;; Launch eat with a keybind
+(global-set-key (kbd "C-c t") 'eat)
+
+;;; Launch project eat with a keybind
+(global-set-key (kbd "C-x p s") 'eat-project)
+
+;;; Use eat for eshell
+(add-hook 'eshell-mode-hook #'eat-eshell-mode)
 
 ;;; Font
 (add-to-list 'default-frame-alist '(font . "Iosevka-20"))
@@ -53,7 +59,10 @@
 
 ;;; Line numbers
 (setq display-line-numbers-type 'relative)
-(global-display-line-numbers-mode)
+(add-hook 'prog-mode-hook (lambda () (display-line-numbers-mode 1)))
+(add-hook 'text-mode-hook (lambda () (display-line-numbers-mode 1)))
+(add-hook 'conf-mode-hook (lambda () (display-line-numbers-mode 1)))
+(add-hook 'fundamental-mode-hook (lambda () (display-line-numbers-mode 1)))
 
 ;;; Fix indentation
 (setq-default indent-tabs-mode nil)
