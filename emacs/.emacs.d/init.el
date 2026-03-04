@@ -3,6 +3,10 @@
   (when (version< emacs-version min-version)
     (error "Emacs version %s or higher is required (you are running %s)" min-version emacs-version)))
 
+;;; Fix gpg
+(setenv "GPG_TTY" (shell-command-to-string "tty"))
+(setq epg-pinentry-mode 'loopback)
+
 ;;; Set the custom-file
 (setq custom-file "~/.emacs.d/custom.el")
 
