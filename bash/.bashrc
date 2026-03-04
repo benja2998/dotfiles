@@ -6,4 +6,4 @@ alias e='emacsclient -c -a "" ~'
 HISTSIZE=50000
 HISTFILESIZE=50000
 [ -f "/opt/homebrew/bin/brew" ] && eval "$(/opt/homebrew/bin/brew shellenv)" || true
-PS1=''"$(basename $0) "'\w > '
+export PS1="\[\e[1;34m\]\w\[\e[m\] \n\[\e[1;32m\]->\[\e[m\] "
