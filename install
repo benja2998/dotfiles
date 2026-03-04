@@ -33,7 +33,7 @@ elif [ "$(uname)" = "Darwin" ]; then
     casks="google-chrome emacs-app font-iosevka"
 elif [ "$(uname)" = "Linux" ]; then
     . /etc/os-release
-    if [ "$ID_LIKE" = "debian"] || ["$ID" = "debian" ]; then
+    if [ "$ID_LIKE" = "debian"] || [ "$ID" = "debian" ]; then
 	pkg_cmd="sudo apt-get install -y"
 	pkgs="build-essential emacs fzf stow ripgrep"
     else
