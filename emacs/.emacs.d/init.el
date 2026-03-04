@@ -3,6 +3,9 @@
   (when (version< emacs-version min-version)
     (error "Emacs version %s or higher is required (you are running %s)" min-version emacs-version)))
 
+;;; Open home dir with a keybind
+(global-set-key (kbd "C-c h") (lambda () (interactive) (dired "~")))
+
 ;;; Fix gpg
 (setenv "GPG_TTY" (shell-command-to-string "tty"))
 (setq epg-pinentry-mode 'loopback)
