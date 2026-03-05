@@ -2,6 +2,7 @@
 
 mkdir -p ~/.config
 mkdir -p ~/.emacs.d
+mkdir -p ~/.gnupg
 
 printf "Checking if HOME is parent of current dir...\n"
 
@@ -79,13 +80,15 @@ if [ "$answer" = "every" ]; then
     rm ~/.bashrc -v
     rm ~/.zshrc -v
     rm ~/.nanorc -v
-    rm -rf ~/.emacs.d/local
+    rm ~/.emacs.d/local -rv
+    rm ~/.gnupg/gpg-agent.conf -v
+    rm ~/.gnupg/gpg.conf -v
     stow */ -v
 elif [ "$answer" = "some" ]; then
     printf "Package to install?: "
     read -r package
     if [ "$package" = "" ]; then
-	printf "No package!!\n"
+	    printf "No package!!\n"
 	exit 1
     fi
     stow $package -v
