@@ -79,7 +79,6 @@ if [ "$answer" = "every" ]; then
     rm ~/.bashrc -v
     rm ~/.zshrc -v
     rm ~/.nanorc -v
-    rm ~/.config/kanata.kbd -v
     rm -rf ~/.emacs.d/local
     stow */ -v
 elif [ "$answer" = "some" ]; then
