@@ -5,3 +5,9 @@ These are my dotfiles.
 ** Contributing
 
 Do not contribute. If these do not work on your machine, fork them and fix them yourself.
+
+** Notes
+
+- Set up the GPG keys /before/ installing the dotfiles.
+- You must manually install zsh and change the shell to it.
+- After installing the dotfiles, manually use package-install in Emacs to install magit and eat.
