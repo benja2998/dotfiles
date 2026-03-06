@@ -1,5 +1,19 @@
 #!/bin/sh
 
+printf "Have you set up GPG keys and set up git to always sign with GPG? (answer yes or no): "
+
+read -r answer
+
+if [ "$answer" = "yes" ]; then
+    printf "Continuing\n"
+elif [ $answer = "no" ]; then
+    printf "Not continuing!!\n"
+    exit 1
+else
+    printf "Bad answer!!\n"
+    exit 1
+fi
+
 mkdir -p ~/.config
 mkdir -p ~/.emacs.d
 mkdir -p ~/.gnupg
@@ -29,27 +43,31 @@ if [ -n "$TERMUX_VERSION" ]; then
     pkgs="build-essential x11-repo stow ripgrep fzf"
     pkgs_2="emacs-x termux-services"
 elif [ "$(uname)" = "Darwin" ]; then
-    pkg_cmd="brew install"
-    pkgs="gcc make fzf ripgrep stow"
-    casks="google-chrome emacs-app font-iosevka"
+    pkg_cmd="sudo /opt/local/bin/port install"
+    pkgs="gcc gmake fzf ripgrep stow bash"
 elif [ "$(uname)" = "Linux" ]; then
     . /etc/os-release
     if [ "$ID_LIKE" = "debian" ] || [ "$ID" = "debian" ]; then
-	pkg_cmd="sudo apt-get install -y"
-	pkgs="build-essential emacs fzf stow ripgrep"
+	    pkg_cmd="sudo apt-get install -y"
+	    pkgs="build-essential emacs fzf stow ripgrep"
     else
-	printf "Unsupported distro!!\n"
-	exit 1
+	    printf "Unsupported distro!!\n"
+	    exit 1
     fi
 else
     printf "Unsupported OS!!\n"
     exit 1
 fi
 
-# On macOS, get homebrew first
+# On macOS, ensure macports first
 if [ "$(uname)" = "Darwin" ]; then
-    xcode-select --install
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    counter=0
+    while [ ! -x /opt/local/bin/port ]; do
+        printf "Waiting for MacPorts to be installed (https://www.macports.org/install.php)... $counter\n"
+        counter=$((counter + 1))
+        sleep 1
+    done
+    sudo /opt/local/bin/port -v selfupdate
 fi
 
 # Perform the installation
@@ -57,10 +75,9 @@ printf "Running: $pkg_cmd $pkgs\n"
 $pkg_cmd $pkgs
 [ -n "$pkgs_2" ] && $pkg_cmd $pkgs_2 || true
 
-# Special case for macOS (Homebrew casks)
-if [ "$(uname)" = "Darwin" ] && [ -n "$casks" ]; then
-    printf "Installing casks: $casks\n"
-    brew install --cask $casks
+if [ "$(uname)" = "Darwin" ]; then
+    echo "/opt/local/bin/bash" | sudo tee -a /etc/shells
+    chsh -s /opt/local/bin/bash
 fi
 
 if [ -x "$(command -v stow)" ]; then
@@ -89,7 +106,7 @@ elif [ "$answer" = "some" ]; then
     read -r package
     if [ "$package" = "" ]; then
 	    printf "No package!!\n"
-	exit 1
+	    exit 1
     fi
     stow $package -v
 else
@@ -107,3 +124,7 @@ git config --global user.email $email
 git config --global user.name $name
 git config --global core.editor nano
 git config --global init.defaultBranch main
+
+killall emacs
+emacs --batch --eval "(package-install 'magit)"
+emacs --batch --eval "(package-install 'eat)"
