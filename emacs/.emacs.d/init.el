@@ -6,6 +6,9 @@
 ;;; Open home dir with a keybind
 (global-set-key (kbd "C-c h") (lambda () (interactive) (dired "~")))
 
+;;; Shell
+(setq shell-file-name "/bin/zsh")
+
 ;;; Fix gpg
 (setenv "GPG_TTY" (shell-command-to-string "tty"))
 (setq epg-pinentry-mode 'loopback)
