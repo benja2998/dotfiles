@@ -40,11 +40,10 @@ pkg_cmd="sudo apt-get install -y" # Default
 
 if [ -n "$TERMUX_VERSION" ]; then
     pkg_cmd="pkg i -y"
-    pkgs="build-essential x11-repo stow ripgrep fzf"
-    pkgs_2="emacs-x termux-services"
+    pkgs="emacs termux-services build-essential stow ripgrep fzf"
 elif [ "$(uname)" = "Darwin" ]; then
     pkg_cmd="sudo /opt/local/bin/port install"
-    pkgs="gcc gmake fzf ripgrep stow bash"
+    pkgs="emacs-app gcc gmake fzf ripgrep stow bash"
 elif [ "$(uname)" = "Linux" ]; then
     . /etc/os-release
     if [ "$ID_LIKE" = "debian" ] || [ "$ID" = "debian" ]; then
@@ -73,7 +72,6 @@ fi
 # Perform the installation
 printf "Running: $pkg_cmd $pkgs\n"
 $pkg_cmd $pkgs
-[ -n "$pkgs_2" ] && $pkg_cmd $pkgs_2 || true
 
 if [ "$(uname)" = "Darwin" ]; then
     echo "/opt/local/bin/bash" | sudo tee -a /etc/shells
@@ -125,6 +123,8 @@ git config --global user.name $name
 git config --global core.editor nano
 git config --global init.defaultBranch main
 
+set +e
 killall emacs
 emacs --batch --eval "(package-install 'magit)"
 emacs --batch --eval "(package-install 'eat)"
+killall emacs

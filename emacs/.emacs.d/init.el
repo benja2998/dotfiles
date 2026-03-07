@@ -30,8 +30,8 @@
 
 ;;; Disable UI clutter
 (menu-bar-mode 0)
-(tool-bar-mode 0)
-(scroll-bar-mode 0)
+(if (fboundp 'tool-bar-mode) (tool-bar-mode 0))
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode 0))
 (setq inhibit-splash-screen t)
 
 ;;; Don't clutter the directory with random files
