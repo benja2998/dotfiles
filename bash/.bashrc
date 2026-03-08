@@ -1,6 +1,6 @@
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-alias egrep='grep --color=auto'
+alias egrep='egrep --color=auto'
 alias emacs='emacsclient -c -a ""'
 alias e='emacsclient -c -a "" .'
 HISTSIZE=50000
