@@ -6,5 +6,5 @@ alias e='emacsclient -c -a "" .'
 HISTSIZE=50000
 HISTFILESIZE=50000
 export PS1="[\u@\h \W]\$ "
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+export PATH="/opt/local/bin:/opt/local/sbin:$HOME/.local/bin:$PATH"
 eval "$(fzf --bash)"
