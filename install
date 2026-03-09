@@ -124,5 +124,6 @@ git config --global core.editor nano
 git config --global init.defaultBranch main
 
 set +e
+emacs --batch --eval "(package-install 'solarized-theme)"
 emacs --batch --eval "(package-install 'magit)"
 emacs --batch --eval "(package-install 'eat)"
