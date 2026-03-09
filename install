@@ -93,9 +93,9 @@ if [ "$answer" = "every" ]; then
     rm ~/.emacs.d/init.el -v
     rm ~/.emacs.d/custom.el -v
     rm ~/.bashrc -v
-    rm ~/.zshrc -v
     rm ~/.nanorc -v
     rm ~/.emacs.d/local -rv
+    rm ~/.config/fastfetch -rv
     rm ~/.gnupg/gpg-agent.conf -v
     rm ~/.gnupg/gpg.conf -v
     stow */ -v
