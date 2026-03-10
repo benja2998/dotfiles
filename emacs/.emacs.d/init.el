@@ -76,11 +76,6 @@
 ;;; Use short answers
 (setq use-short-answers t)
 
-;;; Melpa
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(package-initialize)
-
 ;;; Load the custom-file
 (load custom-file)
 
