@@ -7,7 +7,7 @@ HISTSIZE=50000
 HISTFILESIZE=50000
 export PS1="[\u@\h \W]\$ "
 export PATH="/opt/local/bin:/opt/local/sbin:$HOME/.local/bin:$PATH"
-export HISTCONTROL="erasedups:ignoredups"
+export HISTCONTROL="erasedups:ignoredups" # I don't think this actually works
 shopt -s histappend
 shopt -s autocd
 shopt -s globstar
