@@ -49,7 +49,7 @@
 (add-hook 'eshell-mode-hook #'eat-eshell-mode)
 
 ;;; Font
-(add-to-list 'default-frame-alist '(font . "Iosevka-20"))
+(add-to-list 'default-frame-alist '(font . "Iosevka-14"))
 
 ;;; Theme
 (load-theme 'modus-vivendi t)
