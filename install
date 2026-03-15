@@ -43,7 +43,7 @@ if [ -n "$TERMUX_VERSION" ]; then
     pkgs="emacs termux-services build-essential stow ripgrep fzf"
 elif [ "$(uname)" = "Darwin" ]; then
     pkg_cmd="brew install"
-    pkgs="gcc gmake fzf ripgrep stow bash"
+    pkgs="gcc make fzf ripgrep stow"
     casks="emacs-app firefox"
 elif [ "$(uname)" = "Linux" ]; then
     . /etc/os-release
@@ -82,7 +82,7 @@ fi
 printf "Do you want to install every package, or only some? (answer every or some): "
 
 read -r answer
-
+n
 if [ "$answer" = "every" ]; then
     rm ~/.emacs.d/init.el -v
     rm ~/.emacs.d/custom.el -v
