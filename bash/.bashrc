@@ -1,3 +1,4 @@
+[[ $- != *i* ]] && return
 shopt -s histappend # Append to history rather than rewriting
 shopt -s autocd # Allow changing to a directory without cd
 shopt -s globstar # Allow using **
@@ -20,5 +21,6 @@ export PATH="/opt/local/bin:/opt/local/sbin:$HOME/.local/bin:$PATH" # MacPorts a
 export HISTCONTROL="erasedups:ignoredups" # I don't think this actually works
 export EDITOR='emacsclient -c -a "" -w' # Emacs as default editor
 
-eval "$(fzf --bash)" # Fuzzy find directories and commands
 [[ -f "$HOME/.bashrc.local" ]] && source "$HOME/.bashrc.local" # Machine-specific settings
+[[ -f "/home/deck/.nix-profile/etc/profile.d/nix.sh" ]] && . /home/deck/.nix-profile/etc/profile.d/nix.sh # Nix on steamOS
+eval "$(fzf --bash)" # Fuzzy find directories and commands
