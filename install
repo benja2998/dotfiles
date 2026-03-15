@@ -42,8 +42,9 @@ if [ -n "$TERMUX_VERSION" ]; then
     pkg_cmd="pkg i -y"
     pkgs="emacs termux-services build-essential stow ripgrep fzf"
 elif [ "$(uname)" = "Darwin" ]; then
-    pkg_cmd="sudo /opt/local/bin/port install"
-    pkgs="emacs-app gcc gmake fzf ripgrep stow bash"
+    pkg_cmd="brew install"
+    pkgs="gcc gmake fzf ripgrep stow bash"
+    casks="emacs-app firefox"
 elif [ "$(uname)" = "Linux" ]; then
     . /etc/os-release
     if [ "$ID_LIKE" = "debian" ] || [ "$ID" = "debian" ]; then
@@ -58,15 +59,9 @@ else
     exit 1
 fi
 
-# On macOS, ensure macports first
 if [ "$(uname)" = "Darwin" ]; then
-    counter=0
-    while [ ! -x /opt/local/bin/port ]; do
-        printf "Waiting for MacPorts to be installed (https://www.macports.org/install.php)... $counter\n"
-        counter=$((counter + 1))
-        sleep 1
-    done
-    sudo /opt/local/bin/port -v selfupdate
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 # Perform the installation
@@ -74,8 +69,7 @@ printf "Running: $pkg_cmd $pkgs\n"
 $pkg_cmd $pkgs
 
 if [ "$(uname)" = "Darwin" ]; then
-    echo "/opt/local/bin/bash" | sudo tee -a /etc/shells
-    chsh -s /opt/local/bin/bash
+    $pkg_cmd --cask $casks
 fi
 
 if [ -x "$(command -v stow)" ]; then
@@ -94,6 +88,7 @@ if [ "$answer" = "every" ]; then
     rm ~/.emacs.d/custom.el -v
     rm ~/.bashrc -v
     rm ~/.nanorc -v
+    rm ~/.zshrc -v
     rm ~/.emacs.d/local -rv
     rm ~/.config/fastfetch -rv
     rm ~/.gnupg/gpg-agent.conf -v
