@@ -1,26 +1,17 @@
-;;; Ensure Emacs is not too old
-(let ((min-version "30.1"))
-  (when (version< emacs-version min-version)
-    (error "Emacs version %s or higher is required (you are running %s)" min-version emacs-version)))
-
 ;;; Open home dir with a keybind
 (global-set-key (kbd "C-c h") (lambda () (interactive) (dired "~")))
 
-;;; Fix gpg
-(setenv "GPG_TTY" (shell-command-to-string "tty"))
-(setq epg-pinentry-mode 'loopback)
+;;; Which-key mode
+(which-key-mode t)
+
+;;; Save history
+(savehist-mode t)
 
 ;;; Set the custom-file
 (setq custom-file "~/.emacs.d/custom.el")
 
 ;;; Follow git symlinks
 (setq vc-follow-symlinks t)
-
-;;; Which-key mode (built in as of 30.1)
-(which-key-mode t)
-
-;;; Persist history
-(savehist-mode t)
 
 ;;; Fix macOS modifiers
 (setq ns-alternate-modifier 'meta)
@@ -38,15 +29,6 @@
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 (setq create-lockfiles nil)
-
-;;; Launch eat with a keybind
-(global-set-key (kbd "C-c t") 'eat)
-
-;;; Launch project eat with a keybind
-(global-set-key (kbd "C-x p s") 'eat-project)
-
-;;; Use eat for eshell
-(add-hook 'eshell-mode-hook #'eat-eshell-mode)
 
 ;;; Font
 (add-to-list 'default-frame-alist '(font . "Iosevka-14"))
