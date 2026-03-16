@@ -8,8 +8,7 @@ shopt -s checkwinsize # Not sure what this actually does
 alias ls='ls --color=auto' # Colored directory listings
 alias grep='grep --color=auto' # Colored grep
 alias egrep='egrep --color=auto' # Colored egrep
-alias emacs='emacsclient -c -a ""' # Emacs
-alias e='emacsclient -c -a "" .' # Open emacs in current directory
+alias e='emacs .' # Open emacs in current directory
 
 PROMPT_COMMAND="history -a; history -c; history -r" # Shared history
 HISTSIZE=50000 # Allow in-memory history to be very big

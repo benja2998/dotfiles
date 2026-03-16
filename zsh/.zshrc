@@ -13,8 +13,7 @@ setopt EXTENDED_GLOB         # Advanced globbing
 alias ls='ls --color=auto'   # Colored directory listings
 alias grep='grep --color=auto'   # Colored grep
 alias egrep='egrep --color=auto' # Colored egrep
-alias emacs='emacsclient -c -a ""'         # Emacs
-alias e='emacsclient -c -a "" .'           # Open emacs in current directory
+alias e='emacs .'           # Open emacs in current directory
 
 # History settings
 HISTFILE="$HOME/.zsh_history"
