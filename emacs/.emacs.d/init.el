@@ -1,6 +1,13 @@
 ;;; Open home dir with a keybind
 (global-set-key (kbd "C-c h") (lambda () (interactive) (dired "~")))
 
+;;; Allow accessing Homebrew
+(when (file-executable-p "/opt/homebrew/bin/brew")
+  (let ((brew-env (shell-command-to-string "/opt/homebrew/bin/brew shellenv")))
+    (dolist (line (split-string brew-env "\n" t))
+      (when (string-match "^export \\([^=]+\\)=\"\\(.*\\)\"" line)
+        (setenv (match-string 1 line) (match-string 2 line))))))
+
 ;;; Which-key mode
 (which-key-mode t)
 
