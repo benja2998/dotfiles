@@ -42,9 +42,8 @@ if [ -n "$TERMUX_VERSION" ]; then
     pkg_cmd="pkg i -y"
     pkgs="emacs termux-services build-essential stow ripgrep fzf"
 elif [ "$(uname)" = "Darwin" ]; then
-    pkg_cmd="brew install"
-    pkgs="gcc make fzf ripgrep stow"
-    casks="emacs-app firefox"
+    pkg_cmd="sudo /opt/local/bin/port install"
+    pkgs="bash emacs-app stow ripgrep fzf gcc"
 elif [ "$(uname)" = "Linux" ]; then
     . /etc/os-release
     if [ "$ID_LIKE" = "debian" ] || [ "$ID" = "debian" ]; then
@@ -60,16 +59,23 @@ else
 fi
 
 if [ "$(uname)" = "Darwin" ]; then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+    if [ -x "/opt/local/bin/port" ]; then
+        echo "MacPorts is available"
+    else
+        echo "MacPorts not found!!"
+        open https://macports.org
+        exit 1
+    fi
 fi
 
 # Perform the installation
 printf "Running: $pkg_cmd $pkgs\n"
 $pkg_cmd $pkgs
 
+# On darwin, change the shell
 if [ "$(uname)" = "Darwin" ]; then
-    $pkg_cmd --cask $casks
+    echo "/opt/local/bin/bash" | sudo tee /etc/shells
+    chsh -s /opt/local/bin/bash
 fi
 
 if [ -x "$(command -v stow)" ]; then
@@ -82,7 +88,7 @@ fi
 printf "Do you want to install every package, or only some? (answer every or some): "
 
 read -r answer
-n
+
 if [ "$answer" = "every" ]; then
     rm ~/.emacs.d/init.el -v
     rm ~/.emacs.d/custom.el -v
