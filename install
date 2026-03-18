@@ -82,14 +82,13 @@ fi
 printf "Do you want to install every package, or only some? (answer every or some): "
 
 read -r answer
-n
+
 if [ "$answer" = "every" ]; then
     rm ~/.emacs.d/init.el -v
     rm ~/.emacs.d/custom.el -v
     rm ~/.emacs.d/rc.el -v
     rm ~/.bashrc -v
     rm ~/.nanorc -v
-    rm ~/.zshrc -v
     rm ~/.emacs.d/local -rv
     rm ~/.config/fastfetch -rv
     rm ~/.gnupg/gpg-agent.conf -v
@@ -118,3 +117,7 @@ git config --global user.email "$email"
 git config --global user.name "$name"
 git config --global core.editor nano
 git config --global init.defaultBranch main
+
+set +e
+
+emacs --batch --eval "(package-install 'dracula-theme)"
