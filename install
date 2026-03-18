@@ -41,10 +41,6 @@ pkg_cmd="sudo apt-get install -y" # Default
 if [ -n "$TERMUX_VERSION" ]; then
     pkg_cmd="pkg i -y"
     pkgs="emacs termux-services build-essential stow ripgrep fzf"
-elif [ "$(uname)" = "Darwin" ]; then
-    pkg_cmd="brew install"
-    pkgs="gcc make fzf ripgrep stow"
-    casks="emacs-app firefox"
 elif [ "$(uname)" = "Linux" ]; then
     . /etc/os-release
     if [ "$ID_LIKE" = "debian" ] || [ "$ID" = "debian" ]; then
@@ -59,18 +55,9 @@ else
     exit 1
 fi
 
-if [ "$(uname)" = "Darwin" ]; then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
 # Perform the installation
 printf "Running: $pkg_cmd $pkgs\n"
 $pkg_cmd $pkgs
-
-if [ "$(uname)" = "Darwin" ]; then
-    $pkg_cmd --cask $casks
-fi
 
 if [ -x "$(command -v stow)" ]; then
     printf "Continuing to main logic\n"
