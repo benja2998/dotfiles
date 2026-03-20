@@ -23,7 +23,14 @@ fi
 
 export PROMPT='[%n@%m %1~]%# '
 
-export PATH="$HOME/.local/bin:$PATH"
+add_to_path() {
+    if [[ ":$PATH:" != *":$1:"* ]]; then
+        export PATH="$1:$PATH"
+    fi
+}
+
+add_to_path "/Applications/Emacs.app/Contents/MacOS/bin"
+add_to_path "$HOME/.local/bin"
 export EDITOR='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -c -a "" -w'
 
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"

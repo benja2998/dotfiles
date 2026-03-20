@@ -16,7 +16,14 @@ HISTSIZE=50000 # Allow in-memory history to be very big
 HISTFILESIZE=50000 # Allow history file to be very big
 
 export PS1="[\u@\h \W]\$ " # [user@localhost somefolder]$
-export PATH="$HOME/.local/bin:$PATH" # User binaries
+add_to_path() {
+    if [[ ":$PATH:" != *":$1:"* ]]; then
+        export PATH="$1:$PATH"
+    fi
+}
+
+add_to_path "/Applications/Emacs.app/Contents/MacOS/bin"
+add_to_path "$HOME/.local/bin"
 export HISTCONTROL="erasedups:ignoredups" # I don't think this actually works
 export EDITOR='emacsclient -c -a "" -w' # Emacs as default editor
 

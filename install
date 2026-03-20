@@ -89,6 +89,8 @@ if [ "$answer" = "every" ]; then
     rm ~/.bashrc
     rm ~/.zshrc
     rm ~/.nanorc
+    rm ~/.gnupg/gpg-agent.conf
+    rm ~/.gnupg/gpg.conf
     rm ~/.emacs.d/local -r
     rm ~/.config/fastfetch -r
     stow */

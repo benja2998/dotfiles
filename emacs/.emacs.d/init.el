@@ -4,6 +4,9 @@
 ;;; Which-key mode
 (which-key-mode t)
 
+;;; Fix gpg
+(setq epa-pinentry-mode 'loopback)
+
 ;;; Save history
 (savehist-mode t)
 
@@ -13,11 +16,33 @@
 ;;; Follow git symlinks
 (setq vc-follow-symlinks t)
 
-;;; Fix macOS modifiers
-(setq ns-alternate-modifier 'meta)
-(setq ns-right-alternate-modifier 'none)
-(setq mac-option-modifier 'meta)
-(setq mac-right-option-modifier 'none)
+;;; Fix meta on macOS
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier 'none)
+
+;;; Packages
+(require 'package)
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")
+                         ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
+(package-initialize)
+(require 'use-package)
+(setq use-package-always-ensure t)
+
+;;; Get shell environment variables
+(use-package exec-path-from-shell
+  :defer t
+  )
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+(when (daemonp)
+  (exec-path-from-shell-initialize))
+
+;;; Magit
+(use-package magit
+  :defer t
+  :bind ("C-x g" . magit-status)
+  )
 
 ;;; Disable UI clutter
 (menu-bar-mode 0)
