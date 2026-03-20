@@ -20,6 +20,10 @@
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier 'none)
 
+;;; Fix the stupid query replace keybinds
+(global-set-key (kbd "C-c r") 'query-replace)
+(global-set-key (kbd "C-c g") 'query-replace-regexp)
+
 ;;; Packages
 (require 'package)
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
