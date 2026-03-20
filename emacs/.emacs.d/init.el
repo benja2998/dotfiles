@@ -44,10 +44,6 @@
   :bind ("C-x g" . magit-status)
   )
 
-(ignore-error (magit-status))
-(ignore-error (magit-bury-buffer t))
-(ignore-error (delete-window))
-
 ;;; Proper terminal
 (use-package eat)
 (add-hook 'eshell-load-hook #'eat-eshell-mode)
