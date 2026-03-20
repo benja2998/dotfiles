@@ -8,6 +8,8 @@
  '(custom-safe-themes
    '("9c6aa7eb1bde73ba1142041e628827492bd05678df4d9097cda21b1ebcb8f8b9"
      default))
+ '(fido-mode t)
+ '(ido-everywhere t)
  '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
