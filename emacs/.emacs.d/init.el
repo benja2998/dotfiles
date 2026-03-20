@@ -53,7 +53,7 @@
 (add-hook 'eshell-load-hook #'eat-eshell-mode)
 (add-hook 'eshell-load-hook #'eat-eshell-visual-command-mode)
 
-(global-set-key (kbd "C-x p s") #'project-eat)
+(global-set-key (kbd "C-x p s") #'eat-project)
 
 ;;; Disable UI clutter
 (menu-bar-mode 0)
