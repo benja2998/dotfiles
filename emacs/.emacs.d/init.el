@@ -44,6 +44,17 @@
   :bind ("C-x g" . magit-status)
   )
 
+(ignore-error (magit-status))
+(ignore-error (magit-bury-buffer t))
+(ignore-error (delete-window))
+
+;;; Proper terminal
+(use-package eat)
+(add-hook 'eshell-load-hook #'eat-eshell-mode)
+(add-hook 'eshell-load-hook #'eat-eshell-visual-command-mode)
+
+(global-set-key (kbd "C-x p s") #'project-eat)
+
 ;;; Disable UI clutter
 (menu-bar-mode 0)
 (if (fboundp 'tool-bar-mode) (tool-bar-mode 0))
