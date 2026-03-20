@@ -1,24 +1,22 @@
 #!/bin/sh
 
+set -x
+
 printf "Have you set up GPG keys and set up git to always sign with GPG? (answer yes or no): "
 
 read -r answer
 
 if [ "$answer" = "yes" ]; then
-    printf "Continuing\n"
+    no=op
 elif [ "$answer" = "no" ]; then
-    printf "Not continuing!!\n"
     exit 1
 else
-    printf "Bad answer!!\n"
     exit 1
 fi
 
 mkdir -p ~/.config
 mkdir -p ~/.emacs.d
 mkdir -p ~/.gnupg
-
-printf "Checking if HOME is parent of current dir...\n"
 
 dotfiles=$(pwd)
 
@@ -28,41 +26,56 @@ parent=$(pwd)
 cd "$dotfiles"
 
 if [ "$parent" = "$HOME" ]; then
-    printf "Parent is HOME, continuing\n"
+    no=op
 else
-    printf "Parent is not HOME!!\n"
     exit 1
 fi
-
-printf "Installing programs...\n"
 
 pkg_cmd="sudo apt-get install -y" # Default
 
 if [ -n "$TERMUX_VERSION" ]; then
+    upg_cmd="pkg up -y"
     pkg_cmd="pkg i -y"
     pkgs="emacs termux-services build-essential stow ripgrep fzf"
+elif [ "$(uname)" = "Darwin" ]; then
+    upg_cmd="brew update"
+    upg2_cmd="brew upgrade"
+    upg3_cmd="brew cleanup"
+    pkg_cmd="brew install"
+    pkgs="ripgrep stow fzf git gcc"
+    casks="emacs-app firefox"
 elif [ "$(uname)" = "Linux" ]; then
     . /etc/os-release
     if [ "$ID_LIKE" = "debian" ] || [ "$ID" = "debian" ]; then
+        upg_cmd="sudo apt-get upgrade -y"
 	    pkg_cmd="sudo apt-get install -y"
 	    pkgs="build-essential emacs fzf stow ripgrep"
     else
-	    printf "Unsupported distro!!\n"
 	    exit 1
     fi
 else
-    printf "Unsupported OS!!\n"
     exit 1
 fi
 
-# Perform the installation
-printf "Running: $pkg_cmd $pkgs\n"
+# Set up brew
+if [ "$(uname)" = "Darwin" ]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+$upg_cmd
+$upg2_cmd
+$upg3_cmd
 $pkg_cmd $pkgs
 
+# Install casks if on macOS
+if [ "$(uname)" = "Darwin" ]; then
+    $pkg_cmd --cask $casks
+fi
+
 if [ -x "$(command -v stow)" ]; then
-    printf "Continuing to main logic\n"
+    no=op
 else
-    printf "Stow is not installed!!\n"
     exit 1
 fi
 
@@ -71,26 +84,22 @@ printf "Do you want to install every package, or only some? (answer every or som
 read -r answer
 
 if [ "$answer" = "every" ]; then
-    rm ~/.emacs.d/init.el -v
-    rm ~/.emacs.d/custom.el -v
-    rm ~/.emacs.d/rc.el -v
-    rm ~/.bashrc -v
-    rm ~/.nanorc -v
-    rm ~/.emacs.d/local -rv
-    rm ~/.config/fastfetch -rv
-    rm ~/.gnupg/gpg-agent.conf -v
-    rm ~/.gnupg/gpg.conf -v
-    stow */ -v
+    rm ~/.emacs.d/init.el
+    rm ~/.emacs.d/custom.el
+    rm ~/.bashrc
+    rm ~/.zshrc
+    rm ~/.nanorc
+    rm ~/.emacs.d/local -r
+    rm ~/.config/fastfetch -r
+    stow */
 elif [ "$answer" = "some" ]; then
     printf "Package to install?: "
     read -r package
     if [ "$package" = "" ]; then
-	    printf "No package!!\n"
 	    exit 1
     fi
-    stow "$package" -v
+    stow "$package"
 else
-    printf "Bad answer!!\n"
     exit 1
 fi
 
