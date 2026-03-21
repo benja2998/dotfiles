@@ -17,7 +17,7 @@ alias emacs='emacsclient -c -a ""'
 alias e='emacsclient -c -a "" .'
 
 if [[ "$(uname)" = "Darwin" ]]; then
-    alias emacs='/Application/Emacs.app/Contents/MacOS/bin/emacsclient -c -a ""'
+    alias emacs='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -c -a ""'
     alias e='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -c -a "" .'
 fi
 

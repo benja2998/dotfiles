@@ -36,7 +36,8 @@ pkg_cmd="sudo apt-get install -y" # Default
 if [ -n "$TERMUX_VERSION" ]; then
     upg_cmd="pkg up -y"
     pkg_cmd="pkg i -y"
-    pkgs="emacs termux-services build-essential stow ripgrep fzf"
+    pkgs="x11-repo termux-services build-essential stow ripgrep fzf"
+    pkgs2="pkg i -y emacs-x"
 elif [ "$(uname)" = "Darwin" ]; then
     upg_cmd="brew update"
     upg2_cmd="brew upgrade"
@@ -67,6 +68,7 @@ $upg_cmd
 $upg2_cmd
 $upg3_cmd
 $pkg_cmd $pkgs
+$pkgs2
 
 # Install casks if on macOS
 if [ "$(uname)" = "Darwin" ]; then
@@ -117,3 +119,14 @@ git config --global core.editor nano
 git config --global init.defaultBranch main
 
 set +e
+
+if [ "$(uname)" = "Darwin" ]; then
+    emacscmd="/Applications/Emacs.app/Contents/MacOS/Emacs"
+else
+    emacscmd="emacs"
+fi
+
+$emacscmd --batch --eval "(package-install 'magit)"
+$emacscmd --batch --eval "(package-install 'eat)"
+$emacscmd --batch --eval "(package-install 'exec-path-from-shell)"
+killall emacs
