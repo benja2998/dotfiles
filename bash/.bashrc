@@ -24,6 +24,7 @@ add_to_path() {
 
 add_to_path "/Applications/Emacs.app/Contents/MacOS/bin"
 add_to_path "$HOME/.local/bin"
+add_to_path "$HOME/.cargo/bin"
 export HISTCONTROL="erasedups:ignoredups" # I don't think this actually works
 export EDITOR='emacsclient -c -a "" -w' # Emacs as default editor
 

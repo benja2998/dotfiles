@@ -31,6 +31,7 @@ add_to_path() {
 
 add_to_path "/Applications/Emacs.app/Contents/MacOS/bin"
 add_to_path "$HOME/.local/bin"
+add_to_path "$HOME/.cargo/bin"
 export EDITOR='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -c -a "" -w'
 
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
