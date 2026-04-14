@@ -12,11 +12,7 @@
 (setq mac-option-modifier 'none)
 
 ;;; Font
-(cond
- ((eq system-type 'android) '((setq default-frame-alist (font . "Droid Sans-14"))))
- ((eq system-type 'darwin) '((setq default-frame-alist (font . "Iosevka-14"))))
- ((eq system-type 'gnu/linux) '((setq default-frame-alist (font . "Iosevka-14"))))
- )
+(cond ((eq system-type 'android) (set-face-attribute 'default nil :font "Droid Sans Mono-18")) ((eq system-type 'gnu/linux) (set-face-attribute 'default nil :font "Iosevka-14")) ((eq system-type 'darwin) (set-face-attribute 'default nil :font "Iosevka-14")) (t (set-face-attribute 'default nil :font "Monospace-12")))
 
 ;;; Fix the stupid query replace keybinds
 (global-set-key (kbd "C-c r") 'query-replace)
