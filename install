@@ -44,7 +44,7 @@ elif [ "$(uname)" = "Darwin" ]; then
     upg3_cmd="brew cleanup"
     pkg_cmd="brew install"
     pkgs="ripgrep stow fzf git gcc"
-    casks="emacs-app firefox"
+    casks="font-iosevka emacs-app firefox"
 elif [ "$(uname)" = "Linux" ]; then
     . /etc/os-release
     if [ "$ID_LIKE" = "debian" ] || [ "$ID" = "debian" ]; then

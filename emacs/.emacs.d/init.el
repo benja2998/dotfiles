@@ -11,6 +11,13 @@
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier 'none)
 
+;;; Font
+(cond
+ ((eq system-type 'android) '((setq default-frame-alist (font . "Droid Sans-14"))))
+ ((eq system-type 'darwin) '((setq default-frame-alist (font . "Iosevka-14"))))
+ ((eq system-type 'gnu/linux) '((setq default-frame-alist (font . "Iosevka-14"))))
+ )
+
 ;;; Fix the stupid query replace keybinds
 (global-set-key (kbd "C-c r") 'query-replace)
 (global-set-key (kbd "C-c g") 'query-replace-regexp)
