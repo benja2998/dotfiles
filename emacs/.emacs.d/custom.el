@@ -20,7 +20,7 @@
  '(package-archives
    '(("elpa" . "https://elpa.gnu.org/packages/")
      ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
- '(package-selected-packages '(eat exec-path-from-shell magit))
+ '(package-selected-packages '(exec-path-from-shell magit))
  '(pixel-scroll-precision-mode t)
  '(prog-mode-hook '(#[nil ((display-line-numbers-mode 1)) nil]))
  '(savehist-mode t)
