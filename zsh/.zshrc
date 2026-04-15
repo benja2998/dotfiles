@@ -1,3 +1,5 @@
+export GPG_TTY="$(tty)"
+
 setopt APPEND_HISTORY
 setopt SHARE_HISTORY
 setopt HIST_IGNORE_ALL_DUPS

@@ -1,3 +1,5 @@
+export GPG_TTY="$(tty)"
+
 [[ $- != *i* ]] && return
 shopt -s histappend # Append to history rather than rewriting
 shopt -s autocd # Allow changing to a directory without cd
