@@ -24,12 +24,6 @@
 (when (daemonp)
   (exec-path-from-shell-initialize))
 
-;;; Proper terminal
-(add-hook 'eshell-load-hook #'eat-eshell-mode)
-(add-hook 'eshell-load-hook #'eat-eshell-visual-command-mode)
-(global-set-key (kbd "C-x p s") #'eat-project)
-(global-set-key (kbd "C-c t") #'eat)
-
 ;;; Don't show splash screen
 (setq inhibit-splash-screen t)
 

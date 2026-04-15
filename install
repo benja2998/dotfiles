@@ -127,6 +127,5 @@ else
 fi
 
 $emacscmd --batch --eval "(package-install 'magit)"
-$emacscmd --batch --eval "(package-install 'eat)"
 $emacscmd --batch --eval "(package-install 'exec-path-from-shell)"
 killall emacs
