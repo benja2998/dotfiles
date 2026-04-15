@@ -13,12 +13,9 @@ setopt GLOB_STAR_SHORT
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
-alias emacs='emacsclient -c -a ""'
-alias e='emacsclient -c -a "" .'
 
 if [[ "$(uname)" = "Darwin" ]]; then
-    alias emacs='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -c -a ""'
-    alias e='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -c -a "" .'
+    alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
 fi
 
 export PROMPT='[%n@%m %1~]%# '
@@ -32,7 +29,7 @@ add_to_path() {
 add_to_path "/Applications/Emacs.app/Contents/MacOS/bin"
 add_to_path "$HOME/.local/bin"
 add_to_path "$HOME/.cargo/bin"
-export EDITOR='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -c -a "" -w'
+export EDITOR='nano'
 
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
 
