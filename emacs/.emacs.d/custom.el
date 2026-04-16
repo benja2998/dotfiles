@@ -7,9 +7,15 @@
  '(auto-save-default nil)
  '(c-basic-offset 4)
  '(create-lockfiles nil)
- '(custom-enabled-themes '(gruber-darker))
+ '(custom-enabled-themes '(modus-vivendi))
  '(custom-safe-themes
-   '("b1a691bb67bd8bd85b76998caf2386c9a7b2ac98a116534071364ed6489b695d"
+   '("2c7dc80264de0ba9409d4ebb3c7b31cf8e4982015066174c786f16a672db71b2"
+     "516ec39655c85f346393f5d93e0f03602b6bfc33335bf2fd673016c9c4cdc69e"
+     "22faff66975354a3dd145ae13934758d45930ad09cbbe8bd1ed74224e4aa5684"
+     "0a8cf72fd94bfb67dd72dc085538b39ea47aeae8bfc2b8545c0d3c99c339c204"
+     "546f3e8c4cb46043df1f646322c4b57049fc4c31fdf96e41db077c3408660057"
+     "578002ec7093cedeb7d279794492b19ad7413cca3e16286e776168eb544798c4"
+     "b1a691bb67bd8bd85b76998caf2386c9a7b2ac98a116534071364ed6489b695d"
      "2ff9ac386eac4dffd77a33e93b0c8236bb376c5a5df62e36d4bfa821d56e4e20"
      "72ed8b6bffe0bfa8d097810649fd57d2b598deef47c992920aef8b5d9599eefe"
      "d80952c58cf1b06d936b1392c38230b74ae1a2a6729594770762dc0779ac66b7"
@@ -25,7 +31,7 @@
  '(package-archives
    '(("elpa" . "https://elpa.gnu.org/packages/")
      ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
- '(package-selected-packages '(exec-path-from-shell gruber-darker-theme))
+ '(package-selected-packages '(exec-path-from-shell))
  '(pixel-scroll-precision-mode t)
  '(prog-mode-hook '(#[nil ((display-line-numbers-mode 1)) nil]))
  '(savehist-mode t)
