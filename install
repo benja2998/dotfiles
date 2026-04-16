@@ -127,4 +127,5 @@ else
 fi
 
 $emacscmd --batch --eval "(package-install 'exec-path-from-shell)"
+$emacscmd --batch --eval "(package-install 'gruber-darker-theme"
 killall emacs
