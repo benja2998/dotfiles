@@ -12,10 +12,10 @@ set -xe
 #  6. Run it
 
 if [ "$(pwd)" = "$HOME" ]; then
-       echo "Ok"
+    echo "Ok"
 else
-       echo "Not ok. This file must be at ~."
-       exit 1
+    echo "Not ok. This file must be at ~."
+    exit 1
 fi
 
 rm -rf ~/.emacs
