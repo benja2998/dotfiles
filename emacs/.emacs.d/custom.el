@@ -7,9 +7,10 @@
  '(auto-save-default nil)
  '(c-basic-offset 4)
  '(create-lockfiles nil)
- '(custom-enabled-themes '(ef-autumn))
+ '(custom-enabled-themes '(modus-vivendi-tinted))
  '(custom-safe-themes
-   '("0f738dce3f831b6d64ee3e98052bdea663b74d5149dcbbf555327dcb4517fc08"
+   '("fff0dc54ff5a194ba6593d1cce0fbb4fe8cf9da59fcef47f9e06dec6ef11b1fa"
+     "0f738dce3f831b6d64ee3e98052bdea663b74d5149dcbbf555327dcb4517fc08"
      "ed2efc874021b54144b9ed9874e4d9c036090488aeabe19c9ac28576a162ec12"
      "51caf9bf88aba940d98c96add138d83317d50eae4b8526612184e93473252d54"
      "677e3d3d9ca354bfa2422287bc8ef048a759cd5009493e75197d3a3ab3590c58"
@@ -50,7 +51,7 @@
  '(package-archives
    '(("elpa" . "https://elpa.gnu.org/packages/")
      ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
- '(package-selected-packages '(ef-themes exec-path-from-shell))
+ '(package-selected-packages '(exec-path-from-shell))
  '(pixel-scroll-precision-mode t)
  '(prog-mode-hook '(#[nil ((display-line-numbers-mode 1)) nil]))
  '(savehist-mode t)
