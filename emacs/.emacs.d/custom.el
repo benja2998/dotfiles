@@ -9,7 +9,8 @@
  '(create-lockfiles nil)
  '(custom-enabled-themes '(gruber-darker))
  '(custom-safe-themes
-   '("e13beeb34b932f309fb2c360a04a460821ca99fe58f69e65557d6c1b10ba18c7"
+   '("e27c9668d7eddf75373fa6b07475ae2d6892185f07ebed037eedf783318761d7"
+     "e13beeb34b932f309fb2c360a04a460821ca99fe58f69e65557d6c1b10ba18c7"
      "2505c0699e53e5ff10708b6d86f2224abd79357b27de79136605b450a1785585"
      "9819b94dc38ee935362d4bf1c1198ebb8ebeabb5e8c85a78436565720d91c0d7"
      "8a90181e138c25f51a5c001a9c763a1e263605c0654df6cc9546a85e5e0f789d"
@@ -46,7 +47,7 @@
  '(package-archives
    '(("elpa" . "https://elpa.gnu.org/packages/")
      ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
- '(package-selected-packages '(exec-path-from-shell gruber-darker-theme))
+ '(package-selected-packages nil)
  '(pixel-scroll-precision-mode t)
  '(prog-mode-hook '(#[nil ((display-line-numbers-mode 1)) nil]))
  '(savehist-mode t)

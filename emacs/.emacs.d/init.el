@@ -1,3 +1,7 @@
+;;; Load paths
+(add-to-list 'custom-theme-load-path "~/.emacs.d/local")
+(add-to-list 'load-path "~/.emacs.d/local")
+
 ;;; Open home dir with a keybind
 (global-set-key (kbd "C-c h") (lambda () (interactive) (dired "~")))
 
@@ -19,6 +23,7 @@
 (global-set-key (kbd "C-c g") 'query-replace-regexp)
 
 ;;; Exec path from shell
+(require 'exec-path-from-shell)
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
 (when (daemonp)
@@ -37,6 +42,8 @@
 (load custom-file)
 
 ;;; Simple C mode
-(add-to-list 'load-path "~/.emacs.d/local")
 (require 'simpc-mode)
 (add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
+
+;;; Gruber darker
+(load-theme 'gruber-darker)
