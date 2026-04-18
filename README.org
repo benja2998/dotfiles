@@ -1,7 +1,0 @@
-* dotfiles
-
-These are my dotfiles.
-
-** Contributing
-
-Do not contribute. If these do not work on your machine, fork them and fix them yourself.
