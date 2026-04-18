@@ -38,13 +38,6 @@ if [ -n "$TERMUX_VERSION" ]; then
     pkg_cmd="pkg i -y"
     pkgs="x11-repo termux-services build-essential stow ripgrep fzf"
     pkgs2="pkg i -y emacs-x"
-elif [ "$(uname)" = "Darwin" ]; then
-    upg_cmd="brew update"
-    upg2_cmd="brew upgrade"
-    upg3_cmd="brew cleanup"
-    pkg_cmd="brew install"
-    pkgs="ripgrep stow fzf git gcc"
-    casks="font-iosevka emacs-app firefox"
 elif [ "$(uname)" = "Linux" ]; then
     . /etc/os-release
     if [ "$ID_LIKE" = "debian" ] || [ "$ID" = "debian" ]; then
@@ -60,9 +53,8 @@ else
 fi
 
 # Set up brew
-if [ "$(uname)" = "Darwin" ] || [ "$(uname -o)" = "GNU/Linux" ]; then
+if [ "$(uname -o)" = "GNU/Linux" ]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    eval "$(/opt/homebrew/bin/brew shellenv)"
     test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
@@ -74,11 +66,6 @@ $pkgs2
 
 if [ "$(uname -o)" = "GNU/Linux" ]; then
     brew install fzf gcc
-fi
-
-# Install casks if on macOS
-if [ "$(uname)" = "Darwin" ]; then
-    $pkg_cmd --cask $casks
 fi
 
 # Snaps
