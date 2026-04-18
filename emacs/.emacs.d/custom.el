@@ -39,8 +39,6 @@
      "fff0dc54ff5a194ba6593d1cce0fbb4fe8cf9da59fcef47f9e06dec6ef11b1fa"
      default))
  '(display-line-numbers-type 'relative)
- '(fido-mode t)
- '(fido-vertical-mode t)
  '(indent-tabs-mode nil)
  '(make-backup-files nil)
  '(menu-bar-mode nil)

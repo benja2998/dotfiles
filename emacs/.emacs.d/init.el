@@ -8,15 +8,16 @@
 ;;; Fix gpg
 (setq epa-pinentry-mode 'loopback)
 
+;;; Eat terminal
+(add-hook 'eshell-load-hook #'eat-eshell-mode)
+(global-set-key (kbd "C-c t") #'eat)
+(global-set-key (kbd "C-x p s") #'eat-project)
+
 ;;; Set the custom-file
 (setq custom-file "~/.emacs.d/custom.el")
 
-;;; Fix meta on macOS
-(setq mac-command-modifier 'meta)
-(setq mac-option-modifier 'none)
-
 ;;; Font
-(cond ((eq system-type 'android) (set-face-attribute 'default nil :font "Droid Sans Mono-18")) ((eq system-type 'gnu/linux) (set-face-attribute 'default nil :font "Iosevka-14")) ((eq system-type 'darwin) (set-face-attribute 'default nil :font "Iosevka-14")) (t (set-face-attribute 'default nil :font "Monospace-12")))
+(cond ((eq system-type 'android) (set-face-attribute 'default nil :font "Droid Sans Mono-18")) ((eq system-type 'gnu/linux) (set-face-attribute 'default nil :font "Iosevka-14")) (t (set-face-attribute 'default nil :font "Monospace-12")))
 
 ;;; Fix the stupid query replace keybinds
 (global-set-key (kbd "C-c r") 'query-replace)
@@ -24,10 +25,7 @@
 
 ;;; Exec path from shell
 (require 'exec-path-from-shell)
-(when (memq window-system '(mac ns x))
-  (exec-path-from-shell-initialize))
-(when (daemonp)
-  (exec-path-from-shell-initialize))
+(exec-path-from-shell-initialize)
 
 ;;; Don't show splash screen
 (setq inhibit-splash-screen t)
@@ -40,6 +38,10 @@
 
 ;;; Load the custom-file
 (load custom-file)
+
+;;; Ido mode
+(ido-mode 1)
+(ido-everywhere 1)
 
 ;;; Simple C mode
 (require 'simpc-mode)
