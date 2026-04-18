@@ -50,7 +50,8 @@ elif [ "$(uname)" = "Linux" ]; then
     if [ "$ID_LIKE" = "debian" ] || [ "$ID" = "debian" ]; then
         upg_cmd="sudo apt-get upgrade -y"
 	    pkg_cmd="sudo apt-get install -y"
-	    pkgs="build-essential emacs fzf stow ripgrep"
+	    pkgs="build-essential stow ripgrep"
+        pkgs_snap="emacs kdenlive"
     else
 	    exit 1
     fi
@@ -59,9 +60,10 @@ else
 fi
 
 # Set up brew
-if [ "$(uname)" = "Darwin" ]; then
+if [ "$(uname)" = "Darwin" ] || [ "$(uname -o)" = "GNU/Linux" ]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     eval "$(/opt/homebrew/bin/brew shellenv)"
+    test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 $upg_cmd
@@ -70,9 +72,19 @@ $upg3_cmd
 $pkg_cmd $pkgs
 $pkgs2
 
+if [ "$(uname -o)" = "GNU/Linux" ]; then
+    brew install fzf gcc
+fi
+
 # Install casks if on macOS
 if [ "$(uname)" = "Darwin" ]; then
     $pkg_cmd --cask $casks
+fi
+
+# Snaps
+if [ "$pkgs_snap" = "emacs kdenlive" ]; then
+    sudo snap install emacs --classic
+    sudo snap install kdenlive
 fi
 
 if [ -x "$(command -v stow)" ]; then
@@ -117,13 +129,3 @@ git config --global user.email "$email"
 git config --global user.name "$name"
 git config --global core.editor nano
 git config --global init.defaultBranch main
-
-set +e
-
-if [ "$(uname)" = "Darwin" ]; then
-    emacscmd="/Applications/Emacs.app/Contents/MacOS/Emacs"
-else
-    emacscmd="emacs"
-fi
-
-killall emacs
