@@ -2,6 +2,9 @@ test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/bre
 
 export GPG_TTY="$(tty)"
 
+export TERM="xterm-256color"
+export COLORTERM="truecolor"
+
 [[ $- != *i* ]] && return
 shopt -s histappend # Append to history rather than rewriting
 shopt -s autocd # Allow changing to a directory without cd
