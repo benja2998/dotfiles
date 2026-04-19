@@ -8,10 +8,8 @@
 ;;; Fix gpg
 (setq epa-pinentry-mode 'loopback)
 
-;;; Eat terminal
-(add-hook 'eshell-load-hook #'eat-eshell-mode)
-(global-set-key (kbd "C-c t") #'eat)
-(global-set-key (kbd "C-x p s") #'eat-project)
+;;; Terminal
+(global-set-key (kbd "C-c t") (lambda () (interactive) (start-process-shell-command "alacritty" nil "alacritty")))
 
 ;;; Set the custom-file
 (setq custom-file "~/.emacs.d/custom.el")
