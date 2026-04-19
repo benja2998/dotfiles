@@ -43,7 +43,7 @@ elif [ "$(uname)" = "Linux" ]; then
     if [ "$ID_LIKE" = "debian" ] || [ "$ID" = "debian" ]; then
         upg_cmd="sudo apt-get upgrade -y"
 	    pkg_cmd="sudo apt-get install -y"
-	    pkgs="build-essential stow ripgrep"
+	    pkgs="build-essential stow ripgrep alacritty"
         pkgs_snap="emacs kdenlive"
     else
 	    exit 1
@@ -66,6 +66,7 @@ $pkgs2
 
 if [ "$(uname -o)" = "GNU/Linux" ]; then
     brew install fzf gcc
+    sudo update-alternatives --config x-terminal-emulator
 fi
 
 # Snaps
