@@ -9,7 +9,8 @@
 (global-set-key (kbd "C-c t") (lambda () (interactive) (start-process-shell-command "x-terminal-emulator" nil "x-terminal-emulator")))
 
 ;;; Font
-(cond ((eq system-type 'android) (set-face-attribute 'default nil :font "Droid Sans Mono-18")) ((eq system-type 'gnu/linux) (set-face-attribute 'default nil :font "Iosevka-14")) (t (set-face-attribute 'default nil :font "Monospace-12")))
+(add-to-list 'default-frame-alist '(font . "Iosevka-14"))
+(set-face-attribute 'default nil :font "Iosevka-14")
 
 ;;; Fix the stupid query replace keybinds
 (global-set-key (kbd "C-c r") 'query-replace)
