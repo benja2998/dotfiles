@@ -1,7 +1,5 @@
 #!/bin/sh
 
-set -x
-
 printf "Have you set up GPG keys and set up git to always sign with GPG? (answer yes or no): "
 
 read -r answer
@@ -42,11 +40,14 @@ elif [ "$(uname)" = "Linux" ]; then
     . /etc/os-release
     if [ "$ID_LIKE" = "debian" ] || [ "$ID" = "debian" ]; then
         upg_cmd="sudo apt-get upgrade -y"
-	    pkg_cmd="sudo apt-get install -y"
-	    pkgs="build-essential stow ripgrep alacritty"
-        pkgs_snap="emacs kdenlive"
+	pkg_cmd="sudo apt-get install -y"
+	pkgs="build-essential stow ripgrep alacritty fzf emacs"
+	snap_cmd="sudo snap install"
+	snaps_classic="obsidian --classic"
+	snaps="spotify"
+	upg_snap_cmd="sudo snap refresh"
     else
-	    exit 1
+	exit 1
     fi
 else
     exit 1
@@ -61,18 +62,14 @@ fi
 $upg_cmd
 $upg2_cmd
 $upg3_cmd
+$upg_snap_cmd
 $pkg_cmd $pkgs
+$snap_cmd $snaps
+$snap_cmd $snaps_classic
 $pkgs2
 
 if [ "$(uname -o)" = "GNU/Linux" ]; then
     brew install fzf gcc
-    sudo update-alternatives --config x-terminal-emulator
-fi
-
-# Snaps
-if [ "$pkgs_snap" = "emacs kdenlive" ]; then
-    sudo snap install emacs --classic
-    sudo snap install kdenlive
 fi
 
 if [ -x "$(command -v stow)" ]; then
@@ -100,7 +97,7 @@ elif [ "$answer" = "some" ]; then
     printf "Package to install?: "
     read -r package
     if [ "$package" = "" ]; then
-	    exit 1
+	exit 1
     fi
     stow "$package"
 else
