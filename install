@@ -42,7 +42,7 @@ EOF
     sudo apt --fix-missing install
     sudo apt update
     sudo apt upgrade
-    sudo apt install -y fzf ripgrep emacs flatpak stow gnome-software-plugin-flatpak gnome-software
+    sudo apt install -y fzf ripgrep emacs flatpak stow gnome-software-plugin-flatpak gnome-software gnome-shell-extensions
     rm steam.deb
     echo "===> Configuring GNOME"
     dconf load /org/gnome/desktop/ < desktop.txt
@@ -58,4 +58,5 @@ EOF
     echo "===> Caveats"
     echo "==> You should manually install the GNOME extensions Switcher, Tactile and Space Bar."
     echo "==> You should manually change the Docker root directory."
+    echo "==> You should manually disable Ubuntu dock, then log out and back in"
 fi
