@@ -1,0 +1,61 @@
+#!/bin/bash
+
+set -e
+
+### Check distribution
+source /etc/os-release
+
+if [ "$NAME" = "Ubuntu" ]; then
+    distro=ubuntu
+    echo "Continuing"
+else
+    echo "No support has been added yet."
+fi
+
+### Install packages
+if [ "$distro" = "ubuntu" ]; then
+    echo "===> Installing Homebrew"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo "===> Sourcing Homebrew"
+    test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    echo "===> Installing apt packages"
+    sudo dpkg --add-architecture i386
+    wget https://cdn.akamai.steamstatic.com/client/installer/steam.deb
+    sudo apt update
+    sudo apt upgrade
+    sudo apt update
+    sudo apt install ca-certificates curl
+    sudo install -m 0755 -d /etc/apt/keyrings
+    sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+    sudo chmod a+r /etc/apt/keyrings/docker.asc
+    sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+Types: deb
+URIs: https://download.docker.com/linux/ubuntu
+Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
+Components: stable
+Architectures: $(dpkg --print-architecture)
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
+    sudo apt update
+    sudo apt upgrade
+    sudo apt install ./steam.deb
+    sudo apt --fix-missing install
+    sudo apt update
+    sudo apt upgrade
+    sudo apt install -y fzf ripgrep emacs flatpak stow gnome-software-plugin-flatpak gnome-software
+    rm steam.deb
+    echo "===> Configuring GNOME"
+    dconf load /org/gnome/desktop/ < desktop.txt
+    dconf load /org/gnome/shell/extensions/ < extensions.txt
+    echo "===> Installing dotfiles"
+    mkdir -p ~/.emacs.d
+    mv ~/.bashrc ~/.bashrc.bak
+    stow */
+    echo "===> Setting up Flatpak"
+    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+    echo "===> Installing Homebrew packages"
+    brew bundle
+    echo "===> Caveats"
+    echo "==> You should manually install the GNOME extensions Switcher, Tactile and Space Bar."
+    echo "==> You should manually change the Docker root directory."
+fi
