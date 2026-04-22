@@ -2,6 +2,12 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/local")
 (add-to-list 'load-path "~/.emacs.d/local")
 
+;;; Make Emacs not put backup files in the same directory
+; Source - https://stackoverflow.com/a/151946
+; Posted by jfm3, modified by community. See post 'Timeline' for change history
+; Retrieved 2026-04-21, License - CC BY-SA 3.0
+(setq backup-directory-alist `(("." . "~/.saves")))
+
 ;;; Open home dir with a keybind
 (global-set-key (kbd "C-c h") (lambda () (interactive) (dired "~")))
 
