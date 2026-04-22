@@ -42,7 +42,7 @@ EOF
     sudo apt --fix-missing install
     sudo apt update
     sudo apt upgrade
-    sudo apt install -y fzf ripgrep emacs flatpak stow gnome-software-plugin-flatpak gnome-software gnome-shell-extensions ssh
+    sudo apt install -y fzf ripgrep emacs flatpak stow gnome-software-plugin-flatpak gnome-software gnome-shell-extensions ssh gnome-tweaks
     rm steam.deb
     echo "===> Configuring GNOME"
     dconf load /org/gnome/desktop/ < desktop.txt
