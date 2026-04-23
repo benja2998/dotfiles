@@ -21,9 +21,13 @@ if [ "$distro" = "ubuntu" ]; then
     sudo ufw enable
     sudo ufw default deny incoming
     sudo ufw default allow outgoing
+    echo "===> Setting up firewall rules"
+    sudo ufw allow 1714:1764/tcp
+    sudo ufw allow 1714:1764/udp
+    sudo ufw allow 5353/udp
     echo "===> Installing font"
     cd /tmp
-    wget https://github.com/ryanoasis/nerd-fonts/releases/download/latest/Iosevka.zip
+    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Iosevka.zip
     unzip Iosevka.zip
     mkdir -p ~/.local/share/fonts
     mv *.ttf ~/.local/share/fonts/ -v
