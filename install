@@ -44,6 +44,9 @@ EOF
     sudo apt upgrade
     sudo apt install -y fzf ripgrep emacs flatpak stow gnome-software-plugin-flatpak gnome-software gnome-shell-extensions ssh gnome-tweaks
     rm steam.deb
+    sudo apt update && sudo apt install extrepo -y
+    sudo extrepo enable librewolf && sudo extrepo update librewolf
+    sudo apt update && sudo apt install librewolf -y
     echo "===> Configuring GNOME"
     dconf load /org/gnome/desktop/ < desktop.txt
     dconf load /org/gnome/shell/extensions/ < extensions.txt
@@ -61,4 +64,5 @@ EOF
     echo "==> You should manually disable Ubuntu dock, then log out and back in."
     echo "==> You should manually install the Iosevka font."
     echo "==> You should manually set up git email and username, set up gpg and ssh keys, and set up git to sign commits with gpg."
+    echo "==> You should manually set Librewolf as default browser and configure Librewolf."
 fi
