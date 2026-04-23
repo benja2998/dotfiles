@@ -69,3 +69,8 @@ if [[ "$(uname -n)" = "steamdeck" ]]; then # Weird edge case
     export LC_MEASUREMENT=C.UTF-8
     export LC_IDENTIFICATION=C.UTF-8
 fi
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/benja/.lmstudio/bin"
+# End of LM Studio CLI section
+
