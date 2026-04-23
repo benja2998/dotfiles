@@ -1,6 +1,7 @@
 brew "fastfetch"
 brew "fzf"
 brew "gcc"
+brew "node"
 brew "vim"
 brew "yt-dlp"
 flatpak "com.github.tchx84.Flatseal"
