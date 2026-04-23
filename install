@@ -47,8 +47,6 @@ EOF
     sudo apt update && sudo apt install extrepo -y
     sudo extrepo enable librewolf && sudo extrepo update librewolf
     sudo apt update && sudo apt install librewolf -y
-    echo "===> Configuring GNOME"
-    dconf load /org/gnome/desktop/ < desktop.txt
     echo "===> Installing dotfiles"
     mkdir -p ~/.emacs.d
     mv ~/.bashrc ~/.bashrc.bak
