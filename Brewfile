@@ -1,6 +1,7 @@
 brew "fastfetch"
 brew "fzf"
 brew "gcc"
+brew "python"
 brew "node"
 brew "vim"
 brew "yt-dlp"

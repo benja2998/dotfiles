@@ -137,7 +137,7 @@ enable-move-to-workspace-shortcuts=false
 version=34
 
 [switcher]
-launcher-stats='{"org.gnome.Extensions.desktop":8,"org.gnome.Terminal.desktop":14,"google-chrome.desktop":7,"org.gnome.tweaks.desktop":6,"org.keepassxc.KeePassXC.desktop":2,"org.gnome.Settings.desktop":5,"emacs.desktop":16,"display-im6.q16.desktop":1,"discord.desktop":6,"firefox_firefox.desktop":14,"org.audacityteam.Audacity.desktop":1,"emacs-term.desktop":1,"emacsclient.desktop":2,"com.usebottles.bottles.desktop":1,"mission-center_mission-center.desktop":1,"org.gnome.Nautilus.desktop":1,"org.gnome.TextEditor.desktop":1,"obsidian_obsidian.desktop":1,"librewolf.desktop":7}'
+launcher-stats='{"org.gnome.Extensions.desktop":8,"org.gnome.Terminal.desktop":16,"google-chrome.desktop":7,"org.gnome.tweaks.desktop":6,"org.keepassxc.KeePassXC.desktop":3,"org.gnome.Settings.desktop":6,"emacs.desktop":17,"display-im6.q16.desktop":1,"discord.desktop":8,"firefox_firefox.desktop":14,"org.audacityteam.Audacity.desktop":3,"emacs-term.desktop":1,"emacsclient.desktop":2,"com.usebottles.bottles.desktop":1,"mission-center_mission-center.desktop":5,"org.gnome.Nautilus.desktop":2,"org.gnome.TextEditor.desktop":1,"obsidian_obsidian.desktop":1,"librewolf.desktop":18,"appimagekit_4e593f235994d67b93dcea7362c359dc-LM-Studio.desktop":1,"gnome-session-properties.desktop":1,"nvidia-settings.desktop":1,"org.vinegarhq.Sober.desktop":4,"spotify_spotify.desktop":1,"steam.desktop":1}'
 show-switcher=['<Super>u']
 
 [tactile]

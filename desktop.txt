@@ -46,7 +46,10 @@ show-battery-percentage=true
 toolkit-accessibility=false
 
 [notifications]
-application-children=['org-gnome-software', 'apport-gtk', 'firefox-firefox', 'discord', 'org-gnome-terminal', 'snapd-desktop-integration-snapd-desktop-integration', 'audacity-audacity', 'org-prismlauncher-prismlauncher', 'org-gnome-shell-extensions-gsconnect-preferences', 'org-gnome-shell-extensions-gsconnect', 'emacs-emacs', 'io-lmms-lmms', 'org-gnome-boxes', 'mission-center-mission-center', 'org-gnome-settings', 'org-mozilla-thunderbird', 'com-spotify-client', 'io-gitlab-librewolf-community', 'emacsclient', 'org-audacityteam-audacity', 'org-gnome-clocks', 'com-obsproject-studio', 'obsidian-obsidian', 'spotify-spotify', 'docker-desktop', 'thunderbird-thunderbird', 'org-gnome-extensions', 'org-gnome-eog', 'org-gnome-characters', 'com-usebottles-bottles', 'org-vinegarhq-sober']
+application-children=['org-gnome-software', 'apport-gtk', 'firefox-firefox', 'discord', 'org-gnome-terminal', 'snapd-desktop-integration-snapd-desktop-integration', 'audacity-audacity', 'org-prismlauncher-prismlauncher', 'org-gnome-shell-extensions-gsconnect-preferences', 'org-gnome-shell-extensions-gsconnect', 'emacs-emacs', 'io-lmms-lmms', 'org-gnome-boxes', 'mission-center-mission-center', 'org-gnome-settings', 'org-mozilla-thunderbird', 'com-spotify-client', 'io-gitlab-librewolf-community', 'emacsclient', 'org-audacityteam-audacity', 'org-gnome-clocks', 'com-obsproject-studio', 'obsidian-obsidian', 'spotify-spotify', 'docker-desktop', 'thunderbird-thunderbird', 'org-gnome-extensions', 'org-gnome-eog', 'org-gnome-characters', 'com-usebottles-bottles', 'org-vinegarhq-sober', 'appimagekit-4e593f235994d67b93dcea7362c359dc-lm-studio', 'steam']
+
+[notifications/application/appimagekit-4e593f235994d67b93dcea7362c359dc-lm-studio]
+application-id='appimagekit_4e593f235994d67b93dcea7362c359dc-LM-Studio.desktop'
 
 [notifications/application/apport-gtk]
 application-id='apport-gtk.desktop'
@@ -137,6 +140,9 @@ application-id='snapd-desktop-integration_snapd-desktop-integration.desktop'
 
 [notifications/application/spotify-spotify]
 application-id='spotify_spotify.desktop'
+
+[notifications/application/steam]
+application-id='steam.desktop'
 
 [notifications/application/thunderbird-thunderbird]
 application-id='thunderbird_thunderbird.desktop'

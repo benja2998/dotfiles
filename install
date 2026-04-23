@@ -58,6 +58,10 @@ EOF
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
     echo "===> Installing Homebrew packages"
     brew bundle
+    echo "===> Installing Snaps"
+    sudo snap install obsidian --classic
+    sudo snap install spotify
+    sudo snap install mission-center
     echo "===> Caveats"
     echo "==> You should manually install the GNOME extensions Switcher, Tactile and Space Bar."
     echo "==> You should manually change the Docker root directory."
