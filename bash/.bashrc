@@ -35,7 +35,6 @@ PROMPT_COMMAND="history -a; history -c; history -r" # Shared history
 HISTSIZE=50000 # Allow in-memory history to be very big
 HISTFILESIZE=50000 # Allow history file to be very big
 
-export PS1="[\u@\h \W]\$ " # [user@localhost somefolder]$
 add_to_path() {
     if [[ ":$PATH:" != *":$1:"* ]]; then
         export PATH="$1:$PATH"
@@ -69,3 +68,5 @@ if [[ "$(uname -n)" = "steamdeck" ]]; then # Weird edge case
     export LC_MEASUREMENT=C.UTF-8
     export LC_IDENTIFICATION=C.UTF-8
 fi
+
+eval "$(starship init bash)"

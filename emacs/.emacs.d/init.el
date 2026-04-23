@@ -15,8 +15,8 @@
 (global-set-key (kbd "C-c t") (lambda () (interactive) (start-process-shell-command "x-terminal-emulator" nil "x-terminal-emulator")))
 
 ;;; Font
-(add-to-list 'default-frame-alist '(font . "Iosevka-14"))
-(set-face-attribute 'default nil :font "Iosevka-14")
+(add-to-list 'default-frame-alist '(font . "Iosevka Nerd Font-14"))
+(set-face-attribute 'default nil :font "Iosevka Nerd Font-14")
 
 ;;; Fix the stupid query replace keybinds
 (global-set-key (kbd "C-c r") 'query-replace)
@@ -62,6 +62,7 @@
 (require 'simpc-mode)
 (add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
 
-;;; Gruber darker
+;;; Catppuccin
 (setq custom-safe-themes t)
-(load-theme 'gruber-darker)
+(setq catppuccin-flavor 'mocha)
+(load-theme 'catppuccin t)

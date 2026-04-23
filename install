@@ -2,6 +2,9 @@
 
 set -e
 
+### Set variables
+DOTS="$(pwd)"
+
 ### Check distribution
 source /etc/os-release
 
@@ -18,6 +21,14 @@ if [ "$distro" = "ubuntu" ]; then
     sudo ufw enable
     sudo ufw default deny incoming
     sudo ufw default allow outgoing
+    echo "===> Installing font"
+    cd /tmp
+    wget https://github.com/ryanoasis/nerd-fonts/releases/download/latest/Iosevka.zip
+    unzip Iosevka.zip
+    mkdir -p ~/.local/share/fonts
+    mv *.ttf ~/.local/share/fonts/ -v
+    fc-cache -fv
+    cd "$DOTS"
     echo "===> Installing Homebrew"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     echo "===> Sourcing Homebrew"
@@ -46,7 +57,7 @@ EOF
     sudo apt --fix-missing install
     sudo apt update
     sudo apt upgrade
-    sudo apt install -y fzf ripgrep emacs flatpak stow gnome-software-plugin-flatpak gnome-software gnome-shell-extensions ssh gnome-tweaks
+    sudo apt install -y fzf ripgrep emacs flatpak stow gnome-software-plugin-flatpak gnome-software gnome-shell-extensions ssh gnome-tweaks alacritty
     rm steam.deb
     sudo apt update && sudo apt install extrepo -y
     sudo extrepo enable librewolf && sudo extrepo update librewolf
@@ -63,9 +74,10 @@ EOF
     sudo snap install obsidian --classic
     sudo snap install spotify
     sudo snap install mission-center
+    echo "===> Setting alacritty as terminal"
+    sudo update-alternatives --config x-terminal-emulator
     echo "===> Caveats"
     echo "==> You should manually change the Docker root directory."
-    echo "==> You should manually install the Iosevka font."
     echo "==> You should manually set up git email and username, set up gpg and ssh keys, and set up git to sign commits with gpg."
     echo "==> You should manually set Librewolf as default browser and configure Librewolf."
     echo "==> You should manually set swappiness to 10 and set up ZRAM."
