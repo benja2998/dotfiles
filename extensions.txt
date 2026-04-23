@@ -137,7 +137,7 @@ enable-move-to-workspace-shortcuts=false
 version=34
 
 [switcher]
-launcher-stats='{"org.gnome.Extensions.desktop":8,"org.gnome.Terminal.desktop":11,"google-chrome.desktop":7,"org.gnome.tweaks.desktop":6,"org.keepassxc.KeePassXC.desktop":2,"org.gnome.Settings.desktop":2,"emacs.desktop":13,"display-im6.q16.desktop":1,"discord.desktop":5,"firefox_firefox.desktop":8,"org.audacityteam.Audacity.desktop":1,"emacs-term.desktop":1,"emacsclient.desktop":2,"com.usebottles.bottles.desktop":1}'
+launcher-stats='{"org.gnome.Extensions.desktop":8,"org.gnome.Terminal.desktop":12,"google-chrome.desktop":7,"org.gnome.tweaks.desktop":6,"org.keepassxc.KeePassXC.desktop":2,"org.gnome.Settings.desktop":5,"emacs.desktop":13,"display-im6.q16.desktop":1,"discord.desktop":6,"firefox_firefox.desktop":14,"org.audacityteam.Audacity.desktop":1,"emacs-term.desktop":1,"emacsclient.desktop":2,"com.usebottles.bottles.desktop":1,"mission-center_mission-center.desktop":1,"org.gnome.Nautilus.desktop":1,"org.gnome.TextEditor.desktop":1,"obsidian_obsidian.desktop":1}'
 show-switcher=['<Super>u']
 
 [tactile]
