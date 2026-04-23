@@ -1,5 +1,5 @@
 [a11y]
-always-show-universal-access-status=true
+always-show-universal-access-status=false
 
 [a11y/applications]
 screen-magnifier-enabled=false
