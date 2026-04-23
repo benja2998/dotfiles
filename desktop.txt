@@ -1,3 +1,6 @@
+[a11y]
+always-show-universal-access-status=true
+
 [a11y/applications]
 screen-magnifier-enabled=false
 
@@ -36,7 +39,7 @@ xkb-options=['caps:ctrl_modifier']
 color-scheme='prefer-dark'
 cursor-size=24
 cursor-theme='Yaru'
-enable-animations=false
+enable-animations=true
 enable-hot-corners=false
 font-name='Ubuntu Sans 11'
 gtk-key-theme='Default'
@@ -178,14 +181,6 @@ idle-delay=uint32 300
 
 [wm/keybindings]
 close=['<Super>q']
-move-to-workspace-1=['<Shift><Super>1']
-move-to-workspace-2=['<Shift><Super>2']
-move-to-workspace-3=['<Shift><Super>3']
-move-to-workspace-4=['<Shift><Super>4']
-switch-to-workspace-1=['<Super>1']
-switch-to-workspace-2=['<Super>2']
-switch-to-workspace-3=['<Super>3']
-switch-to-workspace-4=['<Super>4']
 
 [wm/preferences]
 button-layout=':minimize,maximize,close'

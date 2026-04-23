@@ -49,7 +49,6 @@ EOF
     sudo apt update && sudo apt install librewolf -y
     echo "===> Configuring GNOME"
     dconf load /org/gnome/desktop/ < desktop.txt
-    dconf load /org/gnome/shell/extensions/ < extensions.txt
     echo "===> Installing dotfiles"
     mkdir -p ~/.emacs.d
     mv ~/.bashrc ~/.bashrc.bak
@@ -63,9 +62,7 @@ EOF
     sudo snap install spotify
     sudo snap install mission-center
     echo "===> Caveats"
-    echo "==> You should manually install the GNOME extensions Switcher, Tactile and Space Bar."
     echo "==> You should manually change the Docker root directory."
-    echo "==> You should manually disable Ubuntu dock, then log out and back in."
     echo "==> You should manually install the Iosevka font."
     echo "==> You should manually set up git email and username, set up gpg and ssh keys, and set up git to sign commits with gpg."
     echo "==> You should manually set Librewolf as default browser and configure Librewolf."
