@@ -71,7 +71,7 @@ EOF
     mv ~/.bashrc ~/.bashrc.bak
     stow */
     dconf load /org/gnome/shell/extensions/ < extensions.txt
-    dconf load /org/gnome/desktop < desktop.txt
+    dconf load /org/gnome/desktop/ < desktop.txt
     echo "===> Setting up Flatpak"
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
     echo "===> Installing Homebrew packages"
