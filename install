@@ -107,6 +107,7 @@ EOF
     echo "===> Caveats"
     echo "==> You need to manually disable the Ubuntu Dock."
     echo "==> You should manually change the Docker root directory."
+    echo "==> You should manually disable desktop icons."
     echo "==> You should manually set up git email and username, set up gpg and ssh keys, and set up git to sign commits with gpg."
     echo "==> You should manually set Librewolf as default browser and configure Librewolf."
     echo "==> You should manually set swappiness to 10 and set up ZRAM."
