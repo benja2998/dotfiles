@@ -56,11 +56,9 @@ Architectures: $(dpkg --print-architecture)
 Signed-By: /etc/apt/keyrings/docker.asc
 EOF
     sudo apt update
-    sudo apt upgrade
     sudo apt install ./steam.deb
     sudo apt --fix-missing install
     sudo apt update
-    sudo apt upgrade
     sudo apt install -y fzf ripgrep emacs flatpak stow gnome-software-plugin-flatpak gnome-software gnome-shell-extensions ssh gnome-tweaks alacritty pipx
     rm steam.deb
     sudo apt update && sudo apt install extrepo -y
@@ -89,6 +87,9 @@ EOF
 	"tactile@lundal.io"
 	"space-bar@luchrioh"
 	"switcher@landau.fi"
+	"clipboard-indicator@tudmotu.com"
+	"emoji-copy@felipeftn"
+	"gsconnect@andyholmes.github.io"
     )
 
     for ext in "${EXTENSIONS[@]}"; do
