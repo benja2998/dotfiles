@@ -91,6 +91,7 @@ EOF
 	"emoji-copy@felipeftn"
 	"gsconnect@andyholmes.github.io"
 	"compiz-windows-effect@hermes83.github.com"
+	"just-perfection-desktop@just-perfection"
     )
 
     for ext in "${EXTENSIONS[@]}"; do
