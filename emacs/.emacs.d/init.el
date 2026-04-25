@@ -12,7 +12,7 @@
 (global-set-key (kbd "C-c h") (lambda () (interactive) (dired "~")))
 
 ;;; Terminal
-(global-set-key (kbd "C-c t") (lambda () (interactive) (start-process-shell-command "x-terminal-emulator" nil "x-terminal-emulator")))
+(global-set-key (kbd "C-c t") (lambda () (interactive) (start-process-shell-command "alacritty" nil "alacritty")))
 
 ;;; Font
 (add-to-list 'default-frame-alist '(font . "Iosevka Nerd Font-14"))
