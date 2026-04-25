@@ -90,6 +90,7 @@ EOF
 	"clipboard-indicator@tudmotu.com"
 	"emoji-copy@felipeftn"
 	"gsconnect@andyholmes.github.io"
+	"compiz-windows-effect@hermes83.github.com"
     )
 
     for ext in "${EXTENSIONS[@]}"; do
