@@ -5,5 +5,10 @@ enable-move-to-workspace-shortcuts=false
 [switcher]
 show-switcher=['<Super>u']
 
+[just-perfection]
+animation=0
+top-panel-position=1
+workspace-peek=true
+
 [tactile]
 show-tiles=['<Super>k']
