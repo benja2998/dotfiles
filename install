@@ -99,12 +99,10 @@ EOF
 	    echo "==> Extension already installed: $ext"
 	fi
     done
-
-    gext disable ubuntu-dock@ubuntu.com
     echo "===> Setting alacritty as terminal"
     sudo update-alternatives --config x-terminal-emulator
     echo "===> Caveats"
-    echo "==> You may need to manually disable the Ubuntu Dock."
+    echo "==> You need to manually disable the Ubuntu Dock."
     echo "==> You should manually change the Docker root directory."
     echo "==> You should manually set up git email and username, set up gpg and ssh keys, and set up git to sign commits with gpg."
     echo "==> You should manually set Librewolf as default browser and configure Librewolf."
