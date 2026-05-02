@@ -62,7 +62,5 @@
 (require 'simpc-mode)
 (add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
 
-;;; Catppuccin
-(setq custom-safe-themes t)
-(setq catppuccin-flavor 'mocha)
-(load-theme 'catppuccin t)
+;;; Theme
+(load-theme 'gruber-darker t)
