@@ -5,6 +5,8 @@ export GPG_TTY="$(tty)"
 export TERM="xterm-256color"
 export COLORTERM="truecolor"
 
+export PATH="$PATH:/var/lib/flatpak/exports/bin:$HOME/.local/share/flatpak/exports/bin"
+
 export LESS_TERMCAP_mb=$'\e[1;31m'
 export LESS_TERMCAP_md=$'\e[1;31m'
 export LESS_TERMCAP_me=$'\e[0m'
