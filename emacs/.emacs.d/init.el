@@ -12,11 +12,11 @@
 (global-set-key (kbd "C-c h") (lambda () (interactive) (dired "~")))
 
 ;;; Terminal
-(global-set-key (kbd "C-c t") (lambda () (interactive) (start-process-shell-command "alacritty" nil "alacritty")))
+(global-set-key (kbd "C-c t") #'ansi-term)
 
 ;;; Font
-(add-to-list 'default-frame-alist '(font . "Iosevka Nerd Font-14"))
-(set-face-attribute 'default nil :font "Iosevka Nerd Font-14")
+(add-to-list 'default-frame-alist '(font . "Iosevka Nerd Font-18"))
+(set-face-attribute 'default nil :font "Iosevka Nerd Font-18")
 
 ;;; Fix the stupid query replace keybinds
 (global-set-key (kbd "C-c r") 'query-replace)
