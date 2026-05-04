@@ -52,7 +52,9 @@
 
 ;;; Line numbers
 (setq display-line-numbers-type 'relative)
-(global-display-line-numbers-mode)
+(add-hook 'prog-mode-hook #'display-line-numbers-mode)
+(add-hook 'text-mode-hook #'display-line-numbers-mode)
+(add-hook 'fundamental-mode-hook #'display-line-numbers-mode)
 
 ;;; Clean up UI
 (tool-bar-mode -1)
@@ -75,6 +77,8 @@
 
 ;;; Theme
 (load-theme 'gruber-darker t)
+
+;;; Custom
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
