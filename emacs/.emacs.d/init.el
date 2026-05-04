@@ -8,11 +8,22 @@
 ; Retrieved 2026-04-21, License - CC BY-SA 3.0
 (setq backup-directory-alist `(("." . "~/.saves")))
 
+;;; Vterm
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+
+(use-package vterm
+    :ensure t)
+
 ;;; Open home dir with a keybind
 (global-set-key (kbd "C-c h") (lambda () (interactive) (dired "~")))
 
 ;;; Terminal
-(global-set-key (kbd "C-c t") (lambda () (interactive) (start-process-shell-command "alacritty" nil "alacritty")))
+(global-set-key (kbd "C-c t") #'vterm)
+
+;;; Which-key
+(which-key-mode t)
 
 ;;; Font
 (add-to-list 'default-frame-alist '(font . "JetBrainsMonoNL Nerd Font-18"))
@@ -64,3 +75,15 @@
 
 ;;; Theme
 (load-theme 'gruber-darker t)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages '(vterm)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
