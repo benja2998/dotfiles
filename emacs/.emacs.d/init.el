@@ -15,8 +15,8 @@
 (global-set-key (kbd "C-c t") (lambda () (interactive) (start-process-shell-command "alacritty" nil "alacritty")))
 
 ;;; Font
-(add-to-list 'default-frame-alist '(font . "Iosevka Nerd Font-18"))
-(set-face-attribute 'default nil :font "Iosevka Nerd Font-18")
+(add-to-list 'default-frame-alist '(font . "JetBrainsMonoNL Nerd Font-18"))
+(set-face-attribute 'default nil :font "JetBrainsMonoNL Nerd Font-18")
 
 ;;; Fix the stupid query replace keybinds
 (global-set-key (kbd "C-c r") 'query-replace)
