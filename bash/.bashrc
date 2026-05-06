@@ -72,3 +72,6 @@ if [[ "$(uname -n)" = "steamdeck" ]]; then # Weird edge case
 fi
 
 eval "$(starship init bash)"
+
+# OpenClaw Completion
+source "/home/benjamin/.openclaw/completions/openclaw.bash"
