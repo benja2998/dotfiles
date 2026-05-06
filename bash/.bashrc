@@ -1,11 +1,14 @@
-test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-export GPG_TTY="$(tty)"
-
 export TERM="xterm-256color"
 export COLORTERM="truecolor"
 
-export PATH="$PATH:/var/lib/flatpak/exports/bin:$HOME/.local/share/flatpak/exports/bin"
+add_to_path() {
+    if [[ ":$PATH:" != *":$1:"* ]]; then
+        export PATH="$1:$PATH"
+    fi
+}
+
+add_to_path "$HOME/.local/share/flatpak/exports/bin"
+add_to_path "/var/lib/flatpak/exports/bin"
 
 export LESS_TERMCAP_mb=$'\e[1;31m'
 export LESS_TERMCAP_md=$'\e[1;31m'
@@ -38,13 +41,6 @@ PROMPT_COMMAND="history -a; history -c; history -r" # Shared history
 HISTSIZE=50000 # Allow in-memory history to be very big
 HISTFILESIZE=50000 # Allow history file to be very big
 
-add_to_path() {
-    if [[ ":$PATH:" != *":$1:"* ]]; then
-        export PATH="$1:$PATH"
-    fi
-}
-
-add_to_path "/Applications/Emacs.app/Contents/MacOS/bin"
 add_to_path "$HOME/.local/bin"
 add_to_path "$HOME/.cargo/bin"
 export HISTCONTROL="erasedups:ignoredups" # I don't think this actually works
