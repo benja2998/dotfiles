@@ -32,6 +32,7 @@ shopt -s checkwinsize # Not sure what this actually does
 alias ls='ls --color=auto' # Colored directory listings
 alias grep='grep --color=auto' # Colored grep
 alias egrep='egrep --color=auto' # Colored egrep
+alias emacs='emacsclient -c -a ""'
 
 PROMPT_COMMAND="history -a; history -c; history -r" # Shared history
 HISTSIZE=50000 # Allow in-memory history to be very big
@@ -47,7 +48,7 @@ add_to_path "/Applications/Emacs.app/Contents/MacOS/bin"
 add_to_path "$HOME/.local/bin"
 add_to_path "$HOME/.cargo/bin"
 export HISTCONTROL="erasedups:ignoredups" # I don't think this actually works
-export EDITOR='nano'
+export EDITOR='emacsclient -c -a ""'
 
 [[ -f "$HOME/.bashrc.local" ]] && source "$HOME/.bashrc.local" # Machine-specific settings
 [[ -f "/home/deck/.nix-profile/etc/profile.d/nix.sh" ]] && . /home/deck/.nix-profile/etc/profile.d/nix.sh # Nix on steamOS
