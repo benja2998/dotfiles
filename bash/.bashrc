@@ -50,6 +50,3 @@ export EDITOR='code-oss'
 eval "$(fzf --bash)" # Fuzzy find directories and commands
 
 eval "$(starship init bash)"
-
-# OpenClaw Completion
-source "/home/benjamin/.openclaw/completions/openclaw.bash"
