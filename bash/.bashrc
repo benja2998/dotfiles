@@ -35,7 +35,6 @@ shopt -s checkwinsize # Not sure what this actually does
 alias ls='ls --color=auto' # Colored directory listings
 alias grep='grep --color=auto' # Colored grep
 alias egrep='egrep --color=auto' # Colored egrep
-alias code='code-oss'
 
 PROMPT_COMMAND="history -a; history -c; history -r" # Shared history
 HISTSIZE=50000 # Allow in-memory history to be very big
@@ -44,7 +43,7 @@ HISTFILESIZE=50000 # Allow history file to be very big
 add_to_path "$HOME/.local/bin"
 add_to_path "$HOME/.cargo/bin"
 export HISTCONTROL="erasedups:ignoredups" # I don't think this actually works
-export EDITOR='code-oss'
+export EDITOR='kate'
 
 [[ -f "$HOME/.bashrc.local" ]] && source "$HOME/.bashrc.local" # Machine-specific settings
 eval "$(fzf --bash)" # Fuzzy find directories and commands
