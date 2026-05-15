@@ -43,7 +43,7 @@ HISTFILESIZE=50000 # Allow history file to be very big
 add_to_path "$HOME/.local/bin"
 add_to_path "$HOME/.cargo/bin"
 export HISTCONTROL="erasedups:ignoredups" # I don't think this actually works
-export EDITOR='kate'
+export EDITOR='emacs'
 
 [[ -f "$HOME/.bashrc.local" ]] && source "$HOME/.bashrc.local" # Machine-specific settings
 eval "$(fzf --bash)" # Fuzzy find directories and commands
