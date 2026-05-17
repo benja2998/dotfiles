@@ -37,16 +37,6 @@
 ;;; Don't show splash screen
 (setq inhibit-splash-screen t)
 
-;;; Fix indentation
-(setq indent-tabs-mode nil)
-(setq tab-width 4)
-(setq c-basic-offset 4)
-
-(add-hook 'makefile-mode-hook
-          (lambda ()
-            (setq indent-tabs-mode t)
-            (setq tab-width 8)))
-
 ;;; Line numbers
 (setq display-line-numbers-type 'relative)
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
@@ -107,6 +97,28 @@
 
 ;;; Theme
 (load-theme 'gruber-darker t)
+
+;;; Fix indentation
+(setq-default indent-tabs-mode nil
+              tab-width 4
+              standard-indent 4)
+
+(setq c-basic-offset 4
+      c-ts-mode-indent-offset 4
+      css-indent-offset 4
+      js-indent-level 4
+      json-ts-mode-indent-offset 4
+      python-indent-offset 4
+      rust-ts-mode-indent-offset 4
+      sgml-basic-offset 4
+      sh-basic-offset 4
+      toml-ts-mode-indent-offset 4
+      typescript-ts-mode-indent-offset 4)
+
+(add-hook 'makefile-mode-hook
+          (lambda ()
+            (setq-local indent-tabs-mode t)
+            (setq-local tab-width 8)))
 
 ;;; Custom
 (custom-set-variables
