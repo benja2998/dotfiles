@@ -3,9 +3,6 @@
 (add-to-list 'load-path "~/.emacs.d/local")
 
 ;;; Make Emacs not put backup files in the same directory
-; Source - https://stackoverflow.com/a/151946
-; Posted by jfm3, modified by community. See post 'Timeline' for change history
-; Retrieved 2026-04-21, License - CC BY-SA 3.0
 (setq backup-directory-alist `(("." . "~/.saves")))
 
 ;;; Vterm
@@ -71,9 +68,42 @@
 (ido-mode t)
 (ido-everywhere t)
 
-;;; Simple C mode
-(require 'simpc-mode)
-(add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
+;;; Treesitter
+(setq treesit-language-source-alist
+      '((bash "https://github.com/tree-sitter/tree-sitter-bash")
+        (c "https://github.com/tree-sitter/tree-sitter-c")
+        (cpp "https://github.com/tree-sitter/tree-sitter-cpp")
+        (css "https://github.com/tree-sitter/tree-sitter-css")
+        (html "https://github.com/tree-sitter/tree-sitter-html")
+        (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
+        (json "https://github.com/tree-sitter/tree-sitter-json")
+        (python "https://github.com/tree-sitter/tree-sitter-python")
+        (rust "https://github.com/tree-sitter/tree-sitter-rust")
+        (toml "https://github.com/tree-sitter/tree-sitter-toml")
+        (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
+        (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
+        (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
+
+(dolist (lang '(bash c cpp css html javascript json python rust toml typescript tsx yaml))
+  (unless (treesit-language-available-p lang)
+    (treesit-install-language-grammar lang)))
+
+(setq major-mode-remap-alist
+      '((sh-mode . bash-ts-mode)
+        (c-mode . c-ts-mode)
+        (c++-mode . c++-ts-mode)
+        (css-mode . css-ts-mode)
+        (html-mode . html-ts-mode)
+        (javascript-mode . js-ts-mode)
+        (js-mode . js-ts-mode)
+        (json-mode . json-ts-mode)
+        (python-mode . python-ts-mode)
+        (rust-mode . rust-ts-mode)
+        (typescript-mode . typescript-ts-mode)
+        (yaml-mode . yaml-ts-mode)))
+
+;;; LSP
+(add-hook 'c-ts-mode-hook #'eglot-ensure)
 
 ;;; Theme
 (load-theme 'gruber-darker t)
