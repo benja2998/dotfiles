@@ -65,8 +65,8 @@
 (setq vc-follow-symlinks t)
 
 ;;; Ido mode
-(ido-mode t)
-(ido-everywhere t)
+(fido-vertical-mode t)
+(savehist-mode t)
 
 ;;; Treesitter
 (setq treesit-language-source-alist
