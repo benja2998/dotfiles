@@ -32,7 +32,7 @@ from that package into `$HOME` while keeping the source files in this repository
 Clone the repository into `$HOME/.dotfiles`:
 
 ```sh
-git clone <repo-url> ~/.dotfiles
+git clone https://codeberg.org/benja2998/dotfiles ~/.dotfiles
 cd ~/.dotfiles
 ```
 
