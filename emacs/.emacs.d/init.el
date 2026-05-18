@@ -23,8 +23,8 @@
 (which-key-mode t)
 
 ;;; Font
-(add-to-list 'default-frame-alist '(font . "JetBrainsMonoNL Nerd Font-18"))
-(set-face-attribute 'default nil :font "JetBrainsMonoNL Nerd Font-18")
+(add-to-list 'default-frame-alist '(font . "JetBrainsMonoNL Nerd Font-12"))
+(set-face-attribute 'default nil :font "JetBrainsMonoNL Nerd Font-12")
 
 ;;; Fix the stupid query replace keybinds
 (global-set-key (kbd "C-c r") 'query-replace)
@@ -60,19 +60,19 @@
 
 ;;; Treesitter
 (setq treesit-language-source-alist
-      '((bash "https://github.com/tree-sitter/tree-sitter-bash")
-        (c "https://github.com/tree-sitter/tree-sitter-c")
-        (cpp "https://github.com/tree-sitter/tree-sitter-cpp")
-        (css "https://github.com/tree-sitter/tree-sitter-css")
-        (html "https://github.com/tree-sitter/tree-sitter-html")
-        (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
-        (json "https://github.com/tree-sitter/tree-sitter-json")
-        (python "https://github.com/tree-sitter/tree-sitter-python")
-        (rust "https://github.com/tree-sitter/tree-sitter-rust")
-        (toml "https://github.com/tree-sitter/tree-sitter-toml")
-        (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
-        (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
-        (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
+      '((bash "https://github.com/tree-sitter/tree-sitter-bash" "v0.23.3")
+        (c "https://github.com/tree-sitter/tree-sitter-c" "v0.23.5")
+        (cpp "https://github.com/tree-sitter/tree-sitter-cpp" "v0.23.4")
+        (css "https://github.com/tree-sitter/tree-sitter-css" "v0.23.2")
+        (html "https://github.com/tree-sitter/tree-sitter-html" "v0.23.2")
+        (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "v0.23.1" "src")
+        (json "https://github.com/tree-sitter/tree-sitter-json" "v0.24.8")
+        (python "https://github.com/tree-sitter/tree-sitter-python" "v0.23.6")
+        (rust "https://github.com/tree-sitter/tree-sitter-rust" "v0.23.2")
+        (toml "https://github.com/tree-sitter-grammars/tree-sitter-toml" "v0.7.0")
+        (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "v0.23.2" "typescript/src")
+        (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "v0.23.2" "tsx/src")
+        (yaml "https://github.com/ikatyang/tree-sitter-yaml" "v0.7.0")))
 
 (dolist (lang '(bash c cpp css html javascript json python rust toml typescript tsx yaml))
   (unless (treesit-language-available-p lang)

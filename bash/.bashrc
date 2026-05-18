@@ -47,6 +47,7 @@ export EDITOR='emacsclient -c -a ""'
 alias emacs='emacsclient -c -a ""'
 
 [[ -f "$HOME/.bashrc.local" ]] && source "$HOME/.bashrc.local" # Machine-specific settings
-eval "$(fzf --bash)" # Fuzzy find directories and commands
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
 
+eval "$(fzf --bash)" # Fuzzy find directories and commands
 eval "$(starship init bash)"
