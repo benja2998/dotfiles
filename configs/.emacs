@@ -36,6 +36,7 @@
 (use-package "rust-mode")
 (use-package "exec-path-from-shell")
 (use-package "catppuccin-theme")
+(use-package "fish-mode")
 
 (when (daemonp) (exec-path-from-shell-initialize))
 (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
