@@ -9,7 +9,11 @@ if status is-interactive
 	set -gx GPG_TTY $(tty)
 	function emacs
 		emacsclient -c -a "" $argv		 
-	end	
+	end
+
+	function localgpt
+		llama-server -m ~/models/gpt-oss-20b-Q4_K_M.gguf -c 32768 --port 10000 -ctk q8_0 -ctv q8_0 -fa on
+	end
 
 	starship init fish | source
 end
