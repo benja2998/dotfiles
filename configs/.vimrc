@@ -32,3 +32,5 @@ function! ToggleMarkdownCheckbox() abort
 endfunction
 
 nnoremap <leader>j :call ToggleMarkdownCheckbox()<CR>
+nnoremap <leader>y "+y
+nnoremap <leader>p "+p
