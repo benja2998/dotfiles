@@ -65,3 +65,4 @@
 (global-set-key (kbd "C-c t") 'vterm)
 (with-eval-after-load 'dired
   (require 'dired-x))
+(add-hook 'dired-mode-hook 'dired-omit-mode)
