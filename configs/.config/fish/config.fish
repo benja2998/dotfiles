@@ -12,7 +12,7 @@ if status is-interactive
 	end
 
 	function ls
-		command ls -B $argv
+		command ls -B --color=auto $argv
 	end
 
 	function emacs
