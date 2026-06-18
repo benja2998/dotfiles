@@ -17,7 +17,7 @@
 (cond ((eq system-type 'gnu/linux)
 	   (add-to-list 'default-frame-alist '(font . "Iosevka Nerd Font-16")))
 	  (t
-	   (add-to-list 'default-frame-alist '(font . "monospace-18"))))
+	   (add-to-list 'default-frame-alist '(font . "monospace-24"))))
 
 (scroll-bar-mode -1)
 
