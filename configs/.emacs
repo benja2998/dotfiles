@@ -12,7 +12,7 @@
 (setq-default c-default-style "linux")
 (setq-default tab-width 4)
 
-(setq epg-pinentry-mode t)
+(setq epg-pinentry-mode 'loopback)
 
 (add-to-list 'default-frame-alist '(font . "Iosevka Nerd Font-16"))
 
