@@ -16,7 +16,7 @@ if status is-interactive
 	end
 
 	function emacs
-		emacsclient -c .
+		emacsclient -c $argv
 	end
 
 	starship init fish | source
