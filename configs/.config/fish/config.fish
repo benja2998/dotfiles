@@ -5,11 +5,8 @@ if status is-interactive
 			exec startx
 		end
 	end	
-	set -gx EDITOR 'emacsclient -c -a ""'
+	set -gx EDITOR 'vim'
 	set -gx GPG_TTY $(tty)
-	function emacs
-		emacsclient -c -a "" $argv		 
-	end
 
 	function fastfetch
 		command fastfetch -c examples/13
