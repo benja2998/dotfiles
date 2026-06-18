@@ -12,6 +12,8 @@
 (setq-default c-default-style "linux")
 (setq-default tab-width 4)
 
+(setq epg-pinentry-mode t)
+
 (add-to-list 'default-frame-alist '(font . "Iosevka Nerd Font-16"))
 
 (scroll-bar-mode -1)
