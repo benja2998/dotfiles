@@ -11,6 +11,10 @@ if status is-interactive
 		emacsclient -c -a "" $argv		 
 	end
 
+	function fastfetch
+		command fastfetch -c examples/13
+	end
+
 	function localgpt
 		llama-server -m ~/models/gpt-oss-20b-Q4_K_M.gguf -c 32768 --port 10000 -ctk q8_0 -ctv q8_0 -fa on --tools all
 	end
