@@ -5,7 +5,7 @@ if status is-interactive
 			exec startx
 		end
 	end	
-	set -gx EDITOR 'vim'
+	set -gx EDITOR 'emacsclient -c'
 	set -gx GPG_TTY $(tty)
 
 	function fastfetch
@@ -14,6 +14,10 @@ if status is-interactive
 
 	function ls
 		command ls -B $argv
+	end
+
+	function emacs
+		emacsclient -c .
 	end
 
 	starship init fish | source
