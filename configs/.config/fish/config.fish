@@ -12,6 +12,10 @@ if status is-interactive
 		command fastfetch -c examples/13
 	end
 
+	function ls
+		command ls -B $argv
+	end
+
 	starship init fish | source
 end
 
