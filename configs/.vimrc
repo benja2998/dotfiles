@@ -7,7 +7,7 @@ filetype plugin on
 filetype plugin indent on
 set path+=**
 
-if !isdirectory("/home/benjamin/.vim/pack")
+if !isdirectory(glob("~/.vim/pack"))
 	:!git clone https://github.com/catppuccin/vim.git ~/.vim/pack/vendor/start/catppuccin
 	:!git clone https://github.com/vim-airline/vim-airline ~/.vim/pack/dist/start/vim-airline
 endif
