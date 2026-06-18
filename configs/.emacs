@@ -65,3 +65,5 @@
 (global-set-key (kbd "C-c t") 'vterm)
 (with-eval-after-load 'dired
   (require 'dired-x))
+
+(which-key-mode t)
