@@ -6,7 +6,6 @@ if status is-interactive
 		end
 	end	
 	set -gx EDITOR 'emacsclient -c'
-	set -gx GPG_TTY $(tty)
 
 	function fastfetch
 		command fastfetch -c examples/13

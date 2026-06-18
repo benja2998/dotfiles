@@ -14,7 +14,10 @@
 
 (setq epg-pinentry-mode 'loopback)
 
-(add-to-list 'default-frame-alist '(font . "Iosevka Nerd Font-16"))
+(cond ((eq system-type 'gnu/linux)
+	   (add-to-list 'default-frame-alist '(font . "Iosevka Nerd Font-16")))
+	  (t
+	   (add-to-list 'default-frame-alist '(font . "monospace-16"))))
 
 (scroll-bar-mode -1)
 
