@@ -13,6 +13,7 @@ if !isdirectory("/home/benjamin/.vim/pack")
 endif
 
 colorscheme catppuccin_frappe
+let g:airline_theme = 'catppuccin_frappe'
 
 let mapleader = ' '
 
