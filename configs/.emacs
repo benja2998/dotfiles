@@ -17,7 +17,7 @@
 (cond ((eq system-type 'gnu/linux)
 	   (add-to-list 'default-frame-alist '(font . "Iosevka Nerd Font-16")))
 	  (t
-	   (add-to-list 'default-frame-alist '(font . "monospace-16"))))
+	   (add-to-list 'default-frame-alist '(font . "monospace-18"))))
 
 (scroll-bar-mode -1)
 
@@ -42,9 +42,9 @@
 (use-package "exec-path-from-shell")
 (use-package "catppuccin-theme")
 (use-package "fish-mode")
-(use-package "vterm")
+(use-package "vterm" :defer t)
 (use-package "spaceline")
-(use-package "magit")
+(use-package "magit" :defer t)
 
 (require 'spaceline-config)
 (spaceline-spacemacs-theme)
