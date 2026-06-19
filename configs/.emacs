@@ -43,7 +43,6 @@
 (use-package "catppuccin-theme")
 (use-package "fish-mode")
 (use-package "vterm" :defer t)
-(use-package "spaceline")
 (use-package "magit" :defer t)
 
 (require 'spaceline-config)
@@ -52,8 +51,7 @@
 (when (daemonp) (exec-path-from-shell-initialize))
 (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
 
-(setq catppuccin-flavor 'frappe)
-(load-theme 'catppuccin :no-confirm)
+(load-theme 'modus-vivendi :no-confirm)
 
 (add-hook 'org-mode-hook #'(lambda ()
                              ;; make the lines in the buffer wrap around the edges of the screen.
