@@ -4,6 +4,7 @@ syntax on
 set number
 set relativenumber
 filetype plugin on
+set tabstop=4
 filetype plugin indent on
 set path+=**
 
