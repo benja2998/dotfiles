@@ -40,7 +40,6 @@
 (use-package "markdown-mode")
 (use-package "rust-mode")
 (use-package "exec-path-from-shell")
-(use-package "catppuccin-theme")
 (use-package "fish-mode")
 (use-package "vterm" :defer t)
 (use-package "magit" :defer t)
