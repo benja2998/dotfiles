@@ -53,9 +53,6 @@
 (load-theme 'modus-vivendi :no-confirm)
 
 (add-hook 'org-mode-hook #'(lambda ()
-                             ;; make the lines in the buffer wrap around the edges of the screen.
-                             
-                             ;; to press C-c q  or fill-paragraph ever again!
                              (visual-line-mode t)
                              (org-indent-mode t)))
 
