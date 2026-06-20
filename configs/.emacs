@@ -49,6 +49,20 @@
 
 (setq treesit-auto-install-grammar 'always)
 (setq-default treesit-auto-install-grammar 'always)
+(add-to-list 'major-mode-remap-alist
+			 '(c-mode . c-ts-mode) t)
+(add-to-list 'major-mode-remap-alist
+			 '(sh-mode . bash-ts-mode) t)
+(add-to-list 'major-mode-remap-alist
+			 '(shell-script-mode . bash-ts-mode) t)
+(add-to-list 'major-mode-remap-alist
+			 '(lua-mode . lua-ts-mode) t)
+(add-to-list 'major-mode-remap-alist
+			 '(javascript-mode . js-ts-mode) t)
+(add-to-list 'auto-mode-alist
+			 '("\\.luau\\'" . lua-ts-mode) t)
+(add-to-list 'auto-mode-alist
+			 '("\\.zsh\\'" . bash-ts-mode) t)
 (setq treesit-enabled-modes t)
 (setq-default treesit-enabled-modes t)
 
