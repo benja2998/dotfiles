@@ -48,7 +48,9 @@
 (use-package magit :defer t)
 
 (setq treesit-auto-install-grammar 'always)
+(setq-default treesit-auto-install-grammar 'always)
 (setq treesit-enabled-modes t)
+(setq-default treesit-enabled-modes t)
 
 (require 'spaceline-config)
 (spaceline-spacemacs-theme)
