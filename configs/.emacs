@@ -10,11 +10,28 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
-(setq-default c-basic-offset 4)
+(setq-default indent-tabs-mode t)
+
 (setq-default c-default-style "linux")
-(setq-default c-ts-basic-offset 4)
-(setq-default c-ts-default-style "linux")
+(setq-default c-ts-mode-indent-style 'linux)
 (setq-default tab-width 4)
+(defvaralias 'c-basic-offset 'tab-width)
+(defvaralias 'c-ts-indent-offset 'tab-width)
+
+; Source - https://stackoverflow.com/a/22176971
+; Posted by user2053036, modified by community. See post 'Timeline' for change history
+; Retrieved 2026-06-20, License - CC BY-SA 3.0
+
+(setq auto-save-file-name-transforms
+      `((".*" ,(concat user-emacs-directory "auto-save/") t)))
+
+; Source - https://stackoverflow.com/a/22176971
+; Posted by user2053036, modified by community. See post 'Timeline' for change history
+; Retrieved 2026-06-20, License - CC BY-SA 3.0
+
+(setq backup-directory-alist
+      `(("." . ,(expand-file-name
+                 (concat user-emacs-directory "backups")))))
 
 (setq epg-pinentry-mode 'loopback)
 
@@ -51,6 +68,8 @@
 (setq-default treesit-auto-install-grammar 'always)
 (add-to-list 'major-mode-remap-alist
 			 '(c-mode . c-ts-mode) t)
+(add-to-list 'major-mode-remap-alist
+			 '(c++-mode . c++-ts-mode) t)
 (add-to-list 'major-mode-remap-alist
 			 '(sh-mode . bash-ts-mode) t)
 (add-to-list 'major-mode-remap-alist
