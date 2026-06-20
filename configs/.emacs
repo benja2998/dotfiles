@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (setq custom-file (make-temp-file "emacs-custom"))
 
 (setq vc-follow-symlinks t)
@@ -10,6 +12,8 @@
 
 (setq-default c-basic-offset 4)
 (setq-default c-default-style "linux")
+(setq-default c-ts-basic-offset 4)
+(setq-default c-ts-default-style "linux")
 (setq-default tab-width 4)
 
 (setq epg-pinentry-mode 'loopback)
@@ -36,13 +40,15 @@
 (setq use-short-answers t)
 (setq use-package-always-ensure t)
 
-(use-package "systemd")
-(use-package "markdown-mode")
-(use-package "rust-mode")
-(use-package "exec-path-from-shell")
-(use-package "fish-mode")
-(use-package "vterm" :defer t)
-(use-package "magit" :defer t)
+(use-package systemd)
+(use-package markdown-mode)
+(use-package exec-path-from-shell)
+(use-package fish-mode)
+(use-package vterm :defer t)
+(use-package magit :defer t)
+
+(setq treesit-auto-install-grammar 'always)
+(setq treesit-enabled-modes t)
 
 (require 'spaceline-config)
 (spaceline-spacemacs-theme)
