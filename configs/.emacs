@@ -63,8 +63,11 @@
 (use-package markdown-mode)
 (use-package exec-path-from-shell)
 (use-package fish-mode)
+(use-package company)
 (use-package vterm :defer t)
 (use-package magit :defer t)
+
+(global-company-mode t)
 
 (setq treesit-auto-install-grammar 'always)
 (setq-default treesit-auto-install-grammar 'always)
