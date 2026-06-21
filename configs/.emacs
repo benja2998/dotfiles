@@ -2,6 +2,8 @@
 
 (setq custom-file (make-temp-file "emacs-custom"))
 
+(add-hook 'prog-mode-hook #'eglot-ensure)
+
 (setq vc-follow-symlinks t)
 
 (setq-default scroll-conservatively 101)
