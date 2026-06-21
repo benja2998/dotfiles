@@ -2,6 +2,10 @@
 
 (setq custom-file (make-temp-file "emacs-custom"))
 
+(fido-mode t)
+(fido-vertical-mode t)
+(savehist-mode t)
+
 (add-hook 'prog-mode-hook #'eglot-ensure)
 
 (setq vc-follow-symlinks t)
