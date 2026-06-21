@@ -69,6 +69,7 @@
 (use-package exec-path-from-shell)
 (use-package fish-mode)
 (use-package company)
+(use-package spaceline)
 (use-package vterm :defer t)
 (use-package magit :defer t)
 
