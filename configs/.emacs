@@ -10,6 +10,7 @@
 
 (setq inhibit-splash-screen t)
 (tool-bar-mode -1)
+(scroll-bar-mode -1)
 (menu-bar-mode -1)
 
 (setq-default indent-tabs-mode t)
