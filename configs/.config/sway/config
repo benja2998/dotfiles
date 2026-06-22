@@ -18,7 +18,7 @@ set $term xfce4-terminal
 # Your preferred application launcher
 set $menu wmenu-run
 
-font pango:Iosevka Nerd Font 11
+font pango:Iosevka Nerd Font 12
 
 exec --no-startup-id nm-applet
 exec --no-startup-id emacs --daemon
