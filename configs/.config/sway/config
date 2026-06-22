@@ -22,6 +22,7 @@ workspace_layout tabbed
 
 exec --no-startup-id /home/benjamin/volume.sh
 exec --no-startup-id /usr/libexec/xdg-desktop-portal-wlr
+exec --no-startup-id /usr/libexec/xdg-desktop-portal-gtk
 exec --no-startup-id dunst
 exec --no-startup-id pipewire
 exec --no-startup-id emacs --daemon
