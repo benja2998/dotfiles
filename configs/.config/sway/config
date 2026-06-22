@@ -28,6 +28,7 @@ exec --no-startup-id pipewire
 exec --no-startup-id emacs --daemon
 
 for_window [title="nmtui"] floating enable
+for_window [title="Picture-in-Picture"] floating enable
 
 ### Output configuration
 #
