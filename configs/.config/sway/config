@@ -27,6 +27,7 @@ exec --no-startup-id kdeconnectd
 exec --no-startup-id kdeconnect-indicator
 exec --no-startup-id /usr/libexec/xdg-desktop-portal-wlr
 exec --no-startup-id /usr/libexec/xdg-desktop-portal-gtk
+exec --no-startup-id dbus-update-activation-environment DISPLAY
 
 workspace_layout tabbed
 
