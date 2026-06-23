@@ -21,7 +21,6 @@ set $menu wmenu-run
 font pango:Iosevka Nerd Font 12
 
 exec --no-startup-id nm-applet
-exec --no-startup-id emacs --daemon
 exec --no-startup-id pipewire
 exec --no-startup-id dunst
 exec --no-startup-id kdeconnectd
@@ -173,7 +172,7 @@ xkb_options "ctrl:nocaps"
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+Shift+space floating toggle
 
-	bindsym $mod+Shift+a exec emacsclient -c
+	bindsym $mod+Shift+a exec emacsclient -c -a ""
 
 	bindsym $mod+Shift+n exec xfce4-terminal -e nmtui -T nmtui
 

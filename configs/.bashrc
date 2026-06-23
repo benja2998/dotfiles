@@ -1,5 +1,5 @@
-export EDITOR="emacsclient -c"
-alias emacs="emacsclient -c"
+export EDITOR='emacsclient -c -a ""'
+alias emacs='emacsclient -c -a ""'
 alias ls="ls -B --color=auto"
 alias tree="tree -C"
 alias grep="grep --color=auto"

@@ -73,6 +73,7 @@
 (use-package nerd-icons)
 (use-package doom-modeline :init (doom-modeline-mode 1))
 (use-package vterm :defer t)
+;(use-package ghostel :defer t)
 (use-package magit :defer t)
 
 (global-company-mode t)
