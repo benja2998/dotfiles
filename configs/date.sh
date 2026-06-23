@@ -5,6 +5,6 @@ while true; do
         if [ "$(pactl get-sink-mute @DEFAULT_SINK@)" = "Mute: yes" ]; then
                 cmd="󰓄 muted"
         fi
-        echo "$cmd | $(date +'%a %b %d %H:%M')"
+        echo "$cmd | $(date +'%a %b %d %H:%M') | BAT: $(acpi -b | awk '{print $4}')"
         sleep 0.1
 done
