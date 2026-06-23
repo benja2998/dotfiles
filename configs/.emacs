@@ -69,7 +69,9 @@
 (use-package exec-path-from-shell)
 (use-package fish-mode)
 (use-package company)
-(use-package spaceline)
+(use-package doom-themes)
+(use-package nerd-icons)
+(use-package doom-modeline :init (doom-modeline-mode 1))
 (use-package vterm :defer t)
 (use-package magit :defer t)
 
@@ -96,13 +98,10 @@
 (setq treesit-enabled-modes t)
 (setq-default treesit-enabled-modes t)
 
-(require 'spaceline-config)
-(spaceline-spacemacs-theme)
-
 (when (daemonp) (exec-path-from-shell-initialize))
 (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
 
-(load-theme 'modus-vivendi :no-confirm)
+(load-theme 'doom-material-dark :no-confirm)
 
 (add-hook 'org-mode-hook #'(lambda ()
                              (visual-line-mode t)
