@@ -3,6 +3,7 @@ alias emacs='emacsclient -c -a ""'
 alias ls="ls -B --color=auto"
 alias tree="tree -C"
 alias grep="grep --color=auto"
+alias ll="ls -larth"
 alias fastfetch="fastfetch -c examples/13"
 
 HISTSIZE=-1
