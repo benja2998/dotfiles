@@ -69,7 +69,7 @@
 (use-package exec-path-from-shell)
 (use-package fish-mode)
 (use-package company)
-(use-package doom-themes)
+(use-package catppuccin-theme)
 (use-package nerd-icons)
 (use-package doom-modeline :init (doom-modeline-mode 1))
 (use-package magit :defer t)
@@ -124,7 +124,8 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 (when (daemonp) (exec-path-from-shell-initialize))
 (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
 
-(load-theme 'doom-material-dark :no-confirm)
+(setq catppuccin-flavor 'frappe)
+(load-theme 'catppuccin :no-confirm)
 
 (add-hook 'org-mode-hook #'(lambda ()
                              (visual-line-mode t)
