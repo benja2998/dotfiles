@@ -124,8 +124,8 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 	 default))
  '(erc-modules
    '(autojoin button completion fill imenu irccontrols list match menu
-			  move-to-prompt netsplit networks readonly ring sasl
-			  stamp track))
+			  move-to-prompt netsplit networks readonly ring stamp
+			  track))
  '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
