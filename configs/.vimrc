@@ -1,5 +1,4 @@
 set nocompatible
-set termguicolors
 syntax on
 set number
 set relativenumber
@@ -11,11 +10,7 @@ set path+=**
 
 if !isdirectory(glob("~/.vim/pack"))
 	:!git clone https://github.com/vim-airline/vim-airline ~/.vim/pack/dist/start/vim-airline
-	:!git clone https://github.com/catppuccin/vim.git ~/.vim/pack/vendor/start/catppuccin
 endif
-
-colorscheme catppuccin_frappe
-let g:lightline = {'colorscheme': 'catppuccin_frappe'}
 
 let mapleader = ' '
 
