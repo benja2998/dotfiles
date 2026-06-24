@@ -98,27 +98,6 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 
 (global-company-mode t)
 
-(setq treesit-auto-install-grammar 'always)
-(setq-default treesit-auto-install-grammar 'always)
-(add-to-list 'major-mode-remap-alist
-			 '(c-mode . c-ts-mode) t)
-(add-to-list 'major-mode-remap-alist
-			 '(c++-mode . c++-ts-mode) t)
-(add-to-list 'major-mode-remap-alist
-			 '(sh-mode . bash-ts-mode) t)
-(add-to-list 'major-mode-remap-alist
-			 '(shell-script-mode . bash-ts-mode) t)
-(add-to-list 'major-mode-remap-alist
-			 '(lua-mode . lua-ts-mode) t)
-(add-to-list 'major-mode-remap-alist
-			 '(javascript-mode . js-ts-mode) t)
-(add-to-list 'auto-mode-alist
-			 '("\\.luau\\'" . lua-ts-mode) t)
-(add-to-list 'auto-mode-alist
-			 '("\\.zsh\\'" . bash-ts-mode) t)
-(setq treesit-enabled-modes t)
-(setq-default treesit-enabled-modes t)
-
 (when (daemonp) (exec-path-from-shell-initialize))
 (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
 
@@ -146,7 +125,8 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
  '(erc-modules
    '(autojoin button completion fill imenu irccontrols list match menu
 			  move-to-prompt netsplit networks readonly ring sasl
-			  stamp track)))
+			  stamp track))
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
