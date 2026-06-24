@@ -21,6 +21,7 @@ set $menu wmenu-run
 font pango:Iosevka Nerd Font 14
 
 exec --no-startup-id nm-applet
+exec --no-startup-id autotiling
 exec --no-startup-id pipewire
 exec --no-startup-id dunst
 exec --no-startup-id kdeconnectd
@@ -28,8 +29,6 @@ exec --no-startup-id kdeconnect-indicator
 exec --no-startup-id /usr/libexec/xdg-desktop-portal-wlr
 exec --no-startup-id /usr/libexec/xdg-desktop-portal-gtk
 exec --no-startup-id dbus-update-activation-environment DISPLAY
-
-workspace_layout tabbed
 
 for_window [title="Picture-in-Picture"] floating enable
 for_window [title="nmtui"] floating enable
