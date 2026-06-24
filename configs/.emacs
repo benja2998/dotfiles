@@ -1,7 +1,5 @@
 ;; -*- lexical-binding: t; -*-
 
-(setq custom-file (make-temp-file "emacs-custom"))
-
 (fido-mode t)
 (fido-vertical-mode t)
 (savehist-mode t)
@@ -135,3 +133,18 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
   (require 'dired-x))
 
 (which-key-mode t)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(erc-modules
+   '(autojoin button completion fill imenu irccontrols list match menu
+			  move-to-prompt netsplit networks readonly ring sasl
+			  stamp track)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
