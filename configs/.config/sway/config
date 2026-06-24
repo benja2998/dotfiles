@@ -21,8 +21,9 @@ set $menu rofi -show drun
 font pango:Iosevka Nerd Font 14
 
 exec --no-startup-id nm-applet
-exec --no-startup-id autotiling
+workspace_layout tabbed
 exec --no-startup-id pipewire
+exec --no-startup-id brightnessctl s 100%
 exec --no-startup-id dunst
 exec --no-startup-id kdeconnectd
 exec --no-startup-id kdeconnect-indicator
