@@ -77,8 +77,6 @@
          :map ghostel-semi-char-mode-map
          ("C-s"  . consult-line)
          ("C-k"  . my/ghostel-send-C-k-and-kill)
-         ;; ;; I'm used to go up/down the shell history with M-n/p from eshell
-         ;; ;; Simulate this behavior in ghostel by sending C-p and C-n
          ("M-p" . (lambda () (interactive) (ghostel-send-key "p" "ctrl")))
          ("M-n" . (lambda () (interactive) (ghostel-send-key "n" "ctrl")))
          :map project-prefix-map
