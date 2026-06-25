@@ -67,10 +67,13 @@
 (use-package exec-path-from-shell)
 (use-package fish-mode)
 (use-package company)
-(use-package doom-themes)
 (use-package nerd-icons)
 (use-package doom-modeline :init (doom-modeline-mode 1))
 (use-package magit :defer t)
+(use-package catppuccin-theme)
+
+(setq catppuccin-flavor 'frappe)
+(load-theme 'catppuccin :no-confirm)
 
 (use-package ghostel
   :bind (("C-x m" . ghostel)
@@ -99,8 +102,6 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 (when (daemonp) (exec-path-from-shell-initialize))
 (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
 
-(load-theme 'doom-material-dark :no-confirm)
-
 (add-hook 'org-mode-hook #'(lambda ()
                              (visual-line-mode t)
                              (org-indent-mode t)))
@@ -124,7 +125,10 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
    '(autojoin button completion fill imenu irccontrols list match menu
 			  move-to-prompt netsplit networks readonly ring stamp
 			  track))
- '(package-selected-packages nil))
+ '(package-selected-packages nil)
+ '(package-vc-selected-packages
+   '((tokyonight-themes :url
+						"https://github.com/xuchengpeng/tokyonight-themes"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
