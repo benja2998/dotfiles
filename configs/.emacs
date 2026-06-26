@@ -4,6 +4,8 @@
 (fido-vertical-mode t)
 (savehist-mode t)
 
+(editorconfig-mode t)
+
 (add-hook 'prog-mode-hook #'eglot-ensure)
 
 (setq vc-follow-symlinks t)
