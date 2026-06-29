@@ -3,6 +3,7 @@
 export LC_ALL=C.UTF-8
 
 export EDITOR='vim'
+export GPG_TTY=$(tty)
 alias ls="ls -B --color=auto"
 alias tree="tree -C"
 alias grep="grep --color=auto"
