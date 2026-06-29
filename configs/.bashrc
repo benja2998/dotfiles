@@ -1,5 +1,8 @@
-export EDITOR='emacsclient -c -a ""'
-alias emacs='emacsclient -c -a ""'
+[[ $- != *i* ]] && return
+
+export LC_ALL=C.UTF-8
+
+export EDITOR='vim'
 alias ls="ls -B --color=auto"
 alias tree="tree -C"
 alias grep="grep --color=auto"
@@ -19,6 +22,6 @@ shopt -s extglob
 shopt -s autocd
 shopt -s checkwinsize
 
-eval "$(starship init bash)"
+PS1='[\u@\h \W]\$ '
 
 [[ $- == *i* ]] && return

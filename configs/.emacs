@@ -6,8 +6,6 @@
 
 (editorconfig-mode t)
 
-(add-hook 'prog-mode-hook #'eglot-ensure)
-
 (setq vc-follow-symlinks t)
 
 (setq-default scroll-conservatively 101)
@@ -64,18 +62,10 @@
 (setq use-short-answers t)
 (setq use-package-always-ensure t)
 
-(use-package systemd)
 (use-package markdown-mode)
 (use-package exec-path-from-shell)
-(use-package fish-mode)
-(use-package company)
-(use-package nerd-icons)
-(use-package doom-modeline :init (doom-modeline-mode 1))
-(use-package magit :defer t)
-(use-package catppuccin-theme)
 
-(setq catppuccin-flavor 'frappe)
-(load-theme 'catppuccin :no-confirm)
+(load-theme 'modus-vivendi :no-confirm)
 
 (use-package ghostel
   :bind (("C-x m" . ghostel)
@@ -98,8 +88,6 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
   (add-to-list 'project-switch-commands '(ghostel-project "Ghostel") t)
   (add-to-list 'project-switch-commands '(ghostel-project-list-buffers "Ghostel buffers") t)
   (add-to-list 'ghostel-eval-cmds '("magit-status-setup-buffer" magit-status-setup-buffer)))
-
-(global-company-mode t)
 
 (when (daemonp) (exec-path-from-shell-initialize))
 (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
