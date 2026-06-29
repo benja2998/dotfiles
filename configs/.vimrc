@@ -8,10 +8,6 @@ set shiftwidth=4
 filetype plugin indent on
 set path+=**
 
-if !isdirectory(glob("~/.vim/pack"))
-	:!git clone https://github.com/vim-airline/vim-airline ~/.vim/pack/dist/start/vim-airline
-endif
-
 let mapleader = ' '
 
 function! ToggleMarkdownCheckbox() abort
