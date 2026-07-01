@@ -56,6 +56,10 @@
 (use-package markdown-mode)
 (use-package exec-path-from-shell)
 (use-package magit)
+(use-package god-mode)
+(require 'god-mode)
+(god-mode)
+(global-set-key (kbd "<escape>") #'god-local-mode)
 
 (use-package ghostel
   :bind (("C-x m" . ghostel)
@@ -106,7 +110,8 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 	 "820f02e02cddf808f79de2749bff5c3c570529249ebb76767988a1ca7d923cd7"
 	 "5b598ea012ecbc5641643c8bda01ca4e3662582a432a66a27822b78f402945ca"
 	 default))
- '(package-selected-packages '(exec-path-from-shell ghostel magit markdown-mode)))
+ '(package-selected-packages
+   '(exec-path-from-shell ghostel god-mode magit markdown-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
