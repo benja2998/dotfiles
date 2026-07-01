@@ -7,6 +7,8 @@
 (global-set-key (kbd "M-k") #'windmove-up)
 (global-set-key (kbd "M-l") #'windmove-right)
 
+(which-key-mode t)
+
 (setq vc-follow-symlinks t)
 
 (scroll-bar-mode -1)
