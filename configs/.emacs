@@ -90,7 +90,22 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes '(modus-vivendi))
+ '(custom-enabled-themes '(arcdark))
+ '(custom-safe-themes
+   '("4db745f7ba0382641879fa0d22bf7fd0d508e3097325e588aeaa999930a69c96"
+	 "4106992a80cd7577fe00e245efb8bb1b1634eebc83ac6eb433aad94d4fe3b277"
+	 "190cc1fa948c584b5249c4cb9d291741b411725a9de4217e35dceacfb01b83af"
+	 "ec62fb807e829715a4d1f5f203caf0269c70636503a56090ab1c0ea6ba6e3d93"
+	 "65577618e9064f96f8e693a1b3186b9501beead85de864cf700eb2b49ed337c7"
+	 "bf0553e3a3b19f00fb188d1f43fc9f36b1d841338bfa5d43b31fdb02061ecff0"
+	 "2780e94926161e072b6e4e45ee0ea9619076d8c05c581dce52ac32d5b1db1fea"
+	 "2a564a42029d98a8d2ceaeea6df5621db48085c474bc03761f4c258ae34af06c"
+	 "e1937c2748656b49cb6636a0c1a999f58e4acde3d24fa583ee7ecc38fc656c6c"
+	 "eb404ef3a5ec124e7312dc37476c49b2e588d3b060b67ba222e51e6662f648cf"
+	 "ffa253294a6a68181986e9b4110d7176deaf007198b6677d5a9fecb2401ac951"
+	 "820f02e02cddf808f79de2749bff5c3c570529249ebb76767988a1ca7d923cd7"
+	 "5b598ea012ecbc5641643c8bda01ca4e3662582a432a66a27822b78f402945ca"
+	 default))
  '(package-selected-packages '(exec-path-from-shell ghostel magit markdown-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
