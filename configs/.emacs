@@ -56,10 +56,6 @@
 (use-package markdown-mode)
 (use-package exec-path-from-shell)
 (use-package magit)
-(use-package god-mode)
-(require 'god-mode)
-(god-mode)
-(global-set-key (kbd "<escape>") #'god-local-mode)
 
 (use-package ghostel
   :bind (("C-x m" . ghostel)
