@@ -71,6 +71,14 @@
 (use-package magit)
 (use-package company)
 (use-package doom-modeline)
+(use-package colorful-mode
+  :custom
+  (colorful-use-prefix t)
+  (colorful-only-strings 'only-prog)
+  (css-fontify-colors nil)
+  :config
+  (global-colorful-mode t)
+  (add-to-list 'global-colorful-modes 'helpful-mode))
 (use-package eshell-prompt-extras)
 (with-eval-after-load "esh-opt"
   (autoload 'epe-theme-lambda "eshell-prompt-extras")
@@ -123,8 +131,8 @@
 	 "5b598ea012ecbc5641643c8bda01ca4e3662582a432a66a27822b78f402945ca"
 	 default))
  '(package-selected-packages
-   '(company doom-modeline eshell-prompt-extras exec-path-from-shell
-			 magit markdown-mode)))
+   '(colorful-mode company doom-modeline eshell-prompt-extras
+				   exec-path-from-shell magit markdown-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
