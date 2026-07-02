@@ -64,6 +64,9 @@
 (use-package exec-path-from-shell)
 (use-package magit)
 (use-package company)
+(use-package doom-modeline)
+(require 'doom-modeline)
+(doom-modeline-mode 1)
 
 (require 'eglot)
 (add-hook 'prog-mode-hook #'eglot-ensure)
@@ -126,7 +129,8 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 	 "5b598ea012ecbc5641643c8bda01ca4e3662582a432a66a27822b78f402945ca"
 	 default))
  '(package-selected-packages
-   '(company exec-path-from-shell ghostel god-mode magit markdown-mode)))
+   '(company doom-modeline exec-path-from-shell ghostel god-mode magit
+			 markdown-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
