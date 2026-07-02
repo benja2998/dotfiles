@@ -36,16 +36,16 @@
 (defvaralias 'c-basic-offset 'tab-width)
 (defvaralias 'c-ts-indent-offset 'tab-width)
 
-; Source - https://stackoverflow.com/a/22176971
-; Posted by user2053036, modified by community. See post 'Timeline' for change history
-; Retrieved 2026-06-20, License - CC BY-SA 3.0
+										; Source - https://stackoverflow.com/a/22176971
+										; Posted by user2053036, modified by community. See post 'Timeline' for change history
+										; Retrieved 2026-06-20, License - CC BY-SA 3.0
 
 (setq auto-save-file-name-transforms
       `((".*" ,(concat user-emacs-directory "auto-save/") t)))
 
-; Source - https://stackoverflow.com/a/22176971
-; Posted by user2053036, modified by community. See post 'Timeline' for change history
-; Retrieved 2026-06-20, License - CC BY-SA 3.0
+										; Source - https://stackoverflow.com/a/22176971
+										; Posted by user2053036, modified by community. See post 'Timeline' for change history
+										; Retrieved 2026-06-20, License - CC BY-SA 3.0
 
 (setq backup-directory-alist
       `(("." . ,(expand-file-name
@@ -71,6 +71,10 @@
 (use-package magit)
 (use-package company)
 (use-package doom-modeline)
+(use-package catppuccin-theme)
+(use-package org-superstar)
+(setq catppuccin-flavor 'frappe)
+(load-theme 'catppuccin :no-confirm)
 (use-package colorful-mode
   :custom
   (colorful-use-prefix t)
@@ -87,6 +91,8 @@
 (require 'doom-modeline)
 (doom-modeline-mode 1)
 
+(add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
+
 (global-set-key (kbd "C-c e") #'eshell)
 
 (require 'eglot)
@@ -102,7 +108,33 @@
                              (visual-line-mode t)
                              (org-indent-mode t)))
 
-(load-theme 'arc-dark :no-confirm)
+(setq org-hide-emphasis-markers t)
+
+(font-lock-add-keywords 'org-mode
+                        '(("^ *\\([-]\\) "
+                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+
+(let* ((variable-tuple
+        (cond ((x-list-fonts "ETBembo")         '(:font "ETBembo"))
+              ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
+              ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
+              ((x-list-fonts "Verdana")         '(:font "Verdana"))
+              ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
+              (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
+       (base-font-color     (face-foreground 'default nil 'default))
+       (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
+
+  (custom-theme-set-faces
+   'user
+   `(org-level-8 ((t (,@headline ,@variable-tuple))))
+   `(org-level-7 ((t (,@headline ,@variable-tuple))))
+   `(org-level-6 ((t (,@headline ,@variable-tuple))))
+   `(org-level-5 ((t (,@headline ,@variable-tuple))))
+   `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.05))))
+   `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.1))))
+   `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.15))))
+   `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.2))))
+   `(org-document-title ((t (,@headline ,@variable-tuple :height 1.3 :underline nil))))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -130,9 +162,7 @@
 	 "820f02e02cddf808f79de2749bff5c3c570529249ebb76767988a1ca7d923cd7"
 	 "5b598ea012ecbc5641643c8bda01ca4e3662582a432a66a27822b78f402945ca"
 	 default))
- '(package-selected-packages
-   '(colorful-mode company doom-modeline eshell-prompt-extras
-				   exec-path-from-shell magit markdown-mode)))
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
