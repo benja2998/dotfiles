@@ -104,9 +104,14 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes '(arcdark))
+ '(custom-enabled-themes '(arc-dark))
  '(custom-safe-themes
-   '("4db745f7ba0382641879fa0d22bf7fd0d508e3097325e588aeaa999930a69c96"
+   '("5e1741398293d0df87244a34ad47241e10f57b06e07cd62ad44089ab95d85e01"
+	 "f44bb32804c6dc06f539c82ff978f7178eef577caa90c0b89260fa4e67ba3322"
+	 "97883740d8f11ce7c1470ed8270afc15f45e6dac244af9b6ffd19c930ea7b224"
+	 "3601d00861446211cfd3831d2ccef176ceb7de11d24e6ee1d725ec6b7000d51a"
+	 "90c390c234a3c5d92ac5e3589893e03e963a11a16db448b1bae243e988efadec"
+	 "4db745f7ba0382641879fa0d22bf7fd0d508e3097325e588aeaa999930a69c96"
 	 "4106992a80cd7577fe00e245efb8bb1b1634eebc83ac6eb433aad94d4fe3b277"
 	 "190cc1fa948c584b5249c4cb9d291741b411725a9de4217e35dceacfb01b83af"
 	 "ec62fb807e829715a4d1f5f203caf0269c70636503a56090ab1c0ea6ba6e3d93"
