@@ -75,6 +75,8 @@
 (require 'doom-modeline)
 (doom-modeline-mode 1)
 
+(global-set-key (kbd "C-c e") #'eshell)
+
 (require 'eglot)
 (add-hook 'prog-mode-hook #'eglot-ensure)
 
