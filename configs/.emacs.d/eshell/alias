@@ -1,7 +1,7 @@
-alias ll ls -larth $1
-alias ff find-file $1
-alias e find-file-other-window $1
-alias d dired $1
-alias gd magit-diff-unstaged
-alias gds magit-diff-staged
 alias cls clear-scrollback
+alias gds magit-diff-staged
+alias gd magit-diff-unstaged
+alias d dired $1
+alias e find-file-other-window $1
+alias ff find-file $1
+alias ll ls -larth $1

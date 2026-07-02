@@ -1,6 +1,7 @@
 ;;; arc-dark-theme.el ---Arc dark theme              -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2019  Christopher Fraser
+;; Copyright (C) 2026 benja2998 (magit face customizations)
 
 ;; Author: Christopher Fraser <cfraz89@gmail.com>
 ;; Version: 0.1.0
