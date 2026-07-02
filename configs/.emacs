@@ -1,5 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
+(require 'eshell)
+
 (editorconfig-mode t)
 
 (global-set-key (kbd "M-h") #'windmove-left)
@@ -65,6 +67,11 @@
 (use-package magit)
 (use-package company)
 (use-package doom-modeline)
+(use-package eshell-prompt-extras)
+(with-eval-after-load "esh-opt"
+  (autoload 'epe-theme-lambda "eshell-prompt-extras")
+  (setq eshell-highlight-prompt nil
+        eshell-prompt-function 'epe-theme-lambda))
 (require 'doom-modeline)
 (doom-modeline-mode 1)
 
@@ -74,34 +81,13 @@
 (require 'company)
 (global-company-mode t)
 
-(use-package ghostel
-  :bind (("C-x m" . ghostel)
-         :map ghostel-semi-char-mode-map
-         ("C-s"  . consult-line)
-         ("C-k"  . my/ghostel-send-C-k-and-kill)
-         ("M-p" . (lambda () (interactive) (ghostel-send-key "p" "ctrl")))
-         ("M-n" . (lambda () (interactive) (ghostel-send-key "n" "ctrl")))
-         :map project-prefix-map
-         ("m" . ghostel-project)
-         ("M" . ghostel-project-list-buffers))
-  :config
-  (defun my/ghostel-send-C-k-and-kill ()
-    "Send `C-k' to ghostel.
-Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
-    (interactive)
-    (kill-ring-save (point) (line-end-position))
-    (ghostel-send-key "k" "ctrl"))
-
-  (add-to-list 'project-switch-commands '(ghostel-project "Ghostel") t)
-  (add-to-list 'project-switch-commands '(ghostel-project-list-buffers "Ghostel buffers") t)
-  (add-to-list 'ghostel-eval-cmds '("magit-status-setup-buffer" magit-status-setup-buffer)))
-
 (when (daemonp) (exec-path-from-shell-initialize))
 (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
 
 (add-hook 'org-mode-hook #'(lambda ()
                              (visual-line-mode t)
                              (org-indent-mode t)))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -129,8 +115,8 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 	 "5b598ea012ecbc5641643c8bda01ca4e3662582a432a66a27822b78f402945ca"
 	 default))
  '(package-selected-packages
-   '(company doom-modeline exec-path-from-shell ghostel god-mode magit
-			 markdown-mode)))
+   '(company doom-modeline eshell-prompt-extras exec-path-from-shell
+			 magit markdown-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
