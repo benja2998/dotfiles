@@ -1,6 +1,6 @@
 ; neofetch.el
 
-;; Neofetch program written in pure Emacs Lisp. Does not require any external programs! Runs on any operating system!
+;; Neofetch program written in pure Emacs Lisp. Does not require any external programs and runs on any operating system.
 ;; Copyright (C) 2026 benja2998
 
 ;; This program is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 (defun neofetch ()
-  "Neofetch program written in pure Emacs Lisp. Does not require any external programs! Runs on any operating system!"
+  "Neofetch program written in pure Emacs Lisp. Does not require any external programs and runs on any operating system."
   (interactive)
 
   (setq proclist (process-list))
