@@ -1,0 +1,5 @@
+XTerm*renderFont: true
+XTerm*faceName: monospace
+XTerm*faceSize: 16
+XTerm*background: black
+XTerm*foreground: white
