@@ -1,4 +1,4 @@
-; neofetch.el
+;; neofetch.el
 
 ;; Neofetch program written in pure Emacs Lisp. Does not require any external programs and runs on any operating system.
 ;; Copyright (C) 2026 benja2998
@@ -16,10 +16,15 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-(defun neofetch ()
+(defun neofetch (&optional logo-path)
   "Neofetch program written in pure Emacs Lisp. Does not require any external programs and runs on any operating system."
-  (interactive)
 
+  (catch 'not-in-eshell
+	(if (not (eq major-mode 'eshell-mode))
+		(thow 'not-in-eshell "Not in eshell")
+	  )
+	)
+  
   (setq proclist (process-list))
 
   (setq process-count 0)
@@ -28,59 +33,68 @@
 	(setq process-count (1+ process-count))
 	(setq proclist (cdr proclist))
 	)
-  (princ (concat
-		  
+
+  (when (display-graphic-p)
+	(when logo-path
+	  (insert-image (create-image logo-path))
+	  (insert (format "\n"))
+	  )
+	)
+  
+  (insert (concat
 		  ;;; username@hostname
 
-
-		  (propertize (user-login-name) 'font-lock-face '(:foreground "purple"))
-		  "@"
-		  (propertize (system-name) 'font-lock-face '(:foreground "purple"))
-		  (format "\n")
+		   (propertize (user-login-name) 'font-lock-face '(:foreground "purple"))
+		   "@"
+		   (propertize (system-name) 'font-lock-face '(:foreground "purple"))
+		   (format "\n")
 
 		  ;;; Horizontal line
 
-		  "-------------------------"
+		   "-------------------------"
 
-		  (format "\n")
+		   (format "\n")
 
 		  ;;; OS: system-type
-		  
-		  (propertize "OS" 'font-lock-face '(:foreground "cyan"))
-		  (format ": %s\n" system-type)
+		   
+		   (propertize "OS" 'font-lock-face '(:foreground "cyan"))
+		   (format ": %s\n" system-type)
 
 		  ;;; Emacs version: emacs-version
 
-		  (propertize "Emacs version" 'font-lock-face '(:foreground "cyan"))
-		  (format ": %s\n" emacs-version)
+		   (propertize "Emacs version" 'font-lock-face '(:foreground "cyan"))
+		   (format ": %s\n" emacs-version)
 
 		  ;;; Emacs uptime: emacs-uptime
 
-		  (propertize "Emacs uptime" 'font-lock-face '(:foreground "cyan"))
-		  ": "
-		  (emacs-uptime)
-		  (format "\n")
+		   (propertize "Emacs uptime" 'font-lock-face '(:foreground "cyan"))
+		   ": "
+		   (emacs-uptime)
+		   (format "\n")
 
 		  ;;; Emacs startup time: emacs-init-time
 
-		  (propertize "Emacs startup time" 'font-lock-face '(:foreground "cyan"))
-		  ": "
-		  (emacs-init-time)
-		  (format "\n")
-	   
+		   (propertize "Emacs startup time" 'font-lock-face '(:foreground "cyan"))
+		   ": "
+		   (emacs-init-time)
+		   (format "\n")
+		   
 		  ;;; Processors: num-processors
 
-		  (propertize "Processors" 'font-lock-face '(:foreground "cyan"))
-		  ": "
-		  (format "%s" (num-processors))
-		  (format "\n")
+		   (propertize "Processors" 'font-lock-face '(:foreground "cyan"))
+		   ": "
+		   (format "%s" (num-processors))
+		   (format "\n")
 
 		  ;;; Running Emacs sub-processes: process-count
 
-		  (propertize "Running Emacs sub-processes" 'font-lock-face '(:foreground "cyan"))
-		  ": "
-		  (format "%s" process-count)
-		  ))
+		   (propertize "Running Emacs sub-processes" 'font-lock-face '(:foreground "cyan"))
+		   ": "
+		   (format "%s" process-count)
+		   (format "\n")
+		   ))
+  (eshell-interrupt-process)
+  (keyboard-quit)
   )
 
 (provide 'neofetch)
