@@ -105,8 +105,7 @@
 (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
 
 (add-hook 'org-mode-hook #'(lambda ()
-                             (visual-line-mode t)
-                             (org-indent-mode t)))
+                             (visual-line-mode t)))
 
 (setq org-hide-emphasis-markers t)
 
@@ -114,13 +113,7 @@
                         '(("^ *\\([-]\\) "
                            (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 
-(let* ((variable-tuple
-        (cond ((x-list-fonts "ETBembo")         '(:font "ETBembo"))
-              ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
-              ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
-              ((x-list-fonts "Verdana")         '(:font "Verdana"))
-              ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
-              (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
+(let* ((variable-tuple)
        (base-font-color     (face-foreground 'default nil 'default))
        (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
 
