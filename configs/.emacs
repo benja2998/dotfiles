@@ -71,10 +71,8 @@
 (use-package magit)
 (use-package company)
 (use-package doom-modeline)
-(use-package catppuccin-theme)
 (use-package org-superstar)
-(setq catppuccin-flavor 'frappe)
-(load-theme 'catppuccin :no-confirm)
+(load-theme 'arc-dark :no-confirm)
 (use-package colorful-mode
   :custom
   (colorful-use-prefix t)
