@@ -107,6 +107,9 @@
 	)
   )
 
+(add-hook 'eshell-mode-hook #'(lambda ()
+								(add-to-list 'eshell-visual-commands "tinydash")))
+
 (setq eshell-destroy-buffer-when-process-dies t)
 
 (require 'company)
