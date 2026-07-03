@@ -96,6 +96,19 @@
 (require 'eglot)
 (add-hook 'prog-mode-hook #'eglot-ensure)
 
+(defun bt-term (&optional program)
+  "Run XTerm with a program, or term when no graphical environment. Fall back to bash"
+  (interactive)
+  (when (display-graphic-p)
+    (start-process "xterm" nil "xterm" (or program "bash"))
+	)
+  (when (not (display-graphic-p))
+	(term (or program "bash"))
+	)
+  )
+
+(setq eshell-destroy-buffer-when-process-dies t)
+
 (require 'company)
 (global-company-mode t)
 
