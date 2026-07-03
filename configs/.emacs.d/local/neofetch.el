@@ -1,4 +1,4 @@
-;; neofetch.el
+; neofetch.el
 
 ;; Neofetch program written in pure Emacs Lisp. Does not require any external programs! Runs on any operating system!
 ;; Copyright (C) 2026 benja2998
@@ -19,6 +19,15 @@
 (defun neofetch ()
   "Neofetch program written in pure Emacs Lisp. Does not require any external programs! Runs on any operating system!"
   (interactive)
+
+  (setq proclist (process-list))
+
+  (setq process-count 0)
+
+  (while proclist
+	(setq process-count (1+ process-count))
+	(setq proclist (cdr proclist))
+	)
   (princ (concat
 		  
 		  ;;; username@hostname
@@ -57,6 +66,20 @@
 		  (propertize "Emacs startup time" 'font-lock-face '(:foreground "cyan"))
 		  ": "
 		  (emacs-init-time)
+		  (format "\n")
+	   
+		  ;;; Processors: num-processors
+
+		  (propertize "Processors" 'font-lock-face '(:foreground "cyan"))
+		  ": "
+		  (format "%s" (num-processors))
+		  (format "\n")
+
+		  ;;; Running Emacs sub-processes: process-count
+
+		  (propertize "Running Emacs sub-processes" 'font-lock-face '(:foreground "cyan"))
+		  ": "
+		  (format "%s" process-count)
 		  ))
   )
 
