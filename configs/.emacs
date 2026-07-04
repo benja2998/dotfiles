@@ -8,10 +8,10 @@
 
 (editorconfig-mode t)
 
-(global-set-key (kbd "C-M-h") #'windmove-left)
-(global-set-key (kbd "C-M-j") #'windmove-down)
-(global-set-key (kbd "C-M-k") #'windmove-up)
-(global-set-key (kbd "C-M-l") #'windmove-right)
+(global-set-key (kbd "M-h") #'windmove-left)
+(global-set-key (kbd "M-j") #'windmove-down)
+(global-set-key (kbd "M-k") #'windmove-up)
+(global-set-key (kbd "M-l") #'windmove-right)
 
 (which-key-mode t)
 
