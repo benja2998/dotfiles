@@ -72,7 +72,8 @@
 (use-package company)
 (use-package doom-modeline)
 (use-package org-superstar)
-(load-theme 'arc-dark :no-confirm)
+(use-package solarized-theme)
+(load-theme 'solarized-dark :no-confirm)
 (use-package colorful-mode
   :custom
   (colorful-use-prefix t)
@@ -121,28 +122,6 @@
 (add-hook 'org-mode-hook #'(lambda ()
                              (visual-line-mode t)))
 
-(setq org-hide-emphasis-markers t)
-
-(font-lock-add-keywords 'org-mode
-                        '(("^ *\\([-]\\) "
-                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
-
-(let* ((variable-tuple)
-       (base-font-color     (face-foreground 'default nil 'default))
-       (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
-
-  (custom-theme-set-faces
-   'user
-   `(org-level-8 ((t (,@headline ,@variable-tuple))))
-   `(org-level-7 ((t (,@headline ,@variable-tuple))))
-   `(org-level-6 ((t (,@headline ,@variable-tuple))))
-   `(org-level-5 ((t (,@headline ,@variable-tuple))))
-   `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.05))))
-   `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.1))))
-   `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.15))))
-   `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.2))))
-   `(org-document-title ((t (,@headline ,@variable-tuple :height 1.3 :underline nil))))))
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -176,12 +155,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-document-title ((t (:inherit default :weight bold :foreground "white" :height 1.3 :underline nil))))
- '(org-level-1 ((t (:inherit default :weight bold :foreground "white" :height 1.2))))
- '(org-level-2 ((t (:inherit default :weight bold :foreground "white" :height 1.15))))
- '(org-level-3 ((t (:inherit default :weight bold :foreground "white" :height 1.1))))
- '(org-level-4 ((t (:inherit default :weight bold :foreground "white" :height 1.05))))
- '(org-level-5 ((t (:inherit default :weight bold :foreground "white"))))
- '(org-level-6 ((t (:inherit default :weight bold :foreground "white"))))
- '(org-level-7 ((t (:inherit default :weight bold :foreground "white"))))
- '(org-level-8 ((t (:inherit default :weight bold :foreground "white")))))
+ )
