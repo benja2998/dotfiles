@@ -72,6 +72,7 @@
 (use-package evil-mode)
 (use-package goto-chg)
 (require 'evil)
+(evil-set-leader (kbd "SPC"))
 (evil-mode 1)
 (use-package company)
 (use-package doom-modeline)
