@@ -10,7 +10,7 @@ alias tree="tree -C"
 alias grep="grep --color=auto"
 alias ll="ls -larth"
 
-bind '"\C-f":"cdf\C-j"'
+bind '"\C-f":"tmux-session\C-j"'
 
 HISTSIZE=-1
 HISTFILESIZE=-1
@@ -29,6 +29,32 @@ PS1='[\u@\h \W]\$ '
 
 cdf() {
 	cd "$(find -type d | fzf)" || true
+}
+
+tmux-session() {
+	local SESS="$(find -type d | fzf)"
+	if [ -z "$SESS" ]; then
+		echo No directory
+		return
+	fi
+	local EXST=0
+	local SESN="$(basename $SESS)"
+	if tmux has-session -t $SESN 2>/dev/null; then
+		EXST=1
+	else
+		EXST=0
+	fi
+
+	# Now actually do the stuff
+	if [ -z "$TMUX" ]; then
+		if [ "$EXST" = 1 ]; then
+			tmux attach-session -t $SESN
+		else
+			tmux new-session -d -s $SESN
+			tmux send-keys -t 0 "cd \"$SESS\"" C-m "clear" C-m
+			tmux attach-session -t $SESN
+		fi
+	fi
 }
 
 [[ $- == *i* ]] && return
