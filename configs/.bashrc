@@ -6,6 +6,7 @@ export EDITOR='vim'
 alias code='code-oss'
 export GPG_TTY=$(tty)
 alias ls="ls -B --color=auto"
+alias emacs='emacsclient -c -a ""'
 alias tree="tree -C"
 alias grep="grep --color=auto"
 alias ll="ls -larth"
