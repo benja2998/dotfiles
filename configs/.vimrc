@@ -1,4 +1,5 @@
 set nocompatible
+set timeoutlen=250
 syntax on
 set number
 set relativenumber
@@ -27,3 +28,4 @@ endfunction
 nnoremap <leader>j :call ToggleMarkdownCheckbox()<CR>
 nnoremap <leader>y "+y
 nnoremap <leader>p "+p
+inoremap jj <Esc>

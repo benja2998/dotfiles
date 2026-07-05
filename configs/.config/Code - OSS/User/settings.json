@@ -9,6 +9,7 @@
     "window.menuBarVisibility": "compact",
     "workbench.activityBar.location": "hidden",
     "terminal.integrated.fontSize": 24,
-    "vim.useCtrlKeys": false,
-    "vim.vimrc.enable": true
+    "vim.timeout": 250,
+    "vim.vimrc.enable": true,
+    "editor.lineNumbers": "relative"
 }
