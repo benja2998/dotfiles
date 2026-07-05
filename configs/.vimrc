@@ -9,6 +9,8 @@ filetype plugin on
 set tabstop=4
 set noshowmode
 set mouse=a
+set ignorecase
+set smartcase
 set laststatus=2
 set shiftwidth=4
 filetype plugin indent on
@@ -19,6 +21,7 @@ if !isdirectory(glob("~/.vim/pack"))
 	:!git clone https://github.com/vim-airline/vim-airline ~/.vim/pack/dist/start/vim-airline
 	:!git clone https://github.com/vim-airline/vim-airline-themes ~/.vim/pack/dist/start/vim-airline-themes
 	:!git clone https://github.com/junegunn/fzf.vim ~/.vim/pack/dist/start/fzf.vim
+	:!git clone https://github.com/junegunn/fzf ~/.vim/pack/dist/start/fzf
 	:!git clone https://codeberg.org/lifepillar/vim-solarized8.git ~/.vim/pack/themes/opt/solarized8
 	:!git clone https://github.com/christoomey/vim-tmux-navigator.git ~/.vim/pack/plugins/start/vim-tmux-navigator
 endif
@@ -44,7 +47,7 @@ function! ToggleMarkdownCheckbox() abort
 endfunction
 
 nnoremap <leader>j :call ToggleMarkdownCheckbox()<CR>
-nnoremap <C-f> :FZF<CR>
+nnoremap <C-f> :Files<CR>
 
 " sensible.vim - Defaults everyone can agree on
 " Maintainer:   Tim Pope <http://tpo.pe/>
