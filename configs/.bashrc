@@ -10,6 +10,8 @@ alias tree="tree -C"
 alias grep="grep --color=auto"
 alias ll="ls -larth"
 
+bind '"\C-f":"cdf\C-j"'
+
 HISTSIZE=-1
 HISTFILESIZE=-1
 
@@ -24,5 +26,9 @@ shopt -s autocd
 shopt -s checkwinsize
 
 PS1='[\u@\h \W]\$ '
+
+cdf() {
+	cd "$(find -type d | fzf)" || true
+}
 
 [[ $- == *i* ]] && return
