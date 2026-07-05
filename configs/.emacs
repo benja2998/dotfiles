@@ -51,7 +51,7 @@
       `(("." . ,(expand-file-name
                  (concat user-emacs-directory "backups")))))
 
-(add-to-list 'default-frame-alist '(font . "monospace-16"))
+(add-to-list 'default-frame-alist '(font . "Terminess Nerd Font-16"))
 
 (setq display-line-numbers-type 'relative)
 
@@ -69,6 +69,10 @@
 (use-package markdown-mode)
 (use-package exec-path-from-shell)
 (use-package magit)
+(use-package evil-mode)
+(use-package goto-chg)
+(require 'evil)
+(evil-mode 1)
 (use-package company)
 (use-package doom-modeline)
 (use-package org-superstar)
