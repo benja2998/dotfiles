@@ -2,8 +2,7 @@
 
 export LC_ALL=C.UTF-8
 
-export EDITOR='emacsclient -c -a ""'
-alias emacs='emacsclient -c -a ""'
+export EDITOR='gedit'
 export GPG_TTY=$(tty)
 alias ls="ls -B --color=auto"
 alias tree="tree -C"
