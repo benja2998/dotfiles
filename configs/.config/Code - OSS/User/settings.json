@@ -9,5 +9,6 @@
     "window.menuBarVisibility": "compact",
     "workbench.activityBar.location": "hidden",
     "terminal.integrated.fontSize": 24,
-    "vim.useCtrlKeys": false
+    "vim.useCtrlKeys": false,
+    "vim.vimrc.enable": true
 }
