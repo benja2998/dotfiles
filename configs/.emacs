@@ -17,12 +17,19 @@
 (global-set-key (kbd "M-l") #'windmove-right)
 
 (global-set-key (kbd "C-c s") #'eglot-code-actions)
+(global-set-key (kbd "C-c C-r") #'eglot-rename)
 
 (defun dired-notes ()
   (interactive)
   (dired "~/Documents/Notes")
   )
 
+(defun dired-home ()
+  (interactive)
+  (dired "~")
+  )
+
+(global-set-key (kbd "C-c nh") #'dired-home)
 (global-set-key (kbd "C-c nd") #'dired-notes)
 
 (which-key-mode t)
