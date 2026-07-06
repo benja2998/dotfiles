@@ -5,13 +5,13 @@ cursor-blink=true
 cursor-blink-time=1200
 cursor-size=0
 cursor-theme='Adwaita'
-enable-animations=false
+enable-animations=true
 font-name='Sans 10'
 gtk-key-theme=''
 gtk-theme='Adwaita-dark'
 icon-theme='Adwaita'
 monospace-font-name='Monospace 10'
-show-battery-percentage=false
+show-battery-percentage=true
 text-scaling-factor=1.25
 toolkit-accessibility=false
 
