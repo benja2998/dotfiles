@@ -8,6 +8,9 @@
 
 (editorconfig-mode t)
 
+(require 'eglot)
+(add-hook 'prog-mode-hook #'eglot-ensure)
+
 (global-set-key (kbd "M-h") #'windmove-left)
 (global-set-key (kbd "M-j") #'windmove-down)
 (global-set-key (kbd "M-k") #'windmove-up)
@@ -78,6 +81,9 @@
 (use-package magit)
 (use-package doom-modeline)
 (use-package org-superstar)
+(use-package company)
+(require 'company)
+(global-company-mode t)
 (use-package solarized-theme)
 (load-theme 'solarized-dark :no-confirm)
 (use-package colorful-mode
