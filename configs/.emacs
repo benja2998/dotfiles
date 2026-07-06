@@ -16,6 +16,8 @@
 (global-set-key (kbd "M-k") #'windmove-up)
 (global-set-key (kbd "M-l") #'windmove-right)
 
+(global-set-key (kbd "C-c s") #'eglot-code-actions)
+
 (defun dired-notes ()
   (interactive)
   (dired "~/Documents/Notes")
