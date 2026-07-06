@@ -58,6 +58,8 @@ nnoremap <leader>pf :GFiles<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>e :Ex<CR>
 nnoremap <leader>d :bd<CR>
+nnoremap <leader>lg :RG<CR>
+nnoremap <leader>lb :Lines<CR>
 
 " sensible.vim - Defaults everyone can agree on
 " Maintainer:   Tim Pope <http://tpo.pe/>
