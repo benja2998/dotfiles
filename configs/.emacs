@@ -144,9 +144,9 @@
 	 default))
  '(evil-undo-system 'undo-redo)
  '(package-selected-packages
-   '(catppuccin-theme colorful-mode doom-modeline eshell-prompt-extras
-					  exec-path-from-shell magit markdown-mode
-					  org-superstar solarized-theme))
+   '(catppuccin-theme colorful-mode company doom-modeline
+					  eshell-prompt-extras exec-path-from-shell magit
+					  markdown-mode org-superstar solarized-theme))
  '(send-mail-function 'mailclient-send-it))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
