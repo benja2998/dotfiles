@@ -4,6 +4,10 @@ set -ex
 
 sudo xbps-install gnupg git base-devel vim-huge tmux fzf
 
+which st
+
+gsettings set org.gnome.desktop.default-applications.terminal exec 'st'
+
 dotfiles="$(pwd)"
 
 dconf load /org/gnome/desktop/ < desktop.dconf
