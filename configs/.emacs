@@ -13,6 +13,13 @@
 (global-set-key (kbd "M-k") #'windmove-up)
 (global-set-key (kbd "M-l") #'windmove-right)
 
+(defun dired-notes ()
+  (interactive)
+  (dired "~/Documents/Notes")
+  )
+
+(global-set-key (kbd "C-c nd") #'dired-notes)
+
 (which-key-mode t)
 
 (setq vc-follow-symlinks t)
@@ -69,23 +76,6 @@
 (use-package markdown-mode)
 (use-package exec-path-from-shell)
 (use-package magit)
-(use-package evil)
-(use-package evil-collection)
-(setq evil-want-keybinding nil)
-(evil-collection-init '(magit calendar dired calc ediff))
-(use-package goto-chg)
-(require 'evil)
-(evil-set-leader nil (kbd "SPC"))
-(evil-mode 1)
-(evil-define-key 'normal 'global (kbd "<leader>pf") 'project-find-file)
-(evil-define-key 'normal 'global (kbd "<leader>pD") 'project-dired)
-(evil-define-key 'normal 'global (kbd "<leader>pd") 'project-find-dir)
-(evil-define-key 'normal 'global (kbd "<leader>pe") 'project-eshell)
-(evil-define-key 'normal 'global (kbd "C-h") 'windmove-left)
-(evil-define-key 'normal 'global (kbd "C-j") 'windmove-down)
-(evil-define-key 'normal 'global (kbd "C-k") 'windmove-up)
-(evil-define-key 'normal 'global (kbd "C-l") 'windmove-right)
-(use-package company)
 (use-package doom-modeline)
 (use-package org-superstar)
 (use-package solarized-theme)
@@ -110,28 +100,10 @@
 
 (global-set-key (kbd "C-c e") #'eshell)
 
-(require 'eglot)
-(add-hook 'prog-mode-hook #'eglot-ensure)
-
-(defun bt-term (&optional program)
-  "Run XTerm with a program, or term when no graphical environment. Fall back to bash"
-  (interactive)
-  (when (display-graphic-p)
-    (start-process "xterm" nil "xterm" (or program "bash"))
-	)
-  (when (not (display-graphic-p))
-	(term (or program "bash"))
-	)
-  )
-
 (add-hook 'eshell-mode-hook #'(lambda ()
 								(add-to-list 'eshell-visual-commands "tinydash")))
 
 (setq eshell-destroy-buffer-when-process-dies t)
-
-(require 'company)
-(global-company-mode t)
-
 (when (daemonp) (exec-path-from-shell-initialize))
 (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
 
@@ -166,8 +138,7 @@
 	 default))
  '(evil-undo-system 'undo-redo)
  '(package-selected-packages
-   '(catppuccin-theme colorful-mode company doom-modeline
-					  eshell-prompt-extras evil evil-collection
+   '(catppuccin-theme colorful-mode doom-modeline eshell-prompt-extras
 					  exec-path-from-shell magit markdown-mode
 					  org-superstar solarized-theme))
  '(send-mail-function 'mailclient-send-it))
