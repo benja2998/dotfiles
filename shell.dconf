@@ -1,0 +1,51 @@
+[app-switcher]
+current-workspace-only=true
+
+[extensions/blur-my-shell]
+rounded-blur-found=false
+settings-version=2
+
+[extensions/blur-my-shell/appfolder]
+brightness=0.59999999999999998
+sigma=30
+
+[extensions/blur-my-shell/dash-to-dock]
+blur=true
+brightness=0.59999999999999998
+sigma=30
+static-blur=true
+style-dash-to-dock=0
+
+[extensions/blur-my-shell/panel]
+brightness=0.59999999999999998
+corner-radius=0
+sigma=30
+
+[extensions/blur-my-shell/window-list]
+brightness=0.59999999999999998
+sigma=30
+
+[extensions/just-perfection]
+top-panel-position=1
+
+[extensions/space-bar/shortcuts]
+enable-activate-workspace-shortcuts=false
+
+[extensions/switcher]
+show-switcher=['<Super>k']
+
+[extensions/tactile]
+show-tiles=['<Super>f']
+
+[keybindings]
+switch-to-application-1=@as []
+switch-to-application-2=@as []
+switch-to-application-3=@as []
+switch-to-application-4=@as []
+
+[weather]
+automatic-location=true
+locations=@av []
+
+[world-clocks]
+locations=@av []

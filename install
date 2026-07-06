@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -ex
+
+sudo xbps-install gnupg git base-devel vim-huge tmux fzf
+
+dotfiles="$(pwd)"
+
+dconf load /org/gnome/desktop/ < desktop.dconf
+dconf load /org/gnome/shell/ < shell.dconf
+
+stow -v --target ~ configs
