@@ -70,6 +70,9 @@
 (use-package exec-path-from-shell)
 (use-package magit)
 (use-package evil)
+(use-package evil-collection)
+(setq evil-want-keybinding nil)
+(evil-collection-init)
 (use-package goto-chg)
 (require 'evil)
 (evil-set-leader nil (kbd "SPC"))
@@ -160,7 +163,11 @@
 	 "820f02e02cddf808f79de2749bff5c3c570529249ebb76767988a1ca7d923cd7"
 	 "5b598ea012ecbc5641643c8bda01ca4e3662582a432a66a27822b78f402945ca"
 	 default))
- '(package-selected-packages nil)
+ '(package-selected-packages
+   '(catppuccin-theme colorful-mode company doom-modeline
+					  eshell-prompt-extras evil evil-collection
+					  exec-path-from-shell magit markdown-mode
+					  org-superstar solarized-theme))
  '(send-mail-function 'mailclient-send-it))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
