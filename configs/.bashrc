@@ -11,8 +11,6 @@ alias tree="tree -C"
 alias grep="grep --color=auto"
 alias ll="ls -larth"
 
-bind '"\C-f":"tmux-session\C-j"'
-
 HISTSIZE=-1
 HISTFILESIZE=-1
 
