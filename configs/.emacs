@@ -72,14 +72,15 @@
 (use-package evil)
 (use-package evil-collection)
 (setq evil-want-keybinding nil)
-(evil-collection-init)
+(evil-collection-init '(magit calendar dired calc ediff))
 (use-package goto-chg)
 (require 'evil)
 (evil-set-leader nil (kbd "SPC"))
 (evil-mode 1)
 (evil-define-key 'normal 'global (kbd "<leader>pf") 'project-find-file)
-(evil-define-key 'normal 'global (kbd "<leader>b") 'switch-to-buffer)
-(evil-define-key 'normal 'global (kbd "<leader>g") 'magit-status)
+(evil-define-key 'normal 'global (kbd "<leader>pD") 'project-dired)
+(evil-define-key 'normal 'global (kbd "<leader>pd") 'project-find-dir)
+(evil-define-key 'normal 'global (kbd "<leader>pe") 'project-eshell)
 (evil-define-key 'normal 'global (kbd "C-h") 'windmove-left)
 (evil-define-key 'normal 'global (kbd "C-j") 'windmove-down)
 (evil-define-key 'normal 'global (kbd "C-k") 'windmove-up)
@@ -163,6 +164,7 @@
 	 "820f02e02cddf808f79de2749bff5c3c570529249ebb76767988a1ca7d923cd7"
 	 "5b598ea012ecbc5641643c8bda01ca4e3662582a432a66a27822b78f402945ca"
 	 default))
+ '(evil-undo-system 'undo-redo)
  '(package-selected-packages
    '(catppuccin-theme colorful-mode company doom-modeline
 					  eshell-prompt-extras evil evil-collection
