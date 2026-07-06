@@ -56,6 +56,8 @@ nnoremap <leader>j :call ToggleMarkdownCheckbox()<CR>
 nnoremap <C-f> :Files<CR>
 nnoremap <leader>pf :GFiles<CR>
 nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>e :Ex<CR>
+nnoremap <leader>d :bd<CR>
 
 " sensible.vim - Defaults everyone can agree on
 " Maintainer:   Tim Pope <http://tpo.pe/>
