@@ -1,3 +1,20 @@
+[interface]
+accent-color='teal'
+color-scheme='prefer-dark'
+cursor-blink=true
+cursor-blink-time=1200
+cursor-size=0
+cursor-theme='Adwaita'
+enable-animations=false
+font-name='Sans 10'
+gtk-key-theme=''
+gtk-theme='Adwaita-dark'
+icon-theme='Adwaita'
+monospace-font-name='Monospace 10'
+show-battery-percentage=false
+text-scaling-factor=1.25
+toolkit-accessibility=false
+
 [wm/keybindings]
 close=['<Super>q']
 move-to-workspace-1=['<Shift><Super>1']
