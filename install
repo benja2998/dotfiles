@@ -2,7 +2,7 @@
 
 set -ex
 
-sudo xbps-install gnupg git base-devel vim-huge tmux fzf ripgrep
+sudo xbps-install gnupg git base-devel vim-huge tmux fzf ripgrep emacs emacs-x11
 
 which st
 

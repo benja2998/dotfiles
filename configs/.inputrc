@@ -7,8 +7,8 @@ set mark-symlinked-directories On
 set show-all-if-ambiguous On
 set show-all-if-unmodified On
 set visible-stats On
-set editing-mode vi
-set show-mode-in-prompt on
+set editing-mode emacs
+#set show-mode-in-prompt on
 set vi-ins-mode-string "I "
 set vi-cmd-mode-string "N "
 set blink-matching-paren on
