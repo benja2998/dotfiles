@@ -17,6 +17,12 @@ filetype plugin indent on
 set path+=**
 set background=dark
 
+let g:netrw_keepdir = 0
+let g:netrw_winsize = 30
+let g:netrw_banner = 0
+let g:netrw_localcopydircmd = 'cp -r'
+hi! link netrwMarkFile Search
+
 if !isdirectory(glob("~/.vim/pack"))
 	:!git clone https://github.com/vim-airline/vim-airline ~/.vim/pack/dist/start/vim-airline
 	:!git clone https://github.com/vim-airline/vim-airline-themes ~/.vim/pack/dist/start/vim-airline-themes

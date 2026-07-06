@@ -53,6 +53,11 @@ tmux-session() {
 		else
 			tmux new-session -d -s $SESN
 			tmux send-keys -t 0 "cd \"$SESS\"" C-m "clear" C-m
+
+			if [ "$SESN" = "Notes" ]; then
+				tmux send-keys -t 0 "vim .; exit" C-m
+			fi
+
 			tmux attach-session -t $SESN
 		fi
 	fi
