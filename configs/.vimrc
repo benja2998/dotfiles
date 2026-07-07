@@ -4,7 +4,6 @@ syntax on
 set number
 set noswapfile
 set relativenumber
-set termguicolors
 filetype plugin on
 set tabstop=4
 set noshowmode
@@ -28,11 +27,8 @@ if !isdirectory(glob("~/.vim/pack"))
 	:!git clone https://github.com/vim-airline/vim-airline-themes ~/.vim/pack/dist/start/vim-airline-themes
 	:!git clone https://github.com/junegunn/fzf.vim ~/.vim/pack/dist/start/fzf.vim
 	:!git clone https://github.com/junegunn/fzf ~/.vim/pack/dist/start/fzf
-	:!git clone https://github.com/catppuccin/vim.git ~/.vim/pack/vendor/start/catppuccin
 	:!git clone https://github.com/christoomey/vim-tmux-navigator.git ~/.vim/pack/plugins/start/vim-tmux-navigator
 endif
-
-colorscheme catppuccin_frappe
 
 let mapleader = ' '
 
