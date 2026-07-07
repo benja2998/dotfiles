@@ -9,7 +9,13 @@
   (find-file (concat "~/Documents/Notes/" (format-time-string "%d-%m-%Y" (current-time)) ".org"))
   )
 
+(defun todo-note ()
+  (interactive)
+  (find-file "~/Documents/Notes/todo.org")
+  )
+
 (global-set-key (kbd "C-c nt") #'daily-note)
+(global-set-key (kbd "C-c C-n") #'todo-note)
 
 (require 'neofetch)
 
