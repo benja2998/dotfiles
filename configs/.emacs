@@ -4,6 +4,13 @@
 
 (add-to-list 'load-path (concat user-emacs-directory "local/"))
 
+(defun daily-note ()
+  (interactive)
+  (find-file (concat "~/Documents/Notes/" (format-time-string "%d-%m-%Y" (current-time)) ".org"))
+  )
+
+(global-set-key (kbd "C-c nt") #'daily-note)
+
 (require 'neofetch)
 
 (editorconfig-mode t)
