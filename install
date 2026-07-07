@@ -4,13 +4,11 @@ set -ex
 
 sudo xbps-install gnupg git base-devel vim-huge tmux fzf ripgrep emacs-x11
 
-which st
-
-gsettings set org.gnome.desktop.default-applications.terminal exec 'st'
+# gsettings set org.gnome.desktop.default-applications.terminal exec 'st'
 
 dotfiles="$(pwd)"
 
-dconf load /org/gnome/desktop/ < desktop.dconf
-dconf load /org/gnome/shell/ < shell.dconf
+# dconf load /org/gnome/desktop/ < desktop.dconf
+# dconf load /org/gnome/shell/ < shell.dconf
 
 stow -v --target ~ configs
