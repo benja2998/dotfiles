@@ -15,7 +15,7 @@
   )
 
 (global-set-key (kbd "C-c nt") #'daily-note)
-(global-set-key (kbd "C-c C-n") #'todo-note)
+(global-set-key (kbd "C-c tn") #'todo-note)
 
 (require 'neofetch)
 
