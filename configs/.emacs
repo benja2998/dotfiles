@@ -197,12 +197,15 @@
 	 "820f02e02cddf808f79de2749bff5c3c570529249ebb76767988a1ca7d923cd7"
 	 "5b598ea012ecbc5641643c8bda01ca4e3662582a432a66a27822b78f402945ca"
 	 default))
+ '(eshell-cmpl-ignore-case t)
  '(evil-undo-system 'undo-redo)
  '(package-selected-packages
    '(catppuccin-theme colorful-mode company doom-modeline
 					  eshell-prompt-extras exec-path-from-shell magit
 					  marginalia markdown-mode orderless org-superstar
 					  solarized-theme vertico))
+ '(read-buffer-completion-ignore-case t)
+ '(read-file-name-completion-ignore-case t)
  '(send-mail-function 'mailclient-send-it))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
