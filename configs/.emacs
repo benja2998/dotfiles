@@ -84,6 +84,14 @@
 (setq use-package-always-ensure t)
 
 (use-package markdown-mode)
+(use-package nerd-icons)
+(use-package nerd-icons-dired
+  :hook
+  (dired-mode . nerd-icons-dired-mode))
+(use-package nerd-icons-completion
+  :config
+  (nerd-icons-completion-mode))
+(add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup)
 (use-package exec-path-from-shell)
 (use-package magit)
 (use-package doom-modeline)
@@ -140,7 +148,9 @@
 (require 'company)
 (global-company-mode t)
 (use-package solarized-theme)
-(load-theme 'solarized-dark :no-confirm)
+(use-package catppuccin-theme)
+(setq catppuccin-flavor 'frappe)
+(load-theme 'catppuccin :no-confirm)
 (use-package colorful-mode
   :custom
   (colorful-use-prefix t)
@@ -202,10 +212,11 @@
  '(eshell-cmpl-ignore-case t)
  '(evil-undo-system 'undo-redo)
  '(package-selected-packages
-   '(catppuccin-theme colorful-mode company doom-modeline
-					  eshell-prompt-extras exec-path-from-shell magit
-					  marginalia markdown-mode orderless org-superstar
-					  solarized-theme vertico))
+   '(all-the-icons catppuccin-theme colorful-mode company doom-modeline
+				   eshell-prompt-extras exec-path-from-shell magit
+				   marginalia markdown-mode nerd-icons-completion
+				   nerd-icons-dired orderless org-superstar
+				   solarized-theme vertico))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(send-mail-function 'mailclient-send-it))
