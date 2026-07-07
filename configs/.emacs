@@ -162,7 +162,9 @@
 (global-set-key (kbd "C-c e") #'eshell)
 
 (add-hook 'eshell-mode-hook #'(lambda ()
-								(add-to-list 'eshell-visual-commands "tinydash")))
+								(add-to-list 'eshell-visual-commands "tinydash")
+								(add-to-list 'eshell-visual-commands "fzf")
+								))
 
 (setq eshell-destroy-buffer-when-process-dies t)
 (when (daemonp) (exec-path-from-shell-initialize))
