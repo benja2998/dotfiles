@@ -40,8 +40,6 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 
-(fido-vertical-mode t)
-
 (setq epg-pinentry-mode 'loopback)
 
 (savehist-mode t)
@@ -62,9 +60,9 @@
 (setq auto-save-file-name-transforms
       `((".*" ,(concat user-emacs-directory "auto-save/") t)))
 
-										; Source - https://stackoverflow.com/a/22176971
-										; Posted by user2053036, modified by community. See post 'Timeline' for change history
-										; Retrieved 2026-06-20, License - CC BY-SA 3.0
+;; Source - https://stackoverflow.com/a/22176971
+;; Posted by user2053036, modified by community. See post 'Timeline' for change history
+;; Retrieved 2026-06-20, License - CC BY-SA 3.0
 
 (setq backup-directory-alist
       `(("." . ,(expand-file-name
@@ -90,6 +88,54 @@
 (use-package magit)
 (use-package doom-modeline)
 (use-package org-superstar)
+;; Enable Vertico.
+(use-package vertico
+  :custom
+  ;; (vertico-scroll-margin 0) ;; Different scroll margin
+  (vertico-count 20) ;; Show more candidates
+  ;; (vertico-resize t) ;; Grow and shrink the Vertico minibuffer
+  ;; (vertico-cycle t) ;; Enable cycling for `vertico-next/previous'
+  :init
+  (vertico-mode))
+
+;; Emacs minibuffer configurations.
+(use-package emacs
+  :custom
+  ;; Enable context menu. `vertico-multiform-mode' adds a menu in the minibuffer
+  ;; to switch display modes.
+  (context-menu-mode t)
+  ;; Support opening new minibuffers from inside existing minibuffers.
+  (enable-recursive-minibuffers t)
+  ;; Hide commands in M-x which do not work in the current mode.  Vertico
+  ;; commands are hidden in normal buffers. This setting is useful beyond
+  ;; Vertico.
+  (read-extended-command-predicate #'command-completion-default-include-p)
+  ;; Do not allow the cursor in the minibuffer prompt
+  (minibuffer-prompt-properties
+   '(read-only t cursor-intangible t face minibuffer-prompt)))
+
+;; Enable rich annotations using the Marginalia package
+(use-package marginalia
+  ;; Bind `marginalia-cycle' locally in the minibuffer.  To make the binding
+  ;; available in the *Completions* buffer, add it to the
+  ;; `completion-list-mode-map'.
+  :bind (:map minibuffer-local-map
+         ("M-A" . marginalia-cycle))
+
+  ;; The :init section is always executed.
+  :init
+
+  ;; Marginalia must be activated in the :init section of use-package such that
+  ;; the mode gets enabled right away. Note that this forces loading the
+  ;; package.
+  (marginalia-mode))
+
+(use-package orderless
+  :ensure t
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles partial-completion))))
+  (completion-pcm-leading-wildcard t)) ;; Emacs 31: partial-completion behaves like substring
 (use-package company)
 (require 'company)
 (global-company-mode t)
@@ -155,7 +201,8 @@
  '(package-selected-packages
    '(catppuccin-theme colorful-mode company doom-modeline
 					  eshell-prompt-extras exec-path-from-shell magit
-					  markdown-mode org-superstar solarized-theme))
+					  marginalia markdown-mode orderless org-superstar
+					  solarized-theme vertico))
  '(send-mail-function 'mailclient-send-it))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
