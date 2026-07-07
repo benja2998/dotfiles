@@ -150,7 +150,7 @@
 (use-package solarized-theme)
 (use-package catppuccin-theme)
 (setq catppuccin-flavor 'frappe)
-(load-theme 'catppuccin :no-confirm)
+;;(load-theme 'catppuccin :no-confirm)
 (use-package colorful-mode
   :custom
   (colorful-use-prefix t)
@@ -188,6 +188,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes '(modus-operandi-tinted))
  '(custom-safe-themes
    '("5f5770ecd10cb9a93f2df4bd05a5d6102892941cf2795eaffa4ed24d78e5a6f6"
 	 "5e1741398293d0df87244a34ad47241e10f57b06e07cd62ad44089ab95d85e01"
