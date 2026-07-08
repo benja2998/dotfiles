@@ -175,6 +175,9 @@
 (require 'doom-modeline)
 (doom-modeline-mode 1)
 
+
+(use-package doom-themes)
+
 (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
 
 (global-set-key (kbd "C-c e") #'eshell)
@@ -196,9 +199,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes '(modus-vivendi))
+ '(custom-enabled-themes '(doom-one))
  '(custom-safe-themes
-   '("5f5770ecd10cb9a93f2df4bd05a5d6102892941cf2795eaffa4ed24d78e5a6f6"
+   '("0325a6b5eea7e5febae709dab35ec8648908af12cf2d2b569bedc8da0a3a81c1"
+	 "fffef514346b2a43900e1c7ea2bc7d84cbdd4aa66c1b51946aade4b8d343b55a"
+	 "5f5770ecd10cb9a93f2df4bd05a5d6102892941cf2795eaffa4ed24d78e5a6f6"
 	 "5e1741398293d0df87244a34ad47241e10f57b06e07cd62ad44089ab95d85e01"
 	 "f44bb32804c6dc06f539c82ff978f7178eef577caa90c0b89260fa4e67ba3322"
 	 "97883740d8f11ce7c1470ed8270afc15f45e6dac244af9b6ffd19c930ea7b224"
@@ -220,7 +225,12 @@
 	 default))
  '(eshell-cmpl-ignore-case t)
  '(evil-undo-system 'undo-redo)
- '(package-selected-packages nil)
+ '(package-selected-packages
+   '(all-the-icons catppuccin-theme colorful-mode company doom-modeline
+				   doom-themes eshell-prompt-extras
+				   exec-path-from-shell marginalia markdown-mode
+				   nerd-icons-completion nerd-icons-dired orderless
+				   org-superstar solarized-theme vertico))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(send-mail-function 'mailclient-send-it))
