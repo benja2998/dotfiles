@@ -31,11 +31,13 @@ cdf() {
 }
 
 ytsearch() {
+	rm search.txt
 	yt-dlp --no-download --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" "$1" >/dev/null
 	cat search.txt
 }
 
 ytsdl() {
+	rm search.txt
 	yt-dlp --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" "$1" >/dev/null
 	cat search.txt
 }
