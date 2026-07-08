@@ -103,7 +103,6 @@
   (nerd-icons-completion-mode))
 (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup)
 (use-package exec-path-from-shell)
-(use-package magit)
 (use-package doom-modeline)
 (use-package org-superstar)
 ;; Enable Vertico.
@@ -154,9 +153,6 @@
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles partial-completion))))
   (completion-pcm-leading-wildcard t)) ;; Emacs 31: partial-completion behaves like substring
-(use-package company)
-(require 'company)
-(global-company-mode t)
 (use-package solarized-theme)
 (use-package catppuccin-theme)
 (setq catppuccin-flavor 'frappe)
@@ -223,8 +219,8 @@
  '(eshell-cmpl-ignore-case t)
  '(evil-undo-system 'undo-redo)
  '(package-selected-packages
-   '(all-the-icons catppuccin-theme colorful-mode company doom-modeline
-				   eshell-prompt-extras exec-path-from-shell magit
+   '(all-the-icons catppuccin-theme colorful-mode doom-modeline
+				   eshell-prompt-extras exec-path-from-shell
 				   marginalia markdown-mode nerd-icons-completion
 				   nerd-icons-dired orderless org-superstar
 				   solarized-theme vertico))
