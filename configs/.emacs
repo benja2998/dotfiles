@@ -63,9 +63,9 @@
 (defvaralias 'c-basic-offset 'tab-width)
 (defvaralias 'c-ts-indent-offset 'tab-width)
 
-										; Source - https://stackoverflow.com/a/22176971
-										; Posted by user2053036, modified by community. See post 'Timeline' for change history
-										; Retrieved 2026-06-20, License - CC BY-SA 3.0
+;; Source - https://stackoverflow.com/a/22176971
+;; Posted by user2053036, modified by community. See post 'Timeline' for change history
+;; Retrieved 2026-06-20, License - CC BY-SA 3.0
 
 (setq auto-save-file-name-transforms
       `((".*" ,(concat user-emacs-directory "auto-save/") t)))
