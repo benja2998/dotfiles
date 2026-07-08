@@ -30,6 +30,16 @@ cdf() {
 	cd "$(find -type d | fzf)" || true
 }
 
+ytsearch() {
+	yt-dlp --no-download --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" "$1" >/dev/null
+	cat search.txt
+}
+
+ytsdl() {
+	yt-dlp --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" "$1" >/dev/null
+	cat search.txt
+}
+
 tmux-session() {
 	local SESS="$(find -type d | fzf)"
 	if [ -z "$SESS" ]; then
