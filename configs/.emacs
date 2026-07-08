@@ -104,6 +104,8 @@
 (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup)
 (use-package exec-path-from-shell)
 (use-package doom-modeline)
+(use-package company)
+(global-company-mode t)
 (use-package org-superstar)
 ;; Enable Vertico.
 (use-package vertico
@@ -218,12 +220,7 @@
 	 default))
  '(eshell-cmpl-ignore-case t)
  '(evil-undo-system 'undo-redo)
- '(package-selected-packages
-   '(all-the-icons catppuccin-theme colorful-mode doom-modeline
-				   eshell-prompt-extras exec-path-from-shell
-				   marginalia markdown-mode nerd-icons-completion
-				   nerd-icons-dired orderless org-superstar
-				   solarized-theme vertico))
+ '(package-selected-packages nil)
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(send-mail-function 'mailclient-send-it))
