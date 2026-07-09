@@ -16,6 +16,7 @@
 
 (global-set-key (kbd "C-c nt") #'daily-note)
 (global-set-key (kbd "C-c tn") #'todo-note)
+(global-set-key (kbd "C-c ne") #'org-agenda-list)
 
 (require 'neofetch)
 
@@ -225,6 +226,7 @@
 	 default))
  '(eshell-cmpl-ignore-case t)
  '(evil-undo-system 'undo-redo)
+ '(org-agenda-files '("~/Documents/Notes/"))
  '(package-selected-packages
    '(all-the-icons catppuccin-theme colorful-mode company doom-modeline
 				   doom-themes eshell-prompt-extras
