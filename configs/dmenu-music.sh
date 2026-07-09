@@ -1,5 +1,5 @@
 #!/bin/bash
-files=(~/Music/*.mp3)
+files=(~/Music/)
 [ -e "${files[0]}" ] || exit 0
 
 if [ "${XDG_SESSION_TYPE}" = "wayland" ] || [ -n "${WAYLAND_DISPLAY}" ]; then
