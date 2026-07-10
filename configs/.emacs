@@ -211,10 +211,11 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 								(add-to-list 'eshell-visual-commands "tinydash")
 								(add-to-list 'eshell-visual-commands "fzf")
 								(add-to-list 'eshell-visual-commands "codex")
+								(add-to-list 'eshell-visual-commands "cmatrix")								
 								(ghostel-eshell-visual-command-mode)
 								))
 
-(setq eshell-destroy-buffer-when-process-dies t)
+;;(setq eshell-destroy-buffer-when-process-dies t)
 (when (daemonp) (exec-path-from-shell-initialize))
 (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
 
