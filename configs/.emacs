@@ -19,6 +19,7 @@
 (global-set-key (kbd "C-c nt") #'daily-note)
 (global-set-key (kbd "C-c tn") #'todo-note)
 (global-set-key (kbd "C-c ne") #'org-agenda-list)
+(global-set-key (kbd "C-c re") #'eglot-format-buffer)
 
 (setq eshell-history-size 10000)
 
@@ -61,12 +62,6 @@
 
 (setq inhibit-splash-screen t)
 (setq-default indent-tabs-mode t)
-
-(setq-default c-default-style "linux")
-(setq-default c-ts-mode-indent-style 'linux)
-(setq-default tab-width 4)
-(defvaralias 'c-basic-offset 'tab-width)
-(defvaralias 'c-ts-indent-offset 'tab-width)
 
 ;; Source - https://stackoverflow.com/a/22176971
 ;; Posted by user2053036, modified by community. See post 'Timeline' for change history
