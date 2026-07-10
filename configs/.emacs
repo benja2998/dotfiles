@@ -18,6 +18,8 @@
 (global-set-key (kbd "C-c tn") #'todo-note)
 (global-set-key (kbd "C-c ne") #'org-agenda-list)
 
+(setq eshell-history-size 10000)
+
 (require 'neofetch)
 
 (editorconfig-mode t)
@@ -186,6 +188,7 @@
 (add-hook 'eshell-mode-hook #'(lambda ()
 								(add-to-list 'eshell-visual-commands "tinydash")
 								(add-to-list 'eshell-visual-commands "fzf")
+								(add-to-list 'eshell-visual-commands "codex")
 								))
 
 (setq eshell-destroy-buffer-when-process-dies t)
