@@ -164,7 +164,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
   ;; available in the *Completions* buffer, add it to the
   ;; `completion-list-mode-map'.
   :bind (:map minibuffer-local-map
-         ("M-A" . marginalia-cycle))
+              ("M-A" . marginalia-cycle))
 
   ;; The :init section is always executed.
   :init
@@ -208,19 +208,18 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 (global-set-key (kbd "C-c e") #'eshell)
 
 (add-hook 'eshell-mode-hook #'(lambda ()
-								(add-to-list 'eshell-visual-commands "tinydash")
-								(add-to-list 'eshell-visual-commands "fzf")
-								(add-to-list 'eshell-visual-commands "codex")
-								(add-to-list 'eshell-visual-commands "cmatrix")								
-								(ghostel-eshell-visual-command-mode)
-								))
+				(add-to-list 'eshell-visual-commands "tinydash")
+				(add-to-list 'eshell-visual-commands "fzf")
+				(add-to-list 'eshell-visual-commands "codex")
+				(add-to-list 'eshell-visual-commands "cmatrix")
+				))
 
 ;;(setq eshell-destroy-buffer-when-process-dies t)
 (when (daemonp) (exec-path-from-shell-initialize))
 (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
 
 (add-hook 'org-mode-hook #'(lambda ()
-                             (visual-line-mode t)))
+			     (visual-line-mode t)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -229,38 +228,37 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    '("c4df9006b9eb32599d758800a32f3487c2cdf13826084511783b47d419024af2"
-	 "0325a6b5eea7e5febae709dab35ec8648908af12cf2d2b569bedc8da0a3a81c1"
-	 "fffef514346b2a43900e1c7ea2bc7d84cbdd4aa66c1b51946aade4b8d343b55a"
-	 "5f5770ecd10cb9a93f2df4bd05a5d6102892941cf2795eaffa4ed24d78e5a6f6"
-	 "5e1741398293d0df87244a34ad47241e10f57b06e07cd62ad44089ab95d85e01"
-	 "f44bb32804c6dc06f539c82ff978f7178eef577caa90c0b89260fa4e67ba3322"
-	 "97883740d8f11ce7c1470ed8270afc15f45e6dac244af9b6ffd19c930ea7b224"
-	 "3601d00861446211cfd3831d2ccef176ceb7de11d24e6ee1d725ec6b7000d51a"
-	 "90c390c234a3c5d92ac5e3589893e03e963a11a16db448b1bae243e988efadec"
-	 "4db745f7ba0382641879fa0d22bf7fd0d508e3097325e588aeaa999930a69c96"
-	 "4106992a80cd7577fe00e245efb8bb1b1634eebc83ac6eb433aad94d4fe3b277"
-	 "190cc1fa948c584b5249c4cb9d291741b411725a9de4217e35dceacfb01b83af"
-	 "ec62fb807e829715a4d1f5f203caf0269c70636503a56090ab1c0ea6ba6e3d93"
-	 "65577618e9064f96f8e693a1b3186b9501beead85de864cf700eb2b49ed337c7"
-	 "bf0553e3a3b19f00fb188d1f43fc9f36b1d841338bfa5d43b31fdb02061ecff0"
-	 "2780e94926161e072b6e4e45ee0ea9619076d8c05c581dce52ac32d5b1db1fea"
-	 "2a564a42029d98a8d2ceaeea6df5621db48085c474bc03761f4c258ae34af06c"
-	 "e1937c2748656b49cb6636a0c1a999f58e4acde3d24fa583ee7ecc38fc656c6c"
-	 "eb404ef3a5ec124e7312dc37476c49b2e588d3b060b67ba222e51e6662f648cf"
-	 "ffa253294a6a68181986e9b4110d7176deaf007198b6677d5a9fecb2401ac951"
-	 "820f02e02cddf808f79de2749bff5c3c570529249ebb76767988a1ca7d923cd7"
-	 "5b598ea012ecbc5641643c8bda01ca4e3662582a432a66a27822b78f402945ca"
-	 default))
+     "0325a6b5eea7e5febae709dab35ec8648908af12cf2d2b569bedc8da0a3a81c1"
+     "fffef514346b2a43900e1c7ea2bc7d84cbdd4aa66c1b51946aade4b8d343b55a"
+     "5f5770ecd10cb9a93f2df4bd05a5d6102892941cf2795eaffa4ed24d78e5a6f6"
+     "5e1741398293d0df87244a34ad47241e10f57b06e07cd62ad44089ab95d85e01"
+     "f44bb32804c6dc06f539c82ff978f7178eef577caa90c0b89260fa4e67ba3322"
+     "97883740d8f11ce7c1470ed8270afc15f45e6dac244af9b6ffd19c930ea7b224"
+     "3601d00861446211cfd3831d2ccef176ceb7de11d24e6ee1d725ec6b7000d51a"
+     "90c390c234a3c5d92ac5e3589893e03e963a11a16db448b1bae243e988efadec"
+     "4db745f7ba0382641879fa0d22bf7fd0d508e3097325e588aeaa999930a69c96"
+     "4106992a80cd7577fe00e245efb8bb1b1634eebc83ac6eb433aad94d4fe3b277"
+     "190cc1fa948c584b5249c4cb9d291741b411725a9de4217e35dceacfb01b83af"
+     "ec62fb807e829715a4d1f5f203caf0269c70636503a56090ab1c0ea6ba6e3d93"
+     "65577618e9064f96f8e693a1b3186b9501beead85de864cf700eb2b49ed337c7"
+     "bf0553e3a3b19f00fb188d1f43fc9f36b1d841338bfa5d43b31fdb02061ecff0"
+     "2780e94926161e072b6e4e45ee0ea9619076d8c05c581dce52ac32d5b1db1fea"
+     "2a564a42029d98a8d2ceaeea6df5621db48085c474bc03761f4c258ae34af06c"
+     "e1937c2748656b49cb6636a0c1a999f58e4acde3d24fa583ee7ecc38fc656c6c"
+     "eb404ef3a5ec124e7312dc37476c49b2e588d3b060b67ba222e51e6662f648cf"
+     "ffa253294a6a68181986e9b4110d7176deaf007198b6677d5a9fecb2401ac951"
+     "820f02e02cddf808f79de2749bff5c3c570529249ebb76767988a1ca7d923cd7"
+     "5b598ea012ecbc5641643c8bda01ca4e3662582a432a66a27822b78f402945ca"
+     default))
  '(eshell-cmpl-ignore-case t)
  '(evil-undo-system 'undo-redo)
  '(org-agenda-files '("~/Documents/Notes/"))
  '(package-selected-packages
-   '(all-the-icons catppuccin-theme colorful-mode company doom-modeline
-				   doom-themes eshell-prompt-extras
-				   exec-path-from-shell ghostel marginalia
-				   markdown-mode nerd-icons-completion
-				   nerd-icons-dired orderless org-superstar
-				   solarized-theme vertico))
+   '(catppuccin-theme colorful-mode company doom-modeline doom-themes
+		      eshell-prompt-extras evil exec-path-from-shell
+		      ghostel marginalia markdown-mode
+		      nerd-icons-completion nerd-icons-dired orderless
+		      org-superstar solarized-theme vertico))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(send-mail-function 'mailclient-send-it))
