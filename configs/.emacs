@@ -212,6 +212,8 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 				(add-to-list 'eshell-visual-commands "fzf")
 				(add-to-list 'eshell-visual-commands "codex")
 				(add-to-list 'eshell-visual-commands "cmatrix")
+				(when (eq system-type 'gnu/linux)
+				  (ghostel-eshell-visual-command-mode))
 				))
 
 ;;(setq eshell-destroy-buffer-when-process-dies t)
