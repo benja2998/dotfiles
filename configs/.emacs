@@ -14,6 +14,8 @@
   (find-file "~/Documents/Notes/todo.org")
   )
 
+(pixel-scroll-precision-mode t)
+
 (global-set-key (kbd "C-c nt") #'daily-note)
 (global-set-key (kbd "C-c tn") #'todo-note)
 (global-set-key (kbd "C-c ne") #'org-agenda-list)
