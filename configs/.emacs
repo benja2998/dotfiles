@@ -83,6 +83,7 @@
 (setq display-line-numbers-type 'relative)
 
 (require 'package)
+(require 'project)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (require 'use-package)
 (package-initialize)
@@ -256,11 +257,12 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
  '(evil-undo-system 'undo-redo)
  '(org-agenda-files '("~/Documents/Notes/"))
  '(package-selected-packages
-   '(catppuccin-theme colorful-mode company doom-modeline doom-themes
-		      eshell-prompt-extras evil exec-path-from-shell
-		      ghostel marginalia markdown-mode
-		      nerd-icons-completion nerd-icons-dired orderless
-		      org-superstar solarized-theme vertico))
+   '(all-the-icons catppuccin-theme colorful-mode company doom-modeline
+		   doom-themes eshell-prompt-extras
+		   exec-path-from-shell ghostel marginalia
+		   markdown-mode nerd-icons-completion
+		   nerd-icons-dired orderless org-superstar
+		   solarized-theme vertico))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(send-mail-function 'mailclient-send-it))
