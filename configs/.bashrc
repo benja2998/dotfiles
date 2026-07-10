@@ -11,6 +11,10 @@ alias tree="tree -C"
 alias grep="grep --color=auto"
 alias ll="ls -larth"
 
+if [ "$TERM" = "xterm-ghostty" ]; then
+	export TERM=xterm-256color
+fi
+
 HISTSIZE=-1
 HISTFILESIZE=-1
 

@@ -109,6 +109,31 @@
 (use-package doom-modeline)
 (use-package company)
 (global-company-mode t)
+
+(use-package ghostel
+  :bind (("C-c m" . ghostel)
+         :map ghostel-semi-char-mode-map
+         ("C-s"  . consult-line)
+         ("C-k"  . my/ghostel-send-C-k-and-kill)
+         ;; ;; I'm used to go up/down the shell history with M-n/p from eshell
+         ;; ;; Simulate this behavior in ghostel by sending C-p and C-n
+         ("M-p" . (lambda () (interactive) (ghostel-send-key "p" "ctrl")))
+         ("M-n" . (lambda () (interactive) (ghostel-send-key "n" "ctrl")))
+         :map project-prefix-map
+         ("m" . ghostel-project)
+         ("M" . ghostel-project-list-buffers))
+  :config
+  (defun my/ghostel-send-C-k-and-kill ()
+    "Send `C-k' to ghostel.
+Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
+    (interactive)
+    (kill-ring-save (point) (line-end-position))
+    (ghostel-send-key "k" "ctrl"))
+
+  (add-to-list 'project-switch-commands '(ghostel-project "Ghostel") t)
+  (add-to-list 'project-switch-commands '(ghostel-project-list-buffers "Ghostel buffers") t)
+  (add-to-list 'ghostel-eval-cmds '("magit-status-setup-buffer" magit-status-setup-buffer)))
+
 (use-package org-superstar)
 ;; Enable Vertico.
 (use-package vertico
@@ -189,6 +214,7 @@
 								(add-to-list 'eshell-visual-commands "tinydash")
 								(add-to-list 'eshell-visual-commands "fzf")
 								(add-to-list 'eshell-visual-commands "codex")
+								(ghostel-eshell-visual-command-mode)
 								))
 
 (setq eshell-destroy-buffer-when-process-dies t)
@@ -233,9 +259,10 @@
  '(package-selected-packages
    '(all-the-icons catppuccin-theme colorful-mode company doom-modeline
 				   doom-themes eshell-prompt-extras
-				   exec-path-from-shell marginalia markdown-mode
-				   nerd-icons-completion nerd-icons-dired orderless
-				   org-superstar solarized-theme vertico))
+				   exec-path-from-shell ghostel marginalia
+				   markdown-mode nerd-icons-completion
+				   nerd-icons-dired orderless org-superstar
+				   solarized-theme vertico))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(send-mail-function 'mailclient-send-it))
