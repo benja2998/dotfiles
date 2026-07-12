@@ -25,6 +25,8 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 shopt -s globstar
 shopt -s extglob
 shopt -s checkwinsize
+shopt -s autocd
+shopt -s cdspell
 
 PS1='[\u@\h \W]\$ '
 
