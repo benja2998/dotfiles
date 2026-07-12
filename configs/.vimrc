@@ -3,6 +3,7 @@ set clipboard=unnamedplus
 syntax on
 set number
 set noswapfile
+set termguicolors
 set relativenumber
 filetype plugin on
 set tabstop=4
@@ -28,9 +29,12 @@ if !isdirectory(glob("~/.vim/pack"))
 	:!git clone https://github.com/junegunn/fzf.vim ~/.vim/pack/dist/start/fzf.vim
 	:!git clone https://github.com/junegunn/fzf ~/.vim/pack/dist/start/fzf
 	:!git clone https://github.com/christoomey/vim-tmux-navigator.git ~/.vim/pack/plugins/start/vim-tmux-navigator
+	:!git clone https://github.com/catppuccin/vim.git ~/.vim/pack/vendor/start/catppuccin
 endif
 
 let mapleader = ' '
+
+colorscheme catppuccin_frappe
 
 function! ToggleMarkdownCheckbox() abort
 	let l:lnum = line('.')
