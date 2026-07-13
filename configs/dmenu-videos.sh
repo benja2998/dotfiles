@@ -10,4 +10,4 @@ else
     result=$(printf '%s\n' "${files[@]}" | dmenu -l 10 -fn "Terminess Nerd Font 16" -nb "#303446" -nf "#c6d0f5" -sb "#8caaee" -sf "#303446")
 fi
 
-[ -n "$result" ] && mpv --script=/usr/lib/mpv-mpris/mpris.so "$result"
+[ -n "$result" ] && xdotool key super+6 && mpv --script=/usr/lib/mpv-mpris/mpris.so "$result"
