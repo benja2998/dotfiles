@@ -6,7 +6,7 @@
 
 (defun daily-note ()
   (interactive)
-  (setq current-date-file (concat "~/Documents/Notes/" (format-time-string "%d-%m-%Y" (current-time)) ".org"))
+  (setq current-date-file (concat "~/Documents/Notes/" (format-time-string "%Y" (current-time)) "/" (format-time-string "%d-%m-%Y" (current-time)) ".org"))
   (setq current-date (format-time-string "%d-%m-%Y" (current-time)))
   (find-file current-date-file)
   (unless (file-exists-p current-date-file)
