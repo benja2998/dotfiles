@@ -195,7 +195,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
   (completion-pcm-leading-wildcard t)) ;; Emacs 31: partial-completion behaves like substring
 (use-package solarized-theme)
 (use-package catppuccin-theme)
-(setq catppuccin-flavor 'frappe)
+(setq catppuccin-flavor 'mocha)
 (load-theme 'catppuccin :no-confirm)
 (use-package colorful-mode
   :custom
