@@ -220,16 +220,6 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 
 (global-set-key (kbd "C-c e") #'eshell)
 
-(add-hook 'eshell-mode-hook #'(lambda ()
-				(add-to-list 'eshell-visual-commands "tinydash")
-				(add-to-list 'eshell-visual-commands "fzf")
-				(add-to-list 'eshell-visual-commands "codex")
-				(add-to-list 'eshell-visual-commands "cmatrix")
-				(when (eq system-type 'gnu/linux)
-				  (ghostel-eshell-visual-command-mode))
-				(setenv "GPG_TTY" (shell-command-to-string "/bin/sh tty 2>/dev/null"))
-				))
-
 ;;(setq eshell-destroy-buffer-when-process-dies t)
 (when (daemonp) (exec-path-from-shell-initialize))
 (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
@@ -267,6 +257,29 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
      "5b598ea012ecbc5641643c8bda01ca4e3662582a432a66a27822b78f402945ca"
      default))
  '(eshell-cmpl-ignore-case t)
+ '(eshell-mode-hook
+   '(#[nil
+       ((if (member "tinydash" eshell-visual-commands)
+	    eshell-visual-commands
+	  (setq eshell-visual-commands
+		(cons "tinydash" eshell-visual-commands)))
+	(if (member "fzf" eshell-visual-commands)
+	    eshell-visual-commands
+	  (setq eshell-visual-commands
+		(cons "fzf" eshell-visual-commands)))
+	(if (member "codex" eshell-visual-commands)
+	    eshell-visual-commands
+	  (setq eshell-visual-commands
+		(cons "codex" eshell-visual-commands)))
+	(if (member "cmatrix" eshell-visual-commands)
+	    eshell-visual-commands
+	  (setq eshell-visual-commands
+		(cons "cmatrix" eshell-visual-commands)))
+	(if (eq system-type 'gnu/linux)
+	    (progn (ghostel-eshell-visual-command-mode)))
+	(setenv "GPG_TTY"
+		(shell-command-to-string "/bin/sh tty 2>/dev/null")))
+       (t)]))
  '(evil-undo-system 'undo-redo)
  '(org-agenda-files '("~/Documents/Notes/"))
  '(package-selected-packages
