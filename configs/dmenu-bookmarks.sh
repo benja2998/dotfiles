@@ -58,5 +58,7 @@ case $result in
 	xdotool key super+1
 	;;    
     *)
+	firefox https://duckduckgo.com/search?q="$result"
+	xdotool key super+1
         ;;
 esac
