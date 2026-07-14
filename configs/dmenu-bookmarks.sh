@@ -1,6 +1,6 @@
 #!/bin/bash
 
-menu_items=$(printf 'whatsapp\nwhiteboard\nsyncthing\nreddit\nyoutube\ngithub\ncodeberg\nmeet\nprotonmail\ngmail\ntwitch\n')
+menu_items=$(printf 'whatsapp\nwhiteboard\nsyncthing\nreddit\nyoutube\ngithub\ncodeberg\nmeet\nprotonmail\ngmail\ntwitch\npolytoria\n')
 
 if [ "${XDG_SESSION_TYPE}" = "wayland" ] || [ -n "${WAYLAND_DISPLAY}" ]; then
     result=$(printf '%s' "$menu_items" | wmenu -i -l 10 -f "Terminess Nerd Font 16" -N "#1e1e2e" -n "#cdd6f4" -S "#89b4fa" -s "#1e1e2e")
@@ -53,6 +53,10 @@ case $result in
 	firefox https://twitch.tv
 	xdotool key super+1
 	;;
+    polytoria)
+	firefox https://polytoria.com
+	xdotool key super+1
+	;;    
     *)
         ;;
 esac
