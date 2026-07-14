@@ -193,10 +193,6 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles partial-completion))))
   (completion-pcm-leading-wildcard t)) ;; Emacs 31: partial-completion behaves like substring
-(use-package solarized-theme)
-(use-package catppuccin-theme)
-(setq catppuccin-flavor 'mocha)
-(load-theme 'catppuccin :no-confirm)
 (use-package colorful-mode
   :custom
   (colorful-use-prefix t)
@@ -232,6 +228,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes '(modus-vivendi))
  '(custom-safe-themes
    '("c4df9006b9eb32599d758800a32f3487c2cdf13826084511783b47d419024af2"
      "0325a6b5eea7e5febae709dab35ec8648908af12cf2d2b569bedc8da0a3a81c1"
@@ -281,6 +278,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 		(shell-command-to-string "/bin/sh tty 2>/dev/null")))
        (t)]))
  '(evil-undo-system 'undo-redo)
+ '(marginalia-mode t)
  '(org-agenda-files '("~/Documents/Notes/"))
  '(package-selected-packages
    '(all-the-icons catppuccin-theme colorful-mode company doom-modeline
@@ -291,12 +289,35 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 		   org-superstar solarized-theme vertico))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
- '(send-mail-function 'mailclient-send-it))
+ '(send-mail-function 'mailclient-send-it)
+ '(vc-follow-symlinks t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:background "#202326" :foreground "#fcfcfc"))))
+ '(ansi-color-blue ((t (:background "blue" :foreground "blue"))))
+ '(ansi-color-bright-black ((t (:background "dim gray" :foreground "dim gray"))))
+ '(ansi-color-bright-blue ((t (:background "deep sky blue" :foreground "deep sky blue"))))
+ '(ansi-color-bright-cyan ((t (:background "medium spring green" :foreground "medium spring green"))))
+ '(ansi-color-bright-green ((t (:background "spring green" :foreground "spring green"))))
+ '(ansi-color-bright-magenta ((t (:background "magenta" :foreground "magenta"))))
+ '(ansi-color-bright-red ((t (:background "red" :foreground "red"))))
+ '(ansi-color-bright-yellow ((t (:background "yellow" :foreground "yellow"))))
+ '(ansi-color-cyan ((t (:background "cyan" :foreground "cyan"))))
+ '(ansi-color-green ((t (:background "green" :foreground "green"))))
+ '(ansi-color-magenta ((t (:background "magenta" :foreground "magenta"))))
+ '(ansi-color-red ((t (:background "red" :foreground "red"))))
+ '(ansi-color-white ((t (:background "white smoke" :foreground "white smoke"))))
+ '(ansi-color-yellow ((t (:background "gold" :foreground "gold"))))
+ '(button ((t (:foreground "red" :underline "red"))))
+ '(fringe ((t (:background "#202326" :foreground "#fcfcfc"))))
+ '(line-number ((t (:inherit default :background "#141618" :foreground "#fcfcfc"))))
+ '(line-number-current-line ((t (:inherit (bold line-number) :background "#202326" :foreground "#ffffff"))))
+ '(marginalia-documentation ((t (:inherit modus-themes-slant :foreground "gainsboro"))))
+ '(marginalia-string ((t (:foreground "#fcfcfc"))))
+ '(modus-themes-completion-selected ((t (:inherit bold :background "red"))) t)
  '(org-level-1 ((t (:inherit outline-1 :height 1.25))))
  '(org-level-2 ((t (:inherit outline-2 :height 1.2))))
  '(org-level-3 ((t (:inherit outline-3 :height 1.15))))
