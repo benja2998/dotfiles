@@ -21,7 +21,7 @@
 
   (catch 'not-in-eshell
 	(if (not (eq major-mode 'eshell-mode))
-		(thow 'not-in-eshell "Not in eshell")
+		(throw 'not-in-eshell "Not in eshell")
 	  )
 	)
   
