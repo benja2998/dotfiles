@@ -34,7 +34,7 @@ endif
 
 let mapleader = ' '
 
-colorscheme catppuccin_frappe
+colorscheme catppuccin_mocha
 
 function! ToggleMarkdownCheckbox() abort
 	let l:lnum = line('.')
