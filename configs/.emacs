@@ -227,6 +227,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 				(add-to-list 'eshell-visual-commands "cmatrix")
 				(when (eq system-type 'gnu/linux)
 				  (ghostel-eshell-visual-command-mode))
+				(setenv "GPG_TTY" (shell-command-to-string "/bin/sh tty 2>/dev/null"))
 				))
 
 ;;(setq eshell-destroy-buffer-when-process-dies t)
