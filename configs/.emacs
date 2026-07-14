@@ -92,6 +92,14 @@
 (require 'use-package)
 (package-initialize)
 
+(use-package multiple-cursors)
+(require 'multiple-cursors)
+
+(global-set-key (kbd "C-c y e l") #'mc/edit-lines)
+(global-set-key (kbd "M-o") #'mc/mark-all-like-this)
+(global-set-key (kbd "C-c y w l") #'mc/mark-all-words-like-this)
+(global-set-key (kbd "C-c y s l") #'mc/mark-all-symbols-like-this)
+
 (add-hook 'prog-mode-hook (lambda () (display-line-numbers-mode t)))
 (add-hook 'conf-mode-hook (lambda () (display-line-numbers-mode t)))
 
@@ -264,9 +272,9 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
    '(all-the-icons catppuccin-theme colorful-mode company doom-modeline
 		   doom-themes eshell-prompt-extras
 		   exec-path-from-shell ghostel marginalia
-		   markdown-mode nerd-icons-completion
-		   nerd-icons-dired orderless org-superstar
-		   solarized-theme vertico))
+		   markdown-mode multiple-cursors
+		   nerd-icons-completion nerd-icons-dired orderless
+		   org-superstar solarized-theme vertico))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(send-mail-function 'mailclient-send-it))
