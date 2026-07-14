@@ -92,6 +92,12 @@
 (require 'use-package)
 (package-initialize)
 
+(add-hook 'prog-mode-hook (lambda () (display-line-numbers-mode t)))
+(add-hook 'conf-mode-hook (lambda () (display-line-numbers-mode t)))
+
+(setq use-short-answers t)
+(setq use-package-always-ensure t)
+
 (use-package multiple-cursors)
 (require 'multiple-cursors)
 
@@ -99,12 +105,6 @@
 (global-set-key (kbd "M-o") #'mc/mark-all-like-this)
 (global-set-key (kbd "C-c y w l") #'mc/mark-all-words-like-this)
 (global-set-key (kbd "C-c y s l") #'mc/mark-all-symbols-like-this)
-
-(add-hook 'prog-mode-hook (lambda () (display-line-numbers-mode t)))
-(add-hook 'conf-mode-hook (lambda () (display-line-numbers-mode t)))
-
-(setq use-short-answers t)
-(setq use-package-always-ensure t)
 
 (use-package markdown-mode)
 (use-package nerd-icons)
