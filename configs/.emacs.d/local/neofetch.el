@@ -1,4 +1,4 @@
-;; neofetch.el
+;; neofetch.el  -*- lexical-binding: t; -*-
 
 ;; Neofetch program written in pure Emacs Lisp. Does not require any external programs and runs on any operating system.
 ;; Copyright (C) 2026 benja2998
@@ -24,15 +24,6 @@
 		(throw 'not-in-eshell "Not in eshell")
 	  )
 	)
-  
-  (setq proclist (process-list))
-
-  (setq process-count 0)
-
-  (while proclist
-	(setq process-count (1+ process-count))
-	(setq proclist (cdr proclist))
-	)
 
   (when (display-graphic-p)
 	(when logo-path
@@ -40,7 +31,7 @@
 	  (insert (format "\n"))
 	  )
 	)
-  
+
   (insert (concat
 		  ;;; username@hostname
 
@@ -56,7 +47,7 @@
 		   (format "\n")
 
 		  ;;; OS: system-type
-		   
+
 		   (propertize "OS" 'font-lock-face '(:foreground "cyan"))
 		   (format ": %s\n" system-type)
 
@@ -78,7 +69,7 @@
 		   ": "
 		   (emacs-init-time)
 		   (format "\n")
-		   
+
 		  ;;; Processors: num-processors
 
 		   (propertize "Processors" 'font-lock-face '(:foreground "cyan"))
@@ -90,7 +81,7 @@
 
 		   (propertize "Running Emacs sub-processes" 'font-lock-face '(:foreground "cyan"))
 		   ": "
-		   (format "%s" process-count)
+		   (format "%s" (length (process-list)))
 		   (format "\n")
 		   ))
   (eshell-interrupt-process)
