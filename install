@@ -2,7 +2,17 @@
 
 set -ex
 
-sudo xbps-install gnupg git base-devel vim-huge tmux fzf ripgrep emacs-x11
+if [[ -f /etc/os-release ]]; then
+    . /etc/os-release
+    if [[ "$NAME" = "Void" ]]; then
+	sudo xbps-install gnupg git base-devel vim-huge tmux fzf ripgrep emacs-x11
+    fi
+elif [[ -v "$PREFIX" ]]; then
+    pkg i -y termux-services gnupg git build-essential x11-repo ripgrep tmux fzf
+    pkg i -y emacs-x vim-gtk
+fi
+
+mkdir -p ~/.gnupg
 
 # gsettings set org.gnome.desktop.default-applications.terminal exec 'st'
 
