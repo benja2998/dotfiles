@@ -60,7 +60,7 @@ case $result in
     *)
 	if ! [ "$result" = "" ]; then
 	    xdotool key super+1	    
-	    firefox https://duckduckgo.com/search?q="$result"
+	    firefox http://localhost:8080/search?q="$result"
 	fi
         ;;
 esac
