@@ -125,6 +125,8 @@
 (use-package company)
 (global-company-mode t)
 
+(use-package lua-mode)
+(add-to-list 'auto-mode-alist '("\\.luau\\'" . lua-mode))
 (use-package ghostel
   :bind (("C-c m" . ghostel)
          :map ghostel-semi-char-mode-map
@@ -288,7 +290,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
  '(package-selected-packages
    '(all-the-icons catppuccin-theme colorful-mode company doom-modeline
 		   doom-themes eshell-prompt-extras
-		   exec-path-from-shell ghostel marginalia
+		   exec-path-from-shell ghostel lua-mode marginalia
 		   markdown-mode multiple-cursors
 		   nerd-icons-completion nerd-icons-dired orderless
 		   org-superstar solarized-theme vertico))
