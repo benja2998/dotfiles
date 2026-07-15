@@ -3,7 +3,6 @@ set clipboard=unnamedplus
 syntax on
 set number
 set noswapfile
-set termguicolors
 set relativenumber
 filetype plugin on
 set tabstop=4
@@ -33,8 +32,6 @@ if !isdirectory(glob("~/.vim/pack"))
 endif
 
 let mapleader = ' '
-
-colorscheme catppuccin_mocha
 
 function! ToggleMarkdownCheckbox() abort
 	let l:lnum = line('.')
