@@ -1,18 +1,19 @@
-alias gf git fetch
-alias gpl git pull --rebase
-alias gpt git push --tags
-alias ll ls -larth $1
-alias ff find-file $1
-alias e find-file-other-window $1
-alias d dired $1
-alias gd vc-diff
-alias gc git commit -m $1
-alias gp git push
-alias ga git add -A
-alias gs git status
-alias ytsdl rm search.txt; yt-dlp --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" $1 >/dev/null; cat search.txt
-alias ytsearch rm search.txt; yt-dlp --no-download --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" $1 >/dev/null; cat search.txt
-alias clear clear-scrollback
-alias cls clear-scrollback
-alias gl git log --reverse
+alias kon rm -f kde.knsv; konsave -r kde; konsave -s kde; konsave -e kde
 alias gls git log --reverse --show-signature
+alias gl git log --reverse
+alias cls clear-scrollback
+alias clear clear-scrollback
+alias ytsearch rm search.txt; yt-dlp --no-download --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" $1 >/dev/null; cat search.txt
+alias ytsdl rm search.txt; yt-dlp --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" $1 >/dev/null; cat search.txt
+alias gs git status
+alias ga git add -A
+alias gp git push
+alias gc git commit -m $1
+alias gd vc-diff
+alias d dired $1
+alias e find-file-other-window $1
+alias ff find-file $1
+alias ll ls -larth $1
+alias gpt git push --tags
+alias gpl git pull --rebase
+alias gf git fetch
