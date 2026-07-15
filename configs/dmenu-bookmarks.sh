@@ -11,56 +11,56 @@ fi
 case $result in
     whatsapp)
         xdotool key super+1	
-        firefox https://web.whatsapp.com
+        flatpak run io.gitlab.librewolf-community https://web.whatsapp.com
         ;;
     whiteboard)
         xdotool key super+1	
-        firefox https://whiteboard.cloud.microsoft
+        flatpak run io.gitlab.librewolf-community https://whiteboard.cloud.microsoft
         ;;
     syncthing)
         xdotool key super+1	
-        firefox http://127.0.0.1:8384/
+        flatpak run io.gitlab.librewolf-community http://127.0.0.1:8384/
         ;;
     reddit)
         xdotool key super+1	
-        firefox https://reddit.com
+        flatpak run io.gitlab.librewolf-community https://reddit.com
         ;;
     youtube)
         xdotool key super+1	
-        firefox https://youtube.com/feed/subscriptions
+        flatpak run io.gitlab.librewolf-community https://youtube.com/feed/subscriptions
         ;;
     github)
         xdotool key super+1	
-        firefox https://github.com
+        flatpak run io.gitlab.librewolf-community https://github.com
         ;;
     codeberg)
         xdotool key super+1	
-        firefox https://codeberg.org
+        flatpak run io.gitlab.librewolf-community https://codeberg.org
         ;;
     meet)
         xdotool key super+1	
-        firefox https://meet.google.com
+        flatpak run io.gitlab.librewolf-community https://meet.google.com
         ;;
     protonmail)
         xdotool key super+1	
-        firefox https://mail.proton.me
+        flatpak run io.gitlab.librewolf-community https://mail.proton.me
         ;;
     gmail)
         xdotool key super+1	
-        firefox https://gmail.com
+        flatpak run io.gitlab.librewolf-community https://gmail.com
         ;;
     twitch)
 	xdotool key super+1	
-	firefox https://twitch.tv
+	flatpak run io.gitlab.librewolf-community https://twitch.tv
 	;;
     polytoria)
 	xdotool key super+1	
-	firefox https://polytoria.com
+	flatpak run io.gitlab.librewolf-community https://polytoria.com
 	;;    
     *)
 	if ! [ "$result" = "" ]; then
 	    xdotool key super+1	    
-	    firefox http://localhost:8080/search?q="$result"
+	    flatpak run io.gitlab.librewolf-community http://localhost:8080/search?q="$result"
 	fi
         ;;
 esac
