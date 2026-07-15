@@ -3,9 +3,9 @@
 menu_items=$(printf 'whatsapp\nwhiteboard\nsyncthing\nreddit\nyoutube\ngithub\ncodeberg\nmeet\nprotonmail\ngmail\ntwitch\npolytoria\n')
 
 if [ "${XDG_SESSION_TYPE}" = "wayland" ] || [ -n "${WAYLAND_DISPLAY}" ]; then
-    result=$(printf '%s' "$menu_items" | wmenu -i -l 10 -f "Terminess Nerd Font 16" -N "#1e1e2e" -n "#cdd6f4" -S "#89b4fa" -s "#1e1e2e")
+    result=$(printf '%s' "$menu_items" | wmenu -i -l 10 -f "Terminess Nerd Font 16" -N "#141618" -n "#fcfcfc" -S "#ff0000" -s "#fcfcfc")
 else
-    result=$(printf '%s' "$menu_items" | dmenu -i -l 10 -fn "Terminess Nerd Font 16" -nb "#1e1e2e" -nf "#cdd6f4" -sb "#89b4fa" -sf "#1e1e2e")
+    result=$(printf '%s' "$menu_items" | dmenu -i -l 10 -fn "Terminess Nerd Font 16" -nb "#141618" -nf "#fcfcfc" -sb "#ff0000" -sf "#fcfcfc")
 fi
 
 case $result in
@@ -58,7 +58,9 @@ case $result in
 	xdotool key super+1
 	;;    
     *)
-	firefox https://duckduckgo.com/search?q="$result"
-	xdotool key super+1
+	if ! [ "$result" = "" ]; then
+	    firefox https://duckduckgo.com/search?q="$result"
+	    xdotool key super+1
+	fi
         ;;
 esac
