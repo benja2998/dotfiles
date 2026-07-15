@@ -10,57 +10,57 @@ fi
 
 case $result in
     whatsapp)
+        xdotool key super+1	
         firefox https://web.whatsapp.com
-        xdotool key super+1
         ;;
     whiteboard)
+        xdotool key super+1	
         firefox https://whiteboard.cloud.microsoft
-        xdotool key super+1
         ;;
     syncthing)
+        xdotool key super+1	
         firefox http://127.0.0.1:8384/
-        xdotool key super+1
         ;;
     reddit)
+        xdotool key super+1	
         firefox https://reddit.com
-        xdotool key super+1
         ;;
     youtube)
+        xdotool key super+1	
         firefox https://youtube.com/feed/subscriptions
-        xdotool key super+1
         ;;
     github)
+        xdotool key super+1	
         firefox https://github.com
-        xdotool key super+1
         ;;
     codeberg)
+        xdotool key super+1	
         firefox https://codeberg.org
-        xdotool key super+1
         ;;
     meet)
+        xdotool key super+1	
         firefox https://meet.google.com
-        xdotool key super+1
         ;;
     protonmail)
+        xdotool key super+1	
         firefox https://mail.proton.me
-        xdotool key super+1
         ;;
     gmail)
+        xdotool key super+1	
         firefox https://gmail.com
-        xdotool key super+1
         ;;
     twitch)
+	xdotool key super+1	
 	firefox https://twitch.tv
-	xdotool key super+1
 	;;
     polytoria)
+	xdotool key super+1	
 	firefox https://polytoria.com
-	xdotool key super+1
 	;;    
     *)
 	if ! [ "$result" = "" ]; then
+	    xdotool key super+1	    
 	    firefox https://duckduckgo.com/search?q="$result"
-	    xdotool key super+1
 	fi
         ;;
 esac
