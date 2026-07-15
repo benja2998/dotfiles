@@ -20,10 +20,15 @@
 
 (pixel-scroll-precision-mode t)
 
-(global-set-key (kbd "C-c nt") #'daily-note)
-(global-set-key (kbd "C-c tn") #'todo-note)
-(global-set-key (kbd "C-c ne") #'org-agenda-list)
-(global-set-key (kbd "C-c re") #'eglot-format-buffer)
+(require 'bind-key)
+(bind-key* "C-c nt" 'daily-note)
+(bind-key* "M-h" 'windmove-left)
+(bind-key* "M-j" 'windmove-down)
+(bind-key* "M-k" 'windmove-up)
+(bind-key* "M-l" 'windmove-right)
+(bind-key* "C-c tn" 'todo-note)
+(bind-key* "C-c ne" 'org-agenda-list)
+(bind-key* "C-c re" 'eglot-format-buffer)
 
 (setq eshell-history-size 10000)
 
@@ -36,8 +41,8 @@
 
 (global-auto-revert-mode t)
 
-(global-set-key (kbd "C-c s") #'eglot-code-actions)
-(global-set-key (kbd "C-c C-r") #'eglot-rename)
+(bind-key* "C-c s" 'eglot-code-actions)
+(bind-key* "C-c C-r" 'eglot-rename)
 
 (defun dired-notes ()
   (interactive)
@@ -49,8 +54,8 @@
   (dired "~")
   )
 
-(global-set-key (kbd "C-c nh") #'dired-home)
-(global-set-key (kbd "C-c nd") #'dired-notes)
+(bind-key* "C-c nh" 'dired-home)
+(bind-key* "C-c nd" 'dired-notes)
 
 (which-key-mode t)
 
@@ -101,10 +106,10 @@
 (use-package multiple-cursors)
 (require 'multiple-cursors)
 
-(global-set-key (kbd "C-c y e l") #'mc/edit-lines)
-(global-set-key (kbd "M-o") #'mc/mark-all-like-this)
-(global-set-key (kbd "C-c y w l") #'mc/mark-all-words-like-this)
-(global-set-key (kbd "C-c y s l") #'mc/mark-all-symbols-like-this)
+(bind-key* "C-c y e l" 'mc/edit-lines)
+(bind-key* "M-o" 'mc/mark-all-like-this)
+(bind-key* "C-c y w l" 'mc/mark-all-words-like-this)
+(bind-key* "C-c y s l" 'mc/mark-all-symbols-like-this)
 
 (use-package markdown-mode)
 (use-package nerd-icons)
@@ -214,7 +219,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 
 (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
 
-(global-set-key (kbd "C-c e") #'eshell)
+(bind-key* "C-c e" 'eshell)
 
 ;;(setq eshell-destroy-buffer-when-process-dies t)
 (when (daemonp) (exec-path-from-shell-initialize))
@@ -325,7 +330,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
  '(line-number-current-line ((t (:inherit (bold line-number) :background "#23272a" :foreground "#ffffff"))))
  '(marginalia-documentation ((t (:inherit modus-themes-slant :foreground "gainsboro"))))
  '(marginalia-string ((t (:foreground "#fcfcfc"))))
- '(mode-line ((t (:inherit modus-themes-ui-variable-pitch :background "#505050" :foreground "#ffffff" :box (:line-width (1 . 1) :color "#959595")))))
+ '(mode-line ((t (:inherit modus-themes-ui-variable-pitch :background "#191c1e" :foreground "#fcfcfc" :box (:line-width (1 . 1) :color "#191c1e")))))
  '(mode-line-inactive ((t (:inherit modus-themes-ui-variable-pitch :background "#1d2123" :foreground "#e6e6e6" :box (:line-width (1 . 1) :color "#1d2123")))))
  '(modus-themes-completion-selected ((t (:inherit bold :background "red"))) t)
  '(org-level-1 ((t (:inherit outline-1 :height 1.25))))
