@@ -7,6 +7,7 @@ alias ytns yt-dlp --sponsorblock-remove all
 alias ytsearch yt-dlp --no-download --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" $1 >/dev/null; cat search.txt; rm search.txt
 alias ytsdl ytns --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" $1
 alias gs git status
+alias gsh git show $1
 alias ga git add -A
 alias gp git push
 alias gc git commit -m $1
