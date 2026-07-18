@@ -279,10 +279,13 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 	    eshell-visual-commands
 	  (setq eshell-visual-commands
 		(cons "cmatrix" eshell-visual-commands)))
+	(if (member "nvtop" eshell-visual-commands)
+	    eshell-visual-commands
+	  (setq eshell-visual-commands
+		(cons "nvtop" eshell-visual-commands)))	
 	(if (eq system-type 'gnu/linux)
 	    (progn (ghostel-eshell-visual-command-mode)))
-	(setenv "GPG_TTY"
-		(shell-command-to-string "/bin/sh tty 2>/dev/null")))
+	(eshell/export (concat "GPG_TTY=" (shell-command-to-string "/bin/sh tty 2>/dev/null"))))
        (t)]))
  '(evil-undo-system 'undo-redo)
  '(marginalia-mode t)
