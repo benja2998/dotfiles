@@ -4,6 +4,19 @@ export LC_ALL=C.UTF-8
 
 export EDITOR='emacsclient -c -a ""'
 alias code='code-oss'
+alias gls='git log --reverse --show-signature'
+alias gl='git log --reverse'
+alias cls='clear'
+alias ytns='yt-dlp --sponsorblock-remove all'
+alias gs='git status'
+alias gsh='git show'
+alias ga='git add -A'
+alias gp='git push'
+alias gc='git commit -m'
+alias gd='git diff'
+alias gf='git fetch'
+alias gpl='git pull --rebase'
+alias gpt='git push --tags'
 export GPG_TTY=$(tty)
 alias ls="ls -B --color=auto"
 alias emacs='emacsclient -c -a ""'
@@ -42,7 +55,7 @@ ytsearch() {
 
 ytsdl() {
 	rm search.txt
-	yt-dlp --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" "$1" >/dev/null
+	ytns --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" "$1" >/dev/null
 	cat search.txt
 }
 
