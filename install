@@ -22,3 +22,4 @@ dotfiles="$(pwd)"
 # dconf load /org/gnome/shell/ < shell.dconf
 
 stow -v --target ~ configs
+cp "$dotfiles/manualcopy/gtk-4.0/gtk.css" ~/.config/gtk-4.0/gtk.css
