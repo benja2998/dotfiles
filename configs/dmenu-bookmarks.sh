@@ -3,9 +3,9 @@
 menu_items=$(printf 'whatsapp\nwhiteboard\nsyncthing\nreddit\nyoutube\ngithub\ncodeberg\nmeet\nprotonmail\ngmail\ntwitch\npolytoria\n')
 
 if [ "${XDG_SESSION_TYPE}" = "wayland" ] || [ -n "${WAYLAND_DISPLAY}" ]; then
-    result=$(printf '%s' "$menu_items" | wmenu -i -l 10 -f "Terminess Nerd Font:size=16" -N "#202326" -n "#fcfcfc" -S "#ff0000" -s "#fcfcfc")
+    result=$(printf '%s' "$menu_items" | wmenu -i -l 20 -f "Terminess Nerd Font:size=16" -N "#202326" -n "#fcfcfc" -S "#ff0000" -s "#fcfcfc")
 else
-    result=$(printf '%s' "$menu_items" | dmenu -i -l 10 -fn "Terminess Nerd Font:size=16" -nb "#202326" -nf "#fcfcfc" -sb "#ff0000" -sf "#fcfcfc")
+    result=$(printf '%s' "$menu_items" | dmenu -i -l 20 -fn "Terminess Nerd Font:size=16" -nb "#202326" -nf "#fcfcfc" -sb "#ff0000" -sf "#fcfcfc")
 fi
 
 case $result in
