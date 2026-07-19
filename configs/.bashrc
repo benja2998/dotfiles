@@ -2,7 +2,7 @@
 
 export LC_ALL=C.UTF-8
 
-export EDITOR='emacsclient -c -a ""'
+export EDITOR='vim'
 alias code='code-oss'
 alias gls='git log --reverse --show-signature'
 alias gl='git log --reverse'
@@ -23,7 +23,7 @@ alias emacs='emacsclient -c -a ""'
 alias tree="tree -C"
 alias grep="grep --color=auto"
 alias ll="ls -larth"
-
+bind -x '"\C-f":tmux-session'
 if [ "$TERM" = "xterm-ghostty" ]; then
 	export TERM=xterm-256color
 fi

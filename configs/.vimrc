@@ -1,5 +1,5 @@
 set nocompatible
-set clipboard=unnamedplus
+"set clipboard=unnamedplus
 syntax on
 set number
 set noswapfile
@@ -23,8 +23,6 @@ let g:netrw_localcopydircmd = 'cp -r'
 hi! link netrwMarkFile Search
 
 if !isdirectory(glob("~/.vim/pack"))
-	:!git clone https://github.com/vim-airline/vim-airline ~/.vim/pack/dist/start/vim-airline
-	:!git clone https://github.com/vim-airline/vim-airline-themes ~/.vim/pack/dist/start/vim-airline-themes
 	:!git clone https://github.com/junegunn/fzf.vim ~/.vim/pack/dist/start/fzf.vim
 	:!git clone https://github.com/junegunn/fzf ~/.vim/pack/dist/start/fzf
 	:!git clone https://github.com/christoomey/vim-tmux-navigator.git ~/.vim/pack/plugins/start/vim-tmux-navigator
@@ -46,6 +44,28 @@ function! ToggleMarkdownCheckbox() abort
 		call setline(l:lnum, l:new)
 	endif
 endfunction
+
+function! OpenDailyNote()
+	let l:year  = strftime('%Y')
+	let l:today = strftime('%d-%m-%Y')
+
+	let l:dir  = expand('~/Documents/Notes/') . l:year
+	let l:path = l:dir . '/' . l:today . '.md'
+
+	if !isdirectory(l:dir)
+		call mkdir(l:dir, 'p')
+	endif
+
+	execute 'edit ' . fnameescape(l:path)
+
+	if line('$') == 1 && getline(1) == ''
+		call setline(1, '# ' . l:today)
+		normal! G
+	endif
+endfunction
+
+" Map it to a shortcut (e.g., <leader>n for Note)
+nnoremap <leader>n :call OpenDailyNote()<CR>
 
 nnoremap <leader>j :call ToggleMarkdownCheckbox()<CR>
 nnoremap <C-f> :Files<CR>
