@@ -36,8 +36,8 @@
 
 (editorconfig-mode t)
 
-(require 'eglot)
-(add-hook 'prog-mode-hook #'eglot-ensure)
+;; (require 'eglot)
+;; (add-hook 'prog-mode-hook #'eglot-ensure)
 
 (global-auto-revert-mode t)
 
@@ -124,7 +124,7 @@
 (use-package doom-modeline)
 (use-package company)
 (global-company-mode t)
-
+(use-package rust-mode)
 (use-package lua-mode)
 (add-to-list 'auto-mode-alist '("\\.luau\\'" . lua-mode))
 (use-package ghostel
@@ -302,7 +302,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 		   exec-path-from-shell ghostel lua-mode marginalia
 		   markdown-mode multiple-cursors
 		   nerd-icons-completion nerd-icons-dired orderless
-		   org-superstar solarized-theme vertico))
+		   org-superstar rust-mode solarized-theme vertico))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(send-mail-function 'mailclient-send-it)
@@ -390,3 +390,4 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
  '(org-level-5 ((t (:inherit outline-5 :height 1.05))))
  '(org-tag ((t (:foreground "orange"))))
  '(success ((t (:inherit bold :foreground "gold")))))
+(put 'upcase-region 'disabled nil)
