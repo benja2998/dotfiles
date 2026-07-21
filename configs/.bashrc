@@ -2,7 +2,7 @@
 
 export LC_ALL=C.UTF-8
 
-export EDITOR='emacsclient -c -a ""'
+export EDITOR='vis'
 alias code='code-oss'
 alias gls='git log --reverse --show-signature'
 alias gl='git log --reverse'
@@ -23,6 +23,8 @@ alias emacs='emacsclient -c -a ""'
 alias tree="tree -C"
 alias grep="grep --color=auto"
 alias ll="ls -larth"
+bind -x '"\C-f":tmux-session'
+bind -x '"\C-e":ff'
 if [ "$TERM" = "xterm-ghostty" ]; then
 	export TERM=xterm-256color
 fi
@@ -43,7 +45,15 @@ shopt -s cdspell
 PS1='[\u@\h \W]\$ '
 
 cdf() {
-	cd "$(find -type d | fzf)" || true
+	cd "$(find -L -type d | fzf)" || true
+}
+
+ff() {
+	file="$(find -L -type f -not -path './.git/*' | fzf)"
+	if [ -z "$file" ]; then
+		return
+	fi
+	vis "$file"
 }
 
 ytsearch() {
@@ -59,7 +69,7 @@ ytsdl() {
 }
 
 tmux-session() {
-	local SESS="$(find -type d | fzf)"
+	local SESS="$(find -L -type d | fzf)"
 	if [ -z "$SESS" ]; then
 		echo No directory
 		return
@@ -79,10 +89,6 @@ tmux-session() {
 		else
 			tmux new-session -d -s $SESN
 			tmux send-keys -t 0 "cd \"$SESS\"" C-m "clear" C-m
-
-			if [ "$SESN" = "Notes" ]; then
-				tmux send-keys -t 0 "vim .; exit" C-m
-			fi
 
 			tmux attach-session -t $SESN
 		fi
