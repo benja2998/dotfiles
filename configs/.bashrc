@@ -78,7 +78,7 @@ tmux-session() {
 	fi
 	local EXST=0
 	local SESN="$(basename $SESS)"
-	if tmux has-session -t $SESN 2>/dev/null; then
+	if tmux has-session -t "=$SESN" 2>/dev/null; then
 		EXST=1
 	else
 		EXST=0
@@ -101,7 +101,7 @@ tmux-notes() {
 	local SESS="$HOME/Documents/Notes"
 	local EXST=0
 	local SESN="$(basename $SESS)"
-	if tmux has-session -t $SESN 2>/dev/null; then
+	if tmux has-session -t "=$SESN" 2>/dev/null; then
 		EXST=1
 	else
 		EXST=0
