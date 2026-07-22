@@ -19,7 +19,7 @@ alias gf='git fetch'
 alias gpl='git pull --rebase'
 alias gpt='git push --tags'
 export GPG_TTY=$(tty)
-alias ls="ls -B --color=auto"
+alias ls="ls --color=auto"
 alias emacs='emacsclient -c -a ""'
 alias tree="tree -C"
 alias grep="grep --color=auto"
