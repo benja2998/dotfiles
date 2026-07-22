@@ -24,12 +24,10 @@ alias emacs='emacsclient -c -a ""'
 alias tree="tree -C"
 alias grep="grep --color=auto"
 alias ll="ls -larth"
+bind -f ~/.inputrc
 bind -x '"\C-f":tmux-session'
 bind -x '"\C-e":ff'
 bind -x '"\C-n":tmux-notes'
-if [ "$TERM" = "xterm-ghostty" ]; then
-	export TERM=xterm-256color
-fi
 
 HISTSIZE=-1
 HISTFILESIZE=-1

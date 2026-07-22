@@ -4,6 +4,7 @@ $include /etc/inputrc
 
 set editing-mode vi
 set show-mode-in-prompt On
+set keyseq-timeout 0
 set colored-stats On
 set completion-ignore-case On
 set completion-prefix-display-length 3
