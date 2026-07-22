@@ -4,6 +4,7 @@ export LC_ALL=C.UTF-8
 
 export EDITOR='vis'
 alias code='code-oss'
+alias clr='clear'
 alias gls='git log --reverse --show-signature'
 alias gl='git log --reverse'
 alias ytns='yt-dlp --sponsorblock-remove all'
