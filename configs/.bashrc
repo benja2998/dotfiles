@@ -25,6 +25,7 @@ alias grep="grep --color=auto"
 alias ll="ls -larth"
 bind -x '"\C-f":tmux-session'
 bind -x '"\C-e":ff'
+bind -x '"\C-n":tmux-notes'
 if [ "$TERM" = "xterm-ghostty" ]; then
 	export TERM=xterm-256color
 fi
@@ -74,6 +75,29 @@ tmux-session() {
 		echo No directory
 		return
 	fi
+	local EXST=0
+	local SESN="$(basename $SESS)"
+	if tmux has-session -t $SESN 2>/dev/null; then
+		EXST=1
+	else
+		EXST=0
+	fi
+
+	# Now actually do the stuff
+	if [ -z "$TMUX" ]; then
+		if [ "$EXST" = 1 ]; then
+			tmux attach-session -t $SESN
+		else
+			tmux new-session -d -s $SESN
+			tmux send-keys -t 0 "cd \"$SESS\"" C-m "clear" C-m
+
+			tmux attach-session -t $SESN
+		fi
+	fi
+}
+
+tmux-notes() {
+	local SESS="$HOME/Documents/Notes"
 	local EXST=0
 	local SESN="$(basename $SESS)"
 	if tmux has-session -t $SESN 2>/dev/null; then
