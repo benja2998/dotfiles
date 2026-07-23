@@ -24,6 +24,7 @@ alias grep="grep --color=auto"
 alias ll="ls -larth"
 bind -f ~/.inputrc
 bind -x '"\C-f":tmux-session'
+bind -x '"\C-p":tmux-proj'
 bind -x '"\C-e":ff'
 bind -x '"\C-n":tmux-notes'
 
@@ -70,6 +71,34 @@ ytsdl() {
 
 tmux-session() {
 	local SESS="$(find -type d | vis-menu -l 20 -i)"
+	if [ -z "$SESS" ]; then
+		echo No directory
+		return
+	fi
+	local EXST=0
+	local SESN="$(basename $SESS)"
+	if tmux has-session -t "=$SESN" 2>/dev/null; then
+		EXST=1
+	else
+		EXST=0
+	fi
+
+	# Now actually do the stuff
+	if [ -z "$TMUX" ]; then
+		if [ "$EXST" = 1 ]; then
+			tmux attach-session -t $SESN
+		else
+			tmux new-session -d -s $SESN
+			tmux send-keys -t 0 "cd \"$SESS\"" C-m "clear" C-m
+
+			tmux attach-session -t $SESN
+		fi
+	fi
+	cls
+}
+
+tmux-proj() {
+	local SESS="$(find ~/Projects -type d | vis-menu -l 20 -i)"
 	if [ -z "$SESS" ]; then
 		echo No directory
 		return
