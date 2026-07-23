@@ -49,11 +49,12 @@ cdf() {
 }
 
 ff() {
-	file="$(find -type f -not -path './.git/*' | fzf)"
+	file="$(find -type f -not -path './.git/*' | vis-menu -l 20 -i)"
 	if [ -z "$file" ]; then
 		return
 	fi
 	vis "$file"
+	cls
 }
 
 ytsearch() {
@@ -69,7 +70,7 @@ ytsdl() {
 }
 
 tmux-session() {
-	local SESS="$(find -type d | fzf)"
+	local SESS="$(find -type d | vis-menu -l 20 -i)"
 	if [ -z "$SESS" ]; then
 		echo No directory
 		return
@@ -93,6 +94,7 @@ tmux-session() {
 			tmux attach-session -t $SESN
 		fi
 	fi
+	cls
 }
 
 tmux-notes() {
