@@ -12,6 +12,7 @@ elif [[ -v "$PREFIX" ]]; then
 fi
 
 mkdir -p ~/.gnupg
+mkdir -p ~/.config
 
 # gsettings set org.gnome.desktop.default-applications.terminal exec 'st'
 
