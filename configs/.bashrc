@@ -4,8 +4,8 @@ export LC_ALL=C.UTF-8
 
 export EDITOR='vis'
 alias cls='clear'
-alias gls='git log --reverse --show-signature'
-alias gl='git log --reverse'
+alias gls='git log  --show-signature'
+alias gl='git log '
 alias ytns='yt-dlp --sponsorblock-remove all'
 alias fetch='$HOME/Thirdparty/fetch/fetch'
 alias gs='git status'
