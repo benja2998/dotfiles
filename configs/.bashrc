@@ -44,12 +44,12 @@ shopt -s cdspell
 PS1='[\u@\h \W]\$ '
 
 cdf() {
-	cd "$(find -type d | vis-menu -l 20 -i)" || true
+	cd "$(find -type d  -not -path '*/.git/*' | vis-menu -l 20 -i)" || true
 	cls
 }
 
 ff() {
-	file="$(find -type f -not -path './.git/*' | vis-menu -l 20 -i)"
+	file="$(find -type f -not -path '*/.git/*' | vis-menu -l 20 -i)"
 	if [ -z "$file" ]; then
 		return
 	fi
@@ -70,7 +70,7 @@ ytsdl() {
 }
 
 tmux-session() {
-	local SESS="$(find -type d | vis-menu -l 20 -i)"
+	local SESS="$(find -type d  -not -path '*/.git/*' | vis-menu -l 20 -i)"
 	if [ -z "$SESS" ]; then
 		echo No directory
 		return
@@ -98,7 +98,7 @@ tmux-session() {
 }
 
 tmux-proj() {
-	local SESS="$(find ~/Projects -type d | vis-menu -l 20 -i)"
+	local SESS="$(find ~/Projects -type d  -not -path '*/.git/*' | vis-menu -l 20 -i)"
 	if [ -z "$SESS" ]; then
 		echo No directory
 		return
