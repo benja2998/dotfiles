@@ -69,7 +69,7 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win) -- luacheck: no unused a
     -- Your per window configuration options e.g.
     -- vis:command('set number')
     vis:command('set relativenumber')
-    vis:command('set cursorline')
+--    vis:command('set cursorline')
     vis:command('set autoindent')
     vis:command('set tabwidth 4')
     vis:map(vis.modes.INSERT, '<Tab>', '    ')
