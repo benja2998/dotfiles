@@ -46,6 +46,7 @@ PS1='[\u@\h \W]\$ '
 
 cdf() {
 	cd "$(find -type d | vis-menu -l 20 -i)" || true
+	cls
 }
 
 ff() {
