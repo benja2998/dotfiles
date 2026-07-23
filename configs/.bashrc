@@ -3,7 +3,6 @@
 export LC_ALL=C.UTF-8
 
 export EDITOR='vis'
-alias code='code-oss'
 alias cls='clear'
 alias gls='git log --reverse --show-signature'
 alias gl='git log --reverse'
@@ -20,7 +19,6 @@ alias gpl='git pull --rebase'
 alias gpt='git push --tags'
 export GPG_TTY=$(tty)
 alias ls="ls --color=auto"
-alias emacs='emacsclient -c -a ""'
 alias tree="tree -C"
 alias grep="grep --color=auto"
 alias ll="ls -larth"
