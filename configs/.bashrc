@@ -31,6 +31,16 @@ bind '"\C-e":"ff\C-m"'
 bind '"\C-n":"tmux-notes\C-m"'
 bind '"\C-t":"tmux-trd\C-m"'
 bind '"\C-x":"tmux-newproj\C-m"'
+bind '"\C-g":"vis-dailynote\C-m"'
+bind '"\C-b":"vis-todonote\C-m"'
+
+vis-dailynote() {
+    vis "$HOME/Documents/Notes/$(date +%Y)/$(date +%d-%m-%Y).md"
+}
+
+vis-todonote() {
+    vis "$HOME/Documents/Notes/todo.md"
+}
 
 HISTSIZE=-1
 HISTFILESIZE=-1
