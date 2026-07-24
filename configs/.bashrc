@@ -102,7 +102,7 @@ tmux-session() {
 }
 
 tmux-proj() {
-    local SESS="$(echo ~/Projects/*/ | vis-menu -l 20 -i)"
+    local SESS="$(find ~/Projects -mindepth 1 -maxdepth 1 -type d | vis-menu -l 20 -i)"
     if [ -z "$SESS" ]; then
         echo No directory
         return
@@ -131,7 +131,7 @@ tmux-proj() {
 }
 
 tmux-trd() {
-    local SESS="$(echo ~/Thirdparty/*/ | vis-menu -l 20 -i)"
+    local SESS="$(find ~/Thirdparty -mindepth 1 -maxdepth 1 -type d | vis-menu -l 20 -i)"
     if [ -z "$SESS" ]; then
         echo No directory
         return
