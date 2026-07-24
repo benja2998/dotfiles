@@ -23,6 +23,11 @@ local function dailynote()
     end
 end
 
+local function todonote()
+    local home = os.getenv("HOME") or ""
+    vis:command("e '" .. home .. "/Documents/Notes/todo.md'")
+end
+
 local function togglecheckbox()
     local win = vis.win
     local file = win.file
@@ -62,6 +67,7 @@ vis.events.subscribe(vis.events.INIT, function()
     -- Your global configuration options
     vis:map(vis.modes.NORMAL, ' j', togglecheckbox)
     vis:map(vis.modes.NORMAL, ' n', dailynote)
+    vis:map(vis.modes.NORMAL, ' t', todonote)
     vis:command('set theme ansi16')
 end)
 
