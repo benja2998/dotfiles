@@ -80,7 +80,7 @@ tmux-session() {
         return
     fi
     local EXST=0
-    local SESN="$(basename $SESS)"
+    local SESN="$(basename $SESS | sed 's/\./_/g')"
     if tmux has-session -t "=$SESN" 2>/dev/null; then
         EXST=1
     else
@@ -102,13 +102,14 @@ tmux-session() {
 }
 
 tmux-proj() {
-    local SESS="$(find ~/Projects -type d  -not -path '*/.git/*' | vis-menu -l 20 -i)"
+    local SESS="$(echo ~/Projects/*/ | vis-menu -l 20 -i)"
     if [ -z "$SESS" ]; then
         echo No directory
         return
     fi
     local EXST=0
     local SESN="$(basename $SESS)"
+    local SESN="$(basename $SESS | sed 's/\./_/g')"
     if tmux has-session -t "=$SESN" 2>/dev/null; then
         EXST=1
     else
@@ -130,13 +131,14 @@ tmux-proj() {
 }
 
 tmux-trd() {
-    local SESS="$(find ~/Thirdparty -type d  -not -path '*/.git/*' | vis-menu -l 20 -i)"
+    local SESS="$(echo ~/Thirdparty/*/ | vis-menu -l 20 -i)"
     if [ -z "$SESS" ]; then
         echo No directory
         return
     fi
     local EXST=0
     local SESN="$(basename $SESS)"
+    local SESN="$(basename $SESS | sed 's/\./_/g')"
     if tmux has-session -t "=$SESN" 2>/dev/null; then
         EXST=1
     else
@@ -204,6 +206,7 @@ tmux-newproj() {
     fi
     local EXST=0
     local SESN="$(basename $SESS)"
+    local SESN="$(basename $SESS | sed 's/\./_/g')"
     if tmux has-session -t "=$SESN" 2>/dev/null; then
         EXST=1
     else
@@ -228,6 +231,7 @@ tmux-notes() {
     local SESS="$HOME/Documents/Notes"
     local EXST=0
     local SESN="$(basename $SESS)"
+    local SESN="$(basename $SESS | sed 's/\./_/g')"
     if tmux has-session -t "=$SESN" 2>/dev/null; then
         EXST=1
     else
