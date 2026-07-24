@@ -1,5 +1,7 @@
 [[ $- != *i* ]] && return
 
+# Keybinds will only work in vi mode
+
 export LC_ALL=C.UTF-8
 
 export EDITOR='vis'
