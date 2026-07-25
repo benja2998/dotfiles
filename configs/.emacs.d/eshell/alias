@@ -1,21 +1,23 @@
 alias kon rm -f kde.knsv; konsave -r kde; konsave -s kde; konsave -e kde
+alias gl git log $*
+alias gt git tag $*
 alias gls git log --reverse --show-signature
 alias gl git log --reverse
 alias cls clear-scrollback
 alias clear clear-scrollback
 alias ytns yt-dlp --sponsorblock-remove all
-alias ytsearch yt-dlp --no-download --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" $1 >/dev/null; cat search.txt; rm search.txt
-alias ytsdl ytns --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" $1
+alias ytsearch yt-dlp --no-download --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" $* >/dev/null; cat search.txt; rm search.txt
+alias ytsdl ytns --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" $*
 alias gs git status
-alias gsh git show $1
+alias gsh git show $*
 alias ga git add -A
 alias gp git push
-alias gc git commit -m $1
+alias gc git commit -m $*
 alias gd vc-diff
-alias d dired $1
-alias e find-file-other-window $1
-alias ff find-file $1
-alias ll ls -larth $1
+alias d dired $*
+alias e find-file-other-window $*
+alias ff find-file $*
+alias ll ls -larth $*
 alias gpt git push --tags
 alias gpl git pull --rebase
 alias gf git fetch

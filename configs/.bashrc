@@ -4,10 +4,12 @@
 
 export LC_ALL=C.UTF-8
 
-export EDITOR='vis'
+export EDITOR='emacsclient -c -a ""'
+alias emacs='emacsclient -c -a ""'
 alias cls='clear'
 alias gls='git log  --show-signature'
 alias gl='git log '
+alias gt='git tag'
 alias ytns='yt-dlp --sponsorblock-remove all'
 alias fetch='$HOME/Thirdparty/fetch/fetch'
 alias gs='git status'
@@ -25,12 +27,12 @@ alias tree="tree -C"
 alias grep="grep --color=auto"
 alias ll="ls -larth"
 bind -f ~/.inputrc
-bind '"\C-f":"tmux-session\C-m"'
-bind '"\C-p":"tmux-proj\C-m"'
-bind '"\C-e":"ff\C-m"'
-bind '"\C-n":"tmux-notes\C-m"'
-bind '"\C-t":"tmux-trd\C-m"'
-bind '"\C-x":"tmux-newproj\C-m"'
+#bind '"\C-f":"tmux-session\C-m"'
+#bind '"\C-p":"tmux-proj\C-m"'
+#bind '"\C-e":"ff\C-m"'
+#bind '"\C-n":"tmux-notes\C-m"'
+#bind '"\C-t":"tmux-trd\C-m"'
+#bind '"\C-x":"tmux-newproj\C-m"'
 
 HISTSIZE=-1
 HISTFILESIZE=-1
