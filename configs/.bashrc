@@ -190,7 +190,7 @@ tmux-newproj() {
         SESS="$(pwd)"
     else
         git clone "$url"
-        SESS="$(pwd)/$(basename $url)"
+        SESS="$(pwd)/$(basename $url | sed 's/\.git$//g')"
     fi
 
     if [ "$SESS" = "$base/" ]; then
