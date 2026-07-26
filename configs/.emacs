@@ -30,7 +30,7 @@
 (bind-key* "C-c ne" 'org-agenda-list)
 (bind-key* "C-c re" 'eglot-format-buffer)
 
-(setq eshell-history-size 10000)
+(setq eshell-history-size 999999)
 
 (require 'neofetch)
 
