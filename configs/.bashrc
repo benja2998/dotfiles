@@ -2,6 +2,10 @@
 
 #export LC_ALL=C.UTF-8
 
+if ! pgrep -u "$USER" -x "emacs" > /dev/null; then
+    emacs --daemon &
+fi
+
 export EDITOR='emacsclient -c -a ""'
 alias emacs='emacsclient -c -a ""'
 alias cls='clear'
