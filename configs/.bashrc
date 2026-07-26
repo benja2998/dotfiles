@@ -33,6 +33,7 @@ bind -f ~/.inputrc
 #bind '"\C-n":"tmux-notes\C-m"'
 #bind '"\C-t":"tmux-trd\C-m"'
 #bind '"\C-x":"tmux-newproj\C-m"'
+bind '"\C-x":"emacs\C-m"'
 
 HISTSIZE=-1
 HISTFILESIZE=-1
