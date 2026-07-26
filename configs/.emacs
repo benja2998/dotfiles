@@ -42,6 +42,10 @@
 (bind-key* "C-c nm" 'dired-music)
 (bind-key* "C-c re" 'eglot-format-buffer)
 
+(with-eval-after-load 'org
+  (bind-key "M-l" #'org-do-demote 'org-mode-map)
+  (bind-key "M-h" #'org-do-promote 'org-mode-map))
+
 (setq eshell-history-size 999999)
 
 (require 'neofetch)
