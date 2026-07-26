@@ -1,5 +1,3 @@
-alias kon rm -f kde.knsv; konsave -r kde; konsave -s kde; konsave -e kde
-alias gl git log $*
 alias gt git tag $*
 alias gls git log --reverse --show-signature
 alias gl git log --reverse

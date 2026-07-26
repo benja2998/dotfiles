@@ -18,6 +18,16 @@
   (find-file "~/Documents/Notes/todo.org")
   )
 
+(defun dired-videos ()
+  (interactive)
+  (dired "~/Videos")
+  )
+
+(defun dired-music ()
+  (interactive)
+  (dired "~/Music")
+  )
+
 (pixel-scroll-precision-mode t)
 
 (require 'bind-key)
@@ -28,6 +38,8 @@
 (bind-key* "M-l" 'windmove-right)
 (bind-key* "C-c tn" 'todo-note)
 (bind-key* "C-c ne" 'org-agenda-list)
+(bind-key* "C-c ny" 'dired-videos)
+(bind-key* "C-c nm" 'dired-music)
 (bind-key* "C-c re" 'eglot-format-buffer)
 
 (setq eshell-history-size 999999)
