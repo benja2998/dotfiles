@@ -25,7 +25,7 @@ alias tree="tree -C"
 alias grep="grep --color=auto"
 alias ll="ls -larth"
 bind -f ~/.inputrc
-bind '"\C-x":"emacs\C-m"'
+bind '"\C-x":"emacs\C-m"' # for termux
 
 HISTSIZE=-1
 HISTFILESIZE=-1
