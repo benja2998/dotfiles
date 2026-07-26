@@ -1,6 +1,6 @@
 [[ $- != *i* ]] && return
 
-export LC_ALL=C.UTF-8
+#export LC_ALL=C.UTF-8
 
 export EDITOR='emacsclient -c -a ""'
 alias emacs='emacsclient -c -a ""'
