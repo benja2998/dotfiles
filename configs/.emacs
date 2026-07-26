@@ -123,29 +123,6 @@
 (use-package rust-mode)
 (use-package lua-mode)
 (add-to-list 'auto-mode-alist '("\\.luau\\'" . lua-mode))
-(use-package ghostel
-  :bind (("C-c m" . ghostel)
-         :map ghostel-semi-char-mode-map
-         ("C-s"  . consult-line)
-         ("C-k"  . my/ghostel-send-C-k-and-kill)
-         ;; ;; I'm used to go up/down the shell history with M-n/p from eshell
-         ;; ;; Simulate this behavior in ghostel by sending C-p and C-n
-         ("M-p" . (lambda () (interactive) (ghostel-send-key "p" "ctrl")))
-         ("M-n" . (lambda () (interactive) (ghostel-send-key "n" "ctrl")))
-         :map project-prefix-map
-         ("m" . ghostel-project)
-         ("M" . ghostel-project-list-buffers))
-  :config
-  (defun my/ghostel-send-C-k-and-kill ()
-    "Send `C-k' to ghostel.
-Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
-    (interactive)
-    (kill-ring-save (point) (line-end-position))
-    (ghostel-send-key "k" "ctrl"))
-
-  (add-to-list 'project-switch-commands '(ghostel-project "Ghostel") t)
-  (add-to-list 'project-switch-commands '(ghostel-project-list-buffers "Ghostel buffers") t)
-  (add-to-list 'ghostel-eval-cmds '("magit-status-setup-buffer" magit-status-setup-buffer)))
 
 (use-package org-superstar)
 ;; Enable Vertico.
@@ -295,7 +272,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
  '(package-selected-packages
    '(all-the-icons catppuccin-theme colorful-mode company doom-modeline
 		   doom-themes eshell-prompt-extras
-		   exec-path-from-shell ghostel lua-mode marginalia
+		   exec-path-from-shell lua-mode marginalia
 		   markdown-mode multiple-cursors
 		   nerd-icons-completion nerd-icons-dired orderless
 		   org-superstar rust-mode solarized-theme vertico))
@@ -309,22 +286,22 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:background "#202326" :foreground "#fcfcfc"))))
- '(ansi-color-black          ((t (:foreground "#393939" :background "#393939"))))
- '(ansi-color-red            ((t (:foreground "#ff2d11" :background "#ff2d11"))))
- '(ansi-color-green          ((t (:foreground "#98cb76" :background "#98cb76"))))
- '(ansi-color-yellow         ((t (:foreground "yellow3" :background "yellow3"))))
- '(ansi-color-blue           ((t (:foreground "#4677ff" :background "#4677ff"))))
- '(ansi-color-magenta        ((t (:foreground "magenta3" :background "magenta3"))))
- '(ansi-color-cyan           ((t (:foreground "#5bc6f3" :background "#5bc6f3"))))
- '(ansi-color-white          ((t (:foreground "gray90"   :background "gray90"))))
- '(ansi-color-bright-black   ((t (:foreground "#393939" :background "#393939"))))
- '(ansi-color-bright-red     ((t (:foreground "#ff2d11" :background "#ff2d11"))))
- '(ansi-color-bright-green   ((t (:foreground "#98cb76" :background "#98cb76"))))
- '(ansi-color-bright-yellow  ((t (:foreground "yellow3" :background "yellow3"))))
- '(ansi-color-bright-blue   ((t (:foreground "#4677ff" :background "#4677ff"))))
+ '(ansi-color-black ((t (:foreground "#393939" :background "#393939"))))
+ '(ansi-color-blue ((t (:foreground "#4677ff" :background "#4677ff"))))
+ '(ansi-color-bright-black ((t (:foreground "#393939" :background "#393939"))))
+ '(ansi-color-bright-blue ((t (:foreground "#4677ff" :background "#4677ff"))))
+ '(ansi-color-bright-cyan ((t (:foreground "#5bc6f3" :background "#5bc6f3"))))
+ '(ansi-color-bright-green ((t (:foreground "#98cb76" :background "#98cb76"))))
  '(ansi-color-bright-magenta ((t (:foreground "magenta3" :background "magenta3"))))
- '(ansi-color-bright-cyan   ((t (:foreground "#5bc6f3" :background "#5bc6f3"))))
- '(ansi-color-bright-white  ((t (:foreground "gray90"   :background "gray90"))))
+ '(ansi-color-bright-red ((t (:foreground "#ff2d11" :background "#ff2d11"))))
+ '(ansi-color-bright-white ((t (:foreground "gray90" :background "gray90"))))
+ '(ansi-color-bright-yellow ((t (:foreground "yellow3" :background "yellow3"))))
+ '(ansi-color-cyan ((t (:foreground "#5bc6f3" :background "#5bc6f3"))))
+ '(ansi-color-green ((t (:foreground "#98cb76" :background "#98cb76"))))
+ '(ansi-color-magenta ((t (:foreground "magenta3" :background "magenta3"))))
+ '(ansi-color-red ((t (:foreground "#ff2d11" :background "#ff2d11"))))
+ '(ansi-color-white ((t (:foreground "gray90" :background "gray90"))))
+ '(ansi-color-yellow ((t (:foreground "yellow3" :background "yellow3"))))
  '(button ((t (:foreground "red" :underline "red"))))
  '(change-log-date ((t (:foreground "dark orange"))))
  '(dired-broken-symlink ((t (:inherit button :foreground "red"))))
@@ -387,6 +364,23 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
  '(org-level-5 ((t (:inherit outline-5 :height 1.05))))
  '(org-tag ((t (:foreground "orange"))))
  '(success ((t (:inherit bold :foreground "gold"))))
+ '(term ((t (:background "#202326" :foreground "#fcfcfc"))))
+ '(term-color-black ((t (:inherit ansi-color-black :foreground nil :background nil))))
+ '(term-color-blue ((t (:inherit ansi-color-blue :foreground nil :background nil))))
+ '(term-color-bright-black ((t (:inherit ansi-color-bright-black :foreground nil :background nil))))
+ '(term-color-bright-blue ((t (:inherit ansi-color-bright-blue :foreground nil :background nil))))
+ '(term-color-bright-cyan ((t (:inherit ansi-color-bright-cyan :foreground nil :background nil))))
+ '(term-color-bright-green ((t (:inherit ansi-color-bright-green :foreground nil :background nil))))
+ '(term-color-bright-magenta ((t (:inherit ansi-color-bright-magenta :foreground nil :background nil))))
+ '(term-color-bright-red ((t (:inherit ansi-color-bright-red :foreground nil :background nil))))
+ '(term-color-bright-white ((t (:inherit ansi-color-bright-white :foreground nil :background nil))))
+ '(term-color-bright-yellow ((t (:inherit ansi-color-bright-yellow :foreground nil :background nil))))
+ '(term-color-cyan ((t (:inherit ansi-color-cyan :foreground nil :background nil))))
+ '(term-color-green ((t (:inherit ansi-color-green :foreground nil :background nil))))
+ '(term-color-magenta ((t (:inherit ansi-color-magenta :foreground nil :background nil))))
+ '(term-color-red ((t (:inherit ansi-color-red :foreground nil :background nil))))
+ '(term-color-white ((t (:inherit ansi-color-white :foreground nil :background nil))))
+ '(term-color-yellow ((t (:inherit ansi-color-yellow :foreground nil :background nil))))
  '(vc-dir-file ((t (:foreground "orange red"))))
  '(vc-dir-header-value ((t (:foreground "red"))))
  '(vc-dir-status-up-to-date ((t (:foreground "gold")))))

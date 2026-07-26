@@ -1,6 +1,6 @@
 $include /etc/inputrc
-"\C-p":history-search-backward
-"\C-n":history-search-forward
+"\ep": history-search-backward
+"\en": history-search-forward
 
 set colored-stats On
 set completion-ignore-case On
