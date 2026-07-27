@@ -131,7 +131,6 @@
 (use-package lua-mode)
 (add-to-list 'auto-mode-alist '("\\.luau\\'" . lua-mode))
 
-(use-package org-superstar)
 ;; Enable Vertico.
 (use-package vertico
   :custom
@@ -196,8 +195,6 @@
 
 
 (use-package doom-themes)
-
-(add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
 
 (bind-key* "C-c e" 'eshell)
 
@@ -278,7 +275,7 @@
 		   exec-path-from-shell lua-mode marginalia
 		   markdown-mode multiple-cursors
 		   nerd-icons-completion nerd-icons-dired orderless
-		   org-superstar rust-mode solarized-theme vertico))
+		   rust-mode solarized-theme vertico))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(send-mail-function 'mailclient-send-it)
