@@ -4,6 +4,8 @@
 
 (add-to-list 'load-path (concat user-emacs-directory "local/"))
 
+(require 'keepass-mode)
+
 (defun daily-note ()
   (interactive)
   (setq current-date-file (concat "~/Documents/Notes/" (format-time-string "%Y" (current-time)) "/" (format-time-string "%d-%m-%Y" (current-time)) ".org"))
