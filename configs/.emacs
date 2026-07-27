@@ -101,7 +101,7 @@
       `(("." . ,(expand-file-name
                  (concat user-emacs-directory "backups")))))
 
-(add-to-list 'default-frame-alist '(font . "Terminess Nerd Font-16"))
+(add-to-list 'default-frame-alist '(font . "Terminess Nerd Font:pixelsize=32"))
 
 (setq display-line-numbers-type 'relative)
 
