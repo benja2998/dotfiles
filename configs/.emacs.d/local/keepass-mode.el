@@ -184,6 +184,93 @@
   "Return if ENTRY is a group."
   (string-suffix-p "/" entry))
 
+(defun keepass-mode-run-command (args &optional no-filter)
+  "Run `keepassxc-cli' with ARGS (list of strings).
+Pipe `keepass-mode-password' to stdin.
+If NO-FILTER is nil, remove password‑prompt lines from output.
+Return the command output as a string."
+  (let* ((cmd (format "echo %s | keepassxc-cli %s"
+                      (shell-quote-argument keepass-mode-password)
+                      (string-join (mapcar #'shell-quote-argument args) " ")))
+         (cmd (if no-filter
+                  cmd
+                (concat cmd " 2>&1 | grep -E -v '[Insert|Enter] password'"))))
+    (shell-command-to-string cmd)))
+
+(defun keepass-mode-add-entry (title username password url notes group)
+  "Add a new entry to the current database.
+TITLE is required. USERNAME, PASSWORD, URL, NOTES are optional.
+GROUP is the target group path (defaults to current)."
+  (interactive
+   (list (read-string "Entry title: ")
+         (read-string "Username (optional): ")
+         (read-passwd "Password (optional, empty = generate): ")
+         (read-string "URL (optional): ")
+         (read-string "Notes (optional): ")
+         (read-string (format "Group (default: %s): " keepass-mode-group-path)
+                      nil nil keepass-mode-group-path)))
+  (let* ((full-path (if (string-empty-p group)
+                        title
+                      (concat group title)))   ; group already ends with '/'
+         (args `("add"
+                 ,@(and (not (string-empty-p password))
+                        (list "--password" password))
+                 ,@(and (string-empty-p password)
+                        (list "--generate"))
+                 ,@(and (not (string-empty-p username))
+                        (list "--username" username))
+                 ,@(and (not (string-empty-p url))
+                        (list "--url" url))
+                 ,@(and (not (string-empty-p notes))
+                        (list "--notes" notes))
+                 ,keepass-mode-db ,full-path)))
+    (keepass-mode-run-command args)
+    (keepass-mode-open)))
+
+(defun keepass-mode-edit-entry (field value)
+  "Edit FIELD of currently selected entry to VALUE.
+FIELD can be: title, username, password, url, notes."
+  (interactive
+   (let* ((entry (aref (tabulated-list-get-entry) 0)))
+     (if (keepass-mode-is-group-p entry)
+         (user-error "%s is a group, not an entry" entry)
+       (list (completing-read "Field: " '("title" "username" "password" "url" "notes") nil t)
+             (read-string "New value: ")))))
+  (let* ((entry (aref (tabulated-list-get-entry) 0))
+         (full-path (keepass-mode-concat-group-path entry))
+         (args `("edit"
+                 ,(concat "--" field) ,value
+                 ,keepass-mode-db ,full-path)))
+    (keepass-mode-run-command args)
+    (keepass-mode-open)))
+
+(defun keepass-mode-delete-entry ()
+  "Delete currently selected entry after confirmation."
+  (interactive)
+  (let* ((entry (aref (tabulated-list-get-entry) 0)))
+    (if (keepass-mode-is-group-p entry)
+        (user-error "%s is a group, not an entry" entry)
+      (when (yes-or-no-p (format "Delete '%s%s'? " keepass-mode-group-path entry))
+        (let ((full-path (keepass-mode-concat-group-path entry)))
+          (keepass-mode-run-command `("rm" ,keepass-mode-db ,full-path))
+          (keepass-mode-open))))))
+
+(defun keepass-mode-add-totp (secret)
+  "Add or update TOTP secret for the current entry.
+SECRET must be a Base32‑encoded key."
+  (interactive (list (read-string "TOTP secret (Base32): ")))
+  (let* ((entry (aref (tabulated-list-get-entry) 0)))
+    (if (keepass-mode-is-group-p entry)
+        (user-error "%s is a group, not an entry" entry)
+      (let ((full-path (keepass-mode-concat-group-path entry)))
+        (keepass-mode-run-command `("edit" "--totp" ,secret ,keepass-mode-db ,full-path))
+        (message "TOTP added to '%s%s'" keepass-mode-group-path entry)))))
+
+(define-key keepass-mode-map (kbd "a") 'keepass-mode-add-entry)
+(define-key keepass-mode-map (kbd "e") 'keepass-mode-edit-entry)
+(define-key keepass-mode-map (kbd "d") 'keepass-mode-delete-entry)
+(define-key keepass-mode-map (kbd "o") 'keepass-mode-add-totp)   ; 'o' for OTP
+
 (provide 'keepass-mode)
 
 ;;; keepass-mode.el ends here
