@@ -5,10 +5,10 @@ set -ex
 if [[ -f /etc/os-release ]]; then
     . /etc/os-release
     if [[ "$NAME" = "Void" ]]; then
-	sudo xbps-install gnupg git base-devel emacs-x11
+	sudo xbps-install gnupg git base-devel emacs
     fi
 elif [[ -v "$PREFIX" ]]; then
-    pkg i -y termux-services gnupg git build-essential emacs-x
+    pkg i -y termux-services gnupg git build-essential emacs
 fi
 
 mkdir -p ~/.gnupg
