@@ -115,7 +115,7 @@
       `(("." . ,(expand-file-name
                  (concat user-emacs-directory "backups")))))
 
-(add-to-list 'default-frame-alist '(font . "Terminess Nerd Font:pixelsize=32"))
+(add-to-list 'default-frame-alist '(font . "Terminess Nerd Font:pixelsize=24"))
 
 (setq display-line-numbers-type 'relative)
 
@@ -138,6 +138,9 @@
 (bind-key* "M-o" 'mc/mark-all-like-this)
 (bind-key* "C-c y w l" 'mc/mark-all-words-like-this)
 (bind-key* "C-c y s l" 'mc/mark-all-symbols-like-this)
+
+(setq split-height-threshold nil)
+(setq split-width-threshold 0)
 
 (use-package markdown-mode)
 (use-package exec-path-from-shell)
