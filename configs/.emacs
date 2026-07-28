@@ -73,19 +73,6 @@
 
 (global-auto-revert-mode t)
 
-(defvar my-volume "??%")
-
-(defun my-update-volume ()
-  (setq my-volume
-        (string-trim
-         (shell-command-to-string
-          "pactl get-sink-volume @DEFAULT_SINK@ | awk 'NR==1 {print $5}'")))
-  (force-mode-line-update t))
-
-(add-to-list 'global-mode-string 'my-volume t)
-
-(run-with-timer 0 2 #'my-update-volume)
-
 (bind-key* "C-c s" 'eglot-code-actions)
 (bind-key* "C-c C-r" 'eglot-rename)
 
@@ -189,6 +176,20 @@
    "bright-down" nil
    "light -U 5"))
 
+(defun run-wiremix ()
+  (interactive)
+  (start-process-shell-command
+   "wiremix"
+   nil
+   "st -e wiremix"))
+
+(defun run-nmtui ()
+  (interactive)
+  (start-process-shell-command
+   "nmtui"
+   nil
+   "st -e nmtui"))
+
 (use-package exwm)
 (require 'exwm)
 ;; Set the initial workspace number.
@@ -203,6 +204,8 @@
         ([?\s-i] . exwm-input-toggle-keyboard) ;; s-i: Toggle char mode.
         ([?\s-p] . my/audio-vol-up) ;; s-p: Volume up.
         ([?\s-q] . dmenu) ;; s-q: Dmenu.
+        ([?\s-n] . run-wiremix) ;; s-n: Wiremix.
+        ([?\s-b] . run-nmtui) ;; s-b: Nmtui.		
         ([?\s-u] . my/audio-vol-down) ;; s-u: Volume down.
         ([?\s-l] . my/brightness-up) ;; s-l: Brightness up.
         ([?\s-d] . my/brightness-down) ;; s-d: Brightness down.
