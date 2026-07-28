@@ -148,7 +148,72 @@
 (global-company-mode t)
 (use-package rust-mode)
 (use-package lua-mode)
+
+(use-package exwm)
+(require 'exwm)
+;; Set the initial workspace number.
+(setq exwm-workspace-number 4)
+;; Make class name the buffer name.
+(add-hook 'exwm-update-class-hook
+  (lambda () (exwm-workspace-rename-buffer exwm-class-name)))
+;; Global keybindings.
+(setq exwm-input-global-keys
+      `(([?\s-r] . exwm-reset) ;; s-r: Reset (to line-mode).
+        ([?\s-w] . exwm-workspace-switch) ;; s-w: Switch workspace.
+        ([?\s-i] . exwm-input-toggle-keyboard) ;; s-i: Toggle char mode.
+        ([?\s-&] . (lambda (cmd) ;; s-&: Launch application.
+                     (interactive (list (read-shell-command "$ ")))
+                     (start-process-shell-command cmd nil cmd)))
+        ;; s-N: Switch to certain workspace.
+        ,@(mapcar (lambda (i)
+                    `(,(kbd (format "s-%d" i)) .
+                      (lambda ()
+                        (interactive)
+                        (exwm-workspace-switch-create ,i))))
+                  (number-sequence 0 9))))
+
 (add-to-list 'auto-mode-alist '("\\.luau\\'" . lua-mode))
+
+;; Volume keys (PulseAudio example via pactl)
+(defun my/audio-vol-up () (interactive)
+  (start-process-shell-command
+   "vol-up" nil
+   "pactl set-sink-volume @DEFAULT_SINK@ +5%"))
+
+(defun my/audio-vol-down () (interactive)
+  (start-process-shell-command
+   "vol-down" nil
+   "pactl set-sink-volume @DEFAULT_SINK@ -5%"))
+
+(defun my/audio-mute () (interactive)
+  (start-process-shell-command
+   "vol-mute" nil
+   "pactl set-sink-mute @DEFAULT_SINK@ toggle"))
+
+;; Brightness keys (requires `light`)
+(defun my/brightness-up () (interactive)
+  (start-process-shell-command
+   "bright-up" nil
+   "light -A 5"))
+
+(defun my/brightness-down () (interactive)
+  (start-process-shell-command
+   "bright-down" nil
+   "light -U 5"))
+
+;; Bind the keys
+(global-set-key (kbd "<XF86AudioRaiseVolume>") #'my/audio-vol-up)
+(global-set-key (kbd "<XF86AudioLowerVolume>") #'my/audio-vol-down)
+(global-set-key (kbd "<XF86AudioMute>")        #'my/audio-mute)
+
+(global-set-key (kbd "<XF86MonBrightnessUp>")   #'my/brightness-up)
+(global-set-key (kbd "<XF86MonBrightnessDown>") #'my/brightness-down)
+
+(setq display-time-format "%Y-%m-%d %a %H:%M")
+(display-time-mode 1)
+
+(exwm-wm-mode)
+(exwm-systemtray-mode 1)
 
 ;; Enable Vertico.
 (use-package vertico
@@ -217,7 +282,11 @@
 
 (bind-key* "C-c e" 'eshell)
 
-;;(setq eshell-destroy-buffer-when-process-dies t)
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "flatpak"
+      browse-url-generic-args '("run" "io.gitlab.librewolf-community"))
+
+(setq eshell-destroy-buffer-when-process-dies t)
 (when (daemonp) (exec-path-from-shell-initialize))
 (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
 
@@ -304,7 +373,7 @@
  '(package-selected-packages
    '(all-the-icons catppuccin-theme colorful-mode company doom-modeline
 		   doom-themes eshell-prompt-extras
-		   exec-path-from-shell lua-mode marginalia
+		   exec-path-from-shell exwm lua-mode marginalia
 		   markdown-mode multiple-cursors
 		   nerd-icons-completion nerd-icons-dired orderless
 		   rust-mode solarized-theme vertico))
