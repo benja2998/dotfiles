@@ -190,6 +190,13 @@
    nil
    "st -e nmtui"))
 
+(defun run-htop ()
+  (interactive)
+  (start-process-shell-command
+   "htop"
+   nil
+   "st -e htop"))
+
 (use-package exwm)
 (require 'exwm)
 ;; Set the initial workspace number.
@@ -205,7 +212,8 @@
         ([?\s-p] . my/audio-vol-up) ;; s-p: Volume up.
         ([?\s-q] . dmenu) ;; s-q: Dmenu.
         ([?\s-n] . run-wiremix) ;; s-n: Wiremix.
-        ([?\s-b] . run-nmtui) ;; s-b: Nmtui.		
+        ([?\s-b] . run-nmtui) ;; s-b: Nmtui.
+        ([?\s-h] . run-htop) ;; s-h: Htop.			
         ([?\s-u] . my/audio-vol-down) ;; s-u: Volume down.
         ([?\s-l] . my/brightness-up) ;; s-l: Brightness up.
         ([?\s-d] . my/brightness-down) ;; s-d: Brightness down.
