@@ -73,6 +73,19 @@
 
 (global-auto-revert-mode t)
 
+(defvar my-volume "??%")
+
+(defun my-update-volume ()
+  (setq my-volume
+        (string-trim
+         (shell-command-to-string
+          "pactl get-sink-volume @DEFAULT_SINK@ | awk 'NR==1 {print $5}'")))
+  (force-mode-line-update t))
+
+(add-to-list 'global-mode-string 'my-volume t)
+
+(run-with-timer 0 2 #'my-update-volume)
+
 (bind-key* "C-c s" 'eglot-code-actions)
 (bind-key* "C-c C-r" 'eglot-rename)
 
