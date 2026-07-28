@@ -34,7 +34,7 @@ bind -f ~/.inputrc
 bind '"\C-x":"emacs\C-m"'
 
 ytsdl() {
-    ytns --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" $1
+    ytns --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" "$1"
 }
 
 kpc() {
@@ -42,7 +42,7 @@ kpc() {
 }
 
 ytsearch() {
-    yt-dlp --no-download --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" $1 >/dev/null; cat search.txt; rm search.txt
+    yt-dlp --no-download --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" "$1" >/dev/null; cat search.txt; rm search.txt
 }
 
 HISTSIZE=-1
