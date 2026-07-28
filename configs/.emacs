@@ -55,7 +55,12 @@
   (eshell-send-input)
   )
 
-(bind-key "C-l" #'eshell-clear 'eshell-mode-map)
+(defun bind-eshell-clear-mode-map ()
+  (interactive)
+  (bind-key "C-l" #'eshell-clear 'eshell-mode-map)
+  )
+
+(add-hook 'emacs-startup-hook #'bind-eshell-clear-mode-map)
 
 (setq eshell-history-size 999999)
 
