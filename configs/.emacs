@@ -48,6 +48,15 @@
   (bind-key "M-l" #'org-do-demote 'org-mode-map)
   (bind-key "M-h" #'org-do-promote 'org-mode-map))
 
+(defun eshell-clear ()
+  "Clear interactively eshell"
+  (interactive)
+  (eshell/clear-scrollback)
+  (eshell-send-input)
+  )
+
+(bind-key "C-l" #'eshell-clear 'eshell-mode-map)
+
 (setq eshell-history-size 999999)
 
 (require 'neofetch)
