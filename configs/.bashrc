@@ -16,6 +16,7 @@ alias ga='git add -A'
 alias gp='git push'
 alias gc='git commit -m'
 alias gd='git --no-pager diff'
+alias e='emacs'
 alias gf='git fetch'
 alias gpl='git pull --rebase'
 alias gpt='git push --tags'
@@ -25,7 +26,7 @@ alias tree="tree -C"
 alias grep="grep --color=auto"
 alias ll="ls -larth"
 bind -f ~/.inputrc
-bind '"\C-x":"emacs\C-m"'
+#bind '"\C-x":"emacs\C-m"'
 
 ytsdl() {
     ytns --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" "$1"
