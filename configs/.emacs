@@ -141,9 +141,6 @@
 (bind-key* "C-c y w l" 'mc/mark-all-words-like-this)
 (bind-key* "C-c y s l" 'mc/mark-all-symbols-like-this)
 
-(setq split-height-threshold nil)
-(setq split-width-threshold 0)
-
 (use-package dmenu)
 (use-package markdown-mode)
 (use-package exec-path-from-shell)
