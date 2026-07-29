@@ -239,6 +239,17 @@
 (exwm-wm-mode)
 (exwm-systemtray-mode 1)
 
+(use-package vterm
+  :ensure t)
+
+(use-package eshell-vterm
+  :ensure nil
+  :load-path "local/eshell-vterm"
+  :demand t
+  :after eshell
+  :config
+  (eshell-vterm-mode))
+
 ;; Enable Vertico.
 (use-package vertico
   :custom
@@ -400,7 +411,7 @@
 		   exec-path-from-shell exwm lua-mode marginalia
 		   markdown-mode multiple-cursors
 		   nerd-icons-completion nerd-icons-dired orderless
-		   rust-mode solarized-theme vertico))
+		   rust-mode solarized-theme vertico vterm))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(send-mail-function 'mailclient-send-it)
