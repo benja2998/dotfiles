@@ -1,6 +1,10 @@
 # .bash_profile
 export PATH="/var/lib/flatpak/exports/bin:$HOME/.local/bin:$PATH"
 
+if [ "$(tty)" = "/dev/tty1" ] && [ -z "$DISPLAY" ]; then
+    exec startx
+fi
+
 # if [ "$(tty)" = "/dev/tty2" ]; then
 #     syncthing serve --no-browser --logfile=default & disown
 # fi
