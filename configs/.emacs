@@ -51,8 +51,7 @@
 (defun eshell-clear ()
   "Clear interactively eshell"
   (interactive)
-  (eshell/clear-scrollback)
-  (eshell-send-input)
+  (execute-kbd-macro (kbd "cls RET"))
   )
 
 (defun bind-eshell-clear-mode-map ()
