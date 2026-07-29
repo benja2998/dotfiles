@@ -67,8 +67,8 @@
 
 (editorconfig-mode t)
 
-;; (require 'eglot)
-;; (add-hook 'prog-mode-hook #'eglot-ensure)
+(require 'eglot)
+(add-hook 'prog-mode-hook #'eglot-ensure)
 
 (global-auto-revert-mode t)
 
