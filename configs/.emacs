@@ -235,8 +235,9 @@
 (setq display-time-format "%Y-%m-%d %a %H:%M")
 (display-time-mode 1)
 
-(exwm-wm-mode)
-(exwm-systemtray-mode 1)
+(cond ((eq system-type 'gnu/linux)
+       (exwm-wm-mode)
+       (exwm-systemtray-mode 1)))
 
 (use-package vterm
   :ensure t)
