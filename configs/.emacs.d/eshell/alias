@@ -1,4 +1,4 @@
-alias tb term bash
+alias tb vterm
 alias gf git fetch
 alias gpl git pull --rebase
 alias gpt git push --tags
