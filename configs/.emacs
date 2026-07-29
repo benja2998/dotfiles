@@ -177,24 +177,20 @@
 
 (defun run-wiremix ()
   (interactive)
-  (start-process-shell-command
-   "wiremix"
-   nil
-   "st -e wiremix"))
+  (eshell-vterm-exec-visual "wiremix"))
 
 (defun run-nmtui ()
   (interactive)
+  (eshell-vterm-exec-visual "nmtui"))
+
+(defun run-boomer ()
+  (interactive)
   (start-process-shell-command
-   "nmtui"
-   nil
-   "st -e nmtui"))
+   "boomer" nil "/home/benjamin/Thirdparty/boomer/boomer"))
 
 (defun run-htop ()
   (interactive)
-  (start-process-shell-command
-   "htop"
-   nil
-   "st -e htop"))
+  (eshell-vterm-exec-visual "htop"))
 
 (use-package exwm)
 (require 'exwm)
@@ -212,7 +208,8 @@
         ([?\s-q] . dmenu) ;; s-q: Dmenu.
         ([?\s-n] . run-wiremix) ;; s-n: Wiremix.
         ([?\s-b] . run-nmtui) ;; s-b: Nmtui.
-        ([?\s-h] . run-htop) ;; s-h: Htop.			
+        ([?\s-h] . run-htop) ;; s-h: Htop.
+        ([?\s-z] . run-boomer) ;; s-z: Boomer.	
         ([?\s-u] . my/audio-vol-down) ;; s-u: Volume down.
         ([?\s-l] . my/brightness-up) ;; s-l: Brightness up.
         ([?\s-d] . my/brightness-down) ;; s-d: Brightness down.
