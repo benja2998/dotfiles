@@ -148,6 +148,9 @@
 (use-package rust-mode)
 (use-package lua-mode)
 
+(use-package org-superstar)
+(add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
+
 (defun my/audio-vol-up () (interactive)
        (start-process-shell-command
 	"vol-up" nil
@@ -411,7 +414,8 @@
 		   exec-path-from-shell exwm lua-mode marginalia
 		   markdown-mode multiple-cursors
 		   nerd-icons-completion nerd-icons-dired orderless
-		   rust-mode solarized-theme vertico vterm))
+		   org-superstar rust-mode solarized-theme vertico
+		   vterm))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(send-mail-function 'mailclient-send-it)
@@ -441,7 +445,10 @@
  '(ansi-color-white ((t (:foreground "gray90" :background "gray90"))))
  '(ansi-color-yellow ((t (:foreground "yellow3" :background "yellow3"))))
  '(button ((t (:foreground "red" :underline "red"))))
- '(change-log-date ((t (:foreground "dark orange"))))
+ '(change-log-acknowledgment ((t (:foreground "dark orange"))))
+ '(change-log-date ((t (:foreground "orange red"))))
+ '(change-log-email ((t (:foreground "red"))))
+ '(change-log-name ((t (:foreground "red"))))
  '(dired-broken-symlink ((t (:inherit button :foreground "red"))))
  '(dired-directory ((t (:foreground "orange red"))))
  '(doom-modeline-bar ((t (:background "red"))))
@@ -467,6 +474,7 @@
  '(highlight ((t (:background "red" :foreground "#ffffff"))))
  '(line-number ((t (:inherit default :background "#191c1e" :foreground "#fcfcfc"))))
  '(line-number-current-line ((t (:inherit (bold line-number) :background "#23272a" :foreground "#ffffff"))))
+ '(log-view-message ((t (:extend t :foreground "orange red"))))
  '(marginalia-documentation ((t (:inherit modus-themes-slant :foreground "gainsboro"))))
  '(marginalia-string ((t (:foreground "#fcfcfc"))))
  '(markdown-code-face ((t (:inherit modus-themes-fixed-pitch :extend t :background "#141618"))))
@@ -519,6 +527,9 @@
  '(term-color-red ((t (:inherit ansi-color-red :foreground nil :background nil))))
  '(term-color-white ((t (:inherit ansi-color-white :foreground nil :background nil))))
  '(term-color-yellow ((t (:inherit ansi-color-yellow :foreground nil :background nil))))
+ '(vc-dir-file ((t (:foreground "orange red"))))
+ '(vc-dir-header-value ((t (:foreground "red"))))
+ '(vc-dir-status-up-to-date ((t (:foreground "gold"))))
  '(vterm-color-black ((t (:inherit ansi-color-black :foreground nil :background nil))))
  '(vterm-color-blue ((t (:inherit ansi-color-blue :foreground nil :background nil))))
  '(vterm-color-bright-black ((t (:inherit ansi-color-bright-black :foreground nil :background nil))))
@@ -534,7 +545,4 @@
  '(vterm-color-magenta ((t (:inherit ansi-color-magenta :foreground nil :background nil))))
  '(vterm-color-red ((t (:inherit ansi-color-red :foreground nil :background nil))))
  '(vterm-color-white ((t (:inherit ansi-color-white :foreground nil :background nil))))
- '(vterm-color-yellow ((t (:inherit ansi-color-yellow :foreground nil :background nil)))) 
- '(vc-dir-file ((t (:foreground "orange red"))))
- '(vc-dir-header-value ((t (:foreground "red"))))
- '(vc-dir-status-up-to-date ((t (:foreground "gold")))))
+ '(vterm-color-yellow ((t (:inherit ansi-color-yellow :foreground nil :background nil)))))
