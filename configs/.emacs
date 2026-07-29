@@ -192,6 +192,11 @@
   (interactive)
   (eshell-vterm-exec-visual "htop"))
 
+(defun run-librewolf ()
+  (interactive)
+  (start-process-shell-command
+   "librewolf" nil "io.gitlab.librewolf-community"))
+
 (use-package exwm)
 (require 'exwm)
 ;; Set the initial workspace number.
@@ -207,6 +212,7 @@
         ([?\s-p] . my/audio-vol-up) ;; s-p: Volume up.
         ([?\s-q] . dmenu) ;; s-q: Dmenu.
         ([?\s-n] . run-wiremix) ;; s-n: Wiremix.
+        ([?\s-a] . run-librewolf) ;; s-a: Librewolf.	
         ([?\s-b] . run-nmtui) ;; s-b: Nmtui.
         ([?\s-h] . run-htop) ;; s-h: Htop.
         ([?\s-z] . run-boomer) ;; s-z: Boomer.	
