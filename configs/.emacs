@@ -149,30 +149,30 @@
 (use-package lua-mode)
 
 (defun my/audio-vol-up () (interactive)
-  (start-process-shell-command
-   "vol-up" nil
-   "pactl set-sink-volume @DEFAULT_SINK@ +5%"))
+       (start-process-shell-command
+	"vol-up" nil
+	"pactl set-sink-volume @DEFAULT_SINK@ +5%"))
 
 (defun my/audio-vol-down () (interactive)
-  (start-process-shell-command
-   "vol-down" nil
-   "pactl set-sink-volume @DEFAULT_SINK@ -5%"))
+       (start-process-shell-command
+	"vol-down" nil
+	"pactl set-sink-volume @DEFAULT_SINK@ -5%"))
 
 (defun my/audio-mute () (interactive)
-  (start-process-shell-command
-   "vol-mute" nil
-   "pactl set-sink-mute @DEFAULT_SINK@ toggle"))
+       (start-process-shell-command
+	"vol-mute" nil
+	"pactl set-sink-mute @DEFAULT_SINK@ toggle"))
 
 ;; Brightness keys (requires `light`)
 (defun my/brightness-up () (interactive)
-  (start-process-shell-command
-   "bright-up" nil
-   "light -A 5"))
+       (start-process-shell-command
+	"bright-up" nil
+	"light -A 5"))
 
 (defun my/brightness-down () (interactive)
-  (start-process-shell-command
-   "bright-down" nil
-   "light -U 5"))
+       (start-process-shell-command
+	"bright-down" nil
+	"light -U 5"))
 
 (defun run-wiremix ()
   (interactive)
@@ -202,7 +202,7 @@
 (setq exwm-workspace-number 4)
 ;; Make class name the buffer name.
 (add-hook 'exwm-update-class-hook
-  (lambda () (exwm-workspace-rename-buffer exwm-class-name)))
+	  (lambda () (exwm-workspace-rename-buffer exwm-class-name)))
 ;; Global keybindings.
 (setq exwm-input-global-keys
       `(([?\s-r] . exwm-reset) ;; s-r: Reset (to line-mode).
@@ -416,9 +416,108 @@
  '(send-mail-function 'mailclient-send-it)
  '(vc-follow-symlinks t))
 (put 'upcase-region 'disabled nil)
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:background "#202326" :foreground "#fcfcfc"))))
+ '(ansi-color-black ((t (:foreground "#393939" :background "#393939"))))
+ '(ansi-color-blue ((t (:foreground "#4677ff" :background "#4677ff"))))
+ '(ansi-color-bright-black ((t (:foreground "#393939" :background "#393939"))))
+ '(ansi-color-bright-blue ((t (:foreground "#4677ff" :background "#4677ff"))))
+ '(ansi-color-bright-cyan ((t (:foreground "#5bc6f3" :background "#5bc6f3"))))
+ '(ansi-color-bright-green ((t (:foreground "#98cb76" :background "#98cb76"))))
+ '(ansi-color-bright-magenta ((t (:foreground "magenta3" :background "magenta3"))))
+ '(ansi-color-bright-red ((t (:foreground "#ff2d11" :background "#ff2d11"))))
+ '(ansi-color-bright-white ((t (:foreground "gray90" :background "gray90"))))
+ '(ansi-color-bright-yellow ((t (:foreground "yellow3" :background "yellow3"))))
+ '(ansi-color-cyan ((t (:foreground "#5bc6f3" :background "#5bc6f3"))))
+ '(ansi-color-green ((t (:foreground "#98cb76" :background "#98cb76"))))
+ '(ansi-color-magenta ((t (:foreground "magenta3" :background "magenta3"))))
+ '(ansi-color-red ((t (:foreground "#ff2d11" :background "#ff2d11"))))
+ '(ansi-color-white ((t (:foreground "gray90" :background "gray90"))))
+ '(ansi-color-yellow ((t (:foreground "yellow3" :background "yellow3"))))
+ '(button ((t (:foreground "red" :underline "red"))))
+ '(change-log-date ((t (:foreground "dark orange"))))
+ '(dired-broken-symlink ((t (:inherit button :foreground "red"))))
+ '(dired-directory ((t (:foreground "orange red"))))
+ '(doom-modeline-bar ((t (:background "red"))))
+ '(epa-string ((t (:foreground "red"))))
+ '(eshell-ls-archive ((t (:foreground "dark orange"))))
+ '(eshell-ls-directory ((t (:foreground "orange red"))))
+ '(eshell-ls-executable ((t (:foreground "gold"))))
+ '(eshell-ls-special ((t (:foreground "tomato"))))
+ '(font-lock-builtin-face ((t (:inherit modus-themes-bold :foreground "orange red"))))
+ '(font-lock-comment-face ((t (:inherit modus-themes-slant :foreground "#525961"))))
+ '(font-lock-constant-face ((t (:foreground "red"))))
+ '(font-lock-doc-face ((t (:inherit modus-themes-slant :foreground "red"))))
+ '(font-lock-doc-markup-face ((t (:inherit modus-themes-slant :foreground "red"))))
+ '(font-lock-function-name-face ((t (:foreground "orange red"))))
+ '(font-lock-keyword-face ((t (:inherit modus-themes-bold :foreground "light coral"))))
+ '(font-lock-preprocessor-face ((t (:foreground "orange red"))))
+ '(font-lock-regexp-grouping-backslash ((t (:inherit modus-themes-bold :foreground "orange"))))
+ '(font-lock-regexp-grouping-construct ((t (:inherit modus-themes-bold :foreground "orange"))))
+ '(font-lock-string-face ((t (:foreground "red"))))
+ '(font-lock-type-face ((t (:inherit modus-themes-bold :foreground "orange red"))))
+ '(font-lock-variable-name-face ((t (:foreground "tomato"))))
+ '(fringe ((t (:background "#202326" :foreground "#fcfcfc"))))
+ '(highlight ((t (:background "red" :foreground "#ffffff"))))
+ '(line-number ((t (:inherit default :background "#191c1e" :foreground "#fcfcfc"))))
+ '(line-number-current-line ((t (:inherit (bold line-number) :background "#23272a" :foreground "#ffffff"))))
+ '(marginalia-documentation ((t (:inherit modus-themes-slant :foreground "gainsboro"))))
+ '(marginalia-string ((t (:foreground "#fcfcfc"))))
+ '(markdown-code-face ((t (:inherit modus-themes-fixed-pitch :extend t :background "#141618"))))
+ '(mode-line ((t (:inherit modus-themes-ui-variable-pitch :background "#191c1e" :foreground "#fcfcfc" :box (:line-width (1 . 1) :color "#191c1e")))))
+ '(mode-line-inactive ((t (:inherit modus-themes-ui-variable-pitch :background "#1d2123" :foreground "#e6e6e6" :box (:line-width (1 . 1) :color "#1d2123")))))
+ '(modus-themes-completion-match-0 ((t (:inherit bold :foreground "orange"))) t)
+ '(modus-themes-completion-selected ((t (:inherit bold :background "red"))) t)
+ '(modus-themes-heading-0 ((t (:inherit bold :foreground "red"))) t)
+ '(modus-themes-heading-1 ((t (:inherit bold :foreground "red"))) t)
+ '(modus-themes-heading-2 ((t (:inherit bold :foreground "red"))) t)
+ '(modus-themes-heading-3 ((t (:inherit bold :foreground "red"))) t)
+ '(modus-themes-heading-4 ((t (:inherit bold :foreground "red"))) t)
+ '(modus-themes-heading-5 ((t (:inherit bold :foreground "red"))) t)
+ '(modus-themes-heading-6 ((t (:inherit bold :foreground "red"))) t)
+ '(modus-themes-heading-7 ((t (:inherit bold :foreground "red"))) t)
+ '(modus-themes-heading-8 ((t (:inherit bold :foreground "red"))) t)
+ '(modus-themes-prompt ((t (:foreground "orange red"))) t)
+ '(modus-themes-prose-code ((t (:inherit modus-themes-fixed-pitch :foreground "orange"))) t)
+ '(modus-themes-search-current ((t (:background "red" :foreground "#ffffff"))) t)
+ '(modus-themes-search-lazy ((t (:background "red" :foreground "#ffffff"))) t)
+ '(org-agenda-date ((t (:inherit bold :foreground "orange red"))))
+ '(org-block ((t (:inherit modus-themes-fixed-pitch :extend t :background "#141618"))))
+ '(org-block-begin-line ((t (:inherit modus-themes-fixed-pitch :extend t :background "#141618" :foreground "#989898"))))
+ '(org-checkbox ((t (:inherit modus-themes-fixed-pitch :foreground "orange red"))))
+ '(org-column ((t (:inherit default :background "#141618"))))
+ '(org-date ((t (:inherit modus-themes-fixed-pitch :foreground "orange red"))))
+ '(org-date-selected ((t (:foreground "red" :inverse-video t))))
+ '(org-done ((t (:foreground "orange red"))))
+ '(org-level-1 ((t (:inherit outline-1 :height 1.25))))
+ '(org-level-2 ((t (:inherit outline-2 :height 1.2))))
+ '(org-level-3 ((t (:inherit outline-3 :height 1.15))))
+ '(org-level-4 ((t (:inherit outline-4 :height 1.1))))
+ '(org-level-5 ((t (:inherit outline-5 :height 1.05))))
+ '(org-tag ((t (:foreground "orange"))))
+ '(success ((t (:inherit bold :foreground "gold"))))
+ '(term ((t (:background "#202326" :foreground "#fcfcfc"))))
+ '(term-color-black ((t (:inherit ansi-color-black :foreground nil :background nil))))
+ '(term-color-blue ((t (:inherit ansi-color-blue :foreground nil :background nil))))
+ '(term-color-bright-black ((t (:inherit ansi-color-bright-black :foreground nil :background nil))))
+ '(term-color-bright-blue ((t (:inherit ansi-color-bright-blue :foreground nil :background nil))))
+ '(term-color-bright-cyan ((t (:inherit ansi-color-bright-cyan :foreground nil :background nil))))
+ '(term-color-bright-green ((t (:inherit ansi-color-bright-green :foreground nil :background nil))))
+ '(term-color-bright-magenta ((t (:inherit ansi-color-bright-magenta :foreground nil :background nil))))
+ '(term-color-bright-red ((t (:inherit ansi-color-bright-red :foreground nil :background nil))))
+ '(term-color-bright-white ((t (:inherit ansi-color-bright-white :foreground nil :background nil))))
+ '(term-color-bright-yellow ((t (:inherit ansi-color-bright-yellow :foreground nil :background nil))))
+ '(term-color-cyan ((t (:inherit ansi-color-cyan :foreground nil :background nil))))
+ '(term-color-green ((t (:inherit ansi-color-green :foreground nil :background nil))))
+ '(term-color-magenta ((t (:inherit ansi-color-magenta :foreground nil :background nil))))
+ '(term-color-red ((t (:inherit ansi-color-red :foreground nil :background nil))))
+ '(term-color-white ((t (:inherit ansi-color-white :foreground nil :background nil))))
+ '(term-color-yellow ((t (:inherit ansi-color-yellow :foreground nil :background nil))))
+ '(vc-dir-file ((t (:foreground "orange red"))))
+ '(vc-dir-header-value ((t (:foreground "red"))))
+ '(vc-dir-status-up-to-date ((t (:foreground "gold")))))
