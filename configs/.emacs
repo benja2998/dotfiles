@@ -351,11 +351,6 @@
 (when (daemonp) (exec-path-from-shell-initialize))
 (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
 
-(add-hook 'org-mode-hook #'(lambda ()
-			     (visual-line-mode t)
-			     (org-indent-mode t)
-			     ))
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
