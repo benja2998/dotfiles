@@ -6,7 +6,7 @@ alias ll ls -larth $*
 alias ff find-file $1
 alias e find-file-other-window $1
 alias d dired $1
-alias gd vc-diff
+alias gd (call-interactively 'vc-root-diff)
 alias gc git commit -m $*
 alias gp git push
 alias ga git add -A
@@ -17,6 +17,5 @@ alias ytsearch yt-dlp --no-download --print-to-file "before_dl:%(id)s  # [Durati
 alias ytns yt-dlp --sponsorblock-remove all $*
 alias clear clear-scrollback
 alias cls clear-scrollback
-alias gl git log --reverse
-alias gls git log --reverse --show-signature
+alias gl vc-print-root-log
 alias gt git tag $*
