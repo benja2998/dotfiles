@@ -1,12 +1,17 @@
 ;; -*- lexical-binding: t; -*-
 
+;;; For future customizations
 (require 'eshell)
 
+;;; Local packages
 (add-to-list 'load-path (concat user-emacs-directory "local/"))
 
+;;; Major mode for editing KeePassXC database files
+;; dotfiles/configs/.emacs.d/local/keepass-mode.el
 (require 'keepass-mode)
 
 (defun daily-note ()
+  "Open today's daily note"
   (interactive)
   (setq current-date-file (concat "~/Documents/Notes/" (format-time-string "%Y" (current-time)) "/" (format-time-string "%d-%m-%Y" (current-time)) ".org"))
   (setq current-date (format-time-string "%d-%m-%Y" (current-time)))
@@ -16,34 +21,38 @@
   )
 
 (defun todo-note ()
+  "Open todo.org note"
   (interactive)
   (find-file "~/Documents/Notes/todo.org")
   )
 
 (defun dired-videos ()
+  "Open videos directory"
   (interactive)
   (dired "~/Videos")
   )
 
 (defun dired-music ()
+  "Open music directory"
   (interactive)
   (dired "~/Music")
   )
 
+;;; Smooth scrolling with mouse or trackpad
 (pixel-scroll-precision-mode t)
 
+;;; Bind-key is the modern way to bind keys
 (require 'bind-key)
+
+;;; Keybinds
 (bind-key* "C-c nt" 'daily-note)
-;; (bind-key* "M-h" 'windmove-left)
-;; (bind-key* "M-j" 'windmove-down)
-;; (bind-key* "M-k" 'windmove-up)
-;; (bind-key* "M-l" 'windmove-right)
 (bind-key* "C-c tn" 'todo-note)
 (bind-key* "C-c ne" 'org-agenda-list)
 (bind-key* "C-c ny" 'dired-videos)
 (bind-key* "C-c nm" 'dired-music)
 (bind-key* "C-c re" 'eglot-format-buffer)
 
+;;; Better than using Meta + Arrows
 (with-eval-after-load 'org
   (bind-key "M-l" #'org-do-demote 'org-mode-map)
   (bind-key "M-h" #'org-do-promote 'org-mode-map))
@@ -54,44 +63,57 @@
   (execute-kbd-macro (kbd "cls RET"))
   )
 
+;;; Fix for eshell-mode-map not working immediately
 (defun bind-eshell-clear-mode-map ()
   (interactive)
   (bind-key "C-l" #'eshell-clear 'eshell-mode-map)
   )
-
 (add-hook 'emacs-startup-hook #'bind-eshell-clear-mode-map)
 
+;;; Infinite history
 (setq eshell-history-size 999999)
 
+;;; Neofetch-like program for the Eshell
+;; dotfiles/configs/.emacs.d/local/neofetch.el
 (require 'neofetch)
 
+;;; Respect editorconfig files
 (editorconfig-mode t)
 
+;;; LSP setup
 (require 'eglot)
 (add-hook 'prog-mode-hook #'eglot-ensure)
 
+;;; Automatically revert buffers
 (global-auto-revert-mode t)
 
+;;; Eglot keybinds
 (bind-key* "C-c s" 'eglot-code-actions)
 (bind-key* "C-c C-r" 'eglot-rename)
 
 (defun dired-notes ()
+  "Open notes directory"
   (interactive)
   (dired "~/Documents/Notes")
   )
 
 (defun dired-home ()
+  "Open home directory"
   (interactive)
   (dired "~")
   )
 
+;;; Keybinds
 (bind-key* "C-c nh" 'dired-home)
 (bind-key* "C-c nd" 'dired-notes)
 
+;;; Which-key (built into emacs)
 (which-key-mode t)
 
+;;; Auto-follow symlinks
 (setq vc-follow-symlinks t)
 
+;;; Clean up the UI
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -103,9 +125,9 @@
 (setq inhibit-splash-screen t)
 (setq-default indent-tabs-mode t)
 
+;;; Make emacs not annoying
 (dolist (dir '("auto-save" "locks" "backups"))
   (make-directory (expand-file-name dir user-emacs-directory) t))
-
 (setq auto-save-file-name-transforms
       `((".*" ,(concat user-emacs-directory "auto-save/") t)))
 (setq lock-file-name-transforms
@@ -114,6 +136,7 @@
       `(("." . ,(expand-file-name
                  (concat user-emacs-directory "backups")))))
 
+;;; Font
 (add-to-list 'default-frame-alist '(font . "Terminess Nerd Font:pixelsize=24"))
 
 (setq display-line-numbers-type 'relative)
@@ -329,7 +352,9 @@
 (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
 
 (add-hook 'org-mode-hook #'(lambda ()
-			     (visual-line-mode t)))
+			     (visual-line-mode t)
+			     (org-indent-mode t)
+			     ))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
