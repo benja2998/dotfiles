@@ -6,6 +6,9 @@
 ;;; Local packages
 (add-to-list 'load-path (concat user-emacs-directory "local/"))
 
+;;; Neofetch
+(ignore-error t (require 'neofetch))
+
 (defun daily-note ()
   "Open today's daily note"
   (interactive)
@@ -68,10 +71,6 @@
 
 ;;; Infinite history
 (setq eshell-history-size 999999)
-
-;;; Neofetch-like program for the Eshell
-;; dotfiles/configs/.emacs.d/local/neofetch.el
-(require 'neofetch)
 
 ;;; Respect editorconfig files
 (editorconfig-mode t)
@@ -435,13 +434,10 @@
  '(marginalia-mode t)
  '(org-agenda-files '("~/Documents/Notes/"))
  '(package-selected-packages
-   '(all-the-icons catppuccin-theme colorful-mode company dmenu
-		   doom-modeline doom-themes eshell-prompt-extras
+   '(colorful-mode company dmenu doom-themes eshell-prompt-extras
 		   exec-path-from-shell exwm lua-mode marginalia
-		   markdown-mode multiple-cursors
-		   nerd-icons-completion nerd-icons-dired orderless
-		   org-superstar package-lint rust-mode
-		   solarized-theme vertico vterm))
+		   markdown-mode multiple-cursors neofetch orderless
+		   org-superstar package-lint rust-mode vertico vterm))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(safe-local-variable-values
