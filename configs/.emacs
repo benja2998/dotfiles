@@ -353,8 +353,10 @@
 (when (daemonp) (exec-path-from-shell-initialize))
 (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
 
-(add-hook 'org-mode-hook #'(lambda ()
-			     (visual-line-mode t)))
+(add-hook 'org-mode-hook (lambda ()
+			   (setq word-wrap t)
+			   (setq truncate-lines nil)
+			   (setq truncate-partial-width-windows nil)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -448,7 +450,9 @@
 		 (require 'package-recipe-mode nil t)))
 	   (package-recipe-mode))))
  '(send-mail-function 'mailclient-send-it)
- '(vc-follow-symlinks t))
+ '(truncate-lines nil)
+ '(vc-follow-symlinks t)
+ '(word-wrap t))
 (put 'upcase-region 'disabled nil)
 
 (custom-set-faces
