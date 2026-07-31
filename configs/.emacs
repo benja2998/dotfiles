@@ -226,7 +226,7 @@
 (use-package exwm)
 (require 'exwm)
 ;; Set the initial workspace number.
-(setq exwm-workspace-number 4)
+(setq exwm-workspace-number 1)
 ;; Make class name the buffer name.
 (add-hook 'exwm-update-class-hook
 	  (lambda () (exwm-workspace-rename-buffer exwm-class-name)))
