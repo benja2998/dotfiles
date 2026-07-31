@@ -166,6 +166,7 @@
 (global-company-mode t)
 (use-package rust-mode)
 (use-package lua-mode)
+(use-package package-lint)
 
 (use-package org-superstar)
 (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
@@ -439,10 +440,17 @@
 		   exec-path-from-shell exwm lua-mode marginalia
 		   markdown-mode multiple-cursors
 		   nerd-icons-completion nerd-icons-dired orderless
-		   org-superstar rust-mode solarized-theme vertico
-		   vterm))
+		   org-superstar package-lint rust-mode
+		   solarized-theme vertico vterm))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
+ '(safe-local-variable-values
+   '((eval and buffer-file-name
+	   (not (eq major-mode 'package-recipe-mode))
+	   (or (require 'package-recipe-mode nil t)
+	       (let ((load-path (cons "../package-build" load-path)))
+		 (require 'package-recipe-mode nil t)))
+	   (package-recipe-mode))))
  '(send-mail-function 'mailclient-send-it)
  '(vc-follow-symlinks t))
 (put 'upcase-region 'disabled nil)
