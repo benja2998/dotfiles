@@ -6,10 +6,6 @@
 ;;; Local packages
 (add-to-list 'load-path (concat user-emacs-directory "local/"))
 
-;;; Major mode for editing KeePassXC database files
-;; dotfiles/configs/.emacs.d/local/keepass-mode.el
-(require 'keepass-mode)
-
 (defun daily-note ()
   "Open today's daily note"
   (interactive)
