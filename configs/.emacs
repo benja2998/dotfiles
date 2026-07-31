@@ -222,6 +222,11 @@
   (start-process-shell-command
    "librewolf" nil "io.gitlab.librewolf-community"))
 
+(defun run-flameshot ()
+  (interactive)
+  (start-process-shell-command
+   "flameshot" nil "flameshot gui"))
+
 (use-package exwm)
 (require 'exwm)
 ;; Set the initial workspace number.
@@ -234,6 +239,7 @@
       `(([?\s-r] . exwm-reset) ;; s-r: Reset (to line-mode).
         ([?\s-w] . exwm-workspace-switch) ;; s-w: Switch workspace.
         ([?\s-i] . exwm-input-toggle-keyboard) ;; s-i: Toggle char mode.
+        ([?\s-j] . run-flameshot) ;; s-j: Run flameshot
         ([?\s-p] . my/audio-vol-up) ;; s-p: Volume up.
         ([?\s-q] . dmenu) ;; s-q: Dmenu.
         ([?\s-n] . run-wiremix) ;; s-n: Wiremix.
