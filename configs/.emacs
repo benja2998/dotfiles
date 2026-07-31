@@ -457,6 +457,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:background "#202326" :foreground "#fcfcfc"))))
+ '(Man-overstrike ((t (:inherit bold :foreground "orange red"))))
+ '(Man-underline ((t (:foreground "red" :underline t))))
  '(ansi-color-black ((t (:foreground "#393939" :background "#393939"))))
  '(ansi-color-blue ((t (:foreground "#4677ff" :background "#4677ff"))))
  '(ansi-color-bright-black ((t (:foreground "#393939" :background "#393939"))))
@@ -508,6 +510,7 @@
  '(marginalia-documentation ((t (:inherit modus-themes-slant :foreground "gainsboro"))))
  '(marginalia-string ((t (:foreground "#fcfcfc"))))
  '(markdown-code-face ((t (:inherit modus-themes-fixed-pitch :extend t :background "#141618"))))
+ '(mm-command-output ((t (:foreground "orange red"))))
  '(mode-line ((t (:inherit modus-themes-ui-variable-pitch :background "#191c1e" :foreground "#fcfcfc" :box (:line-width (1 . 1) :color "#191c1e")))))
  '(mode-line-inactive ((t (:inherit modus-themes-ui-variable-pitch :background "#1d2123" :foreground "#e6e6e6" :box (:line-width (1 . 1) :color "#1d2123")))))
  '(modus-themes-completion-match-0 ((t (:inherit bold :foreground "orange"))) t)
