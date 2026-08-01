@@ -37,18 +37,6 @@
   (dired "~/Music")
   )
 
-;;; Eshell shared history
-;; https://emacs.stackexchange.com/questions/18564/merge-history-from-multiple-eshells
-(setq eshell-save-history-on-exit nil)
-(defun eshell-append-history ()
-  "Call `eshell-write-history' with the `append' parameter set to `t'."
-  (when eshell-history-ring
-    (let ((newest-cmd-ring (make-ring 1)))
-      (ring-insert newest-cmd-ring (car (ring-elements eshell-history-ring)))
-      (let ((eshell-history-ring newest-cmd-ring))
-        (eshell-write-history eshell-history-file-name t)))))
-(add-hook eshell-pre-command-hook #'eshell-append-history)
-
 ;;; Smooth scrolling with mouse or trackpad
 (pixel-scroll-precision-mode t)
 
