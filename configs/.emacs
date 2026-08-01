@@ -432,6 +432,7 @@
 	 (concat "GPG_TTY="
 		 (shell-command-to-string "/bin/sh tty 2>/dev/null"))))
        (t)]))
+ '(eshell-visual-subcommands '(("git" "log" "diff" "show")))
  '(evil-undo-system 'undo-redo)
  '(marginalia-mode t)
  '(org-agenda-files '("~/Documents/Notes/"))
