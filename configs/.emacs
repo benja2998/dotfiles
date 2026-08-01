@@ -54,6 +54,12 @@
 (bind-key* "C-c nm" 'dired-music)
 (bind-key* "C-c re" 'eglot-format-buffer)
 
+;;; Window navigation
+(bind-key* "C-M-h" 'windmove-left)
+(bind-key* "C-M-j" 'windmove-down)
+(bind-key* "C-M-k" 'windmove-up)
+(bind-key* "C-M-l" 'windmove-right)
+
 ;;; Better than using Meta + Arrows
 (with-eval-after-load 'org
   (bind-key "M-l" #'org-do-demote 'org-mode-map)
@@ -74,6 +80,14 @@
 
 ;;; Infinite history
 (setq eshell-history-size 999999)
+
+;;; Shared history in the eshell
+(setq eshell-history-append t)
+(setq eshell-save-history-on-exit nil)
+(setq eshell-hist-ignoredups t)
+(add-hook 'eshell-pre-command-hook (lambda ()
+				     (eshell-write-history eshell-history-file-name t)
+				     (eshell-read-history eshell-history-file-name t)))
 
 ;;; Respect editorconfig files
 (editorconfig-mode t)
