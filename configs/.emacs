@@ -40,6 +40,9 @@
 ;;; Smooth scrolling with mouse or trackpad
 (pixel-scroll-precision-mode t)
 
+;;; Scroll conservatively
+(setq scroll-conservatively 101)
+
 ;;; Bind-key is the modern way to bind keys
 (require 'bind-key)
 
