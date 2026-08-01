@@ -246,6 +246,7 @@
         ([?\s-a] . run-librewolf) ;; s-a: Librewolf.	
         ([?\s-b] . run-nmtui) ;; s-b: Nmtui.
         ([?\s-h] . run-htop) ;; s-h: Htop.
+        ([?\s-c] . exwm-workspace-move-window) ;; s-c: Move window to workspace.
         ([?\s-z] . run-boomer) ;; s-z: Boomer.	
         ([?\s-u] . my/audio-vol-down) ;; s-u: Volume down.
         ([?\s-l] . my/brightness-up) ;; s-l: Brightness up.
