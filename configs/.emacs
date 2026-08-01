@@ -158,6 +158,7 @@
 (bind-key* "C-c y w l" 'mc/mark-all-words-like-this)
 (bind-key* "C-c y s l" 'mc/mark-all-symbols-like-this)
 
+(use-package magit)
 (use-package dmenu)
 (use-package markdown-mode)
 (use-package exec-path-from-shell)
@@ -438,7 +439,7 @@
  '(org-agenda-files '("~/Documents/Notes/"))
  '(package-selected-packages
    '(colorful-mode company dmenu doom-themes eshell-prompt-extras
-		   exec-path-from-shell exwm lua-mode marginalia
+		   exec-path-from-shell exwm lua-mode magit marginalia
 		   markdown-mode multiple-cursors neofetch orderless
 		   org-superstar package-lint rust-mode vertico vterm))
  '(read-buffer-completion-ignore-case t)
@@ -512,6 +513,10 @@
  '(line-number ((t (:inherit default :background "#191c1e" :foreground "#fcfcfc"))))
  '(line-number-current-line ((t (:inherit (bold line-number) :background "#23272a" :foreground "#ffffff"))))
  '(log-view-message ((t (:extend t :foreground "orange red"))))
+ '(magit-blame-highlight ((t (:extend t :background "#2d3135" :foreground "#ffffff"))))
+ '(magit-diff-file-heading-highlight ((t (:inherit magit-diff-file-heading :background "#2d3135"))))
+ '(magit-diff-hunk-heading ((t (:extend t :background "#2d3135"))))
+ '(magit-section-highlight ((t (:extend t :background "#2d3135"))))
  '(marginalia-documentation ((t (:inherit modus-themes-slant :foreground "gainsboro"))))
  '(marginalia-string ((t (:foreground "#fcfcfc"))))
  '(markdown-code-face ((t (:inherit modus-themes-fixed-pitch :extend t :background "#141618"))))
