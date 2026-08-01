@@ -22,8 +22,12 @@ rm -rf ~/.emacs
 cd ~
 mkdir -p tmp
 cd tmp
-curl -fsSL https://github.com/benja2998/dotfiles/archive/refs/heads/main.zip -o main.zip
+curl -fsSL https://codeberg.org/benja2998/dotfiles/archive/main.zip -o main.zip
 unzip main.zip
-mv ~/tmp/dotfiles-main/configs/.emacs ~/.emacs
+mv ~/tmp/dotfiles/configs/.emacs ~/.emacs
+mkdir -p ~/.emacs.d/eshell/
+rm -r ~/.emacs.d/local/
+mv ~/tmp/dotfiles/configs/.emacs.d/local/ ~/.emacs.d/local/
+mv ~/tmp/dotfiles/configs/.emacs.d/eshell/alias ~/.emacs.d/eshell/alias 
 cd ~
 rm -rf tmp
