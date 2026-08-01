@@ -132,7 +132,10 @@
                  (concat user-emacs-directory "backups")))))
 
 ;;; Font
-(add-to-list 'default-frame-alist '(font . "Terminess Nerd Font:pixelsize=24"))
+(cond ((eq system-type 'gnu/linux)
+       (add-to-list 'default-frame-alist '(font . "Terminess Nerd Font:pixelsize=24")))
+      ((eq system-type 'android)
+       (add-to-list 'default-frame-alist '(font . "monospace-24"))))
 
 (setq display-line-numbers-type 'relative)
 
