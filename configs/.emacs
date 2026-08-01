@@ -158,7 +158,6 @@
 (bind-key* "C-c y w l" 'mc/mark-all-words-like-this)
 (bind-key* "C-c y s l" 'mc/mark-all-symbols-like-this)
 
-(use-package magit)
 (use-package dmenu)
 (use-package markdown-mode)
 (use-package exec-path-from-shell)
@@ -439,7 +438,7 @@
  '(org-agenda-files '("~/Documents/Notes/"))
  '(package-selected-packages
    '(colorful-mode company dmenu doom-themes eshell-prompt-extras
-		   exec-path-from-shell exwm lua-mode magit marginalia
+		   exec-path-from-shell exwm lua-mode marginalia
 		   markdown-mode multiple-cursors neofetch orderless
 		   org-superstar package-lint rust-mode vertico vterm))
  '(read-buffer-completion-ignore-case t)
