@@ -221,6 +221,11 @@
   (start-process-shell-command
    "librewolf" nil "io.gitlab.librewolf-community"))
 
+(defun run-xsecurelock ()
+  (interactive)
+  (start-process-shell-command
+   "xsecurelock" nil "xsecurelock"))
+
 (defun run-flameshot ()
   (interactive)
   (start-process-shell-command
@@ -247,7 +252,8 @@
         ([?\s-b] . run-nmtui) ;; s-b: Nmtui.
         ([?\s-h] . run-htop) ;; s-h: Htop.
         ([?\s-c] . exwm-workspace-move-window) ;; s-c: Move window to workspace.
-        ([?\s-z] . run-boomer) ;; s-z: Boomer.	
+        ([?\s-z] . run-boomer) ;; s-z: Boomer.
+	([?\s-y] . run-xsecurelock) ;; s-y: Xsecurelock.
         ([?\s-u] . my/audio-vol-down) ;; s-u: Volume down.
         ([?\s-l] . my/brightness-up) ;; s-l: Brightness up.
         ([?\s-d] . my/brightness-down) ;; s-d: Brightness down.
