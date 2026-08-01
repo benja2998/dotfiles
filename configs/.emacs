@@ -266,6 +266,7 @@
 
 (setq display-time-format "%Y-%m-%d %a %H:%M")
 (display-time-mode 1)
+(display-battery-mode 1)
 
 (cond ((eq system-type 'gnu/linux)
        (exwm-wm-mode)
