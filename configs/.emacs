@@ -52,7 +52,6 @@
 (bind-key* "C-c ne" 'org-agenda-list)
 (bind-key* "C-c ny" 'dired-videos)
 (bind-key* "C-c nm" 'dired-music)
-(bind-key* "C-c re" 'eglot-format-buffer)
 
 ;;; Window navigation
 (bind-key* "C-M-h" 'windmove-left)
@@ -92,16 +91,8 @@
 ;;; Respect editorconfig files
 (editorconfig-mode t)
 
-;;; LSP setup
-(require 'eglot)
-(add-hook 'prog-mode-hook #'eglot-ensure)
-
 ;;; Automatically revert buffers
 (global-auto-revert-mode t)
-
-;;; Eglot keybinds
-(bind-key* "C-c s" 'eglot-code-actions)
-(bind-key* "C-c C-r" 'eglot-rename)
 
 (defun dired-notes ()
   "Open notes directory"
@@ -181,8 +172,6 @@
 (use-package dmenu)
 (use-package markdown-mode)
 (use-package exec-path-from-shell)
-(use-package company)
-(global-company-mode t)
 (use-package rust-mode)
 (use-package lua-mode)
 (use-package package-lint)
@@ -307,54 +296,6 @@
   :config
   (eshell-vterm-mode))
 
-;; Enable Vertico.
-(use-package vertico
-  :custom
-  ;; (vertico-scroll-margin 0) ;; Different scroll margin
-  (vertico-count 20) ;; Show more candidates
-  ;; (vertico-resize t) ;; Grow and shrink the Vertico minibuffer
-  ;; (vertico-cycle t) ;; Enable cycling for `vertico-next/previous'
-  :init
-  (vertico-mode))
-
-;; Emacs minibuffer configurations.
-(use-package emacs
-  :custom
-  ;; Enable context menu. `vertico-multiform-mode' adds a menu in the minibuffer
-  ;; to switch display modes.
-  (context-menu-mode t)
-  ;; Support opening new minibuffers from inside existing minibuffers.
-  (enable-recursive-minibuffers t)
-  ;; Hide commands in M-x which do not work in the current mode.  Vertico
-  ;; commands are hidden in normal buffers. This setting is useful beyond
-  ;; Vertico.
-  (read-extended-command-predicate #'command-completion-default-include-p)
-  ;; Do not allow the cursor in the minibuffer prompt
-  (minibuffer-prompt-properties
-   '(read-only t cursor-intangible t face minibuffer-prompt)))
-
-;; Enable rich annotations using the Marginalia package
-(use-package marginalia
-  ;; Bind `marginalia-cycle' locally in the minibuffer.  To make the binding
-  ;; available in the *Completions* buffer, add it to the
-  ;; `completion-list-mode-map'.
-  :bind (:map minibuffer-local-map
-              ("M-A" . marginalia-cycle))
-
-  ;; The :init section is always executed.
-  :init
-
-  ;; Marginalia must be activated in the :init section of use-package such that
-  ;; the mode gets enabled right away. Note that this forces loading the
-  ;; package.
-  (marginalia-mode))
-
-(use-package orderless
-  :ensure t
-  :custom
-  (completion-styles '(orderless basic))
-  (completion-category-overrides '((file (styles partial-completion))))
-  (completion-pcm-leading-wildcard t)) ;; Emacs 31: partial-completion behaves like substring
 (use-package colorful-mode
   :custom
   (colorful-use-prefix t)
@@ -368,9 +309,6 @@
   (autoload 'epe-theme-lambda "eshell-prompt-extras")
   (setq eshell-highlight-prompt nil
         eshell-prompt-function 'epe-theme-lambda))
-
-
-(use-package doom-themes)
 
 (bind-key* "C-c e" 'eshell)
 
@@ -462,14 +400,11 @@
 		 (shell-command-to-string "/bin/sh tty 2>/dev/null"))))
        (t)]))
  '(eshell-visual-subcommands '(("git" "log" "diff" "show")))
- '(evil-undo-system 'undo-redo)
- '(marginalia-mode t)
  '(org-agenda-files '("~/Documents/Notes/"))
  '(package-selected-packages
-   '(colorful-mode company dmenu doom-themes eshell-prompt-extras
-		   exec-path-from-shell exwm lua-mode marginalia
-		   markdown-mode multiple-cursors neofetch orderless
-		   org-superstar package-lint rust-mode vertico vterm))
+   '(colorful-mode dmenu eshell-prompt-extras exec-path-from-shell exwm
+		   lua-mode markdown-mode multiple-cursors neofetch
+		   org-superstar package-lint rust-mode vterm))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(safe-local-variable-values
