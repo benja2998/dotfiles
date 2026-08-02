@@ -7,7 +7,7 @@
 (add-to-list 'load-path (concat user-emacs-directory "local/"))
 
 ;;; Theme
-(load-theme 'modus-operandi-tinted t)
+(load-theme 'modus-vivendi t)
 
 ;;; Neofetch
 (ignore-error t (require 'neofetch))
@@ -348,9 +348,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes '(modus-operandi-tinted))
+ '(custom-enabled-themes '(modus-vivendi))
  '(custom-safe-themes
-   '("138ed99a323c1b93c52f4b3726caf2bc634b79a76fa63a3d3aff76394db5f28f"
+   '("6dcc66a60dce37a5817d46e7b1f838ac5d95a79061119adeb7c04c7ae9f511d0"
+     "967c23e9ba179b80560774419f081df22e7674aac23c5c550b817e4a1ce7d058"
+     "2493d0ad0bb94bd2ad297a6d76288751a532fd6d8d6af694ac14008caa6b7fa2"
+     "138ed99a323c1b93c52f4b3726caf2bc634b79a76fa63a3d3aff76394db5f28f"
      "e4a702e262c3e3501dfe25091621fe12cd63c7845221687e36a79e17cf3a67e0"
      "921f165deb8030167d44eaa82e85fcef0254b212439b550a9b6c924f281b5695"
      "088cd6f894494ac3d4ff67b794467c2aa1e3713453805b93a8bcb2d72a0d1b53"
