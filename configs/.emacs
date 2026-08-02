@@ -6,9 +6,6 @@
 ;;; Local packages
 (add-to-list 'load-path (concat user-emacs-directory "local/"))
 
-;;; Theme
-(load-theme 'modus-vivendi t)
-
 ;;; Neofetch
 (ignore-error t (require 'neofetch))
 
@@ -351,9 +348,49 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes '(modus-vivendi))
+ '(custom-enabled-themes '(my-awesome))
  '(custom-safe-themes
-   '("6dcc66a60dce37a5817d46e7b1f838ac5d95a79061119adeb7c04c7ae9f511d0"
+   '("8ee5b9738238bb0f1ce4bf44c68b2f5ad3ec882aa685660c221fdb86295b9ab9"
+     "5c93585acf49359214683112a6e0041b9e5a0d4685b438c2f355365e9272a608"
+     "e328d3997194801d0acc774719292c95d4f0d7ea08c012eef4d132ed610d5f63"
+     "51c37ecb855d4406c6f54e34318bc44f49d391783d776f8fa1fd90f087efcba6"
+     "c303f4e7b6db88594b5e49c52dc219deba3b3dd37d64dec37ec6cc6e48b21a74"
+     "56c2c378f2fe325f24a6ecb489031b87f92db11594c30934c13290cdca507b4f"
+     "7c52d9282d76464307a1ac97e088712c6a77dbd6838d0f16a5b5a25a0e55cb30"
+     "5115d93551ce8a20e4001adfd634b99ef82c2b640bec5f9005044bb27f8c8ed1"
+     "93ff405064f8eaaf14b80a8383b7a87792b6fb418618c62a0ababf916f37147b"
+     "8c56c73d68243c2e1904a670ec65330a8236defa09a5e6eced0fff2025436d8c"
+     "9b3403c6d09266ca657435332540e0d1773b5afc7b52e0ab3a299d8b999e4504"
+     "b800c09fcc5ce7c2118fe8b0e84e0036b1b8bc55c94ec7e6edc3478fa25b001e"
+     "ed826e444dc1b8ecba80717ffbdeb409b5f0b00fd36d8f9cbb235daef5bd8f84"
+     "d987ace513225e2491cf802fafe1fbfc451879e72574d1f7b40096e2899a7612"
+     "9e15309919fa41172aea4b7eabf4ffa1adeb6a268c0908d642ae8f5eebb4252f"
+     "74b6b50f439b7130e82c23c465107edbfd2ea05fe78ab89bf76d4c9282bc8a3c"
+     "1474a963df8ad6666dd0be87a88ea8094a895170393f9d90c8002c2c8507c903"
+     "4255aa6ff06dbb0c38882e3404ac39a18115138329eb69cf51633e6c86895a2e"
+     "e58bb0cbe01bd18a133d95f338467f53cc2a64a9b1a1d9ba0f8d216c25df4a81"
+     "a202afe8067ad0eaca4a4bfcff7f37a58ad108f003fc745ca56b84870db0043f"
+     "1e9d61401dc55d78df4ef4f24970b362a229d681bfb60ad8f318590d0eb9f5ef"
+     "07236961880bc97796bbb9a0dedc7f208188702e4f5df414c6c9906e5187d756"
+     "511b9b4a2e5ecffd0691a464da391f6596925200ed9f3d419d8845d72905beda"
+     "587fcbc2ed0c74149f24c1c32a959d4604ecdf54622a703228f500902709b803"
+     "e2ed032eaf79a2946db46371a5ddc75968b00315935c6327b7c77b04ec0a9abb"
+     "d480d152107e0c061f713f439c7571674c97afd9a1883355bcf7c15bce1213e7"
+     "f493c29a38b415943bb357f4e0da0ca4793d9fa7d8a00d36c9717af180e80f0c"
+     "3e058e6926e138ea927c0a64d5f24fd056c2ee2a7fc90d8e4614f17ae556349f"
+     "0da1aa562b5a112f2377e69fdbd00313f7e7a3122a4a0738a17bf82a4a3a2cf9"
+     "ad8b96bee2e6dd4b4733e80555580ee37d3a104a2f40e83a429ef6d32a406eb5"
+     "be3b6ee0f7117283df2bc2f900ba2f92b3e98fd6cac4e587607ad912e0c9e982"
+     "b8607c9c84d771211bc248433dfcdf2fc413c37b0be3358545ade71bd890b137"
+     "7fcc44486414d1b9d6082e662c00335926c6a6d6b56d6e398498e627b86cd1a3"
+     "090409e456f7708394675b09df5f5c661f901c01c1bd6ef8f6d74c45aa45a3e3"
+     "58cb07897e09679305bdff946085d7accbb22e1434eb2663bc56262e4f2b8513"
+     "b64c915c8993f207baf5910ae28633b2e148771601a6e29445968ed13a9b179a"
+     "10e330880269244ae45ae9e02fe6f55766da9e15036e7c7f07d7ce228195deb5"
+     "e79df8c0d4b0ee48c22acfa4c4750664adf47ab13bed897e8c80460d624b0927"
+     "7f7b4e498f83fab146365b2dd9fa48fe7314ceb6cfd59f21a5a5b0395257ea62"
+     "c374e13901216c0c67acd628c852cec9faf9adc01784364e1908be8d598214a6"
+     "6dcc66a60dce37a5817d46e7b1f838ac5d95a79061119adeb7c04c7ae9f511d0"
      "967c23e9ba179b80560774419f081df22e7674aac23c5c550b817e4a1ce7d058"
      "2493d0ad0bb94bd2ad297a6d76288751a532fd6d8d6af694ac14008caa6b7fa2"
      "138ed99a323c1b93c52f4b3726caf2bc634b79a76fa63a3d3aff76394db5f28f"
@@ -450,132 +487,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background "#202326" :foreground "#fcfcfc"))))
- '(Man-overstrike ((t (:inherit bold :foreground "orange red"))))
- '(Man-underline ((t (:foreground "red" :underline t))))
- '(ansi-color-black ((t (:foreground "#393939" :background "#393939"))))
- '(ansi-color-blue ((t (:foreground "#4677ff" :background "#4677ff"))))
- '(ansi-color-bright-black ((t (:foreground "#393939" :background "#393939"))))
- '(ansi-color-bright-blue ((t (:foreground "#4677ff" :background "#4677ff"))))
- '(ansi-color-bright-cyan ((t (:foreground "#5bc6f3" :background "#5bc6f3"))))
- '(ansi-color-bright-green ((t (:foreground "#98cb76" :background "#98cb76"))))
- '(ansi-color-bright-magenta ((t (:foreground "magenta3" :background "magenta3"))))
- '(ansi-color-bright-red ((t (:foreground "#ff2d11" :background "#ff2d11"))))
- '(ansi-color-bright-white ((t (:foreground "gray90" :background "gray90"))))
- '(ansi-color-bright-yellow ((t (:foreground "yellow3" :background "yellow3"))))
- '(ansi-color-cyan ((t (:foreground "#5bc6f3" :background "#5bc6f3"))))
- '(ansi-color-green ((t (:foreground "#98cb76" :background "#98cb76"))))
- '(ansi-color-magenta ((t (:foreground "magenta3" :background "magenta3"))))
- '(ansi-color-red ((t (:foreground "#ff2d11" :background "#ff2d11"))))
- '(ansi-color-white ((t (:foreground "gray90" :background "gray90"))))
- '(ansi-color-yellow ((t (:foreground "yellow3" :background "yellow3"))))
- '(button ((t (:foreground "red" :underline "red"))))
- '(change-log-acknowledgment ((t (:foreground "dark orange"))))
- '(change-log-date ((t (:foreground "orange red"))))
- '(change-log-email ((t (:foreground "red"))))
- '(change-log-name ((t (:foreground "red"))))
- '(dired-broken-symlink ((t (:inherit button :foreground "red"))))
- '(dired-directory ((t (:foreground "orange red"))))
- '(doom-modeline-bar ((t (:background "red"))))
- '(epa-string ((t (:foreground "red"))))
- '(eshell-ls-archive ((t (:foreground "dark orange"))))
- '(eshell-ls-directory ((t (:foreground "orange red"))))
- '(eshell-ls-executable ((t (:foreground "gold"))))
- '(eshell-ls-special ((t (:foreground "tomato"))))
- '(font-lock-builtin-face ((t (:inherit modus-themes-bold :foreground "orange red"))))
- '(font-lock-comment-face ((t (:inherit modus-themes-slant :foreground "#525961"))))
- '(font-lock-constant-face ((t (:foreground "red"))))
- '(font-lock-doc-face ((t (:inherit modus-themes-slant :foreground "red"))))
- '(font-lock-doc-markup-face ((t (:inherit modus-themes-slant :foreground "red"))))
- '(font-lock-function-name-face ((t (:foreground "orange red"))))
- '(font-lock-keyword-face ((t (:inherit modus-themes-bold :foreground "light coral"))))
- '(font-lock-preprocessor-face ((t (:foreground "orange red"))))
- '(font-lock-regexp-grouping-backslash ((t (:inherit modus-themes-bold :foreground "orange"))))
- '(font-lock-regexp-grouping-construct ((t (:inherit modus-themes-bold :foreground "orange"))))
- '(font-lock-string-face ((t (:foreground "red"))))
- '(font-lock-type-face ((t (:inherit modus-themes-bold :foreground "orange red"))))
- '(font-lock-variable-name-face ((t (:foreground "tomato"))))
- '(fringe ((t (:background "#202326" :foreground "#fcfcfc"))))
- '(help-argument-name ((t (:inherit modus-themes-slant :foreground "red"))))
- '(highlight ((t (:background "red" :foreground "#ffffff"))))
- '(line-number ((t (:inherit default :background "#191c1e" :foreground "#fcfcfc"))))
- '(line-number-current-line ((t (:inherit (bold line-number) :background "#23272a" :foreground "#ffffff"))))
- '(log-view-message ((t (:extend t :foreground "orange red"))))
- '(magit-blame-highlight ((t (:extend t :background "#2d3135" :foreground "#ffffff"))))
- '(magit-diff-file-heading-highlight ((t (:inherit magit-diff-file-heading :background "#2d3135"))))
- '(magit-diff-hunk-heading ((t (:extend t :background "#2d3135"))))
- '(magit-section-highlight ((t (:extend t :background "#2d3135"))))
- '(marginalia-documentation ((t (:inherit modus-themes-slant :foreground "gainsboro"))))
- '(marginalia-string ((t (:foreground "#fcfcfc"))))
- '(markdown-code-face ((t (:inherit modus-themes-fixed-pitch :extend t :background "#141618"))))
- '(mm-command-output ((t (:foreground "orange red"))))
- '(mode-line ((t (:inherit modus-themes-ui-variable-pitch :background "#191c1e" :foreground "#fcfcfc" :box (:line-width (1 . 1) :color "#191c1e")))))
- '(mode-line-inactive ((t (:inherit modus-themes-ui-variable-pitch :background "#1d2123" :foreground "#e6e6e6" :box (:line-width (1 . 1) :color "#1d2123")))))
- '(modus-themes-completion-match-0 ((t (:inherit bold :foreground "orange"))) t)
- '(modus-themes-completion-selected ((t (:inherit bold :background "red"))) t)
- '(modus-themes-heading-0 ((t (:inherit bold :foreground "red"))) t)
- '(modus-themes-heading-1 ((t (:inherit bold :foreground "red"))) t)
- '(modus-themes-heading-2 ((t (:inherit bold :foreground "red"))) t)
- '(modus-themes-heading-3 ((t (:inherit bold :foreground "red"))) t)
- '(modus-themes-heading-4 ((t (:inherit bold :foreground "red"))) t)
- '(modus-themes-heading-5 ((t (:inherit bold :foreground "red"))) t)
- '(modus-themes-heading-6 ((t (:inherit bold :foreground "red"))) t)
- '(modus-themes-heading-7 ((t (:inherit bold :foreground "red"))) t)
- '(modus-themes-heading-8 ((t (:inherit bold :foreground "red"))) t)
- '(modus-themes-key-binding ((t (:inherit (bold modus-themes-fixed-pitch) :foreground "red"))) t)
- '(modus-themes-prompt ((t (:foreground "orange red"))) t)
- '(modus-themes-prose-code ((t (:inherit modus-themes-fixed-pitch :foreground "orange"))) t)
- '(modus-themes-search-current ((t (:background "red" :foreground "#ffffff"))) t)
- '(modus-themes-search-lazy ((t (:background "red" :foreground "#ffffff"))) t)
- '(org-agenda-date ((t (:inherit bold :foreground "orange red"))))
- '(org-block ((t (:inherit modus-themes-fixed-pitch :extend t :background "#141618"))))
- '(org-block-begin-line ((t (:inherit modus-themes-fixed-pitch :extend t :background "#141618" :foreground "#989898"))))
- '(org-checkbox ((t (:inherit modus-themes-fixed-pitch :foreground "orange red"))))
- '(org-column ((t (:inherit default :background "#141618"))))
- '(org-date ((t (:inherit modus-themes-fixed-pitch :foreground "orange red"))))
- '(org-date-selected ((t (:foreground "red" :inverse-video t))))
- '(org-done ((t (:foreground "orange red"))))
  '(org-level-1 ((t (:inherit outline-1 :height 1.25))))
  '(org-level-2 ((t (:inherit outline-2 :height 1.2))))
  '(org-level-3 ((t (:inherit outline-3 :height 1.15))))
  '(org-level-4 ((t (:inherit outline-4 :height 1.1))))
- '(org-level-5 ((t (:inherit outline-5 :height 1.05))))
- '(org-tag ((t (:foreground "orange"))))
- '(success ((t (:inherit bold :foreground "gold"))))
- '(term ((t (:background "#202326" :foreground "#fcfcfc"))))
- '(term-color-black ((t (:inherit ansi-color-black :foreground nil :background nil))))
- '(term-color-blue ((t (:inherit ansi-color-blue :foreground nil :background nil))))
- '(term-color-bright-black ((t (:inherit ansi-color-bright-black :foreground nil :background nil))))
- '(term-color-bright-blue ((t (:inherit ansi-color-bright-blue :foreground nil :background nil))))
- '(term-color-bright-cyan ((t (:inherit ansi-color-bright-cyan :foreground nil :background nil))))
- '(term-color-bright-green ((t (:inherit ansi-color-bright-green :foreground nil :background nil))))
- '(term-color-bright-magenta ((t (:inherit ansi-color-bright-magenta :foreground nil :background nil))))
- '(term-color-bright-red ((t (:inherit ansi-color-bright-red :foreground nil :background nil))))
- '(term-color-bright-white ((t (:inherit ansi-color-bright-white :foreground nil :background nil))))
- '(term-color-bright-yellow ((t (:inherit ansi-color-bright-yellow :foreground nil :background nil))))
- '(term-color-cyan ((t (:inherit ansi-color-cyan :foreground nil :background nil))))
- '(term-color-green ((t (:inherit ansi-color-green :foreground nil :background nil))))
- '(term-color-magenta ((t (:inherit ansi-color-magenta :foreground nil :background nil))))
- '(term-color-red ((t (:inherit ansi-color-red :foreground nil :background nil))))
- '(term-color-white ((t (:inherit ansi-color-white :foreground nil :background nil))))
- '(term-color-yellow ((t (:inherit ansi-color-yellow :foreground nil :background nil))))
- '(vc-dir-file ((t (:foreground "orange red"))))
- '(vc-dir-header-value ((t (:foreground "red"))))
- '(vc-dir-status-up-to-date ((t (:foreground "gold"))))
- '(vterm-color-black ((t (:inherit ansi-color-black :foreground nil :background nil))))
- '(vterm-color-blue ((t (:inherit ansi-color-blue :foreground nil :background nil))))
- '(vterm-color-bright-black ((t (:inherit ansi-color-bright-black :foreground nil :background nil))))
- '(vterm-color-bright-blue ((t (:inherit ansi-color-bright-blue :foreground nil :background nil))))
- '(vterm-color-bright-cyan ((t (:inherit ansi-color-bright-cyan :foreground nil :background nil))))
- '(vterm-color-bright-green ((t (:inherit ansi-color-bright-green :foreground nil :background nil))))
- '(vterm-color-bright-magenta ((t (:inherit ansi-color-bright-magenta :foreground nil :background nil))))
- '(vterm-color-bright-red ((t (:inherit ansi-color-bright-red :foreground nil :background nil))))
- '(vterm-color-bright-white ((t (:inherit ansi-color-bright-white :foreground nil :background nil))))
- '(vterm-color-bright-yellow ((t (:inherit ansi-color-bright-yellow :foreground nil :background nil))))
- '(vterm-color-cyan ((t (:inherit ansi-color-cyan :foreground nil :background nil))))
- '(vterm-color-green ((t (:inherit ansi-color-green :foreground nil :background nil))))
- '(vterm-color-magenta ((t (:inherit ansi-color-magenta :foreground nil :background nil))))
- '(vterm-color-red ((t (:inherit ansi-color-red :foreground nil :background nil))))
- '(vterm-color-white ((t (:inherit ansi-color-white :foreground nil :background nil))))
- '(vterm-color-yellow ((t (:inherit ansi-color-yellow :foreground nil :background nil))))
- '(which-key-group-description-face ((t (:foreground "orange red")))))
+ '(org-level-5 ((t (:inherit outline-5 :height 1.05)))) 
+ )
