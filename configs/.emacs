@@ -426,11 +426,7 @@
        (t)]))
  '(eshell-visual-subcommands '(("git" "log" "diff" "show")))
  '(org-agenda-files '("~/Documents/Notes/"))
- '(package-selected-packages
-   '(colorful-mode dmenu eshell-prompt-extras exec-path-from-shell exwm
-		   lua-mode markdown-mode modus-themes-exporter
-		   multiple-cursors orderless package-lint rust-mode
-		   vterm))
+ '(package-selected-packages nil)
  '(package-vc-selected-packages
    '((modus-themes-exporter :vc-backend Git :url
 			    "https://github.com/protesilaos/modus-themes-exporter.git")))
