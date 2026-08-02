@@ -52,7 +52,6 @@
 (bind-key* "C-c ne" 'org-agenda-list)
 (bind-key* "C-c ny" 'dired-videos)
 (bind-key* "C-c nm" 'dired-music)
-(bind-key* "C-c re" 'eglot-format-buffer)
 
 ;;; Window navigation
 (bind-key* "C-M-h" 'windmove-left)
@@ -92,16 +91,8 @@
 ;;; Respect editorconfig files
 (editorconfig-mode t)
 
-;;; LSP setup
-(require 'eglot)
-(add-hook 'prog-mode-hook #'eglot-ensure)
-
 ;;; Automatically revert buffers
 (global-auto-revert-mode t)
-
-;;; Eglot keybinds
-(bind-key* "C-c s" 'eglot-code-actions)
-(bind-key* "C-c C-r" 'eglot-rename)
 
 (defun dired-notes ()
   "Open notes directory"
