@@ -406,10 +406,7 @@
        (t)]))
  '(eshell-visual-subcommands '(("git" "log" "diff" "show")))
  '(org-agenda-files '("~/Documents/Notes/"))
- '(package-selected-packages
-   '(colorful-mode dmenu eshell-prompt-extras exec-path-from-shell exwm
-		   lua-mode markdown-mode multiple-cursors neofetch
-		   orderless package-lint rust-mode vterm))
+ '(package-selected-packages nil)
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(safe-local-variable-values
