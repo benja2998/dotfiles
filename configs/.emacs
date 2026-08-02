@@ -350,7 +350,8 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(my-awesome))
  '(custom-safe-themes
-   '("8ee5b9738238bb0f1ce4bf44c68b2f5ad3ec882aa685660c221fdb86295b9ab9"
+   '("0cbc8b3aa9a6943cd827af21800e76e7f68d15fb8eacfebb7fea116a8b92c84e"
+     "8ee5b9738238bb0f1ce4bf44c68b2f5ad3ec882aa685660c221fdb86295b9ab9"
      "5c93585acf49359214683112a6e0041b9e5a0d4685b438c2f355365e9272a608"
      "e328d3997194801d0acc774719292c95d4f0d7ea08c012eef4d132ed610d5f63"
      "51c37ecb855d4406c6f54e34318bc44f49d391783d776f8fa1fd90f087efcba6"
@@ -491,5 +492,4 @@
  '(org-level-2 ((t (:inherit outline-2 :height 1.2))))
  '(org-level-3 ((t (:inherit outline-3 :height 1.15))))
  '(org-level-4 ((t (:inherit outline-4 :height 1.1))))
- '(org-level-5 ((t (:inherit outline-5 :height 1.05)))) 
- )
+ '(org-level-5 ((t (:inherit outline-5 :height 1.05)))))

@@ -179,6 +179,7 @@
 
     (keybind "#ff0000")
     (info "gold")
+    (warning "orange")
 
     (name "#ff0000")
 
