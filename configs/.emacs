@@ -162,6 +162,16 @@
 (setq use-short-answers t)
 (setq use-package-always-ensure t)
 
+(use-package modus-themes-exporter
+  :ensure nil ; do not try to install because we get it from source in the `:init'
+  :commands (modus-themes-exporter-export)
+  :init
+  ;; Then upgrade it with the command `package-vc-upgrade' or `package-vc-upgrade-all'.
+  (unless (package-installed-p 'modus-themes-exporter)
+    (package-vc-install "https://github.com/protesilaos/modus-themes-exporter.git")))
+
+(use-package modus-themes)
+
 (use-package multiple-cursors)
 (require 'multiple-cursors)
 
@@ -406,7 +416,14 @@
        (t)]))
  '(eshell-visual-subcommands '(("git" "log" "diff" "show")))
  '(org-agenda-files '("~/Documents/Notes/"))
- '(package-selected-packages nil)
+ '(package-selected-packages
+   '(colorful-mode dmenu eshell-prompt-extras exec-path-from-shell exwm
+		   lua-mode markdown-mode modus-themes-exporter
+		   multiple-cursors orderless package-lint rust-mode
+		   vterm))
+ '(package-vc-selected-packages
+   '((modus-themes-exporter :vc-backend Git :url
+			    "https://github.com/protesilaos/modus-themes-exporter.git")))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
  '(safe-local-variable-values
