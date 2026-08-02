@@ -6,6 +6,12 @@
 ;;; Local packages
 (add-to-list 'load-path (concat user-emacs-directory "local/"))
 
+;;; Icomplete
+(defun my-icomplete-styles ()
+  (setq-local completion-styles '(initials flex)))
+(add-hook 'icomplete-minibuffer-setup-hook 'my-icomplete-styles)
+(icomplete-vertical-mode t)
+
 ;;; Neofetch
 (ignore-error t (require 'neofetch))
 
