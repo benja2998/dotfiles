@@ -58,6 +58,7 @@
 (bind-key* "C-c ne" 'org-agenda-list)
 (bind-key* "C-c ny" 'dired-videos)
 (bind-key* "C-c nm" 'dired-music)
+(bind-key* "C-x M-c M-b u t t e r f l y" 'butterfly)
 
 ;;; Window navigation
 (bind-key* "C-M-h" 'windmove-left)
