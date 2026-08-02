@@ -142,7 +142,7 @@
 
 ;;; Font
 (cond ((eq system-type 'gnu/linux)
-       (add-to-list 'default-frame-alist '(font . "Terminess Nerd Font:pixelsize=24")))
+       (add-to-list 'default-frame-alist '(font . "Iosevka-20")))
       ((eq system-type 'android)
        (add-to-list 'default-frame-alist '(font . "monospace-24"))))
 
@@ -335,7 +335,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes '(modus-vivendi))
+ '(custom-enabled-themes '(modus-operandi-tinted))
  '(custom-safe-themes
    '("e4a702e262c3e3501dfe25091621fe12cd63c7845221687e36a79e17cf3a67e0"
      "921f165deb8030167d44eaa82e85fcef0254b212439b550a9b6c924f281b5695"
