@@ -20,7 +20,7 @@
   "Insert a backlink"
   (interactive)
   (setq insert-backlink--files (directory-files-recursively "~/Documents/Notes/" "\\.org$"))
-  (setq insert-backlink--file (completing-read "File to backlink to: " insert-backlink--files nil t))
+  (setq insert-backlink--file (completing-read "Note to backlink to: " insert-backlink--files nil t))
   (setq insert-backlink--pretty (read-from-minibuffer "Description: "))
   (cond ((string-equal insert-backlink--pretty "")
 	 (setq insert-backlink--pretty insert-backlink--file)))
