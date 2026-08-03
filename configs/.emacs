@@ -56,6 +56,20 @@
   ;; Should be trivial due to wildcards
   (dired "~/Documents/Notes/**/*-*-*.org"))
 
+(defun my/insert-code ()
+  "Insert org code block"
+  (interactive)
+  (setq code--lang (read-from-minibuffer "Language: "))
+  (catch 'no-language
+    (cond ((string-equal code--lang "")
+	   (throw 'no-language "No language provided"))))
+
+  (insert (format "#+BEGIN_SRC %s\n#+END_SRC" code--lang))
+  (previous-line)
+  (call-interactively 'move-end-of-line)
+  (newline)
+  (indent-for-tab-command))
+
 (defun search-in-notes ()
   "Search in notes"
   (interactive)
@@ -114,6 +128,7 @@
 ;;; Better than using Meta + Arrows
 (with-eval-after-load 'org
   (bind-key "C-c ib" #'org-insert-backlink 'org-mode-map)
+  (bind-key "C-c ic" #'my/insert-code 'org-mode-map)
   (bind-key "C-c ii" #'org-insert-image 'org-mode-map)  
   (bind-key "M-l" #'org-do-demote 'org-mode-map)
   (bind-key "M-h" #'org-do-promote 'org-mode-map))
