@@ -38,6 +38,7 @@
     (bg-main "#202326")
     (bg-dim "#202326")
     (bg-active "#33383d")
+    (fg-dim "#33383d")    
     (bg-dim "#1e2023")
 
     (bg-term-black "#393939")

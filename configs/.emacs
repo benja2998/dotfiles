@@ -351,7 +351,8 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(my-awesome))
  '(custom-safe-themes
-   '("6a0ba5873af19027cfcc412c32d57be5c294688f03513690490bb67e642b5ad9"
+   '("70c76a1bf0c17b046702b7c1f1aa88f9eff2d87fa6e6a9f4ad6867abdd0c8bff"
+     "6a0ba5873af19027cfcc412c32d57be5c294688f03513690490bb67e642b5ad9"
      "0cbc8b3aa9a6943cd827af21800e76e7f68d15fb8eacfebb7fea116a8b92c84e"
      "8ee5b9738238bb0f1ce4bf44c68b2f5ad3ec882aa685660c221fdb86295b9ab9"
      "5c93585acf49359214683112a6e0041b9e5a0d4685b438c2f355365e9272a608"
