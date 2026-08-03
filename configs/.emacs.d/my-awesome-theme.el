@@ -37,6 +37,8 @@
   '((cursor "#fcfcfc")
     (bg-main "#202326")
     (bg-dim "#202326")
+    (bg-active "#33383d")
+    (bg-dim "#1e2023")
 
     (bg-term-black "#393939")
     (fg-term-black "#393939")
@@ -185,8 +187,7 @@
 
     (bg-region "#343a3f")
 
-    (identifier "coral")
-    
+    (identifier "coral")    
     )
   "Like `modus-vivendi-palette'.")
 

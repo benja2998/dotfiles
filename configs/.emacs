@@ -354,7 +354,8 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(my-awesome))
  '(custom-safe-themes
-   '("0cbc8b3aa9a6943cd827af21800e76e7f68d15fb8eacfebb7fea116a8b92c84e"
+   '("6a0ba5873af19027cfcc412c32d57be5c294688f03513690490bb67e642b5ad9"
+     "0cbc8b3aa9a6943cd827af21800e76e7f68d15fb8eacfebb7fea116a8b92c84e"
      "8ee5b9738238bb0f1ce4bf44c68b2f5ad3ec882aa685660c221fdb86295b9ab9"
      "5c93585acf49359214683112a6e0041b9e5a0d4685b438c2f355365e9272a608"
      "e328d3997194801d0acc774719292c95d4f0d7ea08c012eef4d132ed610d5f63"
@@ -467,6 +468,8 @@
 		 (shell-command-to-string "/bin/sh tty 2>/dev/null"))))
        (t)]))
  '(eshell-visual-subcommands '(("git" "log" "diff" "show")))
+ '(org-agenda-files '("~/Documents/Notes/"))
+ '(org-directory "~/Documents/Notes")
  '(package-selected-packages '(neofetch))
  '(package-vc-selected-packages
    '((neofetch :url "https://codeberg.org/benja2998/neofetch.el" :branch
