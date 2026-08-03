@@ -2,6 +2,7 @@
 
 ;;; For future customizations
 (require 'eshell)
+(require 'dired)
 
 ;;; Local packages
 (add-to-list 'load-path (concat user-emacs-directory "local/"))
@@ -69,6 +70,8 @@
 (defun bind-eshell-clear-mode-map ()
   (interactive)
   (bind-key "C-l" #'eshell-clear 'eshell-mode-map)
+  ;; This shouldn't be in the function for Eshell but I put it here to not repeat this
+  (bind-key "C-c C-c" 'wdired-change-to-wdired-mode 'dired-mode-map)
   )
 (add-hook 'emacs-startup-hook #'bind-eshell-clear-mode-map)
 
