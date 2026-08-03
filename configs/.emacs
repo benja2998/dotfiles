@@ -51,11 +51,8 @@
 (bind-key* "C-c nm" 'dired-music)
 (bind-key* "C-x M-c M-b u t t e r f l y" 'butterfly)
 
-;;; Window navigation
-(bind-key* "C-M-h" 'windmove-left)
-(bind-key* "C-M-j" 'windmove-down)
-(bind-key* "C-M-k" 'windmove-up)
-(bind-key* "C-M-l" 'windmove-right)
+;;; Repeat mode
+(repeat-mode t)
 
 ;;; Better than using Meta + Arrows
 (with-eval-after-load 'org
