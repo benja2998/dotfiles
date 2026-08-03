@@ -6,9 +6,6 @@
 ;;; Local packages
 (add-to-list 'load-path (concat user-emacs-directory "local/"))
 
-;;; Neofetch
-(ignore-error t (require 'neofetch))
-
 (defun daily-note ()
   "Open today's daily note"
   (interactive)
@@ -314,6 +311,10 @@
   :config
   (eshell-vterm-mode))
 
+(use-package neofetch
+  :vc (:url "https://codeberg.org/benja2998/neofetch.el"
+       :branch "main"))
+
 (use-package colorful-mode
   :custom
   (colorful-use-prefix t)
@@ -464,9 +465,11 @@
        (t)]))
  '(eshell-visual-subcommands '(("git" "log" "diff" "show")))
  '(org-agenda-files '("~/Documents/Notes/"))
- '(package-selected-packages nil)
+ '(package-selected-packages '(neofetch))
  '(package-vc-selected-packages
-   '((modus-themes-exporter :vc-backend Git :url
+   '((neofetch :url "https://codeberg.org/benja2998/neofetch.el" :branch
+	       "main")
+     (modus-themes-exporter :vc-backend Git :url
 			    "https://github.com/protesilaos/modus-themes-exporter.git")))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t)
