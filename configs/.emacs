@@ -16,6 +16,16 @@
   (unless (file-exists-p current-date-file)
     (insert (concat "* " current-date (format "\n")))))
 
+(defun insert-backlink ()
+  "Insert a backlink"
+  (interactive)
+  (setq insert-backlink--files (directory-files-recursively "~/Documents/Notes/" "\\.org$"))
+  (setq insert-backlink--file (completing-read "File to backlink to: " insert-backlink--files nil t))
+  (setq insert-backlink--pretty (read-from-minibuffer "Pretty name: "))
+  (cond ((string-equal insert-backlink--pretty "")
+	 (setq insert-backlink--pretty insert-backlink--file)))
+  (insert (format "[[%s][%s]]" insert-backlink--file insert-backlink--pretty)))
+
 (defun dired-dailies ()
   "List daily notes"
   (interactive)
@@ -67,6 +77,7 @@
 
 ;;; Better than using Meta + Arrows
 (with-eval-after-load 'org
+  (bind-key "C-c ib" #'insert-backlink 'org-mode-map)
   (bind-key "M-l" #'org-do-demote 'org-mode-map)
   (bind-key "M-h" #'org-do-promote 'org-mode-map))
 
@@ -81,8 +92,7 @@
   (interactive)
   (bind-key "C-l" #'eshell-clear 'eshell-mode-map)
   ;; This shouldn't be in the function for Eshell but I put it here to not repeat this
-  (bind-key "C-c C-c" 'wdired-change-to-wdired-mode 'dired-mode-map)
-  )
+  (bind-key "C-c C-c" 'wdired-change-to-wdired-mode 'dired-mode-map))
 (add-hook 'emacs-startup-hook #'bind-eshell-clear-mode-map)
 
 ;;; Infinite history
@@ -384,7 +394,8 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(my-awesome))
  '(custom-safe-themes
-   '("70c76a1bf0c17b046702b7c1f1aa88f9eff2d87fa6e6a9f4ad6867abdd0c8bff"
+   '("27e8e6fb52af47873987c01b354a92f263503809bd6b1194efe56febfabe4c1d"
+     "70c76a1bf0c17b046702b7c1f1aa88f9eff2d87fa6e6a9f4ad6867abdd0c8bff"
      "6a0ba5873af19027cfcc412c32d57be5c294688f03513690490bb67e642b5ad9"
      "0cbc8b3aa9a6943cd827af21800e76e7f68d15fb8eacfebb7fea116a8b92c84e"
      "8ee5b9738238bb0f1ce4bf44c68b2f5ad3ec882aa685660c221fdb86295b9ab9"
