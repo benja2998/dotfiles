@@ -25,7 +25,7 @@
 (defun search-in-notes ()
   "Search in notes"
   (interactive)
-  (setq search--whatIread (read-minibuffer "Enter search term (regex, case-insensitive): "))
+  (setq search--whatIread (read-from-minibuffer "Enter search term (regex, case-insensitive): "))
   (grep (format "grep -rnEi \"%s\" ~/Documents/Notes" search--whatIread)))
 
 (defun todo-note ()
