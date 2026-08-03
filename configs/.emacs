@@ -313,7 +313,7 @@
 
 (use-package neofetch
   :vc (:url "https://codeberg.org/benja2998/neofetch.el"
-       :branch "main"))
+	    :branch "main"))
 
 (use-package colorful-mode
   :custom
@@ -343,6 +343,9 @@
 			   (setq word-wrap t)
 			   (setq truncate-lines nil)
 			   (setq truncate-partial-width-windows nil)))
+
+(setq org-directory "~/Documents/Notes/")
+(setq org-agenda-files (list org-directory))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -464,8 +467,6 @@
 		 (shell-command-to-string "/bin/sh tty 2>/dev/null"))))
        (t)]))
  '(eshell-visual-subcommands '(("git" "log" "diff" "show")))
- '(org-agenda-files '("~/Documents/Notes/"))
- '(org-directory "~/Documents/Notes")
  '(package-selected-packages '(neofetch))
  '(package-vc-selected-packages
    '((neofetch :url "https://codeberg.org/benja2998/neofetch.el" :branch
