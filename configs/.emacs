@@ -26,6 +26,11 @@
 	 (setq insert-backlink--pretty insert-backlink--file)))
   (insert (format "[[%s][%s]]" insert-backlink--file insert-backlink--pretty)))
 
+(defun my/compile ()
+  "Compile"
+  (interactive)
+  (call-interactively 'compile))
+
 (defun org-insert-image ()
   "Insert a image"
   (interactive)
@@ -82,6 +87,7 @@
 (require 'bind-key)
 
 ;;; Keybinds
+(bind-key* "C-c nj" 'my/compile)
 (bind-key* "C-c nt" 'daily-note)
 (bind-key* "C-c tn" 'todo-note)
 (bind-key* "C-c ne" 'org-agenda-list)
