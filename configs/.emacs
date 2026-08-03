@@ -16,15 +16,34 @@
   (unless (file-exists-p current-date-file)
     (insert (concat "* " current-date (format "\n")))))
 
-(defun insert-backlink ()
+(defun org-insert-backlink ()
   "Insert a backlink"
   (interactive)
   (setq insert-backlink--files (directory-files-recursively "~/Documents/Notes/" "\\.org$"))
   (setq insert-backlink--file (completing-read "File to backlink to: " insert-backlink--files nil t))
-  (setq insert-backlink--pretty (read-from-minibuffer "Pretty name: "))
+  (setq insert-backlink--pretty (read-from-minibuffer "Description: "))
   (cond ((string-equal insert-backlink--pretty "")
 	 (setq insert-backlink--pretty insert-backlink--file)))
   (insert (format "[[%s][%s]]" insert-backlink--file insert-backlink--pretty)))
+
+(defun org-insert-image ()
+  "Insert a image"
+  (interactive)
+  (setq insert-image--files (directory-files-recursively "~/Pictures/" "\\.png$"))
+  (setq insert-image--files (append insert-image--files
+				    (directory-files-recursively "~/Pictures/" "\\.jpeg$")))
+  (setq insert-image--files (append insert-image--files
+				    (directory-files-recursively "~/Pictures/" "\\.jpg$")))
+  (setq insert-image--files (append insert-image--files
+				    (directory-files-recursively "~/Pictures/" "\\.webp$")))
+  (setq insert-image--files (append insert-image--files
+				    (directory-files-recursively "~/Pictures/" "\\.tiff$")))
+  (setq insert-image--files (append insert-image--files
+				    (directory-files-recursively "~/Pictures/" "\\.bmp$")))
+  (setq insert-image--files (append insert-image--files
+				    (directory-files-recursively "~/Pictures/" "\\.gif$")))
+  (setq insert-image--file (completing-read "Image to insert: " insert-image--files nil t))
+  (insert (format "[[%s]]" insert-image--file)))
 
 (defun dired-dailies ()
   "List daily notes"
@@ -77,7 +96,8 @@
 
 ;;; Better than using Meta + Arrows
 (with-eval-after-load 'org
-  (bind-key "C-c ib" #'insert-backlink 'org-mode-map)
+  (bind-key "C-c ib" #'org-insert-backlink 'org-mode-map)
+  (bind-key "C-c ii" #'org-insert-image 'org-mode-map)  
   (bind-key "M-l" #'org-do-demote 'org-mode-map)
   (bind-key "M-h" #'org-do-promote 'org-mode-map))
 
