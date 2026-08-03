@@ -22,6 +22,12 @@
   ;; Should be trivial due to wildcards
   (dired "~/Documents/Notes/**/*-*-*.org"))
 
+(defun search-in-notes ()
+  "Search in notes"
+  (interactive)
+  (setq search--whatIread (read-minibuffer "Enter search term (regex, case-insensitive): "))
+  (grep (format "grep -rnEi \"%s\" ~/Documents/Notes" search--whatIread)))
+
 (defun todo-note ()
   "Open todo.org note"
   (interactive)
@@ -52,6 +58,7 @@
 (bind-key* "C-c ne" 'org-agenda-list)
 (bind-key* "C-c ny" 'dired-videos)
 (bind-key* "C-c ld" 'dired-dailies)
+(bind-key* "C-c ls" 'search-in-notes)
 (bind-key* "C-c nm" 'dired-music)
 (bind-key* "C-x M-c M-b u t t e r f l y" 'butterfly)
 
