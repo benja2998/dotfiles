@@ -14,26 +14,28 @@
   (setq current-date (format-time-string "%d-%m-%Y" (current-time)))
   (find-file current-date-file)
   (unless (file-exists-p current-date-file)
-    (insert (concat "* " current-date (format "\n"))))
-  )
+    (insert (concat "* " current-date (format "\n")))))
+
+(defun dired-dailies ()
+  "List daily notes"
+  (interactive)
+  ;; Should be trivial due to wildcards
+  (dired "~/Documents/Notes/**/*-*-*.org"))
 
 (defun todo-note ()
   "Open todo.org note"
   (interactive)
-  (find-file "~/Documents/Notes/todo.org")
-  )
+  (find-file "~/Documents/Notes/todo.org"))
 
 (defun dired-videos ()
   "Open videos directory"
   (interactive)
-  (dired "~/Videos")
-  )
+  (dired "~/Videos"))
 
 (defun dired-music ()
   "Open music directory"
   (interactive)
-  (dired "~/Music")
-  )
+  (dired "~/Music"))
 
 ;;; Smooth scrolling with mouse or trackpad
 (pixel-scroll-precision-mode t)
@@ -49,6 +51,7 @@
 (bind-key* "C-c tn" 'todo-note)
 (bind-key* "C-c ne" 'org-agenda-list)
 (bind-key* "C-c ny" 'dired-videos)
+(bind-key* "C-c ld" 'dired-dailies)
 (bind-key* "C-c nm" 'dired-music)
 (bind-key* "C-x M-c M-b u t t e r f l y" 'butterfly)
 
