@@ -84,8 +84,7 @@
 (defun eshell-clear ()
   "Clear interactively eshell"
   (interactive)
-  (execute-kbd-macro (kbd "cls RET"))
-  )
+  (execute-kbd-macro (kbd "cls RET")))
 
 ;;; Fix for eshell-mode-map not working immediately
 (defun bind-eshell-clear-mode-map ()
@@ -115,14 +114,12 @@
 (defun dired-notes ()
   "Open notes directory"
   (interactive)
-  (dired "~/Documents/Notes")
-  )
+  (dired "~/Documents/Notes"))
 
 (defun dired-home ()
   "Open home directory"
   (interactive)
-  (dired "~")
-  )
+  (dired "~"))
 
 ;;; Keybinds
 (bind-key* "C-c nh" 'dired-home)
