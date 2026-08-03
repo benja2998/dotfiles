@@ -465,6 +465,7 @@
        (t)]))
  '(eshell-visual-subcommands '(("git" "log" "diff" "show")))
  '(org-agenda-files '("~/Documents/Notes/"))
+ '(org-directory "~/Documents/Notes")
  '(package-selected-packages '(neofetch))
  '(package-vc-selected-packages
    '((neofetch :url "https://codeberg.org/benja2998/neofetch.el" :branch
