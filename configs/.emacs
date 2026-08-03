@@ -212,11 +212,11 @@
 
 (defun run-wiremix ()
   (interactive)
-  (eshell-vterm-exec-visual "wiremix"))
+  (ghostel-eshell--exec-visual "wiremix"))
 
 (defun run-nmtui ()
   (interactive)
-  (eshell-vterm-exec-visual "nmtui"))
+  (ghostel-eshell--exec-visual "nmtui"))
 
 (defun run-boomer ()
   (interactive)
@@ -225,7 +225,7 @@
 
 (defun run-htop ()
   (interactive)
-  (eshell-vterm-exec-visual "htop"))
+  (ghostel-eshell--exec-visual "htop"))
 
 (defun run-librewolf ()
   (interactive)
@@ -297,16 +297,36 @@
        (exwm-wm-mode)
        (exwm-systemtray-mode 1)))
 
-(use-package vterm
-  :ensure t)
-
-(use-package eshell-vterm
-  :ensure nil
-  :load-path "local/eshell-vterm"
-  :demand t
-  :after eshell
+(use-package ghostel
+  :bind (("C-c m" . ghostel)
+         :map ghostel-semi-char-mode-map
+         ("C-s"  . consult-line)
+         ("C-k"  . my/ghostel-send-C-k-and-kill)
+         ;; I'm used to go up/down the shell history with M-n/p from eshell
+         ;; Simulate this behavior in ghostel by sending C-p and C-n
+         ("M-p" . (lambda () (interactive) (ghostel-send-key "p" "ctrl")))
+         ("M-n" . (lambda () (interactive) (ghostel-send-key "n" "ctrl")))
+         :map project-prefix-map
+         ("m" . ghostel-project)
+         ("M" . ghostel-project-list-buffers))
   :config
-  (eshell-vterm-mode))
+  (defun my/ghostel-send-C-k-and-kill ()
+    "Send `C-k' to ghostel.
+Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
+    (interactive)
+    (kill-ring-save (point) (line-end-position))
+    (ghostel-send-key "k" "ctrl"))
+
+  (add-to-list 'project-switch-commands '(ghostel-project "Ghostel") t)
+  (add-to-list 'project-switch-commands '(ghostel-project-list-buffers "Ghostel buffers") t)
+  (add-to-list 'ghostel-eval-cmds '("magit-status-setup-buffer" magit-status-setup-buffer)))
+
+(use-package ghostel-compile
+  :ensure nil
+  :hook (after-init . ghostel-compile-global-mode))
+(use-package ghostel-comint
+  :ensure nil
+  :hook (after-init . ghostel-comint-global-mode))
 
 (use-package neofetch
   :vc (:url "https://codeberg.org/benja2998/neofetch.el"
@@ -461,6 +481,7 @@
 	    eshell-visual-commands
 	  (setq eshell-visual-commands
 		(cons "wiremix" eshell-visual-commands)))
+	(ghostel-eshell-visual-command-mode)
 	(eshell/export
 	 (concat "GPG_TTY="
 		 (shell-command-to-string "/bin/sh tty 2>/dev/null"))))
@@ -468,7 +489,11 @@
  '(eshell-visual-subcommands '(("git" "log" "diff" "show")))
  '(org-agenda-files '("~/Documents/Notes/"))
  '(org-directory "~/Documents/Notes")
- '(package-selected-packages '(neofetch))
+ '(package-selected-packages
+   '(colorful-mode dmenu eshell-prompt-extras exec-path-from-shell exwm
+		   ghostel lua-mode markdown-mode
+		   modus-themes-exporter multiple-cursors neofetch
+		   orderless org-superstar package-lint rust-mode))
  '(package-vc-selected-packages
    '((neofetch :url "https://codeberg.org/benja2998/neofetch.el" :branch
 	       "main")
