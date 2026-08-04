@@ -1,6 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
-(setq custom-file "~/.emacs.custom.el")
+(setq custom-file (make-temp-file "emacs-custom"))
 
 ;;; For future customizations
 (require 'eshell)
@@ -439,4 +439,26 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 (setq org-directory "~/Documents/Notes/")
 (setq org-agenda-files (list org-directory))
 
-(load custom-file t)
+(load-theme 'my-awesome t)
+(setq eshell-cmpl-ignore-case t)
+(add-hook 'eshell-mode-hook (lambda ()
+			      (add-to-list 'eshell-visual-commands "tinydash")
+			      (add-to-list 'eshell-visual-commands "fzf")
+			      (add-to-list 'eshell-visual-commands "cmatrix")
+			      (add-to-list 'eshell-visual-commands "nvtop")
+			      (add-to-list 'eshell-visual-commands "wiremix")
+			      (ghostel-eshell-visual-command-mode)))
+(setq read-buffer-completion-ignore-case t)
+(setq read-file-name-completion-ignore-case t)
+(setq send-mail-function 'mailclient-send-it)
+(setq truncate-lines nil)
+(setq truncate-partial-width-windows nil)
+(setq vc-follow-symlinks t)
+(setq word-wrap t)
+
+(custom-set-faces
+ '(org-level-1 ((t (:inherit outline-1 :height 1.25))))
+ '(org-level-2 ((t (:inherit outline-2 :height 1.2))))
+ '(org-level-3 ((t (:inherit outline-3 :height 1.15))))
+ '(org-level-4 ((t (:inherit outline-4 :height 1.1))))
+ '(org-level-5 ((t (:inherit outline-5 :height 1.05)))))
