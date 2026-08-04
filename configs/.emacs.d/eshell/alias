@@ -1,4 +1,4 @@
-alias tb ghostel bash
+alias t ghostel $SHELL
 alias ll ls -larth $*
 alias ff find-file $1
 alias e find-file-other-window $1
