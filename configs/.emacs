@@ -237,6 +237,7 @@
     (package-vc-install "https://github.com/protesilaos/modus-themes-exporter.git")))
 
 (use-package modus-themes)
+(use-package magit)
 
 (use-package multiple-cursors)
 (require 'multiple-cursors)
@@ -564,7 +565,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
  '(org-directory "~/Documents/Notes")
  '(package-selected-packages
    '(colorful-mode dmenu eshell-prompt-extras exec-path-from-shell exwm
-		   ghostel lua-mode markdown-mode
+		   ghostel lua-mode magit markdown-mode
 		   modus-themes-exporter multiple-cursors neofetch
 		   orderless org-superstar package-lint rust-mode))
  '(package-vc-selected-packages
