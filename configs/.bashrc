@@ -5,21 +5,9 @@
 export EDITOR='emacsclient -c -a ""'
 alias emacs='emacsclient -c -a ""'
 alias cls='clear'
-alias gls='git log  --show-signature'
-alias gl='git log '
-alias gt='git tag'
 alias ytns='yt-dlp --sponsorblock-remove all'
 alias fetch='$HOME/Thirdparty/fetch/fetch'
-alias gs='git status'
-alias gsh='git --no-pager show'
-alias ga='git add -A'
-alias gp='git push'
-alias gc='git commit -m'
-alias gd='git --no-pager diff'
 alias e='emacs'
-alias gf='git fetch'
-alias gpl='git pull --rebase'
-alias gpt='git push --tags'
 export GPG_TTY=$(tty)
 alias ls="ls --color=auto"
 alias tree="tree -C"

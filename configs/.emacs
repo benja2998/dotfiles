@@ -444,7 +444,8 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(my-awesome))
  '(custom-safe-themes
-   '("27e8e6fb52af47873987c01b354a92f263503809bd6b1194efe56febfabe4c1d"
+   '("130eb1659fc836cb8d119beaf58ad35dd4160e778ffcd0b42738d63f24d00e6e"
+     "27e8e6fb52af47873987c01b354a92f263503809bd6b1194efe56febfabe4c1d"
      "70c76a1bf0c17b046702b7c1f1aa88f9eff2d87fa6e6a9f4ad6867abdd0c8bff"
      "6a0ba5873af19027cfcc412c32d57be5c294688f03513690490bb67e642b5ad9"
      "0cbc8b3aa9a6943cd827af21800e76e7f68d15fb8eacfebb7fea116a8b92c84e"
