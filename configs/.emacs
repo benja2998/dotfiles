@@ -103,9 +103,6 @@
   (interactive)
   (dired "~/Music"))
 
-;;; Smooth scrolling with mouse or trackpad
-(pixel-scroll-precision-mode t)
-
 ;;; Scroll conservatively
 (setq scroll-conservatively 101)
 
