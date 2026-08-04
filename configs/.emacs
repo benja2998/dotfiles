@@ -424,7 +424,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
       browse-url-generic-program "flatpak"
       browse-url-generic-args '("run" "io.gitlab.librewolf-community"))
 
-(setq eshell-destroy-buffer-when-process-dies t)
+(setq eshell-destroy-buffer-when-process-dies nil)
 (when (daemonp) (exec-path-from-shell-initialize))
 (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
 
