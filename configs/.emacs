@@ -17,8 +17,9 @@
   (setq current-date-file (concat "~/Documents/Notes/" (format-time-string "%Y" (current-time)) "/" (format-time-string "%d-%m-%Y" (current-time)) ".org"))
   (setq current-date (format-time-string "%d-%m-%Y" (current-time)))
   (find-file current-date-file)
+  (setq current-day (format-time-string "%A" (current-time)))
   (unless (file-exists-p current-date-file)
-    (insert (concat "* " current-date (format "\n")))))
+    (insert (concat "* " current-date " " current-day (format "\n")))))
 (defun org-insert-backlink ()
   "Insert a backlink"
   (interactive)
@@ -490,8 +491,6 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 (custom-set-faces
  '(org-level-1 ((t (:inherit outline-1 :height 1.15))))
  '(org-level-2 ((t (:inherit outline-2 :height 1.1))))
- '(org-level-3 ((t (:inherit outline-3 :height 1.05))))
- '(org-level-4 ((t (:inherit outline-4 :height 1))))
- '(org-level-5 ((t (:inherit outline-5 :height 1)))))
+ '(org-level-3 ((t (:inherit outline-3 :height 1.05)))))
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
