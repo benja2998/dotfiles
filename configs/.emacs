@@ -1,6 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
-(setq custom-file (make-temp-file "emacs-custom"))
+(setq custom-file "~/.emacs-custom-not-loaded")
 
 ;;; For future customizations
 (require 'eshell)
