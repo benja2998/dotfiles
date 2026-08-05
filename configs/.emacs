@@ -315,6 +315,10 @@
   (interactive)
   (start-process-shell-command
    "flameshot" nil "flameshot gui"))
+(defun opsec-leak ()
+  (interactive)
+  (start-process-shell-command
+   "opsec" nil "espeak-ng \"OPSEC LEAK\""))
 
 ;;; EXWM configuration
 (use-package exwm)
@@ -335,6 +339,7 @@
         ([?\s-q] . dmenu) ;; s-q: Dmenu.
         ([?\s-n] . run-wiremix) ;; s-n: Wiremix.
         ([?\s-a] . run-librewolf) ;; s-a: Librewolf.
+	([?\s-o] . opsec-leak) ;; s-o: The most important keybind
         ([?\s-b] . run-nmtui) ;; s-b: Nmtui.
         ([?\s-h] . run-htop) ;; s-h: Htop.
         ([?\s-c] . exwm-workspace-move-window) ;; s-c: Move window to workspace.
@@ -425,6 +430,9 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
   (autoload 'epe-theme-lambda "eshell-prompt-extras")
   (setq eshell-highlight-prompt nil
         eshell-prompt-function 'epe-theme-lambda))
+
+;;; Destroy eshell visual buffers after process dies
+(setq eshell-destroy-buffer-when-process-dies t)
 
 ;;; Open eshell quickly
 (bind-key* "C-c e" 'eshell)
