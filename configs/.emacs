@@ -213,8 +213,6 @@
 
 (setq display-line-numbers-type 'relative)
 
-(pixel-scroll-precision-mode t)
-
 (require 'package)
 (require 'project)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
