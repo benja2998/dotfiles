@@ -447,9 +447,10 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 (global-visual-line-mode t)
 
 ;;; Unfuck the fuckery visual-line-mode does to emacs
+
+;; work around the first line of defense:
+;; line-move-visual is set buffer-locally
 (add-hook 'visual-line-mode-hook (lambda ()
-				   ;; work around the first line of defense:
-				   ;; line-move-visual is set buffer-locally
 				   (setq line-move-visual nil)))
 
 ;; These are easy to fix
