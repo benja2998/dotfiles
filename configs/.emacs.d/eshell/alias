@@ -1,9 +1,9 @@
-alias t ghostel $SHELL
-alias ll ls -larth $*
-alias ff find-file $1
-alias e find-file-other-window $1
-alias d dired $1
-alias ytsdl ytns --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" $*
-alias ytsearch yt-dlp --no-download --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" $* >/dev/null; cat search.txt; rm search.txt
-alias ytns yt-dlp --sponsorblock-remove all $*
 alias clear clear-scrollback
+alias ytns yt-dlp --sponsorblock-remove all $*
+alias ytsearch yt-dlp --no-download --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" $* >/dev/null; cat search.txt; rm search.txt
+alias ytsdl ytns --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" $*
+alias d dired $1
+alias e find-file-other-window $1
+alias ff find-file $1
+alias ll ls -larth $*
+alias t ghostel $SHELL

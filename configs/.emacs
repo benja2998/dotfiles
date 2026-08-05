@@ -1,5 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
+;;; Don't edit my config
 (setq custom-file "~/.emacs-custom-not-loaded")
 
 ;;; For future customizations
@@ -9,6 +10,7 @@
 ;;; Local packages
 (add-to-list 'load-path (concat user-emacs-directory "local/"))
 
+;;; Functions
 (defun daily-note ()
   "Open today's daily note"
   (interactive)
@@ -17,7 +19,6 @@
   (find-file current-date-file)
   (unless (file-exists-p current-date-file)
     (insert (concat "* " current-date (format "\n")))))
-
 (defun org-insert-backlink ()
   "Insert a backlink"
   (interactive)
@@ -27,12 +28,10 @@
   (cond ((string-equal insert-backlink--pretty "")
 	 (setq insert-backlink--pretty insert-backlink--file)))
   (insert (format "[[%s][%s]]" insert-backlink--file insert-backlink--pretty)))
-
 (defun my/compile ()
   "Compile"
   (interactive)
   (call-interactively 'compile))
-
 (defun org-insert-image ()
   "Insert a image"
   (interactive)
@@ -51,13 +50,11 @@
 				    (directory-files-recursively "~/Pictures/" "\\.gif$")))
   (setq insert-image--file (completing-read "Image to insert: " insert-image--files nil t))
   (insert (format "[[%s]]" insert-image--file)))
-
 (defun dired-dailies ()
   "List daily notes"
   (interactive)
   ;; Should be trivial due to wildcards
   (dired "~/Documents/Notes/**/*-*-*.org"))
-
 (defun my/insert-code ()
   "Insert org code block"
   (interactive)
@@ -65,19 +62,16 @@
   (catch 'no-language
     (cond ((string-equal code--lang "")
 	   (throw 'no-language "No language provided"))))
-
   (insert (format "#+BEGIN_SRC %s\n#+END_SRC" code--lang))
   (previous-line)
   (call-interactively 'move-end-of-line)
   (newline)
   (indent-for-tab-command))
-
 (defun search-in-notes ()
   "Search in notes"
   (interactive)
   (setq search--whatIread (read-from-minibuffer "Enter search term (regex, case-insensitive): "))
   (grep (format "grep -rnEi \"%s\" ~/Documents/Notes" search--whatIread)))
-
 (defun my/project-search ()
   "Search in project"
   (interactive)
@@ -87,17 +81,14 @@
 		search--whatIread
 		this--project-root
 		this--project-root)))
-
 (defun todo-note ()
   "Open todo.org note"
   (interactive)
   (find-file "~/Documents/Notes/todo.org"))
-
 (defun dired-videos ()
   "Open videos directory"
   (interactive)
   (dired "~/Videos"))
-
 (defun dired-music ()
   "Open music directory"
   (interactive)
@@ -132,15 +123,16 @@
   (bind-key "M-l" #'org-do-demote 'org-mode-map)
   (bind-key "M-h" #'org-do-promote 'org-mode-map))
 
+;;; Function to clear eshell
 (defun eshell-clear ()
   "Clear interactively eshell"
   (interactive)
-  (execute-kbd-macro (kbd "cls RET")))
+  (execute-kbd-macro (kbd "clear-scrollback RET")))
 
 ;;; Fix for eshell-mode-map not working immediately
 (defun bind-eshell-clear-mode-map ()
   (interactive)
-  ;; (bind-key "C-l" #'eshell-clear 'eshell-mode-map)
+  (bind-key "M-l" #'eshell-clear 'eshell-mode-map)
   ;; This shouldn't be in the function for Eshell but I put it here to not repeat this
   (bind-key "C-c C-c" 'wdired-change-to-wdired-mode 'dired-mode-map))
 (add-hook 'emacs-startup-hook #'bind-eshell-clear-mode-map)
@@ -162,11 +154,11 @@
 ;;; Automatically revert buffers
 (global-auto-revert-mode t)
 
+;;; Functions to open notes and home
 (defun dired-notes ()
   "Open notes directory"
   (interactive)
   (dired "~/Documents/Notes"))
-
 (defun dired-home ()
   "Open home directory"
   (interactive)
@@ -187,13 +179,18 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
+;;; Delete trailing whitespace on write file
 (add-to-list 'write-file-functions 'delete-trailing-whitespace)
 
+;;; EPG pinentry
 (setq epg-pinentry-mode 'loopback)
 
+;;; Save minibuffer history
 (savehist-mode t)
 
+;;; Inhibit splash screen
 (setq inhibit-splash-screen t)
+;;; Not sure if this is necessary
 (setq-default indent-tabs-mode t)
 
 ;;; Make emacs not annoying
@@ -213,20 +210,27 @@
       ((eq system-type 'android)
        (add-to-list 'default-frame-alist '(font . "monospace-24"))))
 
+;;; Relative line numbers
 (setq display-line-numbers-type 'relative)
 
+;;; Package configuration
 (require 'package)
 (require 'project)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (require 'use-package)
 (package-initialize)
 
+;;; Only enable line numbers when it makes sense
 (add-hook 'prog-mode-hook (lambda () (display-line-numbers-mode t)))
 (add-hook 'conf-mode-hook (lambda () (display-line-numbers-mode t)))
 
+;;; Use short answers
 (setq use-short-answers t)
+
+;;; Always ensure t
 (setq use-package-always-ensure t)
 
+;;; Modus themes exporter
 (use-package modus-themes-exporter
   :ensure nil ; do not try to install because we get it from source in the `:init'
   :commands (modus-themes-exporter-export)
@@ -234,86 +238,84 @@
   ;; Then upgrade it with the command `package-vc-upgrade' or `package-vc-upgrade-all'.
   (unless (package-installed-p 'modus-themes-exporter)
     (package-vc-install "https://github.com/protesilaos/modus-themes-exporter.git")))
-
 (use-package modus-themes)
+
+;;; The best git client
 (use-package magit)
 
+;;; multiple-cursors configuration
 (use-package multiple-cursors)
 (require 'multiple-cursors)
-
 (bind-key* "C-c y e l" 'mc/edit-lines)
 (bind-key* "M-o" 'mc/mark-all-like-this)
 (bind-key* "C-c y w l" 'mc/mark-all-words-like-this)
 (bind-key* "C-c y s l" 'mc/mark-all-symbols-like-this)
 
+;;; Dmenu
 (use-package dmenu)
+;;; Markdown support
 (use-package markdown-mode)
+;;; exec-path-from-shell
 (use-package exec-path-from-shell)
+;;; Rust support
 (use-package rust-mode)
+;;; Lua support
 (use-package lua-mode)
+;;; Package linter
 (use-package package-lint)
 
+;;; Use unicode characters for Org Headings
 (use-package org-superstar)
 (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
 
+;;; Functions for EXWM keybinds to call
 (defun my/audio-vol-up () (interactive)
        (start-process-shell-command
 	"vol-up" nil
 	"pactl set-sink-volume @DEFAULT_SINK@ +5%"))
-
 (defun my/audio-vol-down () (interactive)
        (start-process-shell-command
 	"vol-down" nil
 	"pactl set-sink-volume @DEFAULT_SINK@ -5%"))
-
 (defun my/audio-mute () (interactive)
        (start-process-shell-command
 	"vol-mute" nil
 	"pactl set-sink-mute @DEFAULT_SINK@ toggle"))
-
-;; Brightness keys (requires `light`)
 (defun my/brightness-up () (interactive)
        (start-process-shell-command
 	"bright-up" nil
 	"light -A 5"))
-
 (defun my/brightness-down () (interactive)
        (start-process-shell-command
 	"bright-down" nil
 	"light -U 5"))
-
 (defun run-wiremix ()
   (interactive)
   (ghostel-eshell--exec-visual "wiremix"))
-
 (defun run-nmtui ()
   (interactive)
   (ghostel-eshell--exec-visual "nmtui"))
-
 (defun run-boomer ()
   (interactive)
   (start-process-shell-command
    "boomer" nil "/home/benjamin/Thirdparty/boomer/boomer"))
-
 (defun run-htop ()
   (interactive)
   (ghostel-eshell--exec-visual "htop"))
-
 (defun run-librewolf ()
   (interactive)
   (start-process-shell-command
    "librewolf" nil "io.gitlab.librewolf-community"))
-
 (defun run-xsecurelock ()
   (interactive)
   (start-process-shell-command
    "xsecurelock" nil "xsecurelock"))
-
 (defun run-flameshot ()
   (interactive)
   (start-process-shell-command
    "flameshot" nil "flameshot gui"))
 
+;;; EXWM configuration
 (use-package exwm)
 (require 'exwm)
 ;; Set the initial workspace number.
@@ -352,16 +354,20 @@
                         (exwm-workspace-switch-create ,i))))
                   (number-sequence 0 9))))
 
+;;; Use lua-mode for luau files
 (add-to-list 'auto-mode-alist '("\\.luau\\'" . lua-mode))
 
-(setq display-time-format "%Y-%m-%d %a %H:%M")
+;;; Display time and battery in mode-line
+(setq display-time-format "%d-%m-%Y %a %H:%M")
 (display-time-mode 1)
 (display-battery-mode 1)
 
+;;; Enable EXWM
 (cond ((eq system-type 'gnu/linux)
        (exwm-wm-mode)
        (exwm-systemtray-mode 1)))
 
+;;; terminal emulator
 (use-package ghostel
   :bind (("C-c m" . ghostel)
          :map ghostel-semi-char-mode-map
@@ -371,6 +377,7 @@
          ;; Simulate this behavior in ghostel by sending C-p and C-n
          ("M-p" . (lambda () (interactive) (ghostel-send-key "p" "ctrl")))
          ("M-n" . (lambda () (interactive) (ghostel-send-key "n" "ctrl")))
+         ("M-l" . (lambda () (interactive) (ghostel-send-key "l" "ctrl")))
          :map project-prefix-map
          ("m" . ghostel-project)
          ("M" . ghostel-project-list-buffers))
@@ -381,24 +388,29 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
     (interactive)
     (kill-ring-save (point) (line-end-position))
     (ghostel-send-key "k" "ctrl"))
-
   (add-to-list 'project-switch-commands '(ghostel-project "Ghostel") t)
   (add-to-list 'project-switch-commands '(ghostel-project-list-buffers "Ghostel buffers") t)
   (add-to-list 'ghostel-eval-cmds '("magit-status-setup-buffer" magit-status-setup-buffer)))
 
+;;; Run compile mode in a ghostel buffer
 (use-package ghostel-compile
   :ensure nil
   :hook (after-init . ghostel-compile-global-mode))
+
+;;; Run comint mode in a g hostel buffer
 (use-package ghostel-comint
   :ensure nil
   :hook (after-init . ghostel-comint-global-mode))
 
+;;; Neofetch.el (my package)
 (use-package neofetch
   :vc (:url "https://codeberg.org/benja2998/neofetch.el"
 	    :branch "main"))
 
+;;; Ido Mode emulation
 (fido-mode t)
 
+;;; Colorize colors
 (use-package colorful-mode
   :custom
   (colorful-use-prefix t)
@@ -413,26 +425,32 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
   (setq eshell-highlight-prompt nil
         eshell-prompt-function 'epe-theme-lambda))
 
+;;; Open eshell quickly
 (bind-key* "C-c e" 'eshell)
 
+;;; Always open urls in Librewolf
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "flatpak"
       browse-url-generic-args '("run" "io.gitlab.librewolf-community"))
 
-(setq eshell-destroy-buffer-when-process-dies nil)
+
+;;; Exec path from shell: get environment variables from shell
 (when (daemonp) (exec-path-from-shell-initialize))
 (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
 
-(add-hook 'org-mode-hook (lambda ()
-			   (setq word-wrap t)
-			   (setq truncate-lines nil)
-			   (setq truncate-partial-width-windows nil)))
-
+;;; Org agenda configuration
 (setq org-directory "~/Documents/Notes/")
 (setq org-agenda-files (list org-directory))
 
+;;; Best theme ever (made by me)
 (load-theme 'my-awesome t)
+
+;;; Ignore case in completion
 (setq eshell-cmpl-ignore-case t)
+(setq read-buffer-completion-ignore-case t)
+(setq read-file-name-completion-ignore-case t)
+
+;;; Eshell visual commands configuration
 (add-hook 'eshell-mode-hook (lambda ()
 			      (add-to-list 'eshell-visual-commands "tinydash")
 			      (add-to-list 'eshell-visual-commands "fzf")
@@ -440,10 +458,14 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 			      (add-to-list 'eshell-visual-commands "nvtop")
 			      (add-to-list 'eshell-visual-commands "wiremix")
 			      (ghostel-eshell-visual-command-mode)))
-(setq read-buffer-completion-ignore-case t)
-(setq read-file-name-completion-ignore-case t)
+
+;;; Pass message to mail client when sending with C-x m
 (setq send-mail-function 'mailclient-send-it)
+
+;;; Follow symlinks to version controlled files
 (setq vc-follow-symlinks t)
+
+;;; Visual line mode
 (global-visual-line-mode t)
 
 ;;; Unfuck the fuckery visual-line-mode does to emacs
@@ -464,9 +486,12 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 ;; Not sure if this works
 (bind-key* "C-k" 'kill-line)
 
+;;; Make org headings pretty
 (custom-set-faces
- '(org-level-1 ((t (:inherit outline-1 :height 1.25))))
- '(org-level-2 ((t (:inherit outline-2 :height 1.2))))
- '(org-level-3 ((t (:inherit outline-3 :height 1.15))))
- '(org-level-4 ((t (:inherit outline-4 :height 1.1))))
- '(org-level-5 ((t (:inherit outline-5 :height 1.05)))))
+ '(org-level-1 ((t (:inherit outline-1 :height 1.15))))
+ '(org-level-2 ((t (:inherit outline-2 :height 1.1))))
+ '(org-level-3 ((t (:inherit outline-3 :height 1.05))))
+ '(org-level-4 ((t (:inherit outline-4 :height 1))))
+ '(org-level-5 ((t (:inherit outline-5 :height 1)))))
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
