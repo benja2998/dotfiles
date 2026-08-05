@@ -128,7 +128,7 @@
 (with-eval-after-load 'org
   (bind-key "C-c ib" #'org-insert-backlink 'org-mode-map)
   (bind-key "C-c ic" #'my/insert-code 'org-mode-map)
-  (bind-key "C-c ii" #'org-insert-image 'org-mode-map)  
+  (bind-key "C-c ii" #'org-insert-image 'org-mode-map)
   (bind-key "M-l" #'org-do-demote 'org-mode-map)
   (bind-key "M-h" #'org-do-promote 'org-mode-map))
 
@@ -140,7 +140,7 @@
 ;;; Fix for eshell-mode-map not working immediately
 (defun bind-eshell-clear-mode-map ()
   (interactive)
-  (bind-key "C-l" #'eshell-clear 'eshell-mode-map)
+  ;; (bind-key "C-l" #'eshell-clear 'eshell-mode-map)
   ;; This shouldn't be in the function for Eshell but I put it here to not repeat this
   (bind-key "C-c C-c" 'wdired-change-to-wdired-mode 'dired-mode-map))
 (add-hook 'emacs-startup-hook #'bind-eshell-clear-mode-map)
@@ -314,13 +314,6 @@
   (start-process-shell-command
    "flameshot" nil "flameshot gui"))
 
-(use-package orderless
-  :ensure t
-  :custom
-  (completion-styles '(orderless basic))
-  (completion-category-overrides '((file (styles partial-completion))))
-  (completion-pcm-leading-wildcard t)) ;; Emacs 31: partial-completion behaves like substring
-
 (use-package exwm)
 (require 'exwm)
 ;; Set the initial workspace number.
@@ -338,7 +331,7 @@
         ([?\s-p] . my/audio-vol-up) ;; s-p: Volume up.
         ([?\s-q] . dmenu) ;; s-q: Dmenu.
         ([?\s-n] . run-wiremix) ;; s-n: Wiremix.
-        ([?\s-a] . run-librewolf) ;; s-a: Librewolf.	
+        ([?\s-a] . run-librewolf) ;; s-a: Librewolf.
         ([?\s-b] . run-nmtui) ;; s-b: Nmtui.
         ([?\s-h] . run-htop) ;; s-h: Htop.
         ([?\s-c] . exwm-workspace-move-window) ;; s-c: Move window to workspace.
@@ -404,6 +397,8 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
   :vc (:url "https://codeberg.org/benja2998/neofetch.el"
 	    :branch "main"))
 
+(fido-mode t)
+
 (use-package colorful-mode
   :custom
   (colorful-use-prefix t)
@@ -448,10 +443,25 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 (setq read-buffer-completion-ignore-case t)
 (setq read-file-name-completion-ignore-case t)
 (setq send-mail-function 'mailclient-send-it)
-(setq truncate-lines nil)
-(setq truncate-partial-width-windows nil)
 (setq vc-follow-symlinks t)
-(setq word-wrap t)
+(global-visual-line-mode t)
+
+;;; Unfuck the fuckery visual-line-mode does to emacs
+(add-hook 'visual-line-mode-hook (lambda ()
+				   ;; work around the first line of defense:
+				   ;; line-move-visual is set buffer-locally
+				   (setq line-move-visual nil)))
+
+;; These are easy to fix
+(bind-key* "C-a" 'beginning-of-line)
+(bind-key* "C-e" 'end-of-line)
+
+;; work around the second line of defense:
+;; C-k remap doesn't work properly for some reason
+(defalias 'kill-visual-line 'kill-line)
+
+;; Not sure if this works
+(bind-key* "C-k" 'kill-line)
 
 (custom-set-faces
  '(org-level-1 ((t (:inherit outline-1 :height 1.25))))

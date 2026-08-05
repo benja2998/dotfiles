@@ -4,7 +4,6 @@
 
 export EDITOR='emacsclient -c -a ""'
 alias emacs='emacsclient -c -a ""'
-alias cls='clear'
 alias ytns='yt-dlp --sponsorblock-remove all'
 alias fetch='$HOME/Thirdparty/fetch/fetch'
 alias e='emacs'
@@ -35,7 +34,7 @@ ytsdl() {
 }
 
 kpc() {
-    keepassxc-cli open ~/Documents/passwords.kdbx 
+    keepassxc-cli open ~/Documents/passwords.kdbx
 }
 
 ytsearch() {

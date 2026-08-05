@@ -39,13 +39,13 @@
     (bg-dim "#202326")
     (bg-active "#33383d")
     (bg-inactive "#33383d")
-    (fg-dim "#525961")    
+    (fg-dim "#525961")
     (bg-dim "#1e2023")
 
     (bg-term-black "#393939")
     (fg-term-black "#393939")
     (bg-term-black-bright "#393939")
-    (fg-term-black-bright "#393939")        
+    (fg-term-black-bright "#393939")
 
     (black-warmer "#393939")
     (blue-warmer "#4677ff")
@@ -72,8 +72,8 @@
     (magenta-faint "magenta3")
     (red-faint "#ff0000")
     (white-faint "#e5e5e5")
-    (yellow-faint "yellow3")        
-    
+    (yellow-faint "yellow3")
+
     (black "#393939")
     (blue "#4677ff")
     (black-intense "#393939")
@@ -100,10 +100,10 @@
 
     (border-mode-line-active "#191c1e")
     (border-mode-line-inactive "#1d2123")
-    
+
     (fg-mode-line-active "#fcfcfc")
     (fg-mode-line-inactive "#fcfcfc")
-    
+
     (yellow "yellow3")
     (fg-main "#fcfcfc")
 
@@ -125,19 +125,19 @@
     (bracket "#ff0000")
     (delimiter "#ff0000")
     (docmarkup "coral")
-    (number "orange red")
+    (number "orangered")
     (comment "#525961")
     (builtin "coral")
     (constant "#ff0000")
     (docstring "#ff0000")
     (fnname "coral")
-    (fnname-call "orange red")
+    (fnname-call "orangered")
     (keyword "#ff0000")
-    (property "orange red")
+    (property "orangered")
     (rx-backslash "coral")
     (rx-construct "coral")
     (string "#ff0000")
-    (type "orange red")
+    (type "orangered")
     (variable "coral")
     (variable-use "coral")
     (accent-0 "#ff0000")
@@ -148,25 +148,25 @@
     (fg-completion-match-0 "#ff0000")
     (fg-completion-match-1 "#ff0000")
     (fg-completion-match-2 "#ff0000")
-    (fg-completion-match-3 "#ff0000")    
+    (fg-completion-match-3 "#ff0000")
 
     (date-common "coral")
     (date-deadline "#ff0000")
     (date-deadline-subtle "coral")
-    (date-event "orange red")
+    (date-event "orangered")
     (date-holiday "coral")
     (date-holiday-other "orange")
     (date-range "#ff0000")
     (date-scheduled "#ff0000")
     (date-scheduled-subtle "coral")
     (date-weekday "coral")
-    (date-weekend "orange red")
+    (date-weekend "orangered")
     (fg-link "#ff0000")
     (underline-link "#ff0000")
     (fg-link-symbolic "#ff0000")
     (underline-link-symbolic "#ff0000")
     (mail-cite-0 "coral")
-    (mail-cite-1 "orange red")
+    (mail-cite-1 "orangered")
     (mail-cite-2 "orange")
     (mail-cite-3 "gold")
     (mail-part "#ff0000")
@@ -178,7 +178,7 @@
     (fg-prose-macro "#ff0000")
     (fg-prose-verbatim "orange")
     (prose-done "#ff0000")
-    (prose-todo "orange red")
+    (prose-todo "orangered")
     (fg-alt "#ff0000")
 
     (keybind "#ff0000")
@@ -189,7 +189,9 @@
 
     (bg-region "#343a3f")
 
-    (identifier "coral")    
+    (identifier "coral")
+
+    (bg-completion "brown")
     )
   "Like `modus-vivendi-palette'.")
 
