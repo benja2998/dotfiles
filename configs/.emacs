@@ -187,6 +187,8 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
+(add-to-list 'write-file-functions 'delete-trailing-whitespace)
+
 (setq epg-pinentry-mode 'loopback)
 
 (savehist-mode t)
