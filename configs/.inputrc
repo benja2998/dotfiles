@@ -4,6 +4,12 @@ $include /etc/inputrc
 "\ep": history-search-backward
 "\en": history-search-forward
 
+# Clear with M-l like I have it set up in eshell
+"\el": clear-display
+
+# Make C-l clear display
+"\C-l": clear-display
+
 # Sane defaults
 set colored-stats On
 set completion-ignore-case On

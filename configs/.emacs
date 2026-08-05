@@ -127,7 +127,7 @@
 (defun eshell-clear ()
   "Clear interactively eshell"
   (interactive)
-  (execute-kbd-macro (kbd "clear-scrollback RET")))
+  (execute-kbd-macro (kbd "cls RET")))
 
 ;;; Fix for eshell-mode-map not working immediately
 (defun bind-eshell-clear-mode-map ()

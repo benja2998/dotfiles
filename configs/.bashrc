@@ -6,6 +6,7 @@ export EDITOR='emacsclient -c -a ""'
 alias emacs='emacsclient -c -a ""'
 alias ytns='yt-dlp --sponsorblock-remove all'
 alias fetch='$HOME/Thirdparty/fetch/fetch'
+alias cls='clear'
 alias e='emacs'
 export GPG_TTY=$(tty)
 alias ls="ls --color=auto"
