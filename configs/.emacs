@@ -12,6 +12,35 @@
 (require 'emacs-multi-eshell)
 
 ;;; Functions
+(defun eshell/z (&optional &rest ARGS)
+  "Zoxide implementation for Eshell.  Optionally takes in ARGS, which will be passed to Zoxide"
+  (interactive)
+
+  ;; The setup
+
+  (cond (ARGS)
+	(t
+	 (setq ARGS (getenv "HOME"))))
+
+  (setq z--args (flatten-tree ARGS))
+  (setq z--args (eshell-list-to-string z--args))
+  (setq z--command (concat "zoxide query " z--args))
+  (setq z--output (string-trim
+		   (shell-command-to-string z--command)))
+
+  ;; The actually doing things
+  (cond ((string-equal z--args "-")
+	 ;; Go back
+	 (eshell/cd "-"))
+	((string-equal z--output "zoxide: no match found")
+	 ;; Try to add it
+	 (shell-command-to-string
+	  (concat "zoxide add " z--args))
+	 (eshell/cd z--args))
+	(t
+	 ;; else, it exists
+	 (eshell/cd z--output))))
+
 (defun eshell-in-home ()
   "Open eshell in home"
   (interactive)
