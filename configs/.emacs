@@ -422,6 +422,14 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
   :vc (:url "https://codeberg.org/benja2998/neofetch.el"
 	    :branch "main"))
 
+;;; Eshell syntax highlighting
+(use-package eshell-syntax-highlighting
+  :after eshell-mode
+  :ensure t ;; Install if not already installed.
+  :config
+  ;; Enable in all Eshell buffers.
+  (eshell-syntax-highlighting-global-mode +1))
+
 ;;; Ido Mode emulation
 (fido-mode t)
 

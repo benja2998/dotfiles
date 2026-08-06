@@ -145,10 +145,10 @@
     (accent-2 "#ff0000")
     (accent-3 "#ff0000")
 
-    (fg-completion-match-0 "#ff0000")
-    (fg-completion-match-1 "#ff0000")
-    (fg-completion-match-2 "#ff0000")
-    (fg-completion-match-3 "#ff0000")
+    (fg-completion-match-0 "orangered")
+    (fg-completion-match-1 "orangered")
+    (fg-completion-match-2 "orangered")
+    (fg-completion-match-3 "orangered")
 
     (date-common "coral")
     (date-deadline "#ff0000")
