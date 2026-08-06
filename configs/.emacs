@@ -252,6 +252,14 @@
 (bind-key* "C-c y w l" 'mc/mark-all-words-like-this)
 (bind-key* "C-c y s l" 'mc/mark-all-symbols-like-this)
 
+;;; Eshell fish-like completion
+(use-package esh-autosuggest
+  :hook (eshell-mode . esh-autosuggest-mode)
+  ;; If you have use-package-hook-name-suffix set to nil, uncomment and use the
+  ;; line below instead:
+  ;; :hook (eshell-mode-hook . esh-autosuggest-mode)
+  :ensure t)
+
 ;;; Dmenu
 (use-package dmenu)
 ;;; Markdown support
