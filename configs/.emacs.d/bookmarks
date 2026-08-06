@@ -1,0 +1,17 @@
+;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8-emacs; mode: lisp-data -*-
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("unlisted-streams.org"
+ (filename . "~/Documents/Notes/unlisted-streams.org")
+ (front-context-string . "* Unlisted Strea")
+ (rear-context-string)
+ (position . 1)
+ (last-modified 27252 56259 739211 196000))
+(".emacs"
+ (filename . "~/Projects/dotfiles/configs/.emacs")
+ (front-context-string . "\n;;; Don't edit ")
+ (rear-context-string . "binding: t; -*-\n")
+ (position . 32)
+ (last-modified 27252 56136 502993 887000))
+)
