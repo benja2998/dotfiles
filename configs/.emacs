@@ -41,6 +41,18 @@
 	 ;; else, it exists
 	 (eshell/cd z--output))))
 
+(defun notes-eshell ()
+  "Open notes-eshell"
+  (interactive)
+  (cond ((get-buffer "*notes-eshell*")
+	 (switch-to-buffer "*notes-eshell*"))
+	(t
+	 (dired-notes)
+	 (setq mydired--buffer-name (buffer-name))
+	 (ees/eshell-new)
+	 (rename-buffer "*notes-eshell*")
+	 (kill-buffer mydired--buffer-name))))
+
 (defun eshell-in-home ()
   "Open eshell in home"
   (interactive)
@@ -141,6 +153,7 @@
 ;;; Keybinds
 (bind-key* "C-c nj" 'my/compile)
 (bind-key* "C-c j" 'eshell-in-home)
+(bind-key* "C-c k" 'notes-eshell)
 (bind-key* "C-c nt" 'daily-note)
 (bind-key* "C-c tn" 'todo-note)
 (bind-key* "C-c ne" 'org-agenda-list)
