@@ -406,6 +406,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
   (add-to-list 'project-switch-commands '(ghostel-project "Ghostel") t)
   (add-to-list 'project-switch-commands '(ghostel-project-list-buffers "Ghostel buffers") t)
   (add-to-list 'ghostel-eval-cmds '("magit-status-setup-buffer" magit-status-setup-buffer)))
+(setq ghostel-timer-delay 0.007) ; 144 fps
 
 ;;; Run compile mode in a ghostel buffer
 (use-package ghostel-compile
@@ -482,6 +483,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 (add-hook 'eshell-mode-hook (lambda ()
 			      (add-to-list 'eshell-visual-commands "tinydash")
 			      (add-to-list 'eshell-visual-commands "fzf")
+			      (add-to-list 'eshell-visual-commands "pipes.sh")
 			      (add-to-list 'eshell-visual-commands "cmatrix")
 			      (add-to-list 'eshell-visual-commands "nvtop")
 			      (add-to-list 'eshell-visual-commands "wiremix")
