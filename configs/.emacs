@@ -486,15 +486,9 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 				   (setq line-move-visual nil)))
 
 ;; These are easy to fix
-(bind-key* "C-a" 'beginning-of-line)
-(bind-key* "C-e" 'end-of-line)
-
-;; work around the second line of defense:
-;; C-k remap doesn't work properly for some reason
+(defalias 'beginning-of-visual-line 'beginning-of-line)
+(defalias 'end-of-visual-line 'end-of-line)
 (defalias 'kill-visual-line 'kill-line)
-
-;; Not sure if this works
-(bind-key* "C-k" 'kill-line)
 
 ;;; Make org headings pretty
 (custom-set-faces
