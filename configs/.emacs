@@ -9,8 +9,16 @@
 
 ;;; Local packages
 (add-to-list 'load-path (concat user-emacs-directory "local/"))
+(require 'emacs-multi-eshell)
 
 ;;; Functions
+(defun eshell-in-home ()
+  "Open eshell in home"
+  (interactive)
+  (dired-home)
+  (setq mydired--buffer-name (buffer-name))
+  (ees/eshell-new)
+  (kill-buffer mydired--buffer-name))
 (defun daily-note ()
   "Open today's daily note"
   (interactive)
@@ -103,6 +111,7 @@
 
 ;;; Keybinds
 (bind-key* "C-c nj" 'my/compile)
+(bind-key* "C-c j" 'eshell-in-home)
 (bind-key* "C-c nt" 'daily-note)
 (bind-key* "C-c tn" 'todo-note)
 (bind-key* "C-c ne" 'org-agenda-list)
@@ -456,7 +465,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 (setq eshell-destroy-buffer-when-process-dies t)
 
 ;;; Open eshell quickly
-(bind-key* "C-c e" 'eshell)
+(bind-key* "C-c e" 'ees/eshell-new)
 
 ;;; Always open urls in Librewolf
 (setq browse-url-browser-function 'browse-url-generic
