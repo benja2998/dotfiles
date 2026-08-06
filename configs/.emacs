@@ -383,6 +383,7 @@
          ;; Simulate this behavior in ghostel by sending C-p and C-n
          ("M-p" . (lambda () (interactive) (ghostel-send-key "p" "ctrl")))
          ("M-n" . (lambda () (interactive) (ghostel-send-key "n" "ctrl")))
+	 ;; I use M-l to clear Eshell, so it makes sense to have this
          ("M-l" . (lambda () (interactive) (ghostel-send-key "l" "ctrl")))
          :map project-prefix-map
          ("m" . ghostel-project)
