@@ -429,6 +429,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
   :config
   ;; Enable in all Eshell buffers.
   (eshell-syntax-highlighting-global-mode +1))
+(eshell-syntax-highlighting-global-mode t)
 
 ;;; Ido Mode emulation
 (fido-mode t)
