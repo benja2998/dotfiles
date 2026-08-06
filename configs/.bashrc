@@ -2,6 +2,17 @@
 
 #export LC_ALL=C.UTF-8
 
+if [[ -z "$__HAS_TRIED" ]]; then
+    __HAS_TRIED=true
+    if [[ -v PREFIX ]]; then
+	if shopt -q login_shell; then
+	    echo "Login shell in termux"
+	    emacsclient -c -a "" -e "(eshell 42)"
+	    exit 0
+	fi
+    fi
+fi
+
 export EDITOR='emacsclient -c -a ""'
 alias emacs='emacsclient -c -a ""'
 alias ytns='yt-dlp --sponsorblock-remove all'
