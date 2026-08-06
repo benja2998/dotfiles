@@ -106,7 +106,7 @@
 (bind-key* "C-c nt" 'daily-note)
 (bind-key* "C-c tn" 'todo-note)
 (bind-key* "C-c ne" 'org-agenda-list)
-(bind-key* "C-x ps" 'my/project-search) ;; project-shell is useless
+(bind-key* "C-x ps" 'my/project-search) ; project-shell is useless
 (bind-key* "C-c ny" 'dired-videos)
 (bind-key* "C-c ld" 'dired-dailies)
 (bind-key* "C-c ls" 'search-in-notes)
