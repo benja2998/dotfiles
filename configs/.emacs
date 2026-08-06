@@ -122,7 +122,7 @@
   (bind-key "C-c ic" #'my/insert-code 'org-mode-map)
   (bind-key "C-c ii" #'org-insert-image 'org-mode-map)
   (bind-key "C-x M-l" #'org-do-demote 'org-mode-map)
-  (bind-key "M-h" #'org-do-promote 'org-mode-map))
+  (bind-key "C-x M-h" #'org-do-promote 'org-mode-map))
 
 ;;; Function to clear eshell
 (defun eshell-clear ()
