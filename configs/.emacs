@@ -205,12 +205,6 @@
       `(("." . ,(expand-file-name
                  (concat user-emacs-directory "backups")))))
 
-;;; Font
-(cond ((eq system-type 'gnu/linux)
-       (add-to-list 'default-frame-alist '(font . "Iosevka-20")))
-      ((eq system-type 'android)
-       (add-to-list 'default-frame-alist '(font . "monospace-24"))))
-
 ;;; Relative line numbers
 (setq display-line-numbers-type 'relative)
 
@@ -300,17 +294,17 @@
 	"light -U 5"))
 (defun run-wiremix ()
   (interactive)
-  (ghostel-eshell--exec-visual "wiremix"))
+  (term "wiremix"))
 (defun run-nmtui ()
   (interactive)
-  (ghostel-eshell--exec-visual "nmtui"))
+  (term "nmtui"))
 (defun run-boomer ()
   (interactive)
   (start-process-shell-command
    "boomer" nil "/home/benjamin/Thirdparty/boomer/boomer"))
 (defun run-htop ()
   (interactive)
-  (ghostel-eshell--exec-visual "htop"))
+  (term "htop"))
 (defun run-librewolf ()
   (interactive)
   (start-process-shell-command
@@ -382,40 +376,7 @@
        (exwm-systemtray-mode 1)))
 
 ;;; terminal emulator
-(use-package ghostel
-  :bind (("C-c m" . ghostel)
-         :map ghostel-semi-char-mode-map
-         ("C-s"  . consult-line)
-         ("C-k"  . my/ghostel-send-C-k-and-kill)
-         ;; I'm used to go up/down the shell history with M-n/p from eshell
-         ;; Simulate this behavior in ghostel by sending C-p and C-n
-         ("M-p" . (lambda () (interactive) (ghostel-send-key "p" "ctrl")))
-         ("M-n" . (lambda () (interactive) (ghostel-send-key "n" "ctrl")))
-	 ;; I use C-x M-l to clear Eshell, so it makes sense to have this
-         ("C-x M-l" . (lambda () (interactive) (ghostel-send-key "l" "ctrl")))
-         :map project-prefix-map
-         ("m" . ghostel-project)
-         ("M" . ghostel-project-list-buffers))
-  :config
-  (defun my/ghostel-send-C-k-and-kill ()
-    "Send `C-k' to ghostel.
-Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
-    (interactive)
-    (kill-ring-save (point) (line-end-position))
-    (ghostel-send-key "k" "ctrl"))
-  (add-to-list 'project-switch-commands '(ghostel-project "Ghostel") t)
-  (add-to-list 'project-switch-commands '(ghostel-project-list-buffers "Ghostel buffers") t)
-  (add-to-list 'ghostel-eval-cmds '("magit-status-setup-buffer" magit-status-setup-buffer)))
 
-;;; Run compile mode in a ghostel buffer
-(use-package ghostel-compile
-  :ensure nil
-  :hook (after-init . ghostel-compile-global-mode))
-
-;;; Run comint mode in a g hostel buffer
-(use-package ghostel-comint
-  :ensure nil
-  :hook (after-init . ghostel-comint-global-mode))
 
 ;;; Neofetch.el (my package)
 (use-package neofetch
@@ -424,6 +385,9 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 
 ;;; Ido Mode emulation
 (fido-mode t)
+
+;;; Font
+(add-to-list 'default-frame-alist '(font . "monospace-14"))
 
 ;;; Colorize colors
 (use-package colorful-mode
@@ -474,8 +438,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 			      (add-to-list 'eshell-visual-commands "fzf")
 			      (add-to-list 'eshell-visual-commands "cmatrix")
 			      (add-to-list 'eshell-visual-commands "nvtop")
-			      (add-to-list 'eshell-visual-commands "wiremix")
-			      (ghostel-eshell-visual-command-mode)))
+			      (add-to-list 'eshell-visual-commands "wiremix")))
 
 ;;; Pass message to mail client when sending with C-x m
 (setq send-mail-function 'mailclient-send-it)
