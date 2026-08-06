@@ -4,8 +4,8 @@ $include /etc/inputrc
 "\ep": history-search-backward
 "\en": history-search-forward
 
-# Clear with M-l like I have it set up in eshell
-"\el": clear-display
+# Clear with C-x M-l like I have it set up in eshell
+"\C-x\el": clear-display
 
 # Make C-l clear display
 "\C-l": clear-display

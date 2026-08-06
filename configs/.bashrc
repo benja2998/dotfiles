@@ -14,7 +14,7 @@ alias tree="tree -C"
 alias grep="grep --color=auto"
 alias ll="ls -larth"
 bind -f ~/.inputrc
-#bind '"\C-x":"emacs\C-m"'
+bind '"\C-x\ee":"emacs\C-m"'
 
 vterm_printf() {
     if [ -n "$TMUX" ] \

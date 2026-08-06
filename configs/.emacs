@@ -121,7 +121,7 @@
   (bind-key "C-c ib" #'org-insert-backlink 'org-mode-map)
   (bind-key "C-c ic" #'my/insert-code 'org-mode-map)
   (bind-key "C-c ii" #'org-insert-image 'org-mode-map)
-  (bind-key "M-l" #'org-do-demote 'org-mode-map)
+  (bind-key "C-x M-l" #'org-do-demote 'org-mode-map)
   (bind-key "M-h" #'org-do-promote 'org-mode-map))
 
 ;;; Function to clear eshell
@@ -133,7 +133,7 @@
 ;;; Fix for eshell-mode-map not working immediately
 (defun bind-eshell-clear-mode-map ()
   (interactive)
-  (bind-key "M-l" #'eshell-clear 'eshell-mode-map)
+  (bind-key "C-x M-l" #'eshell-clear 'eshell-mode-map)
   ;; This shouldn't be in the function for Eshell but I put it here to not repeat this
   (bind-key "C-c C-c" 'wdired-change-to-wdired-mode 'dired-mode-map))
 (add-hook 'emacs-startup-hook #'bind-eshell-clear-mode-map)
@@ -383,8 +383,8 @@
          ;; Simulate this behavior in ghostel by sending C-p and C-n
          ("M-p" . (lambda () (interactive) (ghostel-send-key "p" "ctrl")))
          ("M-n" . (lambda () (interactive) (ghostel-send-key "n" "ctrl")))
-	 ;; I use M-l to clear Eshell, so it makes sense to have this
-         ("M-l" . (lambda () (interactive) (ghostel-send-key "l" "ctrl")))
+	 ;; I use C-x M-l to clear Eshell, so it makes sense to have this
+         ("C-x M-l" . (lambda () (interactive) (ghostel-send-key "l" "ctrl")))
          :map project-prefix-map
          ("m" . ghostel-project)
          ("M" . ghostel-project-list-buffers))
