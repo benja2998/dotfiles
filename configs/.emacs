@@ -469,6 +469,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 (setq read-file-name-completion-ignore-case t)
 
 ;;; Eshell visual commands configuration
+(require 'ghostel-eshell)
 (add-hook 'eshell-mode-hook (lambda ()
 			      (add-to-list 'eshell-visual-commands "tinydash")
 			      (add-to-list 'eshell-visual-commands "fzf")
