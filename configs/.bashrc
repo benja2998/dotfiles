@@ -7,7 +7,7 @@ if [[ -z "$__HAS_TRIED" ]]; then
     if [[ -v PREFIX ]]; then
 	if shopt -q login_shell; then
 	    echo "Login shell in termux"
-	    emacsclient -c -a "" -e "(eshell 42)"
+	    emacsclient -c -w 15 -e "(eshell 42)"
 	    exit 0
 	fi
     fi
