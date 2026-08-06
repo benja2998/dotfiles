@@ -5,11 +5,26 @@ set -ex
 if [[ -f /etc/os-release ]]; then
     . /etc/os-release
     if [[ "$NAME" = "Void" ]]; then
-	sudo xbps-install gnupg git base-devel emacs-x11 cowsay fortune-mod lolcat-c
+	sudo xbps-install \
+	     gnupg \
+	     git \
+	     base-devel \
+	     emacs-x11 \
+	     cowsay \
+	     fortune-mod \
+	     lolcat-c \
+	     zoxide
     fi
 elif [[ -v PREFIX ]]; then
     pkg i -y x11-repo
-    pkg i -y termux-services gnupg git build-essential emacs-x fortune cowsay
+    pkg i -y termux-services \
+	gnupg \
+	git \
+	build-essential \
+	emacs-x \
+	fortune \
+	cowsay \
+	zoxide
 fi
 
 mkdir -p ~/.gnupg
