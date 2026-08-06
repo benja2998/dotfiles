@@ -489,6 +489,10 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 			      (add-to-list 'eshell-visual-commands "wiremix")
 			      (ghostel-eshell-visual-command-mode)))
 
+(add-hook 'eshell-banner-load-hook (lambda ()
+				     (setq eshell-banner-message
+					   (concat (shell-command-to-string "fortune -s | cowsay") "\n\n"))))
+
 ;;; Pass message to mail client when sending with C-x m
 (setq send-mail-function 'mailclient-send-it)
 
