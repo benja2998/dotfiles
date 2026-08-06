@@ -436,9 +436,9 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
   (add-to-list 'global-colorful-modes 'helpful-mode))
 (use-package eshell-prompt-extras)
 (with-eval-after-load "esh-opt"
-  (autoload 'epe-theme-multiline-with-status "eshell-prompt-extras")
+  (autoload 'epe-theme-lambda "eshell-prompt-extras")
   (setq eshell-highlight-prompt nil
-        eshell-prompt-function 'epe-theme-multiline-with-status))
+        eshell-prompt-function 'epe-theme-lambda))
 
 ;;; Destroy eshell visual buffers after process dies
 (setq eshell-destroy-buffer-when-process-dies t)
