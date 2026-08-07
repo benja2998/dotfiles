@@ -32,6 +32,11 @@
   (cond ((string-equal z--args "-")
 	 ;; Go back
 	 (eshell/cd "-"))
+	((file-directory-p z--args)
+	 ;; Try to add it
+	 (shell-command-to-string
+	  (concat "zoxide add " z--args))
+	 (eshell/cd z--args))
 	((string-equal z--output "zoxide: no match found")
 	 ;; Try to add it
 	 (shell-command-to-string
