@@ -157,6 +157,8 @@
 
 ;;; Keybinds
 (bind-key* "C-c nj" 'my/compile)
+(bind-key* "C-c nv" 'visit-tags-table)
+(bind-key* "C-c ns" 'select-tags-table)
 (bind-key* "C-c j" 'eshell-in-home)
 (bind-key* "C-c k" 'notes-eshell)
 (bind-key* "C-c nt" 'daily-note)
