@@ -16,35 +16,43 @@
   "Zoxide implementation for Eshell.  Optionally takes in ARGS, which will be passed to Zoxide"
   (interactive)
 
-  ;; The setup
+  (let (args output)
+    (setq args (eshell-list-to-string
+		   (flatten-tree ARGS))) ; convert arguments to one string
 
-  (cond (ARGS)
-	(t
-	 (setq ARGS (getenv "HOME"))))
+    ;; z behavior is to go to HOME when no argument is provided
+    (unless ARGS
+      (setq args (getenv "HOME")))
 
-  (setq z--args (flatten-tree ARGS))
-  (setq z--args (eshell-list-to-string z--args))
-  (setq z--command (concat "zoxide query " z--args))
-  (setq z--output (string-trim
-		   (shell-command-to-string z--command)))
+    (setq output (string-trim
+		     (shell-command-to-string
+		      (concat "zoxide query " args))))
 
-  ;; The actually doing things
-  (cond ((string-equal z--args "-")
-	 ;; Go back
-	 (eshell/cd "-"))
-	((file-directory-p z--args)
-	 ;; Try to add it
-	 (shell-command-to-string
-	  (concat "zoxide add " z--args))
-	 (eshell/cd z--args))
-	((string-equal z--output "zoxide: no match found")
-	 ;; Try to add it
-	 (shell-command-to-string
-	  (concat "zoxide add " z--args))
-	 (eshell/cd z--args))
-	(t
-	 ;; else, it exists
-	 (eshell/cd z--output))))
+    (cond
+
+     ;; if it is -, go back
+     ((string-equal args "-")
+      (eshell/cd "-"))
+
+     ;; if it exists, just cd to it and try to add it
+     ((file-directory-p args)
+      (shell-command-to-string
+       (concat "zoxide add " args))
+      (eshell/cd args))
+
+     ;; until I can find a better way to check for it finding nothing,
+     ;; this relies on zoxide's output format staying the same
+     ;;
+     ;; this one might be redundant with the clause above,
+     ;; but I will keep it just to be safe
+     ((string-equal output "zoxide: no match found")
+      (shell-command-to-string
+       (concat "zoxide add " args))
+      (eshell/cd args))
+
+     ;; if zoxide found it, cd to it
+     (t
+      (eshell/cd output)))))
 
 (defun notes-eshell ()
   "Open notes-eshell"
@@ -203,7 +211,7 @@
 (setq eshell-history-append t)
 (setq eshell-save-history-on-exit nil)
 (setq eshell-hist-ignoredups t)
-(add-hook 'eshell-pre-command-hook (lambda ()
+(add-hook 'eshell-post-command-hook (lambda ()
 				     (eshell-write-history eshell-history-file-name t)
 				     (eshell-read-history eshell-history-file-name t)))
 
