@@ -16,18 +16,12 @@
   "Zoxide implementation for Eshell.  Optionally takes in ARGS, which will be passed to Zoxide"
   (interactive)
 
-  (let (args output)
-    (setq args (eshell-list-to-string
-		   (flatten-tree ARGS))) ; convert arguments to one string
-
-    ;; z behavior is to go to HOME when no argument is provided
-    (unless ARGS
-      (setq args (getenv "HOME")))
-
-    (setq output (string-trim
-		     (shell-command-to-string
-		      (concat "zoxide query " args))))
-
+  (let* ((args (if ARGS
+		   (eshell-list-to-string (flatten-tree ARGS))
+		 (getenv "HOME")))
+	 (output (string-trim
+		  (shell-command-to-string
+		   (concat "zoxide query " args)))))
     (cond
 
      ;; if it is -, go back
