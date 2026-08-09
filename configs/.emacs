@@ -129,15 +129,6 @@
   (interactive)
   (setq search--whatIread (read-from-minibuffer "Enter search term (regex, case-insensitive): "))
   (grep (format "grep -rnEi \"%s\" ~/Documents/Notes" search--whatIread)))
-(defun my/project-search ()
-  "Search in project"
-  (interactive)
-  (setq search--whatIread (read-from-minibuffer "Enter search term (regex, case-insensitive): "))
-  (setq this--project-root (project-root (project-current)))
-  (grep (format "grep -rnEi \"%s\" %s --exclude-dir \".git/\""
-		search--whatIread
-		this--project-root
-		this--project-root)))
 (defun todo-note ()
   "Open todo.org note"
   (interactive)
@@ -166,7 +157,6 @@
 (bind-key* "C-c nt" 'daily-note)
 (bind-key* "C-c tn" 'todo-note)
 (bind-key* "C-c ne" 'org-agenda-list)
-(bind-key* "C-x ps" 'my/project-search) ; project-shell is useless
 (bind-key* "C-c ny" 'dired-videos)
 (bind-key* "C-c ld" 'dired-dailies)
 (bind-key* "C-c ls" 'search-in-notes)
