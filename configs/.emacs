@@ -294,6 +294,9 @@
 ;;; The best git client
 (use-package magit)
 
+;; Inputrc mode
+(use-package inputrc-mode)
+
 ;;; multiple-cursors configuration
 (use-package multiple-cursors)
 (require 'multiple-cursors)
