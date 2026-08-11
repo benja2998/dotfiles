@@ -1,5 +1,11 @@
 ;; -*- lexical-binding: t; -*-
 
+;;; Emacs + termux
+(cond ((eq system-type 'android)
+       (setenv "PATH" (format "%s:%s" "/data/data/com.termux/files/usr/bin"
+			      (getenv "PATH")))
+       (push "/data/data/com.termux/files/usr/bin" exec-path)))
+
 ;;; Don't edit my config
 (setq custom-file "~/.emacs-custom-not-loaded")
 
@@ -52,6 +58,11 @@ buffer automatically on exit instead."
 (require 'emacs-multi-eshell)
 
 ;;; Functions
+(defun android-insert-tilde ()
+  "Fix for my android physical keyboard inserting the small tilde instead of ~"
+  (interactive)
+  (insert "~"))
+(bind-key* "˜" 'android-insert-tilde)
 (defun eshell/z (&optional &rest ARGS)
   "Zoxide implementation for Eshell.  Optionally takes in ARGS, which will be passed to Zoxide"
   (interactive)
@@ -323,19 +334,17 @@ buffer automatically on exit instead."
 (setq use-package-always-ensure t)
 
 ;;; Modus themes exporter
-(cond ((eq system-type 'gnu/linux)
-       (use-package modus-themes-exporter
-	 :ensure nil ; do not try to install because we get it from source in the `:init'
-	 :commands (modus-themes-exporter-export)
-	 :init
-	 ;; Then upgrade it with the command `package-vc-upgrade' or `package-vc-upgrade-all'.
-	 (unless (package-installed-p 'modus-themes-exporter)
-	   (package-vc-install "https://github.com/protesilaos/modus-themes-exporter.git")))))
+(use-package modus-themes-exporter
+  :ensure nil ; do not try to install because we get it from source in the `:init'
+  :commands (modus-themes-exporter-export)
+  :init
+  ;; Then upgrade it with the command `package-vc-upgrade' or `package-vc-upgrade-all'.
+  (unless (package-installed-p 'modus-themes-exporter)
+    (package-vc-install "https://github.com/protesilaos/modus-themes-exporter.git")))
 (use-package modus-themes)
 
 ;;; The best git client
-(cond ((eq system-type 'gnu/linux)
-       (use-package magit)))
+(use-package magit)
 
 ;; Inputrc mode
 (use-package inputrc-mode)
@@ -511,10 +520,9 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
   :hook (after-init . ghostel-comint-global-mode))
 
 ;;; Neofetch.el (my package)
-(cond ((eq system-type 'gnu/linux)
-       (use-package neofetch
-	 :vc (:url "https://codeberg.org/benja2998/neofetch.el"
- 		   :branch "main"))))
+(use-package neofetch
+  :vc (:url "https://codeberg.org/benja2998/neofetch.el"
+ 	    :branch "main"))
 
 ;;; Eshell syntax highlighting
 (use-package eshell-syntax-highlighting
