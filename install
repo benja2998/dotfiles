@@ -39,7 +39,6 @@ dotfiles="$(pwd)"
 
 stow -v --target ~ configs
 mkdir -p ~/.config/gtk-4.0
-cp "$dotfiles/manualcopy/gtk-4.0/gtk.css" ~/.config/gtk-4.0/gtk.css
 emacs --fg-daemon=dotfiles-package-installation --eval "(kill-emacs)"
 
 command -v termux-reload-settings && termux-reload-settings || true
