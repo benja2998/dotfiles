@@ -300,7 +300,7 @@ buffer automatically on exit instead."
 (cond ((eq system-type 'gnu/linux)
        (add-to-list 'default-frame-alist '(font . "Iosevka-20")))
       ((eq system-type 'android)
-       (add-to-list 'default-frame-alist '(font . "Droid Sans Mono-24"))))
+       (add-to-list 'default-frame-alist '(font . "Iosevka-24"))))
 
 ;;; Relative line numbers
 (setq display-line-numbers-type 'relative)
