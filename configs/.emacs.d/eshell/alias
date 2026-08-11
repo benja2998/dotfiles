@@ -7,4 +7,5 @@ alias d dired $1
 alias e find-file-other-window $1
 alias ff find-file $1
 alias ll ls -larth $*
-alias t ghostel $SHELL
+alias t st-exec-visual bash
+alias pipes.sh st -e pipes.sh

@@ -3,6 +3,46 @@
 ;;; Don't edit my config
 (setq custom-file "~/.emacs-custom-not-loaded")
 
+;;; Eshell + st
+(defvar eshell-interpreter-alist)
+(defvar eshell-destroy-buffer-when-process-dies)
+
+(defun st-exec-visual (&rest args)
+  "Replacement for `eshell-exec-visual' that dispatches to st.
+ARGS are the program name followed by its arguments, as passed by
+eshell."
+  (require 'esh-ext)
+  (require 'esh-util)
+  (save-current-buffer
+    (let* ((eshell-interpreter-alist nil)
+           (interp (eshell-find-interpreter (car args) (cdr args)))
+           (program (car interp))
+           (prog-args (flatten-tree
+                       (eshell-stringify-list
+                        (append (cdr interp) (cdr args)))))
+           (buf (generate-new-buffer
+                 (concat "*" (file-name-nondirectory program) "*"))))
+      ;;(switch-to-buffer buf)
+      (start-process-shell-command
+       "st-eshell" nil (concat "st -e " program prog-args))
+      nil)))
+
+(define-minor-mode st-eshell-visual-command-mode
+  "Run Eshell visual commands (vim, htop, less, ...) in st buffers.
+When enabled, `eshell-exec-visual' is overridden to launch the
+program in a dedicated st terminal buffer.  When the program
+exits, the buffer stays on `[Process exited]' so any remaining
+output is visible; press `q' to dismiss it.  Set
+`eshell-destroy-buffer-when-process-dies' to non-nil to kill the
+buffer automatically on exit instead."
+  :global t
+  :group 'ghostel
+  (if st-eshell-visual-command-mode
+      (advice-add 'eshell-exec-visual :override
+                  #'st-exec-visual)
+    (advice-remove 'eshell-exec-visual
+                   #'st-exec-visual)))
+
 ;;; For future customizations
 (require 'eshell)
 (require 'dired)
@@ -172,7 +212,7 @@
   (bind-key "C-c ib" #'org-insert-backlink 'org-mode-map)
   (bind-key "C-c ic" #'my/insert-code 'org-mode-map)
   (bind-key "C-c ii" #'org-insert-image 'org-mode-map)
-  (bind-key "C-x M-l" #'org-do-demote 'org-mode-map)
+  (bind-key "M-j" #'org-do-demote 'org-mode-map)
   (bind-key "C-x M-h" #'org-do-promote 'org-mode-map))
 
 ;;; Function to clear eshell
@@ -184,7 +224,7 @@
 ;;; Fix for eshell-mode-map not working immediately
 (defun bind-eshell-clear-mode-map ()
   (interactive)
-  (bind-key "C-x M-l" #'eshell-clear 'eshell-mode-map)
+  (bind-key "M-j" #'eshell-clear 'eshell-mode-map)
   ;; This shouldn't be in the function for Eshell but I put it here to not repeat this
   (bind-key "C-c C-c" 'wdired-change-to-wdired-mode 'dired-mode-map))
 (add-hook 'emacs-startup-hook #'bind-eshell-clear-mode-map)
@@ -354,17 +394,17 @@
 	"light -U 5"))
 (defun run-wiremix ()
   (interactive)
-  (ghostel-eshell--exec-visual "wiremix"))
+  (st-exec-visual "wiremix"))
 (defun run-nmtui ()
   (interactive)
-  (ghostel-eshell--exec-visual "nmtui"))
+  (st-exec-visual "nmtui"))
 (defun run-boomer ()
   (interactive)
   (start-process-shell-command
    "boomer" nil "/home/benjamin/Thirdparty/boomer/boomer"))
 (defun run-htop ()
   (interactive)
-  (ghostel-eshell--exec-visual "htop"))
+  (st-exec-visual "htop"))
 (defun run-librewolf ()
   (interactive)
   (start-process-shell-command
@@ -445,8 +485,8 @@
          ;; Simulate this behavior in ghostel by sending C-p and C-n
          ("M-p" . (lambda () (interactive) (ghostel-send-key "p" "ctrl")))
          ("M-n" . (lambda () (interactive) (ghostel-send-key "n" "ctrl")))
-	 ;; I use C-x M-l to clear Eshell, so it makes sense to have this
-         ("C-x M-l" . (lambda () (interactive) (ghostel-send-key "l" "ctrl")))
+	 ;; I use M-j to clear Eshell, so it makes sense to have this
+         ("M-j" . (lambda () (interactive) (ghostel-send-key "l" "ctrl")))
          :map project-prefix-map
          ("m" . ghostel-project)
          ("M" . ghostel-project-list-buffers))
@@ -543,7 +583,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 			      (add-to-list 'eshell-visual-commands "cmatrix")
 			      (add-to-list 'eshell-visual-commands "nvtop")
 			      (add-to-list 'eshell-visual-commands "wiremix")
-			      (ghostel-eshell-visual-command-mode)))
+			      (st-eshell-visual-command-mode)))
 
 (add-hook 'eshell-banner-load-hook (lambda ()
 				     (setq eshell-banner-message
