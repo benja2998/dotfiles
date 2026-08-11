@@ -526,8 +526,8 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 (setq org-directory "~/Documents/Notes/")
 (setq org-agenda-files (list org-directory))
 
-;;; Best theme ever (made by me)
-(load-theme 'my-awesome t)
+;;; Theme
+(load-theme 'modus-operandi t)
 
 ;;; Ignore case in completion
 (setq eshell-cmpl-ignore-case t)
