@@ -19,7 +19,7 @@
   (cond ((display-graphic-p)
 	 (st-exec-visual (getenv "SHELL")))
 	(t
-	 (ghostel-eshell--exec-visual (getenv "SHELL")))))
+	 (ghostel))))
 
 (defun st-exec-visual (&rest args)
   "Replacement for `eshell-exec-visual' that dispatches to st.
@@ -492,7 +492,7 @@ buffer automatically on exit instead."
 
 ;;; terminal emulator
 (use-package ghostel
-  :bind (("C-c m" . ghostel)
+  :bind (("C-c m" . eshell/st-or-ghostel)
          :map ghostel-semi-char-mode-map
          ("C-s"  . consult-line)
          ("C-k"  . my/ghostel-send-C-k-and-kill)
