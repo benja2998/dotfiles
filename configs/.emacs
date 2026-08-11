@@ -237,8 +237,8 @@ buffer automatically on exit instead."
 (setq eshell-save-history-on-exit nil)
 (setq eshell-hist-ignoredups t)
 (add-hook 'eshell-post-command-hook (lambda ()
-				     (eshell-write-history eshell-history-file-name t)
-				     (eshell-read-history eshell-history-file-name t)))
+				      (eshell-write-history eshell-history-file-name t)
+				      (eshell-read-history eshell-history-file-name t)))
 
 ;;; Respect editorconfig files
 (editorconfig-mode t)
@@ -300,7 +300,7 @@ buffer automatically on exit instead."
 (cond ((eq system-type 'gnu/linux)
        (add-to-list 'default-frame-alist '(font . "Iosevka-20")))
       ((eq system-type 'android)
-       (add-to-list 'default-frame-alist '(font . "monospace-24"))))
+       (add-to-list 'default-frame-alist '(font . "Droid Sans Mono-24"))))
 
 ;;; Relative line numbers
 (setq display-line-numbers-type 'relative)
@@ -323,17 +323,19 @@ buffer automatically on exit instead."
 (setq use-package-always-ensure t)
 
 ;;; Modus themes exporter
-(use-package modus-themes-exporter
-  :ensure nil ; do not try to install because we get it from source in the `:init'
-  :commands (modus-themes-exporter-export)
-  :init
-  ;; Then upgrade it with the command `package-vc-upgrade' or `package-vc-upgrade-all'.
-  (unless (package-installed-p 'modus-themes-exporter)
-    (package-vc-install "https://github.com/protesilaos/modus-themes-exporter.git")))
+(cond ((eq system-type 'gnu/linux)
+       (use-package modus-themes-exporter
+	 :ensure nil ; do not try to install because we get it from source in the `:init'
+	 :commands (modus-themes-exporter-export)
+	 :init
+	 ;; Then upgrade it with the command `package-vc-upgrade' or `package-vc-upgrade-all'.
+	 (unless (package-installed-p 'modus-themes-exporter)
+	   (package-vc-install "https://github.com/protesilaos/modus-themes-exporter.git")))))
 (use-package modus-themes)
 
 ;;; The best git client
-(use-package magit)
+(cond ((eq system-type 'gnu/linux)
+       (use-package magit)))
 
 ;; Inputrc mode
 (use-package inputrc-mode)
@@ -366,10 +368,6 @@ buffer automatically on exit instead."
 (use-package lua-mode)
 ;;; Package linter
 (use-package package-lint)
-
-;;; Use unicode characters for Org Headings
-(use-package org-superstar)
-(add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
 
 ;;; Functions for EXWM keybinds to call
 (defun my/audio-vol-up () (interactive)
@@ -513,9 +511,10 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
   :hook (after-init . ghostel-comint-global-mode))
 
 ;;; Neofetch.el (my package)
-(use-package neofetch
-  :vc (:url "https://codeberg.org/benja2998/neofetch.el"
-	    :branch "main"))
+(cond ((eq system-type 'gnu/linux)
+       (use-package neofetch
+	 :vc (:url "https://codeberg.org/benja2998/neofetch.el"
+ 		   :branch "main"))))
 
 ;;; Eshell syntax highlighting
 (use-package eshell-syntax-highlighting
@@ -583,7 +582,10 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 			      (add-to-list 'eshell-visual-commands "cmatrix")
 			      (add-to-list 'eshell-visual-commands "nvtop")
 			      (add-to-list 'eshell-visual-commands "wiremix")
-			      (st-eshell-visual-command-mode)))
+			      (cond ((eq system-type 'gnu/linux)
+				     (st-eshell-visual-command-mode))
+				    ((eq system-type 'android)
+				     (ghostel-eshell-visual-command-mode)))))
 
 (add-hook 'eshell-banner-load-hook (lambda ()
 				     (setq eshell-banner-message
