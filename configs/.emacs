@@ -150,6 +150,7 @@
 
 ;;; Keybinds
 (bind-key* "C-c nj" 'my/compile)
+(bind-key* "C-x M-p" 'mark-paragraph)
 (bind-key* "C-c nv" 'visit-tags-table)
 (bind-key* "C-c ns" 'select-tags-table)
 (bind-key* "C-c j" 'eshell-in-home)
