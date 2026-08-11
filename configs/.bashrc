@@ -16,6 +16,12 @@ alias ll="ls -larth"
 bind -f ~/.inputrc
 bind '"\C-x\ee":"emacs\C-m"'
 
+if [ "$TERM" = "st-256color" ]; then
+    if [ -z "$TMUX" ]; then
+	exec tmux new-session -A -s st
+    fi
+fi
+
 ytsdl() {
     ytns --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" "$1"
 }
