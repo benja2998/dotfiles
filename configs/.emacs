@@ -13,6 +13,14 @@
 (defvar eshell-interpreter-alist)
 (defvar eshell-destroy-buffer-when-process-dies)
 
+(defun eshell/st-or-ghostel ()
+  "ST or ghostel"
+  (interactive)
+  (cond ((display-graphic-p)
+	 (st-exec-visual (getenv "SHELL")))
+	(t
+	 (ghostel-eshell--exec-visual (getenv "SHELL")))))
+
 (defun st-exec-visual (&rest args)
   "Replacement for `eshell-exec-visual' that dispatches to st.
 ARGS are the program name followed by its arguments, as passed by
