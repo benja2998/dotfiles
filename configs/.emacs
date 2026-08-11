@@ -16,7 +16,7 @@
 (defun eshell/st-or-ghostel ()
   "ST or ghostel"
   (interactive)
-  (cond ((display-graphic-p)
+  (cond ((eq system-type 'gnu/linux)
 	 (st-exec-visual (getenv "SHELL")))
 	(t
 	 (ghostel))))
