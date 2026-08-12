@@ -257,17 +257,16 @@ buffer automatically on exit instead."
   (bind-key "C-c C-c" 'wdired-change-to-wdired-mode 'dired-mode-map))
 (add-hook 'emacs-startup-hook #'bind-eshell-clear-mode-map)
 
-;;; Infinite history
-(setq eshell-history-size 999999)
+;;; bigger history
+(setq eshell-history-size 1000)
 
-;;; Eshell history configuration
+;;; Shared history in the eshell
 (setq eshell-history-append t)
+(setq eshell-save-history-on-exit nil)
 (setq eshell-hist-ignoredups t)
-(defun eshell/sc ()
-  "Sync history"
-  (interactive)
-  (eshell-write-history eshell-history-file-name t)
-  (eshell-read-history eshell-history-file-name t))
+(add-hook 'eshell-post-command-hook (lambda ()
+				     (eshell-write-history eshell-history-file-name t)
+				     (eshell-read-history eshell-history-file-name t)))
 
 ;;; Respect editorconfig files
 (editorconfig-mode t)
