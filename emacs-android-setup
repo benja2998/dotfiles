@@ -28,6 +28,7 @@ mv ~/tmp/dotfiles/configs/.emacs ~/.emacs
 mkdir -p ~/.emacs.d/eshell/
 rm -r ~/.emacs.d/local/ || true
 mv ~/tmp/dotfiles/configs/.emacs.d/local/ ~/.emacs.d/local/
-mv ~/tmp/dotfiles/configs/.emacs.d/eshell/alias ~/.emacs.d/eshell/alias 
+mv ~/tmp/dotfiles/configs/.emacs.d/eshell/alias ~/.emacs.d/eshell/alias
+mv ~/tmp/dotfiles/configs/.emacs.d/my-awesome-theme.el ~/.emacs.d/my-awesome-theme.el
 cd ~
 rm -rf tmp
