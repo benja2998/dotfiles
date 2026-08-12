@@ -449,6 +449,10 @@ buffer automatically on exit instead."
   (start-process-shell-command
    "opsec" nil "espeak-ng \"OPSEC LEAK\""))
 
+;;; org superstar
+(use-package org-superstar)
+(add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
+
 ;;; EXWM configuration
 (use-package exwm)
 (require 'exwm)
