@@ -263,7 +263,7 @@ buffer automatically on exit instead."
 ;;; Eshell history configuration
 (setq eshell-history-append t)
 (setq eshell-hist-ignoredups t)
-(defun eshell/sync-hist ()
+(defun eshell/sc ()
   "Sync history"
   (interactive)
   (eshell-write-history eshell-history-file-name t)
