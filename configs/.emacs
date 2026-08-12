@@ -9,7 +9,7 @@
 ;;; Don't edit my config
 (setq custom-file "~/.emacs-custom-not-loaded")
 
-;;; Eshell + st
+;;; st
 (defvar eshell-interpreter-alist)
 (defvar eshell-destroy-buffer-when-process-dies)
 
@@ -20,6 +20,15 @@
 	 (st-exec-visual (getenv "SHELL")))
 	(t
 	 (ghostel))))
+
+(defun st-project ()
+  "ST rpoject"
+  (interactive)
+  (project-dired)
+  (setq mydired--buffer-name (buffer-name))
+  (start-process-shell-command
+   "st" nil "st")
+  (kill-buffer mydired--buffer-name))
 
 (defun st-exec-visual (&rest args)
   "Replacement for `eshell-exec-visual' that dispatches to st.
@@ -516,6 +525,9 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
   (add-to-list 'project-switch-commands '(ghostel-project-list-buffers "Ghostel buffers") t)
   (add-to-list 'ghostel-eval-cmds '("magit-status-setup-buffer" magit-status-setup-buffer)))
 (setq ghostel-timer-delay 0.007) ; 144 fps
+
+(cond ((eq system-type 'gnu/linux)
+       (bind-key* "C-x pm" 'st-project)))
 
 ;;; Run compile mode in a ghostel buffer
 (use-package ghostel-compile
