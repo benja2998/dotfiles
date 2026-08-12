@@ -597,7 +597,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 (setq org-agenda-files (list org-directory))
 
 ;;; Theme
-(load-theme 'modus-operandi t)
+(load-theme 'my-awesome t)
 
 ;;; Ignore case in completion
 (setq eshell-cmpl-ignore-case t)
