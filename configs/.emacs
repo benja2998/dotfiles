@@ -260,13 +260,14 @@ buffer automatically on exit instead."
 ;;; Infinite history
 (setq eshell-history-size 999999)
 
-;;; Shared history in the eshell
+;;; Eshell history configuration
 (setq eshell-history-append t)
-(setq eshell-save-history-on-exit nil)
 (setq eshell-hist-ignoredups t)
-(add-hook 'eshell-post-command-hook (lambda ()
-				      (eshell-write-history eshell-history-file-name t)
-				      (eshell-read-history eshell-history-file-name t)))
+(defun eshell/sync-hist ()
+  "Sync history"
+  (interactive)
+  (eshell-write-history eshell-history-file-name t)
+  (eshell-read-history eshell-history-file-name t))
 
 ;;; Respect editorconfig files
 (editorconfig-mode t)
