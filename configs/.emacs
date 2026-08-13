@@ -241,6 +241,7 @@ buffer automatically on exit instead."
 ;;; Better than using Meta + Arrows
 (with-eval-after-load 'org
   (bind-key "C-c ib" #'org-insert-backlink 'org-mode-map)
+  (setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
   (bind-key "C-c ic" #'my/insert-code 'org-mode-map)
   (bind-key "C-c ii" #'org-insert-image 'org-mode-map)
   (bind-key "C-x M-l" #'org-do-demote 'org-mode-map)
