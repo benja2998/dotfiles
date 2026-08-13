@@ -2,7 +2,7 @@
 export PATH="/var/lib/flatpak/exports/bin:$HOME/.local/bin:$PATH"
 
 if [ "$(tty)" = "/dev/tty1" ] && [ -z "$DISPLAY" ]; then
-    docker restart searxng-core & disown    
+    #docker restart searxng-core & disown
     exec startx
 fi
 
