@@ -258,7 +258,7 @@ buffer automatically on exit instead."
 ;;; Fix for eshell-mode-map not working immediately
 (defun bind-eshell-clear-mode-map ()
   (interactive)
-  (bind-key "C-x M-l" #'eshell-clear 'eshell-mode-map)
+  (bind-key "M-j" #'eshell-clear 'eshell-mode-map)
   ;; This shouldn't be in the function for Eshell but I put it here to not repeat this
   (bind-key "C-c C-c" 'wdired-change-to-wdired-mode 'dired-mode-map))
 (add-hook 'emacs-startup-hook #'bind-eshell-clear-mode-map)
@@ -519,8 +519,8 @@ buffer automatically on exit instead."
          ;; Simulate this behavior in ghostel by sending C-p and C-n
          ("M-p" . (lambda () (interactive) (ghostel-send-key "p" "ctrl")))
          ("M-n" . (lambda () (interactive) (ghostel-send-key "n" "ctrl")))
-	 ;; I use C-x M-l to clear Eshell, so it makes sense to have this
-         ("C-x M-l" . (lambda () (interactive) (ghostel-send-key "l" "ctrl")))
+	 ;; I use M-j to clear Eshell, so it makes sense to have this
+         ("M-j" . (lambda () (interactive) (ghostel-send-key "l" "ctrl")))
          :map project-prefix-map
          ("m" . ghostel-project)
          ("M" . ghostel-project-list-buffers))
