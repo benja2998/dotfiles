@@ -149,11 +149,11 @@ $backdrop_menu_color: if($variant == 'light', $backdrop_base_color, mix($backdro
 $drop_target_color: #ff0000;
 
 // widget styles
-$_roundness: 0;
+$_roundness: 4;
 $_spacing: 3;
-$roundness: 0px;
+$roundness: 4px;
 $spacing: 3px;
-$gradient: 0.0;
+$gradient: 0.8;
 $contrast: .8;
 $outline_width: 1px;
 $button_outline_width: 1px;
