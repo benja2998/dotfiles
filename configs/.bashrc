@@ -34,8 +34,8 @@ ytsearch() {
     yt-dlp --no-download --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" "$1" >/dev/null; cat search.txt; rm search.txt
 }
 
-HISTSIZE=-1
-HISTFILESIZE=-1
+HISTSIZE=1000
+HISTFILESIZE=1000
 
 export HISTCONTROL=ignoredups:erasedups
 shopt -s histappend

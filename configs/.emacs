@@ -20,7 +20,8 @@
   "ST or ghostel"
   (interactive)
   (cond ((eq system-type 'gnu/linux)
-	 (ghostel))
+	 (start-process-shell-command
+	  "st" nil "st"))
 	(t
 	 (ghostel))))
 
@@ -37,21 +38,22 @@
   "Replacement for `eshell-exec-visual' that dispatches to st.
 ARGS are the program name followed by its arguments, as passed by
 eshell."
-  (require 'esh-ext)
-  (require 'esh-util)
-  (save-current-buffer
-    (let* ((eshell-interpreter-alist nil)
-           (interp (eshell-find-interpreter (car args) (cdr args)))
-           (program (car interp))
-           (prog-args (flatten-tree
-                       (eshell-stringify-list
-                        (append (cdr interp) (cdr args)))))
-           (buf (generate-new-buffer
-                 (concat "*" (file-name-nondirectory program) "*"))))
-      ;;(switch-to-buffer buf)
+  (let* (eshell-interpreter-alist
+	 (interp (eshell-find-interpreter (car args) (cdr args)))
+	 (program (car interp))
+	 (args (flatten-tree
+		(eshell-stringify-list (append (cdr interp)
+					       (cdr args)))))
+	 (term-buf
+	  (generate-new-buffer
+	   (concat "*" (file-name-nondirectory program) "*")))
+	 (eshell-buf (current-buffer))
+	 (prog-cmdline (concat "bash -c 'sleep 0.01; "program " " (eshell-list-to-string args) "'")))
+    (save-current-buffer
       (start-process-shell-command
-       "st-eshell" nil (concat "st -e " program prog-args))
-      nil)))
+       "st-eshell" nil (concat "st " prog-cmdline))
+      (kill-buffer term-buf)))
+  nil)
 
 (define-minor-mode st-eshell-visual-command-mode
   "Run Eshell visual commands (vim, htop, less, ...) in st buffers.
@@ -422,17 +424,17 @@ buffer automatically on exit instead."
 	"light -U 5"))
 (defun run-wiremix ()
   (interactive)
-  (ghostel-eshell--exec-visual "wiremix"))
+  (st-exec-visual "wiremix"))
 (defun run-nmtui ()
   (interactive)
-  (ghostel-eshell--exec-visual "nmtui"))
+  (st-exec-visual "nmtui"))
 (defun run-boomer ()
   (interactive)
   (start-process-shell-command
    "boomer" nil "/home/benjamin/Thirdparty/boomer/boomer"))
 (defun run-htop ()
   (interactive)
-  (ghostel-eshell--exec-visual "htop"))
+  (st-exec-visual "htop"))
 (defun run-librewolf ()
   (interactive)
   (start-process-shell-command
@@ -620,7 +622,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 			      (add-to-list 'eshell-visual-commands "nvtop")
 			      (add-to-list 'eshell-visual-commands "wiremix")
 			      (cond ((eq system-type 'gnu/linux)
-				     (ghostel-eshell-visual-command-mode))
+				     (st-eshell-visual-command-mode))
 				    ((eq system-type 'android)
 				     (ghostel-eshell-visual-command-mode)))))
 

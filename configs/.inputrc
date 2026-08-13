@@ -22,5 +22,5 @@ set menu-complete-display-prefix On
 set skip-completed-text On
 set completion-map-case On
 
-# Infinite history
-set history-size -1
+# Bigger history
+set history-size 1000
