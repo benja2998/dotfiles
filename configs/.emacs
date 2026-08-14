@@ -454,7 +454,9 @@ buffer automatically on exit instead."
 
 ;;; org superstar
 (use-package org-superstar)
-(add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
+(add-hook 'org-mode-hook (lambda ()
+			   (org-superstar-mode 1)
+			   (org-indent-mode 1)))
 
 ;;; EXWM configuration
 (use-package exwm)
