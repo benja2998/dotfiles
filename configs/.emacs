@@ -143,7 +143,11 @@ buffer automatically on exit instead."
 (defun daily-note ()
   "Open today's daily note"
   (interactive)
-  (setq current-date-file (concat "~/Documents/Notes/" (format-time-string "%Y" (current-time)) "/" (format-time-string "%d-%m-%Y" (current-time)) ".org"))
+  (setq current-date-file (concat
+			   "~/Documents/Notes/"
+			   (format-time-string "%Y" (current-time))
+			   "/"
+			   (format-time-string "%d-%m-%Y" (current-time)) ".org"))
   (setq current-date (format-time-string "%d-%m-%Y" (current-time)))
   (find-file current-date-file)
   (setq current-day (format-time-string "%A" (current-time)))
@@ -640,18 +644,6 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 
 ;;; Visual line mode
 (global-visual-line-mode t)
-
-;;; Unfuck the fuckery visual-line-mode does to emacs
-
-;; work around the first line of defense:
-;; line-move-visual is set buffer-locally
-(add-hook 'visual-line-mode-hook (lambda ()
-				   (setq line-move-visual nil)))
-
-;; These are easy to fix
-(defalias 'beginning-of-visual-line 'beginning-of-line)
-(defalias 'end-of-visual-line 'end-of-line)
-(defalias 'kill-visual-line 'kill-line)
 
 ;;; Make org headings pretty
 (custom-set-faces
