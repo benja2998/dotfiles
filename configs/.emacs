@@ -133,6 +133,30 @@ buffer automatically on exit instead."
 	 (rename-buffer "*notes-eshell*")
 	 (kill-buffer mydired--buffer-name))))
 
+(defun videos-eshell ()
+  "Open videos-eshell"
+  (interactive)
+  (cond ((get-buffer "*videos-eshell*")
+	 (switch-to-buffer "*videos-eshell*"))
+	(t
+	 (dired "~/Videos")
+	 (setq mydired--buffer-name (buffer-name))
+	 (ees/eshell-new)
+	 (rename-buffer "*videos-eshell*")
+	 (kill-buffer mydired--buffer-name))))
+
+(defun pictures-eshell ()
+  "Open pictures-eshell"
+  (interactive)
+  (cond ((get-buffer "*pictures-eshell*")
+	 (switch-to-buffer "*pictures-eshell*"))
+	(t
+	 (dired "~/Pictures")
+	 (setq mydired--buffer-name (buffer-name))
+	 (ees/eshell-new)
+	 (rename-buffer "*pictures-eshell*")
+	 (kill-buffer mydired--buffer-name))))
+
 (defun eshell-in-home ()
   "Open eshell in home"
   (interactive)
@@ -140,6 +164,20 @@ buffer automatically on exit instead."
   (setq mydired--buffer-name (buffer-name))
   (ees/eshell-new)
   (kill-buffer mydired--buffer-name))
+
+(defun my/setup-workspaces ()
+  (exwm-workspace-switch 1)
+  (run-librewolf)
+  (exwm-workspace-switch 6)
+  (eshell-in-home)
+  (exwm-workspace-switch 7)
+  (pictures-eshell)
+  (exwm-workspace-switch 8)
+  (videos-eshell)
+  (exwm-workspace-switch 9)
+  (notes-eshell)
+  (exwm-workspace-switch 0))
+
 (defun daily-note ()
   "Open today's daily note"
   (interactive)
@@ -462,6 +500,14 @@ buffer automatically on exit instead."
 			   (org-superstar-mode 1)
 			   (org-indent-mode 1)))
 
+;;; dashboard
+(use-package dashboard)
+(require 'dashboard)
+(setq dashboard-items '((recents   . 5)
+                        (bookmarks . 5)
+                        (projects  . 5)))
+(setq initial-buffer-choice 'dashboard-open)
+
 ;;; EXWM configuration
 (use-package exwm)
 (require 'exwm)
@@ -513,7 +559,11 @@ buffer automatically on exit instead."
 ;;; Enable EXWM
 (cond ((eq system-type 'gnu/linux)
        (exwm-wm-mode)
-       (exwm-systemtray-mode 1)))
+       (exwm-systemtray-mode 1)
+       (run-at-time
+	"2 sec"
+	nil
+	'my/setup-workspaces)))
 
 ;;; terminal emulator
 (use-package ghostel
