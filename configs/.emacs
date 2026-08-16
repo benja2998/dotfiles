@@ -265,6 +265,7 @@ buffer automatically on exit instead."
 
 ;;; Keybinds
 (bind-key* "C-c nj" 'my/compile)
+(bind-key* "C-c u" 'undo-redo)
 (bind-key* "C-x M-p" 'mark-paragraph)
 (bind-key* "C-c nv" 'visit-tags-table)
 (bind-key* "C-c ns" 'select-tags-table)
