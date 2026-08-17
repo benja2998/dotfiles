@@ -35,12 +35,13 @@
 
 (defvar my-awesome-palette
   '((cursor "#fcfcfc")
-    (bg-main "#202326")
-    (bg-dim "#202326")
-    (bg-active "#33383d")
-    (bg-inactive "#33383d")
-    (fg-dim "#525961")
-    (bg-dim "#1e2023")
+    (bg-main "#351100")
+    (bg-dim "#351100")
+    (bg-active "#3f1700")
+    (bg-diff-context "#3f1700")
+    (bg-inactive "#3f1700")
+    (fg-dim "#792600")
+    (bg-dim "#351100")
 
     (bg-term-black "#393939")
     (fg-term-black "#393939")
@@ -95,11 +96,11 @@
     (fg-term-white "#e5e5e5")
     (fg-term-white-bright "#e5e5e5")
 
-    (bg-mode-line-active "#191c1e")
-    (bg-mode-line-inactive "#1d2123")
+    (bg-mode-line-active "#4a1700")
+    (bg-mode-line-inactive "#441600")
 
-    (border-mode-line-active "#191c1e")
-    (border-mode-line-inactive "#1d2123")
+    (border-mode-line-active "#4a1700")
+    (border-mode-line-inactive "#441600")
 
     (fg-mode-line-active "#fcfcfc")
     (fg-mode-line-inactive "#fcfcfc")
@@ -126,7 +127,7 @@
     (delimiter "#ff0000")
     (docmarkup "coral")
     (number "orangered")
-    (comment "#525961")
+    (comment "#792600")
     (builtin "coral")
     (constant "#ff0000")
     (docstring "#ff0000")
@@ -187,7 +188,7 @@
 
     (name "#ff0000")
 
-    (bg-region "#343a3f")
+    (bg-region "#6d2300")
 
     (identifier "coral")
 
