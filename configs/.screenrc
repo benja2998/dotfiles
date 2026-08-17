@@ -1,5 +1,6 @@
 defutf8 on
 utf8 on
 encoding UTF-8 UTF-8
-term screen
+term screen-256color
 escape ^Jj
+truecolor on
