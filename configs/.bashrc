@@ -1,5 +1,8 @@
 [[ $- != *i* ]] && return
 
+if [[ "$TERM" = "st-256color" ]] || [[ "$TERM" = "screen" ]]; then
+	exec tcsh
+fi
 #export LC_ALL=C.UTF-8
 
 export EDITOR='emacsclient -c -a ""'
@@ -15,12 +18,6 @@ alias grep="grep --color=auto"
 alias ll="ls -larth"
 bind -f ~/.inputrc
 bind '"\C-x\ee":"emacs\C-m"'
-
-if [ "$TERM" = "st-256color" ]; then
-    if [ -z "$TMUX" ]; then
-	exec tmux new-session -A -s st
-    fi
-fi
 
 ytsdl() {
     ytns --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" "$1"

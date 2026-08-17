@@ -1,0 +1,5 @@
+eval `(/usr/bin/starship init tcsh --print-full-init)`
+alias n 'cd ~/Documents/Notes'
+alias ls 'ls --color'
+alias grep 'grep --color'
+alias tree 'tree -C'
