@@ -1,8 +1,5 @@
 [[ $- != *i* ]] && return
 
-if [[ "$TERM" = "st-256color" ]] || [[ "$TERM" = "screen-256color" ]]; then
-	exec tcsh
-fi
 #export LC_ALL=C.UTF-8
 
 export EDITOR='emacsclient -c -a ""'
@@ -31,8 +28,8 @@ ytsearch() {
     yt-dlp --no-download --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" "$1" >/dev/null; cat search.txt; rm search.txt
 }
 
-HISTSIZE=1000
-HISTFILESIZE=1000
+HISTSIZE=-1
+HISTFILESIZE=-1
 
 export HISTCONTROL=ignoredups:erasedups
 shopt -s histappend

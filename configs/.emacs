@@ -558,13 +558,13 @@ buffer automatically on exit instead."
 (display-battery-mode 1)
 
 ;;; Enable EXWM
-(cond ((eq system-type 'gnu/linux)
-       (exwm-wm-mode)
-       (exwm-systemtray-mode 1)
-       (run-at-time
-	"2 sec"
-	nil
-	'my/setup-workspaces)))
+;; (cond ((eq system-type 'gnu/linux)
+;;        (exwm-wm-mode)
+;;        (exwm-systemtray-mode 1)
+;;        (run-at-time
+;; 	"2 sec"
+;; 	nil
+;; 	'my/setup-workspaces)))
 
 ;;; terminal emulator
 (use-package ghostel
