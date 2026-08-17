@@ -1,6 +1,6 @@
 [[ $- != *i* ]] && return
 
-if [[ "$TERM" = "st-256color" ]] || [[ "$TERM" = "screen" ]]; then
+if [[ "$TERM" = "st-256color" ]] || [[ "$TERM" = "screen-256color" ]]; then
 	exec tcsh
 fi
 #export LC_ALL=C.UTF-8
