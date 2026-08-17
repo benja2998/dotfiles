@@ -1,3 +1,3 @@
 #!/bin/bash
 
-grep -E '.*? \(.*?\): ' Documents/note.txt --color
+grep -E '.*? \(.*?\): ' Documents/note.txt | grep -v DONE

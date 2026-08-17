@@ -4,5 +4,6 @@ alias grep 'grep --color'
 alias tree 'tree -C'
 alias n 'ed ~/Documents/note.txt'
 alias t '~/todo.sh'
+alias f 'ed "`find -type f | grep -v "./.git" | fzf`"'
 set autolist = ambiguous 
 set complete = enhance
