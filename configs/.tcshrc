@@ -1,7 +1,8 @@
 eval `(/usr/bin/starship init tcsh --print-full-init)`
-alias n 'cd ~/Documents/Notes'
 alias ls 'ls --color'
 alias grep 'grep --color'
 alias tree 'tree -C'
+alias n 'ed ~/Documents/note.txt'
+alias t '~/todo.sh'
 set autolist = ambiguous 
 set complete = enhance
