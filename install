@@ -9,7 +9,7 @@ if [[ -f /etc/os-release ]]; then
 	     gnupg \
 	     git \
 	     base-devel \
-	     emacs-x11 \
+	     emacs-pgtk \
 	     cowsay \
 	     fortune-mod \
 	     lolcat-c \
