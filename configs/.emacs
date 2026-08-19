@@ -646,12 +646,6 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 ;;; Open eshell quickly
 (bind-key* "C-c e" 'ees/eshell-new)
 
-;;; Always open urls in Librewolf
-(setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "flatpak"
-      browse-url-generic-args '("run" "io.gitlab.librewolf-community"))
-
-
 ;;; Exec path from shell: get environment variables from shell
 (when (daemonp) (exec-path-from-shell-initialize))
 (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
