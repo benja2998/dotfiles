@@ -535,7 +535,7 @@ buffer automatically on exit instead."
         ([?\s-q] . dmenu) ;; s-q: Dmenu.
         ([?\s-n] . run-wiremix) ;; s-n: Wiremix.
         ([?\s-a] . run-librewolf) ;; s-a: Librewolf.
-	([?\s-o] . fix-audio) ;; s-o: Fix audio
+	([?\s-o] . opsec-leak) ;; s-o: Opsec leak
         ([?\s-b] . run-nmtui) ;; s-b: Nmtui.
         ([?\s-h] . run-htop) ;; s-h: Htop.
         ([?\s-c] . exwm-workspace-move-window) ;; s-c: Move window to workspace.
