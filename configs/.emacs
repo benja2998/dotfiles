@@ -513,6 +513,9 @@ buffer automatically on exit instead."
                         (projects  . 5)))
 (setq initial-buffer-choice 'dashboard-open)
 
+;;; eww
+(setq browse-url-browser-function 'eww-browse-url)
+
 ;;; EXWM configuration
 (use-package exwm)
 (require 'exwm)
