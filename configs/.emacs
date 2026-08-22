@@ -314,8 +314,8 @@ buffer automatically on exit instead."
 (setq eshell-save-history-on-exit nil)
 (setq eshell-hist-ignoredups t)
 (add-hook 'eshell-post-command-hook (lambda ()
-				     (eshell-write-history eshell-history-file-name t)
-				     (eshell-read-history eshell-history-file-name t)))
+				      (eshell-write-history eshell-history-file-name t)
+				      (eshell-read-history eshell-history-file-name t)))
 
 ;;; Respect editorconfig files
 (editorconfig-mode t)
@@ -481,7 +481,7 @@ buffer automatically on exit instead."
 (defun run-librewolf ()
   (interactive)
   (start-process-shell-command
-   "librewolf" nil "io.gitlab.librewolf-community"))
+   "firefox" nil "firefox"))
 (defun run-xsecurelock ()
   (interactive)
   (start-process-shell-command
@@ -494,6 +494,10 @@ buffer automatically on exit instead."
   (interactive)
   (start-process-shell-command
    "opsec" nil "espeak-ng \"OPSEC LEAK\""))
+(defun fix-audio ()
+  (interactive)
+  (start-process-shell-command
+   "fix-audio" nil "/home/benjamin/Documents/Notes/reload-audio.sh"))
 
 ;;; org superstar
 (use-package org-superstar)
@@ -528,7 +532,7 @@ buffer automatically on exit instead."
         ([?\s-q] . dmenu) ;; s-q: Dmenu.
         ([?\s-n] . run-wiremix) ;; s-n: Wiremix.
         ([?\s-a] . run-librewolf) ;; s-a: Librewolf.
-	([?\s-o] . opsec-leak) ;; s-o: The most important keybind
+	([?\s-o] . fix-audio) ;; s-o: Fix audio
         ([?\s-b] . run-nmtui) ;; s-b: Nmtui.
         ([?\s-h] . run-htop) ;; s-h: Htop.
         ([?\s-c] . exwm-workspace-move-window) ;; s-c: Move window to workspace.
@@ -558,13 +562,13 @@ buffer automatically on exit instead."
 (display-battery-mode 1)
 
 ;;; Enable EXWM
-;; (cond ((eq system-type 'gnu/linux)
-;;        (exwm-wm-mode)
-;;        (exwm-systemtray-mode 1)
-;;        (run-at-time
-;; 	"2 sec"
-;; 	nil
-;; 	'my/setup-workspaces)))
+(cond ((eq system-type 'gnu/linux)
+       (exwm-wm-mode)
+       (exwm-systemtray-mode 1)
+       (run-at-time
+	"2 sec"
+	nil
+	'my/setup-workspaces)))
 
 ;;; terminal emulator
 (use-package ghostel
