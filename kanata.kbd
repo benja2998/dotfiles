@@ -7,6 +7,7 @@
   q w e r
   a s d f g
   z x
+  n m
   h j k l scln
   spc
   )
@@ -29,6 +30,7 @@
   q w e r
   a s d f g
   z x
+  n m
   h j k l (tap-hold-release 200 250 scln (layer-toggle arrows))
 
   (tap-hold-release 200 250 spc (layer-toggle mouse))
@@ -39,6 +41,7 @@
   _ _ _ _
   _ _ _ _ _
   _ _
+  pgdn pgup
   left down up rght _
   _
   )
@@ -48,6 +51,7 @@
   mlft mmid mrgt @mwu
   @mlf @mdn @mup @mrt @mwd
   @mwl mwr
+  _ _
   _ _ _ _ _
   _
   )
