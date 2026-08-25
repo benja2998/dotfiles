@@ -3,15 +3,51 @@
   )
 
 (defsrc
-  caps h j k l scln
+  caps
+  q w e r
+  a s d f g
+  z x
+  h j k l scln
+  spc
+  )
+
+(defalias
+  ;; Mouse movement
+  mup (movemouse-accel-up 10 1000 1 25)
+  mdn (movemouse-accel-down 10 1000 1 25)
+  mlf (movemouse-accel-left 10 1000 1 25)
+  mrt (movemouse-accel-right 10 1000 1 25)
+  mwu (mwheel-up 50 120)
+  mwd (mwheel-down 50 120)
+  mwl (mwheel-left 50 120)
+  mwr (mwheel-right 50 120)
   )
 
 (deflayer base
   (tap-hold-press 150 150 esc lctl)
 
+  q w e r
+  a s d f g
+  z x
   h j k l (tap-hold-release 200 250 scln (layer-toggle arrows))
+
+  (tap-hold-release 200 250 spc (layer-toggle mouse))
   )
 
 (deflayer arrows
-  _ left down up rght _
+  _
+  _ _ _ _
+  _ _ _ _ _
+  _ _
+  left down up rght _
+  _
+  )
+
+(deflayer mouse
+  _
+  mlft mmid mrgt @mwu
+  @mlf @mdn @mup @mrt @mwd
+  @mwl mwr
+  _ _ _ _ _
+  _
   )
