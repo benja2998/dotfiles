@@ -4,7 +4,7 @@
 
 (defsrc
   caps
-  q w e r
+  q w e r i o
   a s d f g
   z x
   n m
@@ -27,7 +27,7 @@
 (deflayer base
   (tap-hold-press 150 150 esc lctl)
 
-  q w e r
+  q w e r i o
   a s d f g
   z x
   n m
@@ -38,7 +38,7 @@
 
 (deflayer arrows
   _
-  _ _ _ _
+  _ _ _ _ home end
   _ _ _ _ _
   _ _
   pgdn pgup
@@ -48,7 +48,7 @@
 
 (deflayer mouse
   _
-  mlft mmid mrgt @mwu
+  mlft mmid mrgt @mwu _ _
   @mlf @mdn @mup @mrt @mwd
   @mwl mwr
   _ _
