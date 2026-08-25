@@ -7,14 +7,14 @@
   )
 
 (defsrc
-    caps i j k l scln
+    caps h j k l scln
     )
 
 (deflayer base
     (tap-hold-press 150 150 esc lctl)
-    i j k l (tap-hold-press 150 150 scln (layer-toggle arrows))
+    h j k l (tap-hold-press 80 150 scln (layer-toggle arrows))
     )
 
 (deflayer arrows
-    _ up left down rght _
+    _ left down up rght _
     )
