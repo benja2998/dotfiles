@@ -39,7 +39,7 @@
 (deflayer arrows
   _
   _ _ _ _ home end
-  _ _ _ _ _
+  bspc _ _ del _
   _ _
   pgdn pgup
   left down up rght _
