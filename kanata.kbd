@@ -1,0 +1,20 @@
+;; This is a comment in a kanata configuration file.
+;; Comments will be ignored and are intended for you to help understand your
+;; own configuration when reading it later.
+
+(defcfg
+    process-unmapped-keys yes
+  )
+
+(defsrc
+    caps i j k l scln
+    )
+
+(deflayer base
+    (tap-hold-press 150 150 esc lctl)
+    i j k l (tap-hold-press 150 150 scln (layer-toggle arrows))
+    )
+
+(deflayer arrows
+    _ up left down rght _
+    )
