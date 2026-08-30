@@ -3,6 +3,7 @@
 #export LC_ALL=C.UTF-8
 
 export EDITOR='emacsclient -c -a ""'
+alias c='cls'
 alias emacs='emacsclient -c -a ""'
 alias ytns='yt-dlp --sponsorblock-remove all'
 alias fetch='$HOME/Thirdparty/fetch/fetch'
