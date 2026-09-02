@@ -1,11 +1,12 @@
+alias c cls
 alias clear clear-scrollback
 alias cls clear-scrollback
-alias c cls
-alias ytns yt-dlp --sponsorblock-remove all $*
-alias ytsearch yt-dlp --no-download --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" $* >/dev/null; cat search.txt; rm search.txt
-alias ytsdl ytns --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" $*
 alias d dired $1
 alias e find-file-other-window $1
 alias ff find-file $1
 alias ll ls -larth $*
+alias neocities /home/benjamin/.local/share/gem/ruby/3.4.0/bin/neocities $*
 alias t st-or-ghostel
+alias ytns yt-dlp --sponsorblock-remove all $*
+alias ytsdl ytns --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" $*
+alias ytsearch yt-dlp --no-download --print-to-file "before_dl:%(id)s  # [Duration (H.M.S): %(duration>%H.%M.%S)s] %(title)s" search.txt --default-search "ytsearch5:" $* >/dev/null; cat search.txt; rm search.txt
