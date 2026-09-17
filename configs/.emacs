@@ -84,7 +84,24 @@ buffer automatically on exit instead."
   "Fix for my android physical keyboard inserting the small tilde instead of ~"
   (interactive)
   (insert "~"))
+
+(defun android-insert-caret ()
+  (interactive)
+  (insert "^"))
+
+(defun android-insert-backtick ()
+  (interactive)
+  (insert "`"))
+
+(defun android-insert-apostrophe ()
+  (interactive)
+  (insert "'"))
+
+(bind-key* "ˆ" 'android-insert-caret)
+(bind-key* "ˋ" 'android-insert-backtick)
+(bind-key* "´" 'android-insert-apostrophe)
 (bind-key* "˜" 'android-insert-tilde)
+
 (defun eshell/z (&optional &rest ARGS)
   "Zoxide implementation for Eshell.  Optionally takes in ARGS, which will be passed to Zoxide"
   (interactive)
