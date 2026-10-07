@@ -526,8 +526,7 @@ buffer automatically on exit instead."
 (use-package dashboard)
 (require 'dashboard)
 (setq dashboard-items '((recents   . 5)
-                        (bookmarks . 5)
-                        (projects  . 5)))
+			(agenda    . 5)))
 (setq initial-buffer-choice 'dashboard-open)
 
 ;;; eww
@@ -631,9 +630,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
   :hook (after-init . ghostel-comint-global-mode))
 
 ;;; Neofetch.el (my package)
-(use-package neofetch
-  :vc (:url "https://codeberg.org/benja2998/neofetch.el"
- 	    :branch "main"))
+(use-package neofetch)
 
 ;;; Eshell syntax highlighting
 (use-package eshell-syntax-highlighting
