@@ -1,6 +1,8 @@
 [[ $- != *i* ]] && return
 
-#export LC_ALL=C.UTF-8
+export LC_ALL=C.UTF-8
+export MANPATH="$HOME/.nix-profile/share/man:$MANPATH"
+export PATH="$HOME/.nix-profile/bin:$HOME/.local/bin:$PATH"
 
 export EDITOR='emacsclient -c -a ""'
 alias c='cls'
@@ -34,7 +36,7 @@ HISTFILESIZE=1000
 
 export HISTCONTROL=ignoredups:erasedups
 shopt -s histappend
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+export PROMPT_COMMAND="history -a; history -c; history -r"
 
 shopt -s globstar
 shopt -s extglob
