@@ -75,6 +75,15 @@ buffer automatically on exit instead."
 (require 'eshell)
 (require 'dired)
 
+;;; Site
+(defun neocities-site-export ()
+  "Export"
+  (interactive)
+  (let ((org-files (directory-files "~/Projects/neocities/" nil "\\.org$" t)))
+    (dolist (file org-files)
+      (find-file file)
+      (org-html-export-to-html))))
+
 ;;; Local packages
 (add-to-list 'load-path (concat user-emacs-directory "local/"))
 (require 'emacs-multi-eshell)
