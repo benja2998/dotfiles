@@ -9,7 +9,7 @@
     },
     "backend": "fastfetch",
     "args": "-c examples/9",
-    "distro": "linux",
+    "distro": "void_small",
     "pride_month_disable": true,
     "custom_ascii_path": null
 }
