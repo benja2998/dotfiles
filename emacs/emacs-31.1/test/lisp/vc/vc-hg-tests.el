@@ -1,0 +1,108 @@
+;;; vc-hg-tests.el --- tests for vc/vc-hg.el  -*- lexical-binding:t -*-
+
+;; Copyright (C) 2016-2026 Free Software Foundation, Inc.
+
+;; Author: Dmitry Gutov <dgutov@yandex.ru>
+;; Maintainer: emacs-devel@gnu.org
+
+;; This file is part of GNU Emacs.
+
+;; GNU Emacs is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; GNU Emacs is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs.  If not, see <https://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;;; Code:
+
+(require 'vc-hg)
+(require 'vc-annotate)
+
+(ert-deftest vc-hg-annotate-extract-revision-at-line-with-filename ()
+  ;; with filename
+  (with-temp-buffer
+    (save-excursion (insert "215 2007-06-20 CONTENTS:"))
+    (should (equal (vc-hg-annotate-extract-revision-at-line)
+                   (cons
+                    "215"
+                    (expand-file-name "CONTENTS"))))))
+
+(ert-deftest vc-hg-annotate-extract-revision-at-line-with-user ()
+  (with-temp-buffer
+    (save-excursion (insert " gerv 107217 2012-09-17:"))
+    (should (equal (vc-hg-annotate-extract-revision-at-line)
+                   "107217"))))
+
+(ert-deftest vc-hg-annotate-extract-revision-at-line-with-both ()
+  (with-temp-buffer
+    (save-excursion (insert "philringnalda 218075 2014-11-28   CLOBBER:"))
+    (should (equal (vc-hg-annotate-extract-revision-at-line)
+                   (cons
+                    "218075"
+                    (expand-file-name "CLOBBER"))))))
+
+(ert-deftest vc-hg-annotate-time ()
+  (with-temp-buffer
+    (save-excursion (insert "philringnalda 218075 2014-11-28 CLOBBER:"))
+    (should (equal (vc-hg-annotate-time)
+                   (vc-annotate-convert-time
+                    (encode-time 0 0 0 28 11 2014))))))
+
+(defun vc-hg-test--after-dir-status-expect (in out)
+  "Call `vc-hg-after-dir-status' on IN and assert that it returns OUT."
+  (with-temp-buffer
+    (insert in)
+    (vc-hg-after-dir-status (lambda (res) (should (equal res out))))))
+
+(ert-deftest vc-hg-after-dir-status ()
+  "Test `vc-hg-after-dir-status'."
+  (vc-hg-test--after-dir-status-expect
+   "\
+A bar2
+  bar
+A foo2
+  foo
+R bar"
+   '(("bar" removed #s(vc-hg-extra-fileinfo renamed-to "bar2"))
+     ("foo2" added #s(vc-hg-extra-fileinfo copied "foo"))
+     ("bar2" added #s(vc-hg-extra-fileinfo renamed-from "bar"))))
+  (vc-hg-test--after-dir-status-expect
+   "\
+A bar2
+  bar
+A foo2
+  foo
+R bar
+R foo"
+   '(("foo" removed #s(vc-hg-extra-fileinfo renamed-to "foo2"))
+     ("bar" removed #s(vc-hg-extra-fileinfo renamed-to "bar2"))
+     ("foo2" added #s(vc-hg-extra-fileinfo renamed-from "foo"))
+     ("bar2" added #s(vc-hg-extra-fileinfo renamed-from "bar")))))
+
+(ert-deftest vc-hg-diff-revision-arguments ()
+  "Test `vc-hg-diff' revision arguments."
+  (cl-letf (((symbol-function 'vc-hg-command) #'list)
+            (vc-hg-diff-switches t))
+    ;; REV1 REV2 both nil: diff file against working revision
+    (should (equal (vc-hg-diff '("foo") nil nil)
+                   '("*vc-diff*" 1 ("foo") "diff")))
+    ;; REV1 nil and REV2 non-nil: diff REV2 against empty tree
+    (should (equal (vc-hg-diff '("foo") nil "22222")
+                   '("*vc-diff*" 1 ("foo") "diff" "-r" "null" "-r" "22222")))
+    ;; REV1 non-nil and REV2 nil: diff working copy against older revision
+    (should (equal (vc-hg-diff '("foo") "11111" nil)
+                   '("*vc-diff*" 1 ("foo") "diff" "-r" "11111")))
+    ;; REV1 REV2 both non-nil: diff two revisions
+    (should (equal (vc-hg-diff '("foo") "11111" "22222")
+                   '("*vc-diff*" 1 ("foo") "diff" "-r" "11111" "-r" "22222")))))
+
+;;; vc-hg-tests.el ends here

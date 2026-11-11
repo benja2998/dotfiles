@@ -23,4 +23,4 @@ set skip-completed-text On
 set completion-map-case On
 
 # Bigger history
-set history-size 1000
+set history-size -1

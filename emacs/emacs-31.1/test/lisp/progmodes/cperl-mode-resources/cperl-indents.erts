@@ -1,0 +1,147 @@
+Code:
+  (lambda ()
+    (cperl-mode)
+    (indent-region (point-min) (point-max)))
+
+Name: cperl-indent1
+
+=-=
+{
+  print "",
+    "",
+    foo::bar(),
+    "";
+}
+=-=-=
+
+Name: cperl-indents1
+
+=-=
+{
+  print "",
+    "",
+    foobar(),
+    "";
+}
+=-=-=
+
+Name: cperl-try-catch-finally
+
+=-=
+{
+  try {
+    call_a_function();
+  }
+  catch ($e) {
+    warn "Unable to call; $e";
+  }
+  finally {
+    print "Finished\n";
+  }
+}
+=-=-=
+
+Name: cperl-defer
+
+=-=
+use feature 'defer';
+
+{
+  say "This happens first";
+  defer {
+    say "This happens last";
+  }
+
+  say "And this happens inbetween";
+}
+=-=-=
+
+Name: cperl-feature-class
+
+=-=
+use 5.038;
+use feature "class";
+no warnings "experimental";
+
+class A {
+}
+
+class C
+  : isa(A)
+{
+  method with_sig_and_attr
+    : lvalue
+    ($top,$down)
+  {
+    return $top-$down;
+  }
+}
+
+say "done!";
+=-=-=
+
+Name: cperl-keyword-in-subname
+
+=-=
+# Bug#76851
+sub exec_fcn {
+}
+
+sub other {
+}
+=-=-=
+
+Name: cperl-keyword-without-space
+
+=-=
+# Bug#76851, message #13
+my %h = map{$_=>1}
+  @ARGV;
+=-=-=
+
+Name: cperl-subroutine-signatures
+
+=-=
+# -*- mode: cperl -*-
+# John Ciolfi reported as Bug#79269
+use strict;
+use warnings;
+use experimental 'signatures';
+
+foo(1);
+
+sub foo (
+	 $in1,
+	 $optionsHPtr = {},
+	 $otherOption1 = 1,	# Bug: wrong face for this option
+	) {
+
+  my $a = 1;			# Bug: should be indented by 2 spaces
+
+  # Bug: following are not indented due to use of signatures
+  my $b = 2;
+  return $a + $b + $in1;
+}
+=-=-=
+
+Name: cperl-false-label-in-regex
+
+=-=
+# -*- mode: cperl -*-
+# John Ciolfi reported as Bug#79271
+my $str =~ s/^
+             (Field1: [^\n]+) \s*
+             Field2: \s* (\S+) \s*
+            //xsm;
+=-=-=
+
+Name: cperl-false-label-in-qw
+
+=-=
+# Related to cperl-false-label-in-regex / Bug#79271
+my @chunks = qw(
+		 sub
+		 LABEL:
+		 more words
+	      );
+=-=-=

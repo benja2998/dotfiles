@@ -1,0 +1,56 @@
+Some files in this directory are taken from the Unicode Character
+Database and the Unicode Ideographic Variation Database.  These files
+are governed by the Unicode Terms of Use contained in the file
+copyright.html.
+
+The names and URLs for these files are as follows.  Each file (with the
+exception of UnicodeData.txt) contains the date at which Unicode last
+updated it.
+
+BidiBrackets.txt
+https://www.unicode.org/Public/UNIDATA/BidiBrackets.txt
+
+BidiMirroring.txt
+https://www.unicode.org/Public/UNIDATA/BidiMirroring.txt
+
+Blocks.txt
+https://www.unicode.org/Public/UNIDATA/Blocks.txt
+
+IVD_Sequences.txt (accessed via the date in the 'Version' column)
+https://www.unicode.org/ivd/
+
+NormalizationTest.txt
+https://www.unicode.org/Public/UNIDATA/NormalizationTest.txt
+
+SpecialCasing.txt
+https://unicode.org/Public/UNIDATA/SpecialCasing.txt
+
+UnicodeData.txt
+https://www.unicode.org/Public/UNIDATA/UnicodeData.txt
+
+emoji-data.txt
+https://www.unicode.org/Public/UNIDATA/emoji/emoji-data.txt
+
+emoji-zwj-sequences.txt
+https://www.unicode.org/Public/emoji/latest/emoji-zwj-sequences.txt
+
+emoji-sequences.txt
+https://www.unicode.org/Public/emoji/latest/emoji-sequences.txt
+
+emoji-test.txt
+https://www.unicode.org/Public/emoji/latest/emoji-test.txt
+
+emoji-variation-sequences.txt
+https://www.unicode.org/Public/UNIDATA/emoji/emoji-variation-sequences.txt
+
+ScriptExtensions.txt
+https://www.unicode.org/Public/UCD/latest/ucd/ScriptExtensions.txt
+
+Scripts.txt
+https://www.unicode.org/Public/UCD/latest/ucd/Scripts.txt
+
+PropertyValueAliases.txt
+https://www.unicode.org/Public/UCD/latest/ucd/PropertyValueAliases.txt
+
+IdnaMappingTable.txt
+https://www.unicode.org/Public/idna/latest/IdnaMappingTable.txt
