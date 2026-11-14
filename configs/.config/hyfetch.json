@@ -1,5 +1,5 @@
 {
-    "preset": "agender",
+    "preset": "nonbinary",
     "mode": "rgb",
     "auto_detect_light_dark": true,
     "light_dark": "dark",
@@ -8,8 +8,11 @@
         "mode": "horizontal"
     },
     "backend": "fastfetch",
-    "args": "-c examples/9",
+    "args": null,
     "distro": "void_small",
-    "pride_month_disable": true,
-    "custom_ascii_path": null
+    "pride_month_disable": false,
+    "custom_ascii_path": null,
+    "custom_presets": null,
+    "palette_glyph": null,
+    "palette_type": null
 }
