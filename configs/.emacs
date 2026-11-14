@@ -451,7 +451,6 @@ buffer automatically on exit instead."
 
 ;;; Eshell fish-like completion
 (use-package esh-autosuggest
-  :hook (eshell-mode . esh-autosuggest-mode)
   ;; If you have use-package-hook-name-suffix set to nil, uncomment and use the
   ;; line below instead:
   ;; :hook (eshell-mode-hook . esh-autosuggest-mode)
