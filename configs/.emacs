@@ -459,6 +459,8 @@ buffer automatically on exit instead."
 (use-package rust-mode)
 ;;; Lua support
 (use-package lua-mode)
+;;; Fish support
+(use-package fish-mode)
 ;;; Package linter
 (use-package package-lint)
 
