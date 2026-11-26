@@ -1,0 +1,4 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR __fish_webconfig_theme_notification:set\x2dtheme\x2dv1\x2d\x233
+SETUVAR fish_user_paths:/opt/Code/VSCode\x2dlinux\x2dx64/bin\x1e/home/benjamin/\x2elocal/bin

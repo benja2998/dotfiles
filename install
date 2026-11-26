@@ -37,8 +37,10 @@ dotfiles="$(pwd)"
 # dconf load /org/gnome/desktop/ < desktop.dconf
 # dconf load /org/gnome/shell/ < shell.dconf
 
+rm -r ~/.config/fish
 stow -v --target ~ configs
 mkdir -p ~/.config/gtk-4.0
+mkdir -p ~/.emacs.d/eshell
 cp "$dotfiles/manualcopy/gtk-4.0/gtk.css" ~/.config/gtk-4.0/gtk.css
 
 starship preset no-nerd-font -o ~/.config/starship.toml || true
