@@ -581,7 +581,30 @@ buffer automatically on exit instead."
                   (number-sequence 0 9))))
 
 ;;; Use lua-mode for luau files
-(add-to-list 'auto-mode-alist '("\\.luau\\'" . lua-mode))
+(define-derived-mode luau-mode
+  (cond ((fboundp 'lua-ts-mode) 'lua-ts-mode)
+        ((fboundp 'lua-mode) 'lua-mode)
+        (t 'prog-mode))
+  "Luau"
+  "Major mode for editing Luau files.")
+
+(add-to-list 'auto-mode-alist '("\\.luau\\'" . luau-mode))
+
+(defun my/luau-lsp-command (&optional _interactive)
+  "Return the luau-lsp command, including .poly/luau/def.d.luau if present."
+  (let* ((proj (project-current))
+         (root (if proj (project-root proj) default-directory))
+         (def-file (expand-file-name ".poly/luau/def.d.luau" root))
+         (cmd (list "/home/benjamin/Documents/luau-lsp" "lsp")))
+    (if (file-exists-p def-file)
+        (append cmd (list (concat "--definitions:@poly=" def-file)))
+      cmd)))
+
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               '(luau-mode . my/luau-lsp-command)))
+
+(add-hook 'luau-mode-hook #'eglot-ensure)
 
 ;;; Display time and battery in mode-line
 (setq display-time-format "%d-%m-%Y %a %H:%M")
