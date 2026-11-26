@@ -401,7 +401,7 @@ buffer automatically on exit instead."
 
 ;;; Font
 (cond ((eq system-type 'gnu/linux)
-       (add-to-list 'default-frame-alist '(font . "Iosevka-20")))
+       (add-to-list 'default-frame-alist '(font . "Iosevka-18")))
       ((eq system-type 'android)
        (add-to-list 'default-frame-alist '(font . "Iosevka-24"))))
 
