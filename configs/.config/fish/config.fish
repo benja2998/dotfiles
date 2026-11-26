@@ -1,6 +1,8 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
 
+    fortune -s | cowsay
+
     function run_after_command --on-event fish_postexec
         history merge
     end
