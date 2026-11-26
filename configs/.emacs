@@ -465,8 +465,8 @@
 	 ;; I use M-j to clear Eshell, so it makes sense to have this
          ("M-j" . (lambda () (interactive) (ghostel-send-key "l" "ctrl")))
          :map project-prefix-map
-         ("m" . ghostel-project)
-         ("M" . ghostel-project-list-buffers))
+	 ("D" . project-dired)
+         ("m" . st-project))
   :config
   (defun my/ghostel-send-C-k-and-kill ()
     "Send `C-k' to ghostel.
@@ -474,8 +474,8 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
     (interactive)
     (kill-ring-save (point) (line-end-position))
     (ghostel-send-key "k" "ctrl"))
-  (add-to-list 'project-switch-commands '(ghostel-project "Ghostel") t)
-  (add-to-list 'project-switch-commands '(ghostel-project-list-buffers "Ghostel buffers") t)
+  (add-to-list 'project-switch-commands '(st-project "Konsole") t)
+  (add-to-list 'project-switch-commands '(project-dired "Dired in root") t)
   (add-to-list 'ghostel-eval-cmds '("magit-status-setup-buffer" magit-status-setup-buffer)))
 (setq ghostel-timer-delay 0.007) ; 144 fps
 
