@@ -44,6 +44,6 @@ shopt -s checkwinsize
 shopt -s autocd
 shopt -s cdspell
 
-PS1='[\u@\h \W]\$ '
+eval -- "$(/usr/bin/starship init bash --print-full-init)"
 
 [[ $- == *i* ]] && return

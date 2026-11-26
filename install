@@ -12,6 +12,7 @@ if [[ -f /etc/os-release ]]; then
 	     cowsay \
 	     fortune-mod \
 	     lolcat-c \
+	     starship \
 	     zoxide
     fi
 elif [[ -v PREFIX ]]; then
@@ -39,5 +40,7 @@ dotfiles="$(pwd)"
 stow -v --target ~ configs
 mkdir -p ~/.config/gtk-4.0
 cp "$dotfiles/manualcopy/gtk-4.0/gtk.css" ~/.config/gtk-4.0/gtk.css
+
+starship preset no-nerd-font -o ~/.config/starship.toml || true
 
 command -v termux-reload-settings && termux-reload-settings || true
