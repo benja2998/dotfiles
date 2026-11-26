@@ -34,43 +34,6 @@
    "konsole" nil "konsole")
   (kill-buffer mydired--buffer-name))
 
-(defun st-exec-visual (&rest args)
-  "Replacement for `eshell-exec-visual' that dispatches to st.
-ARGS are the program name followed by its arguments, as passed by
-eshell."
-  (let* (eshell-interpreter-alist
-	 (interp (eshell-find-interpreter (car args) (cdr args)))
-	 (program (car interp))
-	 (args (flatten-tree
-		(eshell-stringify-list (append (cdr interp)
-					       (cdr args)))))
-	 (term-buf
-	  (generate-new-buffer
-	   (concat "*" (file-name-nondirectory program) "*")))
-	 (eshell-buf (current-buffer))
-	 (prog-cmdline (concat "bash -c 'sleep 0.01; "program " " (eshell-list-to-string args) "'")))
-    (save-current-buffer
-      (start-process-shell-command
-       "st-eshell" nil (concat "st " prog-cmdline))
-      (kill-buffer term-buf)))
-  nil)
-
-(define-minor-mode st-eshell-visual-command-mode
-  "Run Eshell visual commands (vim, htop, less, ...) in st buffers.
-When enabled, `eshell-exec-visual' is overridden to launch the
-program in a dedicated st terminal buffer.  When the program
-exits, the buffer stays on `[Process exited]' so any remaining
-output is visible; press `q' to dismiss it.  Set
-`eshell-destroy-buffer-when-process-dies' to non-nil to kill the
-buffer automatically on exit instead."
-  :global t
-  :group 'ghostel
-  (if st-eshell-visual-command-mode
-      (advice-add 'eshell-exec-visual :override
-                  #'st-exec-visual)
-    (advice-remove 'eshell-exec-visual
-                   #'st-exec-visual)))
-
 ;;; For future customizations
 (require 'eshell)
 (require 'dired)
@@ -86,7 +49,6 @@ buffer automatically on exit instead."
 
 ;;; Local packages
 (add-to-list 'load-path (concat user-emacs-directory "local/"))
-(require 'emacs-multi-eshell)
 
 ;;; Functions
 (defun android-insert-tilde ()
@@ -110,99 +72,6 @@ buffer automatically on exit instead."
 (bind-key* "ˋ" 'android-insert-backtick)
 (bind-key* "´" 'android-insert-apostrophe)
 (bind-key* "˜" 'android-insert-tilde)
-
-(defun eshell/z (&optional &rest ARGS)
-  "Zoxide implementation for Eshell.  Optionally takes in ARGS, which will be passed to Zoxide"
-  (interactive)
-
-  (let* ((args (if ARGS
-		   (eshell-list-to-string (flatten-tree ARGS))
-		 (getenv "HOME")))
-	 (output (string-trim
-		  (shell-command-to-string
-		   (concat "zoxide query " args)))))
-    (cond
-
-     ;; if it is -, go back
-     ((string-equal args "-")
-      (eshell/cd "-"))
-
-     ;; if it exists, just cd to it and try to add it
-     ((file-directory-p args)
-      (shell-command-to-string
-       (concat "zoxide add " args))
-      (eshell/cd args))
-
-     ;; until I can find a better way to check for it finding nothing,
-     ;; this relies on zoxide's output format staying the same
-     ;;
-     ;; this one might be redundant with the clause above,
-     ;; but I will keep it just to be safe
-     ((string-equal output "zoxide: no match found")
-      (shell-command-to-string
-       (concat "zoxide add " args))
-      (eshell/cd args))
-
-     ;; if zoxide found it, cd to it
-     (t
-      (eshell/cd output)))))
-
-(defun notes-eshell ()
-  "Open notes-eshell"
-  (interactive)
-  (cond ((get-buffer "*notes-eshell*")
-	 (switch-to-buffer "*notes-eshell*"))
-	(t
-	 (dired-notes)
-	 (setq mydired--buffer-name (buffer-name))
-	 (ees/eshell-new)
-	 (rename-buffer "*notes-eshell*")
-	 (kill-buffer mydired--buffer-name))))
-
-(defun videos-eshell ()
-  "Open videos-eshell"
-  (interactive)
-  (cond ((get-buffer "*videos-eshell*")
-	 (switch-to-buffer "*videos-eshell*"))
-	(t
-	 (dired "~/Videos")
-	 (setq mydired--buffer-name (buffer-name))
-	 (ees/eshell-new)
-	 (rename-buffer "*videos-eshell*")
-	 (kill-buffer mydired--buffer-name))))
-
-(defun pictures-eshell ()
-  "Open pictures-eshell"
-  (interactive)
-  (cond ((get-buffer "*pictures-eshell*")
-	 (switch-to-buffer "*pictures-eshell*"))
-	(t
-	 (dired "~/Pictures")
-	 (setq mydired--buffer-name (buffer-name))
-	 (ees/eshell-new)
-	 (rename-buffer "*pictures-eshell*")
-	 (kill-buffer mydired--buffer-name))))
-
-(defun eshell-in-home ()
-  "Open eshell in home"
-  (interactive)
-  (dired-home)
-  (setq mydired--buffer-name (buffer-name))
-  (ees/eshell-new)
-  (kill-buffer mydired--buffer-name))
-
-(defun my/setup-workspaces ()
-  (exwm-workspace-switch 1)
-  (run-librewolf)
-  (exwm-workspace-switch 6)
-  (eshell-in-home)
-  (exwm-workspace-switch 7)
-  (pictures-eshell)
-  (exwm-workspace-switch 8)
-  (videos-eshell)
-  (exwm-workspace-switch 9)
-  (notes-eshell)
-  (exwm-workspace-switch 0))
 
 (defun daily-note ()
   "Open today's daily note"
@@ -295,8 +164,6 @@ buffer automatically on exit instead."
 (bind-key* "C-x M-p" 'mark-paragraph)
 (bind-key* "C-c nv" 'visit-tags-table)
 (bind-key* "C-c ns" 'select-tags-table)
-(bind-key* "C-c j" 'eshell-in-home)
-(bind-key* "C-c k" 'notes-eshell)
 (bind-key* "C-c nt" 'daily-note)
 (bind-key* "C-c tn" 'todo-note)
 (bind-key* "C-c ne" 'org-agenda-list)
@@ -317,31 +184,6 @@ buffer automatically on exit instead."
   (bind-key "C-c ii" #'org-insert-image 'org-mode-map)
   (bind-key "C-x M-l" #'org-do-demote 'org-mode-map)
   (bind-key "C-x M-h" #'org-do-promote 'org-mode-map))
-
-;;; Function to clear eshell
-(defun eshell-clear ()
-  "Clear interactively eshell"
-  (interactive)
-  (execute-kbd-macro (kbd "cls RET")))
-
-;;; Fix for eshell-mode-map not working immediately
-(defun bind-eshell-clear-mode-map ()
-  (interactive)
-  (bind-key "M-j" #'eshell-clear 'eshell-mode-map)
-  ;; This shouldn't be in the function for Eshell but I put it here to not repeat this
-  (bind-key "C-c C-c" 'wdired-change-to-wdired-mode 'dired-mode-map))
-(add-hook 'emacs-startup-hook #'bind-eshell-clear-mode-map)
-
-;;; bigger history
-(setq eshell-history-size 1000)
-
-;;; Shared history in the eshell
-(setq eshell-history-append t)
-(setq eshell-save-history-on-exit nil)
-(setq eshell-hist-ignoredups t)
-(add-hook 'eshell-post-command-hook (lambda ()
-				      (eshell-write-history eshell-history-file-name t)
-				      (eshell-read-history eshell-history-file-name t)))
 
 ;;; Respect editorconfig files
 (editorconfig-mode t)
@@ -655,15 +497,6 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 ;;; Neofetch.el (my package)
 (use-package neofetch)
 
-;;; Eshell syntax highlighting
-(use-package eshell-syntax-highlighting
-  :after eshell-mode
-  :ensure t ;; Install if not already installed.
-  :config
-  ;; Enable in all Eshell buffers.
-  (eshell-syntax-highlighting-global-mode +1))
-(eshell-syntax-highlighting-global-mode t)
-
 ;;; Ido Mode emulation
 (fido-mode t)
 
@@ -676,19 +509,6 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
   :config
   (global-colorful-mode t)
   (add-to-list 'global-colorful-modes 'helpful-mode))
-
-;;; Eshell prompt
-(use-package eshell-prompt-extras)
-(with-eval-after-load "esh-opt"
-  (autoload 'epe-theme-multiline-with-status "eshell-prompt-extras")
-  (setq eshell-highlight-prompt nil
-        eshell-prompt-function 'epe-theme-multiline-with-status))
-
-;;; Destroy eshell visual buffers after process dies
-(setq eshell-destroy-buffer-when-process-dies t)
-
-;;; Open eshell quickly
-(bind-key* "C-c e" 'ees/eshell-new)
 
 ;;; Exec path from shell: get environment variables from shell
 (when (daemonp) (exec-path-from-shell-initialize))
@@ -705,25 +525,6 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 (setq eshell-cmpl-ignore-case t)
 (setq read-buffer-completion-ignore-case t)
 (setq read-file-name-completion-ignore-case t)
-
-;;; Eshell visual commands configuration
-(require 'ghostel-eshell)
-(add-hook 'eshell-mode-hook (lambda ()
-			      (add-to-list 'eshell-visual-commands "tinydash")
-			      (add-to-list 'eshell-visual-commands "fzf")
-			      (add-to-list 'eshell-visual-commands "pipes.sh")
-			      (add-to-list 'eshell-visual-commands "cpipes")
-			      (add-to-list 'eshell-visual-commands "cmatrix")
-			      (add-to-list 'eshell-visual-commands "nvtop")
-			      (add-to-list 'eshell-visual-commands "wiremix")
-			      (cond ((eq system-type 'gnu/linux)
-				     (st-eshell-visual-command-mode))
-				    ((eq system-type 'android)
-				     (ghostel-eshell-visual-command-mode)))))
-
-(add-hook 'eshell-banner-load-hook (lambda ()
-				     (setq eshell-banner-message
-					   (concat (shell-command-to-string "fortune | cowsay") "\n\n"))))
 
 ;;; Pass message to mail client when sending with C-x m
 (setq send-mail-function 'mailclient-send-it)
