@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;; multi-eshell.el - GNU Emacs extension for managing multiple eshell buffers.
 
 ;; Copyright (C) 2022 Viacheslav Chepelyk-Kozhin.

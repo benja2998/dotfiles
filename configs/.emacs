@@ -211,8 +211,8 @@ buffer automatically on exit instead."
 			   "~/Documents/Notes/"
 			   (format-time-string "%Y" (current-time))
 			   "/"
-			   (format-time-string "%d-%m-%Y" (current-time)) ".org"))
-  (setq current-date (format-time-string "%d-%m-%Y" (current-time)))
+			   (format-time-string "%Y-%m-%d" (current-time)) ".org"))
+  (setq current-date (format-time-string "%Y-%m-%d" (current-time)))
   (find-file current-date-file)
   (setq current-day (format-time-string "%A" (current-time)))
   (unless (file-exists-p current-date-file)
@@ -684,7 +684,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 (setq org-agenda-files (list org-directory))
 
 ;;; Theme
-(load-theme 'my-awesome t)
+(load-theme 'sweet t)
 
 ;;; Ignore case in completion
 (setq eshell-cmpl-ignore-case t)

@@ -1,4 +1,0 @@
-     ((lambda (arg) (/ arg 50)) 100)
-      \______________________/  \_/
-                  |              |
-         anonymous function   argument

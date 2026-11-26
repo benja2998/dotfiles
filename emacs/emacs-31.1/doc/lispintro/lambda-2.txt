@@ -1,4 +1,0 @@
-     ((lambda (number) (* 7 number)) 3)
-      \____________________________/ ^
-                    |                |
-           anonymous function     argument
