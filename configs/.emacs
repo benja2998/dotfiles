@@ -28,11 +28,9 @@
 (defun st-project ()
   "ST rpoject"
   (interactive)
-  (project-dired)
-  (setq mydired--buffer-name (buffer-name))
-  (start-process-shell-command
-   "konsole" nil "konsole")
-  (kill-buffer mydired--buffer-name))
+  (let ((default-directory (project-root (project-current t))))
+    (start-process-shell-command
+     "konsole" nil "konsole")))
 
 ;;; For future customizations
 (require 'eshell)
