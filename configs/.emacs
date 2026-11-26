@@ -21,7 +21,7 @@
   (interactive)
   (cond ((eq system-type 'gnu/linux)
 	 (start-process-shell-command
-	  "konsole" nil "konsole"))
+	  "foot" nil "foot"))
 	(t
 	 (ghostel))))
 
@@ -30,7 +30,7 @@
   (interactive)
   (let ((default-directory (project-root (project-current t))))
     (start-process-shell-command
-     "konsole" nil "konsole")))
+     "foot" nil "foot")))
 
 ;;; For future customizations
 (require 'eshell)
@@ -474,7 +474,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
     (interactive)
     (kill-ring-save (point) (line-end-position))
     (ghostel-send-key "k" "ctrl"))
-  (add-to-list 'project-switch-commands '(st-project "Konsole") t)
+  (add-to-list 'project-switch-commands '(st-project "Foot") t)
   (add-to-list 'project-switch-commands '(project-dired "Dired in root") t)
   (add-to-list 'ghostel-eval-cmds '("magit-status-setup-buffer" magit-status-setup-buffer)))
 (setq ghostel-timer-delay 0.007) ; 144 fps
