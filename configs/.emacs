@@ -21,7 +21,7 @@
   (interactive)
   (cond ((eq system-type 'gnu/linux)
 	 (start-process-shell-command
-	  "st" nil "st"))
+	  "konsole" nil "konsole"))
 	(t
 	 (ghostel))))
 
@@ -31,7 +31,7 @@
   (project-dired)
   (setq mydired--buffer-name (buffer-name))
   (start-process-shell-command
-   "st" nil "st")
+   "konsole" nil "konsole")
   (kill-buffer mydired--buffer-name))
 
 (defun st-exec-visual (&rest args)
