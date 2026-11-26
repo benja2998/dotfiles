@@ -15,7 +15,7 @@ if status is-interactive
     alias ytns='yt-dlp --sponsorblock-remove all'
     alias fetch='$HOME/Thirdparty/fetch/fetch'
     alias cls='clear'
-    alias e='emacs .'
+    alias e='emacs -n .'
     alias ls='ls --color=auto'
     alias tree='tree -C'
     alias grep='grep --color=auto'
