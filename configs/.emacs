@@ -312,11 +312,10 @@
 (use-package package-lint)
 
 ;;; org superstar
-(cond ((eq system-type 'gnu/linux)
-       (use-package org-superstar)
-       (add-hook 'org-mode-hook (lambda ()
-				  (org-superstar-mode 1)
-				  (org-indent-mode 1)))))
+(use-package org-superstar)
+(add-hook 'org-mode-hook (lambda ()
+			   (org-superstar-mode 1)
+			   (org-indent-mode 1)))
 
 ;;; Use lua-mode for luau files
 (define-derived-mode luau-mode lua-mode "Luau"
