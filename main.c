@@ -7,8 +7,8 @@
 #define $$_ void
 #define _$$$ ;
 #define $$__ <stdio.h>
-#define _$$ "Hello world\n"
-#define __$ printf
+#define _$$ "Hello world"
+#define __$ puts
 #include $$__
 
 $$ $ _$ $$_ $_ $$$ __$ _$ _$$ $_ _$$$ $$$_
