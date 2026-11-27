@@ -29,8 +29,11 @@
   "ST rpoject"
   (interactive)
   (let ((default-directory (project-root (project-current t))))
-    (start-process-shell-command
-     "foot" nil "foot")))
+    (cond ((eq system-type 'gnu/linux)
+	   (start-process-shell-command
+	    "foot" nil "foot"))
+	  (t
+	   (ghostel)))))
 
 ;;; For future customizations
 (require 'eshell)
@@ -323,7 +326,7 @@
   (let* ((proj (project-current))
          (root (if proj (project-root proj) default-directory))
          (def-file (expand-file-name ".poly/luau/def.d.luau" root))
-         (cmd (list "/home/benjamin/Documents/luau-lsp" "lsp")))
+         (cmd (list (concat (getenv "HOME") "/Documents/luau-lsp") "lsp")))
     (if (file-exists-p def-file)
         (append cmd (list (concat "--definitions:@poly=" def-file)))
       cmd)))
