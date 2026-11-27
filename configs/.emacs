@@ -289,6 +289,8 @@
 (bind-key* "C-c y w l" 'mc/mark-all-words-like-this)
 (bind-key* "C-c y s l" 'mc/mark-all-symbols-like-this)
 
+;;; Company
+(use-package company)
 ;;; Dmenu
 (use-package dmenu)
 ;;; Markdown support
@@ -304,116 +306,11 @@
 ;;; Package linter
 (use-package package-lint)
 
-;;; Functions for EXWM keybinds to call
-(defun my/audio-vol-up () (interactive)
-       (start-process-shell-command
-	"vol-up" nil
-	"pactl set-sink-volume @DEFAULT_SINK@ +5%"))
-(defun my/audio-vol-down () (interactive)
-       (start-process-shell-command
-	"vol-down" nil
-	"pactl set-sink-volume @DEFAULT_SINK@ -5%"))
-(defun my/audio-mute () (interactive)
-       (start-process-shell-command
-	"vol-mute" nil
-	"pactl set-sink-mute @DEFAULT_SINK@ toggle"))
-(defun my/brightness-up () (interactive)
-       (start-process-shell-command
-	"bright-up" nil
-	"light -A 5"))
-(defun my/brightness-down () (interactive)
-       (start-process-shell-command
-	"bright-down" nil
-	"light -U 5"))
-(defun run-wiremix ()
-  (interactive)
-  (st-exec-visual "wiremix"))
-(defun run-nmtui ()
-  (interactive)
-  (st-exec-visual "nmtui"))
-(defun run-boomer ()
-  (interactive)
-  (start-process-shell-command
-   "boomer" nil "/home/benjamin/Thirdparty/boomer/boomer"))
-(defun run-htop ()
-  (interactive)
-  (st-exec-visual "htop"))
-(defun run-librewolf ()
-  (interactive)
-  (start-process-shell-command
-   "firefox" nil "firefox"))
-(defun run-xsecurelock ()
-  (interactive)
-  (start-process-shell-command
-   "xsecurelock" nil "xsecurelock"))
-(defun run-flameshot ()
-  (interactive)
-  (start-process-shell-command
-   "flameshot" nil "flameshot gui"))
-(defun opsec-leak ()
-  (interactive)
-  (start-process-shell-command
-   "opsec" nil "espeak-ng \"OPSEC LEAK\""))
-(defun fix-audio ()
-  (interactive)
-  (start-process-shell-command
-   "fix-audio" nil "/home/benjamin/Documents/Notes/reload-audio.sh"))
-
 ;;; org superstar
 (use-package org-superstar)
 (add-hook 'org-mode-hook (lambda ()
 			   (org-superstar-mode 1)
 			   (org-indent-mode 1)))
-
-;;; dashboard
-(use-package dashboard)
-(require 'dashboard)
-(setq dashboard-items '((recents   . 5)
-			(agenda    . 5)))
-(setq initial-buffer-choice 'dashboard-open)
-
-;;; eww
-(setq browse-url-browser-function 'eww-browse-url)
-
-;;; EXWM configuration
-(use-package exwm)
-(require 'exwm)
-;; Set the initial workspace number.
-(setq exwm-workspace-number 10)
-
-;; Make class name the buffer name.
-(add-hook 'exwm-update-class-hook
-	  (lambda () (exwm-workspace-rename-buffer exwm-class-name)))
-;; Global keybindings.
-(setq exwm-input-global-keys
-      `(([?\s-r] . exwm-reset) ;; s-r: Reset (to line-mode).
-        ([?\s-w] . exwm-workspace-switch) ;; s-w: Switch workspace.
-        ([?\s-i] . exwm-input-toggle-keyboard) ;; s-i: Toggle char mode.
-        ([?\s-j] . run-flameshot) ;; s-j: Run flameshot
-        ([?\s-p] . my/audio-vol-up) ;; s-p: Volume up.
-        ([?\s-q] . dmenu) ;; s-q: Dmenu.
-        ([?\s-n] . run-wiremix) ;; s-n: Wiremix.
-        ([?\s-a] . run-librewolf) ;; s-a: Librewolf.
-	([?\s-o] . opsec-leak) ;; s-o: Opsec leak
-        ([?\s-b] . run-nmtui) ;; s-b: Nmtui.
-        ([?\s-h] . run-htop) ;; s-h: Htop.
-        ([?\s-c] . exwm-workspace-move-window) ;; s-c: Move window to workspace.
-        ([?\s-z] . run-boomer) ;; s-z: Boomer.
-	([?\s-y] . run-xsecurelock) ;; s-y: Xsecurelock.
-        ([?\s-u] . my/audio-vol-down) ;; s-u: Volume down.
-        ([?\s-l] . my/brightness-up) ;; s-l: Brightness up.
-        ([?\s-d] . my/brightness-down) ;; s-d: Brightness down.
-        ([?\s-m] . my/audio-mute) ;; s-m: Mute volume.
-        ([?\s-&] . (lambda (cmd) ;; s-&: Launch application.
-                     (interactive (list (read-shell-command "$ ")))
-                     (start-process-shell-command cmd nil cmd)))
-        ;; s-N: Switch to certain workspace.
-        ,@(mapcar (lambda (i)
-                    `(,(kbd (format "s-%d" i)) .
-                      (lambda ()
-                        (interactive)
-                        (exwm-workspace-switch-create ,i))))
-                  (number-sequence 0 9))))
 
 ;;; Use lua-mode for luau files
 (define-derived-mode luau-mode lua-mode "Luau"
@@ -442,15 +339,6 @@
 (setq display-time-format "%d-%m-%Y %a %H:%M")
 (display-time-mode 1)
 (display-battery-mode 1)
-
-;;; Enable EXWM
-;; (cond ((eq system-type 'gnu/linux)
-;;        (exwm-wm-mode)
-;;        (exwm-systemtray-mode 1)
-;;        (run-at-time
-;; 	"2 sec"
-;; 	nil
-;; 	'my/setup-workspaces)))
 
 ;;; terminal emulator
 (use-package ghostel
