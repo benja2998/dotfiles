@@ -22,6 +22,7 @@ if status is-interactive
     alias tree='tree -C'
     alias grep='grep --color=auto'
     alias ll='ls -larth'
+    alias cat='bat -pp'
 
     function ytsdl
 	ytns --print-to-file \
